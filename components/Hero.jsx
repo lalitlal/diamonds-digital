@@ -22,7 +22,7 @@ const Hero = () => {
     <>
       <div className="flex mx-auto relative">
         <Image
-          src={image_urls[3]}
+          src={image_urls[1]}
           className=" w-screen pt-3 md:w-auto h-auto transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
           alt=""
         />
