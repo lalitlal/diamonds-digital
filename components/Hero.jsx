@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import heroBandsWater from "../public/assets/hero-bands-water.jpg";
 import heroBands from "../public/assets/hero-bands.jpg";
@@ -17,25 +18,30 @@ const Hero = () => {
   };
 
   const imageSelector = generateRandomInteger(Object.keys(image_urls).length);
-  console.log(image_urls);
   return (
     <>
       <div className="flex mx-auto relative">
         <Image
           src={image_urls[3]}
-          class=" w-screen pt-3 md:w-auto h-auto transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+          className=" w-screen pt-3 md:w-auto h-auto transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
           alt=""
         />
         <p className="hidden md:flex absolute  mt-20 text-white w-full text-center justify-center h-auto text-2xl lg:text-4xl">
           Engagement rings, made for one.{" "}
         </p>
         <div className="absolute top-1/2 flex flex-1 flex-wrap w-1/3">
-          <button className="hidden md:flex absolute justify-center w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white p-3 hover:bg-white hover:text-slate-800 transition duration-300 ease-in-out">
+          <Link
+            href="/diamond"
+            className="hidden md:flex absolute justify-center w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white p-3 hover:bg-white hover:text-slate-800 transition duration-300 ease-in-out"
+          >
             Start with a diamond
-          </button>
-          <button className="hidden md:flex absolute justify-center w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white p-3 hover:bg-white hover:text-slate-800 transition duration-300 ease-in-out">
+          </Link>
+          <Link
+            href="/"
+            className="hidden md:flex absolute justify-center w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white p-3 hover:bg-white hover:text-slate-800 transition duration-300 ease-in-out"
+          >
             Start with a setting
-          </button>
+          </Link>
         </div>
       </div>
 

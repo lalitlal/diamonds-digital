@@ -1,17 +1,18 @@
+import Link from "next/link";
 import React from "react";
 
 const Header = () => {
   return (
     <div className="flex-col items-center object-center">
       <div className="flex justify-around mt-6">
-        <div className="flex items-center w-1/3 ml-6 hover:text-gray-500 cursor-pointer">
+        <div className="flex items-center w-1/3 ml-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 inline-block md:hidden"
+            className="w-6 h-6 inline-block md:hidden hover:text-gray-500 cursor-pointer"
           >
             <path
               strokeLinecap="round"
@@ -26,7 +27,7 @@ const Header = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 ml-2"
+            className="w-6 h-6 ml-2 hover:text-gray-500 cursor-pointer"
           >
             <path
               strokeLinecap="round"
@@ -34,10 +35,17 @@ const Header = () => {
               d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
             />
           </svg>
-          <a className="hidden lg:inline-flex">Book an appointment</a>
+          <a className="hidden lg:inline-flex hover:text-gray-500 cursor-pointer">
+            Book an appointment
+          </a>
         </div>
-        <div className="text-center font-Raleway text-4xl font-bold w-1/3">
-          SHEKL
+        <div>
+          <Link
+            href="/"
+            className="text-center font-Raleway text-4xl font-bold w-1/3 cursor-pointer"
+          >
+            HIRA
+          </Link>
         </div>
         <div className="flex items-center justify-end w-1/3 mr-6">
           <svg
@@ -70,34 +78,34 @@ const Header = () => {
           </svg>
         </div>
       </div>
-      <div class="hidden md:flex justify-center w-full items-center mt-6 objects-center text-sm lg:flex-grow">
+      <div className="hidden md:flex justify-center w-full items-center mt-6 objects-center text-sm lg:flex-grow">
         <a
           href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
         >
           Engagement
         </a>
         <a
           href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
         >
           Diamonds
         </a>
         <a
           href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
         >
           Wedding
         </a>
         <a
           href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
         >
           Featured
         </a>
         <a
           href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer"
         >
           About
         </a>

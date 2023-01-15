@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import Navbar from "../components/Navbar";
+import Header from "../../components/Header";
+import Hero from "../../components/Hero";
+import Navbar from "../../components/Navbar";
+import DiamondPage from "../../components/DiamondPage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,7 @@ export default function Home() {
       </Head>
       <Navbar></Navbar>
       <Header></Header>
-      <Hero></Hero>
+      <DiamondPage></DiamondPage>
     </>
   );
 }

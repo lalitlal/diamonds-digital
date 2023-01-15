@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Navbar = () => {
@@ -15,8 +16,8 @@ const Navbar = () => {
   }, [showNavBar, scrollTop]);
   return (
     <div
-      className={`sticky top-0 z-50 transition-opacity duration-250 ease-in-out bg-white h-auto pb-4 ${
-        showNavBar ? " opacity-100" : " opacity-0"
+      className={`sticky top-0 z-50 transition-opacity duration-400 ease-in bg-white h-auto pb-4 ${
+        showNavBar ? "opacity-100" : "opacity-0"
       }`}
     >
       <div className="flex justify-between mt-6">
@@ -36,37 +37,40 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        <div className=" text-center md:text-start mx-10 mt-4 font-Raleway text-2xl font-bold w-1/3 ">
-          SHEKL
-        </div>
-        <div class="hidden md:flex justify-center items-center text-base w-1/3 align-middle mt-4">
+        <Link
+          href="/"
+          className="text-center md:text-start mx-10 mt-4 font-Raleway text-2xl font-bold w-1/3 cursor-pointer"
+        >
+          HIRA
+        </Link>
+        <div className="hidden md:flex justify-center items-center text-base w-1/3 align-middle mt-4">
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+            className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             Engagement
           </a>
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+            className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             Diamonds
           </a>
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+            className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             Wedding
           </a>
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+            className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             Featured
           </a>
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer"
+            className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer"
           >
             About
           </a>
