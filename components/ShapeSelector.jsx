@@ -8,42 +8,42 @@ const ShapeSelector = () => {
 
       <div className="flex flex-wrap justify-evenly w-full">
         <Image
-          src="/../public/assets/oval_diamond.png"
+          src="/assets/oval_diamond.png"
           alt="oval"
           width="50"
           height="50"
           className="hover:text-slate-800 cursor-pointer my-2"
         />
         <Image
-          src="/../public/assets/oval_diamond.png"
+          src="/assets/oval_diamond.png"
           alt="oval"
           width="50"
           height="50"
           className="hover:text-slate-800 cursor-pointer my-2"
         />
         <Image
-          src="/../public/assets/oval_diamond.png"
+          src="/assets/oval_diamond.png"
           alt="oval"
           width="50"
           height="50"
           className="hover:text-slate-800 cursor-pointer my-2"
         />
         <Image
-          src="/../public/assets/oval_diamond.png"
+          src="/assets/oval_diamond.png"
           alt="oval"
           width="50"
           height="50"
           className="hover:text-slate-800 cursor-pointer my-2"
         />
         <Image
-          src="/../public/assets/oval_diamond.png"
+          src="/assets/oval_diamond.png"
           alt="oval"
           width="50"
           height="50"
           className="hover:text-slate-800 cursor-pointer my-2"
         />
         <Image
-          src="/../public/assets/oval_diamond.png"
+          src="/assets/oval_diamond.png"
           alt="oval"
           width="50"
           height="50"
