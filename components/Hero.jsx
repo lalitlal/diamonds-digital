@@ -23,22 +23,22 @@ const Hero = () => {
       <div className="flex mx-auto relative">
         <Image
           src={image_urls[1]}
-          className=" w-screen pt-3 md:w-auto h-auto transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+          className=" w-screen pt-3 md:w-full h-auto md:h-[60vh] lg:h-[100vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
           alt=""
         />
-        <p className="hidden md:flex absolute  mt-20 text-white w-full text-center justify-center h-auto text-2xl lg:text-4xl">
-          Engagement rings, made for one.{" "}
+        <p className="hidden md:flex absolute  text-gray-500 w-full text-center justify-center h-auto text-2xl lg:text-4xl mt-5  md:top-[5vh] lg:top-[10vh]">
+          Engagement rings, made for one.
         </p>
-        <div className="absolute top-1/2 flex flex-1 flex-wrap w-1/3">
+        <div className="absolute top-1/2 flex flex-1 flex-wrap w-1/4">
           <Link
             href="/diamond"
-            className="hidden md:flex absolute justify-center w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white p-3 hover:bg-white hover:text-slate-800 transition duration-300 ease-in-out"
+            className="hidden md:flex absolute justify-center w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
           >
             Start with a diamond
           </Link>
           <Link
             href="/"
-            className="hidden md:flex absolute justify-center w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white p-3 hover:bg-white hover:text-slate-800 transition duration-300 ease-in-out"
+            className="hidden md:flex absolute justify-center w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
           >
             Start with a setting
           </Link>
