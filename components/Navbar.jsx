@@ -15,19 +15,19 @@ const Navbar = () => {
   }, [showNavBar, scrollTop]);
   return (
     <div
-      className={`sticky top-0 z-50 transition-opacity duration-250 ease-in-out bg-white h-auto pb-5 ${
+      className={`sticky top-0 z-50 transition-opacity duration-250 ease-in-out bg-white h-auto pb-4 ${
         showNavBar ? " opacity-100" : " opacity-0"
       }`}
     >
       <div className="flex justify-between mt-6">
-        <div className="flex md:hidden items-center w-1/3 ml-10 hover:text-gray-500 cursor-pointer">
+        <div className="flex mt-4 md:hidden items-center w-1/3 ml-10 hover:text-gray-500 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 inline-block md:hidden"
+            className="w-6 h-6 align-middle inline-block md:hidden"
           >
             <path
               strokeLinecap="round"
@@ -36,10 +36,10 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        <div className="ml-10 text-start font-Raleway text-2xl font-bold w-1/3 ">
+        <div className=" text-center md:text-start mx-10 mt-4 font-Raleway text-2xl font-bold w-1/3 ">
           SHEKL
         </div>
-        <div class="hidden md:flex items-center text-base  w-1/3">
+        <div class="hidden md:flex justify-center items-center text-base w-1/3 align-middle mt-4">
           <a
             href="#responsive-header"
             class="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
@@ -71,7 +71,7 @@ const Navbar = () => {
             About
           </a>
         </div>
-        <div className="flex justify-end items-center w-1/3 mr-10">
+        <div className="flex justify-end items-center align-middle w-1/3 mr-10 mt-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
