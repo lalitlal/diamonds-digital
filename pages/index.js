@@ -19,6 +19,11 @@ export default function Home() {
       <Navbar></Navbar>
       <Header></Header>
       <Hero></Hero>
+      <Hero></Hero>
+      <Hero></Hero>
+      <Hero></Hero>
+      <Hero></Hero>
+      <Hero></Hero>
     </>
   );
 }

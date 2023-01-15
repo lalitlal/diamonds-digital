@@ -11,7 +11,22 @@ const Header = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-6 h-6 inline-block md:hidden"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 9h16.5m-16.5 6.75h16.5"
+            />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 ml-2"
           >
             <path
               strokeLinecap="round"
@@ -55,7 +70,7 @@ const Header = () => {
           </svg>
         </div>
       </div>
-      <div class="flex justify-center w-full items-center mt-6 objects-center text-sm lg:flex-grow">
+      <div class="hidden md:flex justify-center w-full items-center mt-6 objects-center text-sm lg:flex-grow">
         <a
           href="#responsive-header"
           class="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"

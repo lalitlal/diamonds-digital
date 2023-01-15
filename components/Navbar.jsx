@@ -16,16 +16,30 @@ const Navbar = () => {
   return (
     <div
       className={`sticky top-0 z-50 transition-opacity duration-250 ease-in-out bg-white h-auto pb-5 ${
-        showNavBar
-          ? " flex-col items-center object-center opacity-100"
-          : " opacity-0"
+        showNavBar ? " opacity-100" : " opacity-0"
       }`}
     >
       <div className="flex justify-between mt-6">
+        <div className="flex md:hidden items-center w-1/3 ml-10 hover:text-gray-500 cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 inline-block md:hidden"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 9h16.5m-16.5 6.75h16.5"
+            />
+          </svg>
+        </div>
         <div className="ml-10 text-start font-Raleway text-2xl font-bold w-1/3 ">
           SHEKL
         </div>
-        <div class="flex items-center text-base  w-1/3">
+        <div class="hidden md:flex items-center text-base  w-1/3">
           <a
             href="#responsive-header"
             class="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
