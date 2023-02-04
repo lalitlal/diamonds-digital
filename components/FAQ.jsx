@@ -121,7 +121,6 @@ const FAQ = () => {
           <details class="group">
             <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
               <span>
-                {" "}
                 I have a really custom ring that I want to make, can you do it?
               </span>
               <span class="transition group-open:rotate-180">{caret}</span>
