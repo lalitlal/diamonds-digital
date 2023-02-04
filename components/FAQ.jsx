@@ -60,10 +60,10 @@ const FAQ = () => {
               <span class="transition group-open:rotate-180">{caret}</span>
             </summary>
             <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
-              Absolutely! Our analytics team has a strong grip on people's
+              Absolutely! Our analytics team has a strong grip on people&apos;s
               favorites, from diamond shape and style, to setting. You can come
-              into one of our stores and we'd be happy to show you an example
-              ring that is nearly identical to the one you want!
+              into one of our stores and we&apos;d be happy to show you an
+              example ring that is nearly identical to the one you want!
             </p>
           </details>
         </div>
@@ -112,8 +112,9 @@ const FAQ = () => {
             </summary>
             <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
               If you need help with the platform or have any other questions,
-              you can contact the company's support team by submitting a support
-              request through the website or by emailing support@hira.com.
+              you can contact the company&apos;s support team by submitting a
+              support request through the website or by emailing
+              support@hira.com.
             </p>
           </details>
         </div>
@@ -129,7 +130,7 @@ const FAQ = () => {
               With over 65 years of experience. We prize ourselves in being able
               to make the most unique and extravagent diamond engagement rings
               that your partner will love. Send us a picture of what you want,
-              and we'll get back to you.
+              and we&apos;ll get back to you.
             </p>
           </details>
         </div>
