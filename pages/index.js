@@ -8,6 +8,7 @@ import FAQ from "../components/FAQ";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 import RingSettings from "../components/RingSettings";
+import ProductDetail from "../components/ProductDetail";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function Home() {
       <Testimonials></Testimonials>
       <FAQ></FAQ>
       {/* <RingSettings></RingSettings> */}
+      {/* <ProductDetail></ProductDetail> */}
       <Footer></Footer>
     </>
   );

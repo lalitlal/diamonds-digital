@@ -52,11 +52,7 @@ const FAQ = () => {
         <div class="py-5">
           <details class="group">
             <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
-              <span>
-                {" "}
-                I want to get a better idea of sizing, can I see the ring in
-                person?
-              </span>
+              <span> Can I see the ring in person?</span>
               <span class="transition group-open:rotate-180">{caret}</span>
             </summary>
             <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
