@@ -30,6 +30,13 @@ export default function Home() {
       {/* <RingSettings></RingSettings> */}
       {/* <ProductDetail></ProductDetail> */}
       <Footer></Footer>
+
+      {/* DIAMOND SELECTION PAGE: FOR EACH ROW ENTRY, CLICK SELECT to add diamond to cart */}
+      {/* CONTEXT FOR A CART */}
+      {/* MARKETPLACE FOR RING SETTINGS */}
+      {/* STRIPE CHECKOUT */}
+      {/* PHOTOSHOOT FOR WEDDING BANDS, DIAMONDS, AND RINGS */}
+      {/* CHECKOUT: WHAT COMES WITH EACH PURCHASE */}
     </>
   );
 }

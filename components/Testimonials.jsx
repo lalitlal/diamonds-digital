@@ -62,7 +62,7 @@ const Testimonials = () => {
           {testimonials.map((tmoney, i) => {
             return (
               <>
-                <div className="flex relative lg:w-1/3 sm:w-1/2 p-4 justify-center">
+                <div className="flex relative lg:w-1/3 sm:w-1/2 p-4 justify-center items-stretch">
                   <Testimony
                     name={tmoney.name}
                     purchase={tmoney.purchase}

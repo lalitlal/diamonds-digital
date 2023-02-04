@@ -5,7 +5,7 @@ import heroBracelet from "../public/assets/hero-bracelet.jpg";
 const Testimony = ({ name, purchase, review, source }) => {
   return (
     <div class="flex items-center justify-center px-5 py-5">
-      <div class="w-full max-w-xl px-5 pt-5 pb-10 mx-auto text-gray-800 rounded-lg shadow-lg bg-gray-800">
+      <div class="w-full max-w-xl px-5 pt-5 pb-10 mx-auto text-gray-800 rounded-lg shadow-lg bg-gray-800 h-full">
         <div class="w-full pt-1 pb-5 mx-auto -mt-16 text-center">
           <a href="#" class="relative block">
             <Image
