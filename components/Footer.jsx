@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -49,9 +50,9 @@ const Footer = () => {
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
       <span class="block text-sm text-white sm:text-center">
-        <a href="/" class="hover:underline">
+        <Link href="" class="hover:underline">
           HIRA
-        </a>
+        </Link>
         . All Rights Reserved.
       </span>
     </footer>
