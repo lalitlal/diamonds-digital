@@ -1,104 +1,102 @@
 import React from "react";
-import heroBracelet from "../public/assets/hero-bracelet.jpg";
+import Testimony from "./Testimony";
 
 const Testimonials = () => {
-  const testimonials = [{ src: heroBracelet }];
+  const testimonials = [
+    {
+      name: "Cassandra",
+      purchase: "Oval solitaire hidden halo yellow gold",
+      review:
+        "My fiance got me the exact ring I wanted. It's like he contacted the original photo model and purchased it from them!",
+      img_src: "",
+    },
+    {
+      name: "Rabjot",
+      purchase: "Princess pave bridge white gold",
+      review:
+        "I was able to design the ring of my dreams, and HIRA made it happen! No more waiting for our 10-year anniversary to upgrade, this is my forever!",
+      img_src: "",
+    },
+    {
+      name: "Jasdeep",
+      purchase: "Radiant cathedral bridge yellow gold",
+      review:
+        "HIRA fully involved me in the process as much as I wanted to be, and gave above and beyond my expectations. I'm a happy fiance!",
+      img_src: "",
+    },
+    {
+      name: "Lalit",
+      purchase: "Emerald solitaire halo white gold",
+      review:
+        "HIRA was able to copy the exact ring my fiance wanted, it took all the guesswork out for me!",
+      img_src: "",
+    },
+    {
+      name: "Domara",
+      purchase: "Toi et moi cathedral yellow gold",
+      review:
+        "I've heard that engagement ring shopping can be stressful and quite the gamble - but HIRA was able to make this process so enjoyable and helped me give my fiance the best ring! She was blown away,",
+      img_src: "",
+    },
+    {
+      name: "John",
+      purchase: "Brilliant Round hidden halo white gold",
+      review:
+        "My fiance and I have been dreaming of creating a very particular ring. We shopped around for a while, but only HIRA was able to deliver exactly to spec! I'm actually shocked at their accuracy and timeliness!",
+      img_src: "",
+    },
+  ];
   return (
-    <div id="animation-carousel" class="relative" data-carousel="static">
-      <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-        <div class="hidden duration-200 ease-linear" data-carousel-item>
-          <img
-            src="/docs/images/carousel/carousel-1.svg"
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="..."
-          />
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-20">
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+            Testimonials
+          </h1>
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+            Hear from real customers that chose HIRA.
+          </p>
         </div>
-
-        <div class="hidden duration-200 ease-linear" data-carousel-item>
-          <img
-            src="/docs/images/carousel/carousel-2.svg"
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="..."
-          />
-        </div>
-
-        <div
-          class="hidden duration-200 ease-linear"
-          data-carousel-item="active"
-        >
-          <img
-            src="/docs/images/carousel/carousel-3.svg"
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="..."
-          />
-        </div>
-
-        <div class="hidden duration-200 ease-linear" data-carousel-item>
-          <img
-            src="/docs/images/carousel/carousel-4.svg"
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="..."
-          />
-        </div>
-
-        <div class="hidden duration-200 ease-linear" data-carousel-item>
-          <img
-            src="/docs/images/carousel/carousel-5.svg"
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="..."
-          />
+        <div class="flex flex-wrap -m-4 justify-center">
+          {/* <div class="lg:w-1/3 sm:w-1/2 p-4"></div> */}
+          {testimonials.map((tmoney, i) => {
+            return (
+              <>
+                <div className="flex relative lg:w-1/3 sm:w-1/2 p-4 justify-center">
+                  <Testimony
+                    name={tmoney.name}
+                    purchase={tmoney.purchase}
+                    review={tmoney.review}
+                    source={tmoney.img_src}
+                  ></Testimony>
+                </div>
+              </>
+            );
+          })}
+          {/* <div class="lg:w-1/3 sm:w-1/2 p-4">
+            <div class="flex relative">
+              <img
+                alt="gallery"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+                src="https://dummyimage.com/606x366"
+              />
+              <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                <h2 class="tracking-widest text-sm title-font font-medium text-blue-500 mb-1">
+                  THE SUBTITLE
+                </h2>
+                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                  Alper Kamu
+                </h1>
+                <p class="leading-relaxed">
+                  Photo booth fam kinfolk cold-pressed sriracha leggings
+                  jianbing microdosing tousled waistcoat.
+                </p>
+              </div>
+            </div>
+          </div> */}
         </div>
       </div>
-
-      <button
-        type="button"
-        class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-prev
-      >
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-          <svg
-            aria-hidden="true"
-            class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            ></path>
-          </svg>
-          <span class="sr-only">Previous</span>
-        </span>
-      </button>
-      <button
-        type="button"
-        class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-next
-      >
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-          <svg
-            aria-hidden="true"
-            class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            ></path>
-          </svg>
-          <span class="sr-only">Next</span>
-        </span>
-      </button>
-    </div>
+    </section>
   );
 };
 

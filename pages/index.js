@@ -9,6 +9,7 @@ import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 import RingSettings from "../components/RingSettings";
 import ProductDetail from "../components/ProductDetail";
+import Testimony from "../components/Testimony";
 
 const inter = Inter({ subsets: ["latin"] });
 
