@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import Navbar from "../../components/Navbar";
 import DiamondPage from "../../components/DiamondPage";
+import Stepper from "../../components/Stepper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function Home() {
       </Head>
       <Navbar></Navbar>
       <Header></Header>
+      <Stepper></Stepper>
       <DiamondPage></DiamondPage>
     </>
   );

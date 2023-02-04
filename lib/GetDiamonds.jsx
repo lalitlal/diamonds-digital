@@ -18,12 +18,3 @@ const getDiamonds = async (
 };
 
 export default getDiamonds;
-// {
-//   shape: shape,
-//   carat: carat,
-//   color: color,
-//   clarity: clarity,
-//   cut: cut,
-//   priceMin: priceMin,
-//   priceMax: priceMax,
-// },

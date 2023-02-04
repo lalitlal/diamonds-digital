@@ -9,12 +9,24 @@ import ShapeSelector from "./ShapeSelector";
 const DiamondFilter = () => {
   return (
     <div className="mx-10">
-      <ShapeSelector></ShapeSelector>
-      <CaratSelector></CaratSelector>
-      <PriceSelector></PriceSelector>
-      <ColorSelector></ColorSelector>
-      <ClaritySelector></ClaritySelector>
-      <CutSelector></CutSelector>
+      <div className="mb-4">
+        <ShapeSelector></ShapeSelector>
+      </div>
+      <div className="mb-10">
+        <CaratSelector></CaratSelector>
+      </div>
+      <div className="mb-10">
+        <PriceSelector></PriceSelector>
+      </div>
+      <div className="mb-10">
+        <ColorSelector></ColorSelector>
+      </div>
+      <div className="mb-10">
+        <ClaritySelector></ClaritySelector>
+      </div>
+      <div className="mb-4">
+        <CutSelector></CutSelector>
+      </div>
     </div>
   );
 };
