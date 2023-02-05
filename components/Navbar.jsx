@@ -56,12 +56,12 @@ const Navbar = () => {
           >
             Diamonds
           </a>
-          <a
-            href="#responsive-header"
+          <Link
+            href="/ringsettings"
             className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
-            Wedding
-          </a>
+            Settings
+          </Link>
           <a
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
@@ -70,10 +70,16 @@ const Navbar = () => {
           </a>
           <a
             href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer"
+            className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             About
           </a>
+          <Link
+            href="/gallery"
+            className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer"
+          >
+            Gallery
+          </Link>
         </div>
         <div className="flex justify-end items-center align-middle w-1/3 mr-10 mt-4">
           <svg
