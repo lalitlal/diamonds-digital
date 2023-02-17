@@ -10,10 +10,10 @@ const getDiamonds = async (
   priceMax,
   baseData
 ) => {
-  return axios({
-    method: "post",
-    url: `/api/diamond-api`,
-    data: baseData,
+  const url = `/api/diamond-api`;
+  return fetch(url, {
+    method: "POST",
+    body: JSON.stringify(baseData),
   });
 };
 

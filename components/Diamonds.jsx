@@ -57,14 +57,14 @@ const Diamonds = () => {
   const post_body = {
     data: {
       imgOnly: true,
-      view: "list",
+      view: "grid",
       priceMin: 150,
       priceMax: 750000,
       caratMin: 0.15,
       caratMax: 12,
       cutMin: 0,
       cutMax: 4,
-      colorMin: 4,
+      colorMin: 0,
       colorMax: 9,
       clarityMin: 0,
       clarityMax: 9,
@@ -72,14 +72,14 @@ const Diamonds = () => {
       depthMax: 100,
       tableMin: 0,
       tableMax: 93,
-      shapeList: ["3", "1"],
+      shapeList: [],
       certificateList: [],
       sort: 0,
       polish: [],
       symmetry: [],
       fluor: [],
       sort_order: null,
-      pager: 1,
+      pager: 0,
     },
   };
 
@@ -103,7 +103,7 @@ const Diamonds = () => {
           setDiamondData(res.data.diamonds);
         }
       } catch (e) {
-        console.log(e);
+        console.log("failed fetching from backend: ", e);
       }
     };
 
