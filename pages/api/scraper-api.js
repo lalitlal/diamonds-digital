@@ -3,6 +3,7 @@ const axios = require("axios");
 const puppeteer = require("puppeteer");
 import { parse } from "node-html-parser";
 
+// THIS IS A PUPPETEER VERSION, ITS SPICY AND QUICK
 const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
@@ -42,5 +43,18 @@ const handler = async (req, res) => {
     res.status(400).end();
   }
 };
+
+// const handler = async (req, res) => {
+//   const options = {
+//     token: process.env.SCRABERBOX_API_KEY,
+//     url: "https://worker.brilliance.com/api/v1/lab-grown-diamond-search",
+//     body: req.body,
+//   };
+
+//   const data = await axios.post("https://scraperbox.com/api/scrape", options);
+//   const root = parse(data.data);
+//   const json_data = JSON.parse(root.querySelector("pre").rawText);
+//   res.status(200).json({ diamonds: json_data.diamond, message: "SUCCESS" });
+// };
 
 export default handler;
