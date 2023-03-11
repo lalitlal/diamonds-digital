@@ -57,7 +57,7 @@ const Diamonds = () => {
   const post_body = {
     data: {
       imgOnly: true,
-      view: "grid",
+      view: "list",
       priceMin: 150,
       priceMax: 750000,
       caratMin: 0.15,
@@ -100,7 +100,8 @@ const Diamonds = () => {
           postBody
         );
         if (res.status === 200) {
-          setDiamondData(res.data.diamonds);
+          const res_json = await res.json();
+          setDiamondData(res_json.diamonds);
         }
       } catch (e) {
         console.log("failed fetching from backend: ", e);
@@ -108,7 +109,7 @@ const Diamonds = () => {
     };
 
     getDiamondFunc();
-  }, [diamondData, postBody]);
+  }, [postBody]);
 
   return (
     <div className="py-4 px-2 bg-[#48565c] mx-5">

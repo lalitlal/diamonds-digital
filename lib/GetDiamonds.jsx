@@ -11,7 +11,11 @@ const getDiamonds = async (
   baseData
 ) => {
   const url = `/api/diamond-api`;
-  return fetch(url, {
+  // return fetch(url, {
+  //   method: "POST",
+  //   body: JSON.stringify(baseData),
+  // });
+  return fetch(`/api/scraper-api`, {
     method: "POST",
     body: JSON.stringify(baseData),
   });
