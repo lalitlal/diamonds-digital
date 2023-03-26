@@ -1,130 +1,108 @@
-import React from "react";
+import Link from "next/link";
 
-const Stepper = () => {
+const iconObjects = [
+  {
+    icon: (
+      <svg
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        class="w-5 h-5 mr-3"
+        viewBox="0 0 24 24"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+      </svg>
+    ),
+    title: "Diamond",
+    href: "/diamond",
+  },
+  {
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-5 h-5 mr-3"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+    title: "Setting",
+    href: "/ringsettings",
+  },
+  // {
+  //   icon: (
+  //     <svg
+  //       xmlns="http://www.w3.org/2000/svg"
+  //       fill="none"
+  //       viewBox="0 0 24 24"
+  //       stroke-width="1.5"
+  //       stroke="currentColor"
+  //       class="w-5 h-5 mr-3"
+  //     >
+  //       <path
+  //         stroke-linecap="round"
+  //         stroke-linejoin="round"
+  //         d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+  //       />
+  //     </svg>
+  //   ),
+  //   title: "Customize",
+  // },
+  {
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-5 h-5 mr-3"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+        />
+      </svg>
+    ),
+    title: "Checkout",
+    href: "/checkout",
+  },
+];
+
+const Stepper = ({ stage }) => {
   return (
-    <div className="p-5">
-      <div className="mx-4 p-4">
-        <div className="flex items-center">
-          <div className="flex items-center text-slate-600 relative">
-            <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height="100%"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-bookmark "
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-10 mx-auto flex flex-wrap flex-col">
+        <div class="flex mx-auto flex-wrap mb-20">
+          {iconObjects.map((iconObj, i) => {
+            return (
+              <Link
+                href={iconObj.href}
+                key={i}
+                className={`sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium  inline-flex items-center leading-none tracking-wider ${
+                  i === stage
+                    ? `border-indigo-500 text-indigo-700 rounded-t bg-gray-100`
+                    : ` border-gray-200 hover:text-gray-900`
+                } `}
               >
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-              </svg>
-            </div>
-            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-slate-600">
-              Diamond
-            </div>
-          </div>
-          <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-500"></div>
-          <div className="flex items-center text-white relative">
-            <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 bg-gray-500 border-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height="100%"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-user-plus "
-              >
-                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="8.5" cy="7" r="4"></circle>
-                <line x1="20" y1="8" x2="20" y2="14"></line>
-                <line x1="23" y1="11" x2="17" y2="11"></line>
-              </svg>
-            </div>
-            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-slate-600">
-              Setting
-            </div>
-          </div>
-          <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
-          <div className="flex items-center text-gray-500 relative">
-            <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height="100%"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-mail "
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </div>
-            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">
-              Customize
-            </div>
-          </div>
-          <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
-          <div className="flex items-center text-gray-500 relative">
-            <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height="100%"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-database "
-              >
-                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-              </svg>
-            </div>
-            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">
-              Checkout
-            </div>
-          </div>
+                {iconObj.icon}
+                {iconObj.title}
+              </Link>
+            );
+          })}
         </div>
       </div>
-      <div className="mt-8 p-4">
-        <div className="flex p-2 mt-4">
-          <button
-            className="text-base  ml-2 focus:outline-none flex justify-center cursor-pointer 
-              text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
-          >
-            Previous
-          </button>
-          <div className="flex-auto flex flex-row-reverse">
-            <button
-              className="text-base  ml-2 focus:outline-none flex justify-center cursor-pointer 
-              text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
-            >
-              Next
-            </button>
-            <button
-              className="text-base  ml-2 focus:outline-none flex justify-center cursor-pointer 
-              text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
-            >
-              Skip
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 

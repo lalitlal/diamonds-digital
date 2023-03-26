@@ -22,6 +22,7 @@ export default async function handler(req, res) {
       //   cancel_url: `${req.headers.origin}/?canceled=true`,
       //   automatic_tax: { enabled: true },
       // });
+      const checkoutData = JSON.parse(req.body);
       const session = await stripe.checkout.sessions.create({
         billing_address_collection: "auto",
         shipping_address_collection: {
@@ -32,11 +33,23 @@ export default async function handler(req, res) {
             price_data: {
               currency: "cad",
               product_data: {
-                name: "Random Custom Line Item",
-                description: "This is a test subject 2",
+                name: checkoutData.diamondData, //"Random Custom Line Item",
+                description: "Loose Diamond",
               },
               tax_behavior: "inclusive",
-              unit_amount: 550000.0, // cents
+              unit_amount: checkoutData.diamondPrice, //550000.0, // cents
+            },
+            quantity: 1,
+          },
+          {
+            price_data: {
+              currency: "cad",
+              product_data: {
+                name: checkoutData.settingData, //"Random Custom Line Item",
+                description: "Setting",
+              },
+              tax_behavior: "inclusive",
+              unit_amount: checkoutData.settingPrice, //550000.0, // cents
             },
             quantity: 1,
           },
@@ -46,7 +59,7 @@ export default async function handler(req, res) {
         cancel_url: `${req.headers.origin}`,
         automatic_tax: { enabled: true },
       });
-      res.redirect(303, session.url);
+      res.status(200).json({ url: session.url, message: "Success" });
     } catch (err) {
       res.status(err.statusCode || 500).json(err.message);
     }

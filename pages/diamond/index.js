@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
       <Navbar></Navbar>
       <Header></Header>
-      <Stepper></Stepper>
+      <Stepper stage={0}></Stepper>
       <DiamondPage></DiamondPage>
     </>
   );

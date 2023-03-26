@@ -8,9 +8,11 @@ import FAQ from "../../components/FAQ";
 import Testimonials from "../../components/Testimonials";
 import Footer from "../../components/Footer";
 import RingSettings from "../../components/RingSettings";
-import ProductDetail from "../../components/ProductDetail";
 import Testimony from "../../components/Testimony";
 import Gallery from "../../components/Gallery";
+import Stepper from "../../components/Stepper";
+import ShapeSelector from "../../components/ShapeSelector";
+import MetalSelector from "../../components/MetalSelector";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +28,13 @@ export default function Home() {
       <Navbar></Navbar>
       <Header></Header>
       <Hero></Hero>
+      <Stepper stage={1}></Stepper>
+      <div className="flex justify-center">
+        <ShapeSelector></ShapeSelector>
+      </div>
+      <div className="mt-3">
+        <MetalSelector></MetalSelector>
+      </div>
       <RingSettings></RingSettings>
       <Footer></Footer>
     </>

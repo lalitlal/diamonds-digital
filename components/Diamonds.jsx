@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import React, { useContext, useEffect, useState } from "react";
 import getDiamonds from "../lib/GetDiamonds";
+import CartContext from "./context/CartContext";
 
 const Diamonds = () => {
   const caret = (
@@ -111,6 +113,8 @@ const Diamonds = () => {
     getDiamondFunc();
   }, [postBody]);
 
+  const cartContext = useContext(CartContext);
+
   return (
     <div className="py-4 px-2 bg-[#48565c] mx-5">
       <section className="py-1 h-screen overflow-y-scroll">
@@ -192,12 +196,19 @@ const Diamonds = () => {
                                 {caret}
                               </span>
                             </summary>
-                            <div class="w-2/3 text-neutral-600 mt-3 group-open:animate-fadeIn">
-                              We offers a variety of billing options, including
-                              monthly and annual subscription plans, as well as
-                              pay-as-you-go pricing for certain services.
-                              Payment is typically made through a credit card or
-                              other secure online payment method.
+                            <div class="flex text-neutral-600 mt-3 mr-3 group-open:animate-fadeIn">
+                              <Link href="/ringsettings">
+                                <button
+                                  className="flex ml-auto text-xs text-white bg-slate-500 border-0 py-2 px-6 focus:outline-none hover:bg-slate-600 rounded"
+                                  onClick={() => {
+                                    const diamondStatus = `${data.shape} ${data.carat} ${data.color} ${data.clarity} ${data.cut}`;
+                                    cartContext.setDiamond(diamondStatus);
+                                    cartContext.setDiamondPrice(data.price);
+                                  }}
+                                >
+                                  Select
+                                </button>
+                              </Link>
                             </div>
                           </details>
                         </div>

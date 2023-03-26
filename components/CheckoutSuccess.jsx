@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import heroDiamonds from "../public/assets/hero-diamonds.jpg";
 
@@ -21,9 +22,11 @@ const CheckoutSuccess = () => {
             />
           </div>
           <div class="flex justify-center">
-            <button class="inline-flex text-white bg-slate-600 border-0 py-2 px-6 focus:outline-none hover:bg-slate-700 rounded text-lg">
-              Go Home
-            </button>
+            <Link href="/">
+              <button class="inline-flex text-white bg-slate-600 border-0 py-2 px-6 focus:outline-none hover:bg-slate-700 rounded text-lg">
+                Go Home
+              </button>
+            </Link>
           </div>
         </div>
       </div>

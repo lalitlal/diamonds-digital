@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Cart from "./Cart";
 
 const Navbar = () => {
   const [showNavBar, setShowNavBar] = useState(false);
@@ -44,36 +45,36 @@ const Navbar = () => {
           HIRA
         </Link>
         <div className="hidden md:flex justify-center items-center text-base w-1/3 align-middle mt-4">
-          <a
-            href="#responsive-header"
+          <Link
+            href="/"
             className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             Engagement
-          </a>
-          <a
-            href="#responsive-header"
+          </Link>
+          <Link
+            href="/diamond"
             className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             Diamonds
-          </a>
+          </Link>
           <Link
             href="/ringsettings"
             className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             Settings
           </Link>
-          <a
-            href="#responsive-header"
+          <Link
+            href="/"
             className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             Featured
-          </a>
-          <a
-            href="#responsive-header"
+          </Link>
+          <Link
+            href="/"
             className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             About
-          </a>
+          </Link>
           <Link
             href="/gallery"
             className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer"
@@ -96,20 +97,7 @@ const Navbar = () => {
               d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
             />
           </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 ml-2 hover:text-gray-500 cursor-pointer"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-            />
-          </svg>
+          <Cart></Cart>
         </div>
       </div>
     </div>

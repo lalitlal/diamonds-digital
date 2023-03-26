@@ -28,7 +28,7 @@ export default function Home() {
       <Testimonials></Testimonials>
       <FAQ></FAQ>
       {/* <RingSettings></RingSettings> */}
-      {/* <ProductDetail></ProductDetail> */}
+      <ProductDetail></ProductDetail>
       <Footer></Footer>
 
       {/* DIAMOND SELECTION PAGE: FOR EACH ROW ENTRY, CLICK SELECT to add diamond to cart */}

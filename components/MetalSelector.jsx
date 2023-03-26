@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 
-const ColorSelector = () => {
+const MetalSelector = () => {
   const [currentOption, setCurrentOption] = useState(0);
-  const options = [{ opt: "DEF" }, { opt: "GHI" }, { opt: "JKL" }];
+  const options = [
+    { opt: "Platinum" },
+    { opt: "Yellow Gold" },
+    { opt: "White Gold" },
+    { opt: "Rose Gold" },
+  ];
   return (
     <div className="mb-3">
-      <div className="font-bold text-center text-gray-600">Color</div>
+      <div className="font-bold text-center text-gray-600">Choose Metal</div>
       <div className="flex justify-center">
         {options.map((op, i) => {
           return (
@@ -29,4 +34,4 @@ const ColorSelector = () => {
   );
 };
 
-export default ColorSelector;
+export default MetalSelector;
