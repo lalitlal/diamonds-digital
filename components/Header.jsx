@@ -1,8 +1,11 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import CalendlyBooking from "./CalendlyBooking";
 import Cart from "./Cart";
+import Modal from "../components/Modal";
 
 const Header = () => {
+  const [showCalendly, setShowCalendly] = useState(false);
   return (
     <div className="flex-col items-center object-center">
       <div className="flex justify-around mt-6">
@@ -22,23 +25,30 @@ const Header = () => {
             />
           </svg>
 
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 ml-2 hover:text-gray-500 cursor-pointer"
+          <div
+            onClick={() => {
+              setShowCalendly(!showCalendly);
+            }}
+            className="flex hover:text-gray-500"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-            />
-          </svg>
-          <a className="hidden lg:inline-flex hover:text-gray-500 cursor-pointer">
-            Book an appointment
-          </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6 ml-2  cursor-pointer"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+              />
+            </svg>
+            <a className="hidden lg:inline-flex cursor-pointer">
+              Book an appointment
+            </a>
+          </div>
         </div>
         <div>
           <Link
@@ -104,6 +114,9 @@ const Header = () => {
           Gallery
         </Link>
       </div>
+      <Modal showModal={showCalendly} setShowModal={setShowCalendly}>
+        <CalendlyBooking></CalendlyBooking>
+      </Modal>
     </div>
   );
 };
