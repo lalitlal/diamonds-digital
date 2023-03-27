@@ -3,14 +3,22 @@ import React, { useState } from "react";
 const MetalSelector = () => {
   const [currentOption, setCurrentOption] = useState(0);
   const options = [
-    { opt: "Platinum" },
-    { opt: "Yellow Gold" },
-    { opt: "White Gold" },
-    { opt: "Rose Gold" },
+    { opt: "Platinum", color: "bg-slate-200" },
+    {
+      opt: "Yellow Gold",
+      color: "bg-gradient-to-r from-amber-300 to-amber-600",
+    },
+    { opt: "White Gold", color: "bg-gradient-to-r from-gray-200 to-gray-300" },
+    {
+      opt: "Rose Gold",
+      color: "bg-gradient-to-r from-orange-700 to-orange-800",
+    },
   ];
   return (
     <div className="mb-3">
-      <div className="font-bold text-center text-gray-600">Choose Metal</div>
+      <div className="font-bold text-center text-gray-600 mb-2">
+        Choose Metal
+      </div>
       <div className="flex justify-center">
         {options.map((op, i) => {
           return (
@@ -25,7 +33,12 @@ const MetalSelector = () => {
                 setCurrentOption(i);
               }}
             >
-              {op.opt}
+              <div class="flex">
+                <button
+                  className={`${op.color} mr-2 rounded-full w-6 h-6 focus:outline-none`}
+                ></button>
+                {op.opt}
+              </div>
             </div>
           );
         })}

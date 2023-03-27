@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import getDiamonds from "../lib/GetDiamonds";
 import CartContext from "./context/CartContext";
+import ProductDetail from "../components/ProductDetail";
 
 const Diamonds = () => {
   const caret = (
@@ -21,6 +22,7 @@ const Diamonds = () => {
   );
   const [shapeFilter, setShapeFilter] = useState("Oval");
   const [caratFilter, setCaratFilter] = useState(2.0);
+  const [showProductDetail, setShowProductDetail] = useState(false);
   const default_diamond_data = [
     {
       shape: "Oval",
@@ -167,52 +169,67 @@ const Diamonds = () => {
                 <tbody>
                   {diamondData.map((data, i) => {
                     return (
-                      <tr
-                        key={data + i}
-                        className="hover:bg-slate-300 transition duration-200 ease-in-out cursor-pointer"
-                      >
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                          {data.shape}
-                        </td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                          {data.carat}
-                        </td>
-                        <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          {data.color}
-                        </td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          {data.clarity}
-                        </td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          {data.cut}
-                        </td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          {`CA$${data.price}`}
-                        </td>
-                        <div class="py-5">
-                          <details class="group">
-                            <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
-                              <span class="transition group-open:rotate-180">
-                                {caret}
-                              </span>
-                            </summary>
-                            <div class="flex text-neutral-600 mt-3 mr-3 group-open:animate-fadeIn">
-                              <Link href="/ringsettings">
-                                <button
-                                  className="flex ml-auto text-xs text-white bg-slate-500 border-0 py-2 px-6 focus:outline-none hover:bg-slate-600 rounded"
-                                  onClick={() => {
-                                    const diamondStatus = `${data.shape} ${data.carat} ${data.color} ${data.clarity} ${data.cut}`;
-                                    cartContext.setDiamond(diamondStatus);
-                                    cartContext.setDiamondPrice(data.price);
-                                  }}
-                                >
-                                  Select
-                                </button>
-                              </Link>
-                            </div>
-                          </details>
-                        </div>
-                      </tr>
+                      <>
+                        <tr
+                          key={data + i}
+                          className="hover:bg-slate-300 transition duration-200 ease-in-out cursor-pointer"
+                          onClick={() => {
+                            setShowProductDetail(!showProductDetail);
+                          }}
+                        >
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                            {data.shape}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+                            {data.carat}
+                          </td>
+                          <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {data.color}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {data.clarity}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {data.cut}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {`CA$${data.price}`}
+                          </td>
+                          <div class="py-5">
+                            <details class="group">
+                              <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+                                <span class="transition group-open:rotate-180">
+                                  {caret}
+                                </span>
+                              </summary>
+                              <div class="flex text-neutral-600 mt-3 mr-3 group-open:animate-fadeIn">
+                                {/* {showProductDetail && (
+                                  <ProductDetail
+                                    shape={data.shape}
+                                    carat={data.carat}
+                                    color={data.color}
+                                    clarity={data.clarity}
+                                    cut={data.cut}
+                                    price={data.price}
+                                  ></ProductDetail>
+                                )} */}
+                                <Link href="/ringsettings">
+                                  <button
+                                    className="flex ml-auto text-white bg-indigo-700 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-800 rounded"
+                                    onClick={() => {
+                                      const diamondStatus = `${data.shape} ${data.carat} ${data.color} ${data.clarity} ${data.cut}`;
+                                      cartContext.setDiamond(diamondStatus);
+                                      cartContext.setDiamondPrice(data.price);
+                                    }}
+                                  >
+                                    Select
+                                  </button>
+                                </Link>
+                              </div>
+                            </details>
+                          </div>
+                        </tr>
+                      </>
                     );
                   })}
                 </tbody>

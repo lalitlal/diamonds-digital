@@ -31,11 +31,7 @@ export default function Home() {
       <ProductDetail></ProductDetail>
       <Footer></Footer>
 
-      {/* DIAMOND SELECTION PAGE: FOR EACH ROW ENTRY, CLICK SELECT to add diamond to cart */}
-      {/* CONTEXT FOR A CART */}
-      {/* MARKETPLACE FOR RING SETTINGS */}
-      {/* SELECTION OPTION FOR EACH RING SETTING */}
-      {/* STRIPE CHECKOUT - DONE */}
+      {/* Make diamond select more pleasant */}
       {/* PHOTOSHOOT FOR WEDDING BANDS, DIAMONDS, AND RINGS */}
       {/* CHECKOUT: WHAT COMES WITH EACH PURCHASE */}
       {/* Fill pictures for GALLERY */}
