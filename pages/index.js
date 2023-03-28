@@ -28,7 +28,14 @@ export default function Home() {
       <Testimonials></Testimonials>
       <FAQ></FAQ>
       <Footer></Footer>
+      {/* Custom Ring Banner Page */}
+      {/* Consider slider on Main page, and remove banners for others */}
+      {/* 3D renders where the user can 360 the product! */}
+      {/* Clickign any button while Booking is open, remove calendly modal */}
+      {/* Diamonds page doesn't have a banner, should it have a banner? */}
       {/* Fix Pupeteer on Vercel */}
+      {/* At local checkout, add line items, potential visual */}
+      {/* Upon clicking cart, show modal of line items and potential visual, with button to go to checkout (page) */}
       {/* PHOTOSHOOT FOR WEDDING BANDS, DIAMONDS, AND RINGS */}
       {/* Hira (not stripe) checkout page: WHAT COMES WITH EACH PURCHASE */}
       {/* Fill pictures for GALLERY */}
