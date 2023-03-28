@@ -4,7 +4,7 @@ const ErrorCheckout = ({ setErrorState }) => {
   return (
     <div className="flex justify-center">
       <div
-        class="w-5/6 text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+        class="w-5/6 mb-3 text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
         role="alert"
       >
         <strong class="font-bold">Error Checking Out!</strong>

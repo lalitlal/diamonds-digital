@@ -37,7 +37,7 @@ const Hero = () => {
             Start with a diamond
           </Link>
           <Link
-            href="/"
+            href="/ringsettings"
             className="hidden md:flex absolute justify-center w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
           >
             Start with a setting
@@ -51,12 +51,16 @@ const Hero = () => {
           Create your engagement ring
         </div>
         <div className="w-full max-w-2xl flex flex-col items-center">
-          <button className="w-3/4 my-4 leading-tight tracking-tight text-center text-2xl font-medium border-2 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
-            Start with a diamond
-          </button>
-          <button className="w-3/4 my-4 leading-tight tracking-tight text-center text-2xl font-medium border-2 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
-            Start with a setting
-          </button>
+          <Link href="/diamond">
+            <button className="w-3/4 my-4 leading-tight tracking-tight text-center text-2xl font-medium border-2 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
+              Start with a diamond
+            </button>
+          </Link>
+          <Link href="/ringsettings">
+            <button className="w-3/4 my-4 leading-tight tracking-tight text-center text-2xl font-medium border-2 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
+              Start with a setting
+            </button>
+          </Link>
         </div>
       </div>
     </>

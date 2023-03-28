@@ -7,6 +7,7 @@ export default function App({ Component, pageProps }) {
   const [setting, setSetting] = useState(undefined);
   const [diamondPrice, setDiamondPrice] = useState(0.0);
   const [settingPrice, setSettingPrice] = useState(0.0);
+  const [showCalendly, setShowCalendly] = useState(false);
 
   return (
     <CartContext.Provider
@@ -19,6 +20,8 @@ export default function App({ Component, pageProps }) {
         setSettingPrice,
         diamondPrice,
         setDiamondPrice,
+        showCalendly,
+        setShowCalendly,
       }}
     >
       <Component {...pageProps} />

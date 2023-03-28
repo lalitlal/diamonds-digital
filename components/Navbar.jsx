@@ -67,12 +67,6 @@ const Navbar = () => {
             href="/"
             className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
-            Featured
-          </Link>
-          <Link
-            href="/"
-            className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
-          >
             About
           </Link>
           <Link

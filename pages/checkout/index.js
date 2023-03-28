@@ -7,6 +7,8 @@ import Navbar from "../../components/Navbar";
 import DiamondPage from "../../components/DiamondPage";
 import Stepper from "../../components/Stepper";
 import Checkout from "../../components/Checkout";
+import WhatsIncluded from "../../components/WhatsIncluded";
+import Footer from "../../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +25,10 @@ export default function Home() {
       <Header></Header>
       {/* <Stepper></Stepper> */}
       {/* This will need to be added with a injection of the stage that the stepper is in! */}
+      <Stepper stage={2}></Stepper>
+      <WhatsIncluded></WhatsIncluded>
       <Checkout></Checkout>
+      <Footer></Footer>
     </>
   );
 }

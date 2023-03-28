@@ -1,11 +1,12 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import CalendlyBooking from "./CalendlyBooking";
 import Cart from "./Cart";
 import Modal from "../components/Modal";
+import CartContext from "./context/CartContext";
 
 const Header = () => {
-  const [showCalendly, setShowCalendly] = useState(false);
+  const { showCalendly, setShowCalendly } = useContext(CartContext);
   return (
     <div className="flex-col items-center object-center">
       <div className="flex justify-around mt-6">
@@ -99,12 +100,6 @@ const Header = () => {
           href="/"
           className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
         >
-          Featured
-        </Link>
-        <Link
-          href="/"
-          className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
-        >
           About
         </Link>
         <Link
@@ -115,6 +110,10 @@ const Header = () => {
         </Link>
       </div>
       <Modal showModal={showCalendly} setShowModal={setShowCalendly}>
+        <p class="mt-5 font-Raleway font-bold text-base text-center leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+          Buy with 100% confidence. Book an appointment to try various styles
+          and learn all about the origin of your brand new ring!
+        </p>
         <CalendlyBooking></CalendlyBooking>
       </Modal>
     </div>

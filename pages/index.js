@@ -27,13 +27,10 @@ export default function Home() {
       <Hero></Hero>
       <Testimonials></Testimonials>
       <FAQ></FAQ>
-      {/* <RingSettings></RingSettings> */}
-      <ProductDetail></ProductDetail>
       <Footer></Footer>
-
-      {/* Make diamond select more pleasant */}
+      {/* Fix Pupeteer on Vercel */}
       {/* PHOTOSHOOT FOR WEDDING BANDS, DIAMONDS, AND RINGS */}
-      {/* CHECKOUT: WHAT COMES WITH EACH PURCHASE */}
+      {/* Hira (not stripe) checkout page: WHAT COMES WITH EACH PURCHASE */}
       {/* Fill pictures for GALLERY */}
     </>
   );

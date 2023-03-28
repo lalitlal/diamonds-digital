@@ -5,6 +5,8 @@ import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/router";
 import ErrorCheckout from "../components/ErrorCheckout";
 import Stepper from "./Stepper";
+import Modal from "./Modal";
+import CalendlyBooking from "./CalendlyBooking";
 
 const Checkout = () => {
   // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -28,6 +30,7 @@ const Checkout = () => {
 
   const cartContext = useContext(CartContext);
   const [error, setError] = useState(false);
+  const { showCalendly, setShowCalendly } = useContext(CartContext);
   const router = useRouter();
   const marginMultiplier = 1.2;
 
@@ -58,16 +61,21 @@ const Checkout = () => {
 
   return (
     <>
-      <Stepper stage={2}></Stepper>
-      <div className="flex-col justify-center">
+      <div className="flex-col justify-center mx-2">
         <div className="flex mb-3 justify-center">
           <button
-            type="submit"
-            role="link"
-            className="leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out cursor-pointer"
             onClick={checkoutBtnClick}
+            class="flex text-white bg-gray-500 border-0 py-2 px-8 mx-2 focus:outline-none hover:bg-gray-600 rounded text-lg"
           >
             Checkout
+          </button>
+          <button
+            onClick={() => {
+              setShowCalendly(!showCalendly);
+            }}
+            class="flex  text-white bg-gray-500 border-0 py-2 px-8 mx-2 focus:outline-none hover:bg-gray-600 rounded text-lg"
+          >
+            Try before buying
           </button>
         </div>
         {error && <ErrorCheckout setErrorState={setError}></ErrorCheckout>}
