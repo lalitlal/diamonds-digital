@@ -27,7 +27,6 @@ export default function Home() {
       </Head>
       <Navbar></Navbar>
       <Header></Header>
-      <Hero></Hero>
       <Stepper stage={1}></Stepper>
       <div className="flex justify-center">
         <ShapeSelector></ShapeSelector>

@@ -7,7 +7,8 @@ export default function App({ Component, pageProps }) {
   const [setting, setSetting] = useState(undefined);
   const [diamondPrice, setDiamondPrice] = useState(0.0);
   const [settingPrice, setSettingPrice] = useState(0.0);
-  const [showCalendly, setShowCalendly] = useState(false);
+  const [showBookingModal, setShowBookingModal] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
 
   return (
     <CartContext.Provider
@@ -20,8 +21,10 @@ export default function App({ Component, pageProps }) {
         setSettingPrice,
         diamondPrice,
         setDiamondPrice,
-        showCalendly,
-        setShowCalendly,
+        showBookingModal,
+        setShowBookingModal,
+        showCartModal,
+        setShowCartModal,
       }}
     >
       <Component {...pageProps} />

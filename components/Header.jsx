@@ -4,9 +4,28 @@ import CalendlyBooking from "./CalendlyBooking";
 import Cart from "./Cart";
 import Modal from "../components/Modal";
 import CartContext from "./context/CartContext";
+import NewModal from "./NewModal";
+import CartModal from "./CartModal";
 
 const Header = () => {
-  const { showCalendly, setShowCalendly } = useContext(CartContext);
+  const cartContext = useContext(CartContext);
+
+  const handleOpenBookingModal = () => {
+    cartContext.setShowBookingModal(true);
+  };
+
+  const handleCloseBookingModal = () => {
+    cartContext.setShowBookingModal(false);
+  };
+
+  const handleOpenCartModal = () => {
+    cartContext.setShowCartModal(true);
+  };
+
+  const handleCloseCartModal = () => {
+    cartContext.setShowCartModal(false);
+  };
+
   return (
     <div className="flex-col items-center object-center">
       <div className="flex justify-around mt-6">
@@ -27,9 +46,7 @@ const Header = () => {
           </svg>
 
           <div
-            onClick={() => {
-              setShowCalendly(!showCalendly);
-            }}
+            onClick={handleOpenBookingModal}
             className="flex hover:text-gray-500"
           >
             <svg
@@ -109,13 +126,28 @@ const Header = () => {
           Gallery
         </Link>
       </div>
-      <Modal showModal={showCalendly} setShowModal={setShowCalendly}>
+      <NewModal
+        isOpen={cartContext.showBookingModal}
+        onClose={handleCloseBookingModal}
+      >
         <p class="mt-5 font-Raleway font-bold text-base text-center leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
           Buy with 100% confidence. Book an appointment to try various styles
           and learn all about the origin of your brand new ring!
         </p>
         <CalendlyBooking></CalendlyBooking>
-      </Modal>
+      </NewModal>
+      <NewModal
+        isOpen={cartContext.showCartModal}
+        onClose={handleCloseCartModal}
+      >
+        <CartModal
+          setShowCartModal={cartContext.setShowCartModal}
+          cartItems={[{ id: 0, name: "test", price: 150 }]}
+          onRemoveItem={() => {
+            console.log("HELO");
+          }}
+        ></CartModal>
+      </NewModal>
     </div>
   );
 };

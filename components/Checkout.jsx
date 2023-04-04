@@ -30,7 +30,7 @@ const Checkout = () => {
 
   const cartContext = useContext(CartContext);
   const [error, setError] = useState(false);
-  const { showCalendly, setShowCalendly } = useContext(CartContext);
+  const { showBookingModal, setShowBookingModal } = useContext(CartContext);
   const router = useRouter();
   const marginMultiplier = 1.2;
 
@@ -71,7 +71,7 @@ const Checkout = () => {
           </button>
           <button
             onClick={() => {
-              setShowCalendly(!showCalendly);
+              setShowBookingModal(!showBookingModal);
             }}
             class="flex  text-white bg-gray-500 border-0 py-2 px-8 mx-2 focus:outline-none hover:bg-gray-600 rounded text-lg"
           >
