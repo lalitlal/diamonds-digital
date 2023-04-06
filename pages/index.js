@@ -29,11 +29,10 @@ export default function Home() {
       <FAQ></FAQ>
       <Footer></Footer>
       {/* Custom Ring Banner Page */}
+      {/* Fix Delete Icons Alignment */}
       {/* Make Hero on Main page to be a slider of images */}
       {/* 3D renders where the user can 360 the product! */}
       {/* Fix Pupeteer on Vercel */}
-      {/* At local checkout, add line items, potential visual */}
-      {/* Upon clicking cart, show modal of line items and potential visual, with button to go to checkout (page) */}
       {/* PHOTOSHOOT FOR WEDDING BANDS, DIAMONDS, AND RINGS */}
       {/* Fill pictures for GALLERY */}
     </>
