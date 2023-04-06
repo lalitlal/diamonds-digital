@@ -20,7 +20,6 @@ const handler = async (req, res) => {
           .json({ diamonds: data.data.diamond, message: "SUCCESS" });
       }
     } catch (err) {
-      console.log("failure: ", err.message);
       res.status(400).json({ message: err.message });
     }
   } else {

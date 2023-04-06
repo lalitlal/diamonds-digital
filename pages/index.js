@@ -29,7 +29,7 @@ export default function Home() {
       <FAQ></FAQ>
       <Footer></Footer>
       {/* Custom Ring Banner Page */}
-      {/* Fix Delete Icons Alignment */}
+      {/* Fix Delete Icons Alignment - USING DIVS AND FLEX FOR LINE ITEMS*/}
       {/* Make Hero on Main page to be a slider of images */}
       {/* 3D renders where the user can 360 the product! */}
       {/* Fix Pupeteer on Vercel */}

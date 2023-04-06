@@ -1,31 +1,50 @@
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import CartContext from "./context/CartContext";
 
 function CartModal({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
-  const dummyImage = (
-    <img
-      alt="ecommerce"
-      class="object-cover object-center h-16 w-16 rounded"
-      src="https://dummyimage.com/420x260"
-    />
-  );
+  const [cartEmpty, setCartEmpty] = useState(false);
 
-  const cartInfo = [
-    {
-      description: cartContext.diamond,
-      name: "Loose Diamond",
-      price: cartContext.diamondPrice,
-      image: dummyImage,
-    },
-    {
-      description: cartContext.setting,
-      name: "Setting",
-      price: cartContext.settingPrice,
-      image: dummyImage,
-    },
-  ];
+  const cartInfo = useMemo(() => {
+    const dummyImage = (
+      <img
+        alt="ecommerce"
+        class="object-cover object-center h-16 w-16 rounded"
+        src="https://dummyimage.com/420x260"
+      />
+    );
+    return [
+      {
+        description: cartContext.diamond,
+        name: "Loose Diamond",
+        price: cartContext.diamondPrice,
+        image: dummyImage,
+      },
+      {
+        description: cartContext.setting,
+        name: "Setting",
+        price: cartContext.settingPrice,
+        image: dummyImage,
+      },
+    ];
+  }, [
+    cartContext.diamond,
+    cartContext.diamondPrice,
+    cartContext.setting,
+    cartContext.settingPrice,
+  ]);
+
+  useEffect(() => {
+    if (
+      cartInfo[0].description === undefined &&
+      cartInfo[1].description === undefined
+    ) {
+      setCartEmpty(true);
+    } else {
+      setCartEmpty(false);
+    }
+  }, [cartInfo]);
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
@@ -66,9 +85,13 @@ function CartModal({ onRemoveItem }) {
           </div>
 
           <div class="mt-6 space-y-6">
+            {cartEmpty && (
+              <div className="text-center font-Raleway">
+                Your shopping cart is empty. Explore around!
+              </div>
+            )}
             <ul class="space-y-4">
               {cartInfo.map((lineItem, i) => {
-                console.log(lineItem);
                 return (
                   lineItem.description !== undefined && (
                     <li key={i} class="flex items-center gap-6">

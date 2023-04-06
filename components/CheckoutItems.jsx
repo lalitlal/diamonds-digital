@@ -1,32 +1,38 @@
-import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import CartContext from "./context/CartContext";
 
 function CheckoutItems({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
   const [cartEmpty, setCartEmpty] = useState(false);
-  const dummyImage = (
-    <img
-      alt="ecommerce"
-      class="object-cover object-center h-16 w-16 rounded"
-      src="https://dummyimage.com/420x260"
-    />
-  );
 
-  const cartInfo = [
-    {
-      description: cartContext.diamond,
-      name: "Loose Diamond",
-      price: cartContext.diamondPrice,
-      image: dummyImage,
-    },
-    {
-      description: cartContext.setting,
-      name: "Setting",
-      price: cartContext.settingPrice,
-      image: dummyImage,
-    },
-  ];
+  const cartInfo = useMemo(() => {
+    const dummyImage = (
+      <img
+        alt="ecommerce"
+        class="object-cover object-center h-16 w-16 rounded"
+        src="https://dummyimage.com/420x260"
+      />
+    );
+    return [
+      {
+        description: cartContext.diamond,
+        name: "Loose Diamond",
+        price: cartContext.diamondPrice,
+        image: dummyImage,
+      },
+      {
+        description: cartContext.setting,
+        name: "Setting",
+        price: cartContext.settingPrice,
+        image: dummyImage,
+      },
+    ];
+  }, [
+    cartContext.diamond,
+    cartContext.diamondPrice,
+    cartContext.setting,
+    cartContext.settingPrice,
+  ]);
 
   useEffect(() => {
     if (
@@ -37,7 +43,7 @@ function CheckoutItems({ onRemoveItem }) {
     } else {
       setCartEmpty(false);
     }
-  });
+  }, [cartInfo]);
 
   return (
     <div>
@@ -53,41 +59,41 @@ function CheckoutItems({ onRemoveItem }) {
               Your Shopping Cart
             </h3>
 
-            <div class="mt-6 space-y-6">
+            <div class="mt-6 my-5">
               {cartEmpty && (
                 <div className="text-center font-Raleway">
                   Your shopping cart is empty. Explore around!
                 </div>
               )}
-              <ul class="space-y-4">
+              <div class="space-y-6">
                 {!cartEmpty &&
                   cartInfo.map((lineItem, i) => {
-                    console.log(lineItem);
                     return (
                       lineItem.description !== undefined && (
-                        <li key={i} class="flex items-center gap-6">
+                        <div key={i} class="flex items-center gap-6">
                           {lineItem.image}
                           <div>
                             <h3 class="text-sm text-gray-900">
                               {lineItem.name}
                             </h3>
 
-                            <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
+                            <div class="mt-0.5 space-y-px text-[10px] text-gray-600">
                               <div>
-                                <dt class="inline">Qty:</dt>
-                                <dd class="inline">1</dd>
+                                <div class="inline">Qty:</div>
+                                <div class="inline">1</div>
                               </div>
 
                               <div>
-                                <dt class="inline">Price:</dt>
-                                <dd class="inline">{lineItem.price}</dd>
+                                <div class="inline">Price:</div>
+                                <div class="inline">{lineItem.price}</div>
                               </div>
                               <div>
-                                <dt class="inline">Description:</dt>
-                                <dd class="inline">{lineItem.description}</dd>
+                                <div class="inline">Description:</div>
+                                <div class="inline">{lineItem.description}</div>
                               </div>
-                            </dl>
+                            </div>
                           </div>
+                          {/* DELETE BUTTON */}
                           <div
                             className="w-[70px] flex justify-end"
                             onClick={() => {
@@ -109,11 +115,11 @@ function CheckoutItems({ onRemoveItem }) {
                               />
                             </svg>
                           </div>
-                        </li>
+                        </div>
                       )
                     );
                   })}
-              </ul>
+              </div>
             </div>
           </div>
         </div>

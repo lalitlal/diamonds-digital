@@ -12,7 +12,6 @@ import CheckoutItems from "./CheckoutItems";
 
 const Checkout = () => {
   const handleRemoveCartItem = (item) => {
-    console.log(`${item.name}`);
     if (item.name === "Loose Diamond") {
       cartContext.setDiamond(undefined);
       cartContext.setDiamondPrice(0);
