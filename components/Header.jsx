@@ -26,6 +26,17 @@ const Header = () => {
     cartContext.setShowCartModal(false);
   };
 
+  const handleRemoveCartItem = (item) => {
+    console.log(`${item.name}`);
+    if (item.name === "Loose Diamond") {
+      cartContext.setDiamond(undefined);
+      cartContext.setDiamondPrice(0);
+    } else {
+      cartContext.setSetting(undefined);
+      cartContext.setSettingPrice(0);
+    }
+  };
+
   return (
     <div className="flex-col items-center object-center">
       <div className="flex justify-around mt-6">
@@ -91,7 +102,7 @@ const Header = () => {
               d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
             />
           </svg>
-          <Cart></Cart>
+          <Cart onClick={handleOpenCartModal}></Cart>
         </div>
       </div>
       <div className="hidden md:flex justify-center w-full items-center mt-6 objects-center text-sm lg:flex-grow">
@@ -141,10 +152,8 @@ const Header = () => {
         onClose={handleCloseCartModal}
       >
         <CartModal
-          setShowCartModal={cartContext.setShowCartModal}
-          cartItems={[{ id: 0, name: "test", price: 150 }]}
-          onRemoveItem={() => {
-            console.log("HELO");
+          onRemoveItem={(item) => {
+            handleRemoveCartItem(item);
           }}
         ></CartModal>
       </NewModal>

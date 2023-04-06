@@ -7,8 +7,20 @@ import ErrorCheckout from "../components/ErrorCheckout";
 import Stepper from "./Stepper";
 import Modal from "./Modal";
 import CalendlyBooking from "./CalendlyBooking";
+import CartModal from "./CartModal";
+import CheckoutItems from "./CheckoutItems";
 
 const Checkout = () => {
+  const handleRemoveCartItem = (item) => {
+    console.log(`${item.name}`);
+    if (item.name === "Loose Diamond") {
+      cartContext.setDiamond(undefined);
+      cartContext.setDiamondPrice(0);
+    } else {
+      cartContext.setSetting(undefined);
+      cartContext.setSettingPrice(0);
+    }
+  };
   // Make sure to call `loadStripe` outside of a component’s render to avoid
   // recreating the `Stripe` object on every render.
   const stripePromise = loadStripe(
@@ -40,7 +52,6 @@ const Checkout = () => {
       cartContext.setting === undefined
     ) {
       setError(true);
-      console.log("Error Trued");
       return;
     }
     setError(false);
@@ -61,7 +72,12 @@ const Checkout = () => {
 
   return (
     <>
-      <div className="flex-col justify-center mx-2">
+      <div className="flex-col justify-center mx-2 mb-10">
+        <CheckoutItems
+          onRemoveItem={(item) => {
+            handleRemoveCartItem(item);
+          }}
+        ></CheckoutItems>
         <div className="flex mb-3 justify-center">
           <button
             onClick={checkoutBtnClick}

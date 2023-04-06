@@ -23,8 +23,6 @@ export default function Home() {
       </Head>
       <Navbar></Navbar>
       <Header></Header>
-      {/* <Stepper></Stepper> */}
-      {/* This will need to be added with a injection of the stage that the stepper is in! */}
       <Stepper stage={2}></Stepper>
       <WhatsIncluded></WhatsIncluded>
       <Checkout></Checkout>
