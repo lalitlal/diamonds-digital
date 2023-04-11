@@ -201,6 +201,7 @@ const Diamonds = () => {
             </div>
             <div>
               {diamondData.map((data, i) => {
+                data.price = data.price * marginMultiplier;
                 return (
                   <>
                     <div
@@ -233,7 +234,7 @@ const Diamonds = () => {
                         {data.cut}
                       </div>
                       <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 w-1/6 text-center">
-                        {`CA$${data.price * marginMultiplier}`}
+                        {`CA$${data.price}`}
                       </div>
                     </div>
                     <div
@@ -247,7 +248,7 @@ const Diamonds = () => {
                             color={data.color}
                             clarity={data.clarity}
                             cut={data.cut}
-                            price={data.price * marginMultiplier}
+                            price={data.price}
                             data={data}
                           ></ProductDetail>
                         </>
