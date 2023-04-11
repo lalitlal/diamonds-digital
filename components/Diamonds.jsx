@@ -201,7 +201,13 @@ const Diamonds = () => {
             </div>
             <div>
               {diamondData.map((data, i) => {
-                data.price = Math.round(data.price * marginMultiplier);
+                if (typeof data.price === "string") {
+                  data.price = data.price.trim().replaceAll(",", "");
+                }
+                data.price = Math.round(
+                  parseInt(data.price) * marginMultiplier
+                );
+
                 return (
                   <>
                     <div
@@ -234,7 +240,7 @@ const Diamonds = () => {
                         {data.cut}
                       </div>
                       <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 w-1/6 text-center">
-                        {`CA$${data.price}`}
+                        {`CA$ ${data.price}`}
                       </div>
                     </div>
                     <div
