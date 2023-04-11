@@ -5,6 +5,8 @@ import { parse } from "node-html-parser";
 
 // THIS IS A PUPPETEER VERSION, ITS SPICY AND QUICK
 const handler = async (req, res) => {
+  const marginMultiplier = 1.25;
+
   const response = await fetch(
     "https://scrape-lg-diamond-mc625gpgqa-uc.a.run.app",
     {
@@ -16,6 +18,13 @@ const handler = async (req, res) => {
     }
   );
   const data = await response.json();
+  data.diamonds = data.diamonds.map((dmd, i) => {
+    if (typeof dmd.price === "string") {
+      dmd.price = dmd.price.trim().replaceAll(",", "");
+    }
+    dmd.price = Math.round(parseInt(dmd.price) * marginMultiplier);
+    return dmd;
+  });
   res.json(data);
 };
 

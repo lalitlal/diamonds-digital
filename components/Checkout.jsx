@@ -70,6 +70,7 @@ const Checkout = () => {
       body: JSON.stringify(checkoutData),
     });
     const redirectURL = await res.json();
+    console.log(redirectURL);
     router.push(redirectURL.url);
   };
 

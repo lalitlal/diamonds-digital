@@ -111,7 +111,7 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
 
             <div class="flex justify-between">
               <span class="title-font font-medium text-2xl text-gray-900">
-                CA${price}
+                CA${data.price}
               </span>
               <Link href="/ringsettings">
                 <button

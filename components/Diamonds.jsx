@@ -6,7 +6,6 @@ import { DiamondContext } from "./context/DiamondContext";
 import ProductDetail from "../components/ProductDetail";
 
 const Diamonds = () => {
-  const marginMultiplier = 1.25;
   const caret = (
     <svg
       fill="none"
@@ -201,13 +200,6 @@ const Diamonds = () => {
             </div>
             <div>
               {diamondData.map((data, i) => {
-                if (typeof data.price === "string") {
-                  data.price = data.price.trim().replaceAll(",", "");
-                }
-                data.price = Math.round(
-                  parseInt(data.price) * marginMultiplier
-                );
-
                 return (
                   <>
                     <div
