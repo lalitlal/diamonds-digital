@@ -63,7 +63,7 @@ const Checkout = () => {
         `${diamondContext.bandColor}`
       ),
       settingPrice: cartContext.settingPrice * 100,
-      // TODO: Setting thickness, setting metal type
+      // TODO: Setting thickness
     };
     const res = await fetch(`/api/checkout_sessions`, {
       method: "POST",

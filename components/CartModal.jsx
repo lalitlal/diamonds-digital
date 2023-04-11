@@ -20,7 +20,7 @@ function CartModal({ onRemoveItem }) {
       {
         description: cartContext.diamond,
         name: "Loose Diamond",
-        price: cartContext.diamondPrice,
+        price: `CA$ `.concat(cartContext.diamondPrice),
         image: dummyImage,
       },
       {
@@ -29,7 +29,7 @@ function CartModal({ onRemoveItem }) {
             ? undefined
             : `${cartContext.setting} `.concat(`${diamondContext.bandColor}`),
         name: "Setting",
-        price: cartContext.settingPrice,
+        price: `CA$ `.concat(cartContext.settingPrice),
         image: dummyImage,
       },
     ];
