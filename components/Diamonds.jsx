@@ -201,7 +201,7 @@ const Diamonds = () => {
             </div>
             <div>
               {diamondData.map((data, i) => {
-                data.price = data.price * marginMultiplier;
+                data.price = Math.round(data.price * marginMultiplier);
                 return (
                   <>
                     <div
