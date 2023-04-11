@@ -9,6 +9,7 @@ import Modal from "./Modal";
 import CalendlyBooking from "./CalendlyBooking";
 import CartModal from "./CartModal";
 import CheckoutItems from "./CheckoutItems";
+import { DiamondContext } from "./context/DiamondContext";
 
 const Checkout = () => {
   const handleRemoveCartItem = (item) => {
@@ -42,6 +43,7 @@ const Checkout = () => {
   const cartContext = useContext(CartContext);
   const [error, setError] = useState(false);
   const { showBookingModal, setShowBookingModal } = useContext(CartContext);
+  const diamondContext = useContext(DiamondContext);
   const router = useRouter();
   const marginMultiplier = 1.2;
 
@@ -55,9 +57,11 @@ const Checkout = () => {
     }
     setError(false);
     const checkoutData = {
-      diamondPrice: cartContext.diamondPrice * 100 * marginMultiplier, // cents,
+      diamondPrice: cartContext.diamondPrice * 100, // cents,
       diamondData: cartContext.diamond,
-      settingData: cartContext.setting,
+      settingData: `${cartContext.setting} `.concat(
+        `${diamondContext.bandColor}`
+      ),
       settingPrice: cartContext.settingPrice * 100,
       // TODO: Setting thickness, setting metal type
     };

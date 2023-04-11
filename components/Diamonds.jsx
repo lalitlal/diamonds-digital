@@ -125,8 +125,6 @@ const Diamonds = () => {
     // Handle filtering the data now!
     handleDiamondFilters();
     setPostBody(post_body);
-
-    console.log(post_body);
     getDiamondFunc();
   }, [
     postBody,
