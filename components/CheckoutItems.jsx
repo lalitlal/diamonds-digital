@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "./context/CartContext";
+import { DiamondContext } from "./context/DiamondContext";
 
 function CheckoutItems({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
+  const diamondContext = useContext(DiamondContext);
+
   const [cartEmpty, setCartEmpty] = useState(false);
 
   const cartInfo = useMemo(() => {
@@ -21,7 +24,10 @@ function CheckoutItems({ onRemoveItem }) {
         image: dummyImage,
       },
       {
-        description: cartContext.setting,
+        description:
+          cartContext.setting === undefined
+            ? undefined
+            : `${cartContext.setting} `.concat(`${diamondContext.bandColor}`),
         name: "Setting",
         price: cartContext.settingPrice,
         image: dummyImage,
@@ -32,6 +38,7 @@ function CheckoutItems({ onRemoveItem }) {
     cartContext.diamondPrice,
     cartContext.setting,
     cartContext.settingPrice,
+    diamondContext.bandColor,
   ]);
 
   useEffect(() => {

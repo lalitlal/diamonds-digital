@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { DiamondContext } from "./context/DiamondContext";
 
 const MetalSelector = () => {
   const [currentOption, setCurrentOption] = useState(0);
+  const { bandColor, setBandColor } = useContext(DiamondContext);
   const options = [
     { opt: "Platinum", color: "bg-slate-200" },
     {
@@ -25,12 +27,13 @@ const MetalSelector = () => {
             <div
               key={i}
               className={`${
-                i === currentOption
+                op.opt === bandColor
                   ? "text-indigo-700 border-indigo-700 border-b-2"
                   : "text-gray-600"
               } mr-4 hover:text-slate-300 hover:underline cursor-pointer tracking-tight`}
               onClick={() => {
-                setCurrentOption(i);
+                // setCurrentOption(i);
+                setBandColor(op.opt);
               }}
             >
               <div class="flex">

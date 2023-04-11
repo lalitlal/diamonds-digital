@@ -1,9 +1,11 @@
 import Link from "next/link";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "./context/CartContext";
+import { DiamondContext } from "./context/DiamondContext";
 
 function CartModal({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
+  const diamondContext = useContext(DiamondContext);
   const [cartEmpty, setCartEmpty] = useState(false);
 
   const cartInfo = useMemo(() => {
@@ -22,7 +24,10 @@ function CartModal({ onRemoveItem }) {
         image: dummyImage,
       },
       {
-        description: cartContext.setting,
+        description:
+          cartContext.setting === undefined
+            ? undefined
+            : `${cartContext.setting} `.concat(`${diamondContext.bandColor}`),
         name: "Setting",
         price: cartContext.settingPrice,
         image: dummyImage,

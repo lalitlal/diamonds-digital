@@ -15,6 +15,8 @@ export const DiamondContextProvider = ({ children }) => {
   const [clarityValue, setClarityValue] = useState([0, 9]);
   const [cutValue, setCutValue] = useState([0, 4]);
 
+  const [bandColor, setBandColor] = useState("Yellow Gold");
+
   return (
     <DiamondContext.Provider
       value={{
@@ -27,6 +29,7 @@ export const DiamondContextProvider = ({ children }) => {
         colorValue,
         clarityValue,
         cutValue,
+        bandColor,
         setCurrentShapeOptions,
         setCurrentCutOptions,
         setCurrentClarityOptions,
@@ -36,6 +39,7 @@ export const DiamondContextProvider = ({ children }) => {
         setColorValue,
         setClarityValue,
         setCutValue,
+        setBandColor,
       }}
     >
       {children}
