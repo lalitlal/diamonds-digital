@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import CartContext from "./context/CartContext";
+import { CartContext } from "./context/CartContext";
 
 function CartModal({ onRemoveItem }) {
   const cartContext = useContext(CartContext);

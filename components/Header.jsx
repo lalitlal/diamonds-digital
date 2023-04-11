@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import CalendlyBooking from "./CalendlyBooking";
 import Cart from "./Cart";
 import Modal from "../components/Modal";
-import CartContext from "./context/CartContext";
+import { CartContext } from "./context/CartContext";
 import NewModal from "./NewModal";
 import CartModal from "./CartModal";
 

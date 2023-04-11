@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { DiamondContext } from "./context/DiamondContext";
 
 const ColorSelector = () => {
-  const [currentOption, setCurrentOption] = useState(0);
+  const { currentColorOptions, setCurrentColorOptions } =
+    useContext(DiamondContext);
+
   const options = [{ opt: "DEF" }, { opt: "GHI" }, { opt: "JKL" }];
   return (
     <div className="mb-3">
@@ -12,12 +15,23 @@ const ColorSelector = () => {
             <div
               key={i}
               className={`${
-                i === currentOption
+                currentColorOptions.includes(i)
                   ? "text-indigo-700 border-indigo-700 border-b-2"
                   : "text-gray-600"
               } mr-4 hover:text-slate-300 hover:underline cursor-pointer tracking-tight`}
               onClick={() => {
-                setCurrentOption(i);
+                if (currentColorOptions.includes(i)) {
+                  setCurrentColorOptions(
+                    currentColorOptions.filter((op) => {
+                      return op !== i;
+                    })
+                  );
+                } else {
+                  setCurrentColorOptions((currentColorOptions) => [
+                    ...currentColorOptions,
+                    i,
+                  ]);
+                }
               }}
             >
               {op.opt}

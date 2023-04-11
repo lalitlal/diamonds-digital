@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import CartContext from "./context/CartContext";
+import { CartContext } from "./context/CartContext";
 import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/router";
 import ErrorCheckout from "../components/ErrorCheckout";

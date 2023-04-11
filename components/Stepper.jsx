@@ -62,9 +62,9 @@ const iconObjects = [
 
 const Stepper = ({ stage }) => {
   return (
-    <section class="text-gray-600 body-font">
-      <div class="container px-5 py-10 mx-auto flex flex-wrap flex-col">
-        <div class="flex mx-auto flex-wrap">
+    <section className="text-gray-600 body-font">
+      <div className="container px-5 py-10 mx-auto flex flex-wrap flex-col">
+        <div className="flex mx-auto flex-wrap">
           {iconObjects.map((iconObj, i) => {
             return (
               <Link

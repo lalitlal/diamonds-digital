@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import CartContext from "./context/CartContext";
+import { CartContext } from "./context/CartContext";
 
 function CheckoutItems({ onRemoveItem }) {
   const cartContext = useContext(CartContext);

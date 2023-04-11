@@ -1,7 +1,8 @@
 import Link from "next/link";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import getDiamonds from "../lib/GetDiamonds";
-import CartContext from "./context/CartContext";
+import { CartContext } from "./context/CartContext";
+import { DiamondContext } from "./context/DiamondContext";
 import ProductDetail from "../components/ProductDetail";
 
 const Diamonds = () => {
@@ -20,8 +21,6 @@ const Diamonds = () => {
       <path d="M6 9l6 6 6-6"></path>
     </svg>
   );
-  const [shapeFilter, setShapeFilter] = useState("Oval");
-  const [caratFilter, setCaratFilter] = useState(2.0);
   const [showProductDetail, setShowProductDetail] = useState(false);
   const [selectedRow, setSelectedRow] = useState(undefined);
   const default_diamond_data = [
@@ -59,51 +58,61 @@ const Diamonds = () => {
     },
   ];
 
-  const post_body = {
-    data: {
-      imgOnly: true,
-      view: "list",
-      priceMin: 150,
-      priceMax: 750000,
-      caratMin: 0.15,
-      caratMax: 12,
-      cutMin: 0,
-      cutMax: 4,
-      colorMin: 0,
-      colorMax: 9,
-      clarityMin: 0,
-      clarityMax: 9,
-      depthMin: 0,
-      depthMax: 100,
-      tableMin: 0,
-      tableMax: 93,
-      shapeList: [],
-      certificateList: [],
-      sort: 0,
-      polish: [],
-      symmetry: [],
-      fluor: [],
-      sort_order: null,
-      pager: 0,
-    },
-  };
+  let post_body = useMemo(() => {
+    return {
+      data: {
+        imgOnly: true,
+        view: "list",
+        priceMin: 150,
+        priceMax: 750000,
+        caratMin: 0.15,
+        caratMax: 12,
+        cutMin: 0,
+        cutMax: 4,
+        colorMin: 0,
+        colorMax: 9,
+        clarityMin: 0,
+        clarityMax: 9,
+        depthMin: 0,
+        depthMax: 100,
+        tableMin: 0,
+        tableMax: 93,
+        shapeList: [],
+        certificateList: [],
+        sort: 0,
+        polish: [],
+        symmetry: [],
+        fluor: [],
+        sort_order: null,
+        pager: 0,
+      },
+    };
+  }, []);
 
-  const [diamondData, setDiamondData] = useState(default_diamond_data);
+  const [diamondData, setDiamondData] = useState([]);
   const [postBody, setPostBody] = useState(post_body);
+  const cartContext = useContext(CartContext);
+  const diamondContext = useContext(DiamondContext);
+  const divRef = useRef(null);
 
   useEffect(() => {
+    const handleDiamondFilters = () => {
+      post_body.data.shapeList = diamondContext.currentShapeOptions;
+      post_body.data.caratMin = diamondContext.caratValue[0];
+      post_body.data.caratMax = diamondContext.caratValue[1];
+      post_body.data.colorMin = diamondContext.colorValue[0];
+      post_body.data.colorMax = diamondContext.colorValue[1];
+      post_body.data.clarityMin = diamondContext.clarityValue[0];
+      post_body.data.clarityMax = diamondContext.clarityValue[1];
+      post_body.data.priceMin = diamondContext.priceValue[0];
+      post_body.data.priceMax = diamondContext.priceValue[1];
+      post_body.data.cutMin = diamondContext.cutValue[0];
+      post_body.data.cutMax = diamondContext.cutValue[1];
+    };
+
     const getDiamondFunc = async () => {
       try {
-        const res = await getDiamonds(
-          "A",
-          "B",
-          "C",
-          "D",
-          "E",
-          "F",
-          "G",
-          postBody
-        );
+        const res = await getDiamonds(postBody);
         if (res.status === 200) {
           const res_json = await res.json();
           setDiamondData(res_json.diamonds);
@@ -113,14 +122,33 @@ const Diamonds = () => {
       }
     };
 
-    getDiamondFunc();
-  }, [postBody]);
+    // Handle filtering the data now!
+    handleDiamondFilters();
+    setPostBody(post_body);
 
-  const cartContext = useContext(CartContext);
-  const divRef = useRef(null);
+    console.log(post_body);
+    getDiamondFunc();
+  }, [
+    postBody,
+    post_body,
+    diamondContext.currentShapeOptions,
+    diamondContext.caratValue,
+    diamondContext.cutValue,
+    diamondContext.priceValue,
+    diamondContext.clarityValue,
+    diamondContext.colorValue,
+  ]);
 
   const scrollToBottom = () => {
     divRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const clearFilters = () => {
+    diamondContext.setCaratValue([0, 12]);
+    diamondContext.setPriceValue([100, 75000]);
+    diamondContext.setColorValue([0, 9]);
+    diamondContext.setClarityValue([0, 9]);
+    diamondContext.setCutValue([0, 4]);
   };
 
   useEffect(() => {
@@ -143,6 +171,9 @@ const Diamonds = () => {
                   <button
                     className="bg-slate-500 text-white active:bg-slate-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
+                    onClick={() => {
+                      clearFilters();
+                    }}
                   >
                     Clear Filters
                   </button>

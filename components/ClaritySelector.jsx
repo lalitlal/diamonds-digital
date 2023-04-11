@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { DiamondContext } from "./context/DiamondContext";
 
 const ClaritySelector = () => {
-  const [currentOption, setCurrentOption] = useState(0);
-  const options = [{ opt: "VVS" }, { opt: "VS" }, { opt: "SI" }];
+  const { currentClarityOptions, setCurrentClarityOptions } =
+    useContext(DiamondContext);
+  const options = [{ opt: "SI" }, { opt: "VS" }, { opt: "VVS" }];
 
   return (
     <div className="mb-3">
@@ -13,12 +15,23 @@ const ClaritySelector = () => {
             <div
               key={i}
               className={`${
-                i === currentOption
+                currentClarityOptions.includes(i)
                   ? "text-indigo-700 border-indigo-700 border-b-2"
                   : "text-gray-600"
               } mr-4 hover:text-slate-300 hover:underline cursor-pointer tracking-tight"`}
               onClick={() => {
-                setCurrentOption(i);
+                if (currentClarityOptions.includes(i)) {
+                  setCurrentClarityOptions(
+                    currentClarityOptions.filter((op) => {
+                      return op !== i;
+                    })
+                  );
+                } else {
+                  setCurrentClarityOptions((currentOptions) => [
+                    ...currentOptions,
+                    i,
+                  ]);
+                }
               }}
             >
               {op.opt}

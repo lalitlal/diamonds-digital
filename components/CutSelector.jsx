@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { DiamondContext } from "./context/DiamondContext";
 
 const CutSelector = () => {
-  const [currentOption, setCurrentOption] = useState(0);
+  const { currentCutOptions, setCurrentCutOptions } =
+    useContext(DiamondContext);
+
   const options = [
     { opt: "Ideal+Hearts" },
     { opt: "Ideal" },
@@ -17,12 +20,23 @@ const CutSelector = () => {
             <div
               key={i}
               className={`${
-                i === currentOption
+                currentCutOptions.includes(i)
                   ? "text-indigo-700 border-indigo-700 border-b-2"
                   : "text-gray-600"
               } mr-4 hover:text-slate-300 hover:underline cursor-pointer tracking-tight`}
               onClick={() => {
-                setCurrentOption(i);
+                if (currentCutOptions.includes(i)) {
+                  setCurrentCutOptions(
+                    currentCutOptions.filter((op) => {
+                      return op !== i;
+                    })
+                  );
+                } else {
+                  setCurrentCutOptions((currentCutOptions) => [
+                    ...currentCutOptions,
+                    i,
+                  ]);
+                }
               }}
             >
               {op.opt}

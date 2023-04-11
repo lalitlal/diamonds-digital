@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { DiamondContext } from "./context/DiamondContext";
 
 const ShapeSelector = () => {
-  const [currentShape, setCurrentShape] = useState(0);
+  const { currentShapeOptions, setCurrentShapeOptions } =
+    useContext(DiamondContext);
 
   const shapes = [
     // ROUND BRILLIANT
@@ -74,6 +76,7 @@ const ShapeSelector = () => {
           ></rect>
         </svg>
       ),
+      name: "0",
     },
     // OVAL
     {
@@ -116,6 +119,7 @@ const ShapeSelector = () => {
           ></rect>
         </svg>
       ),
+      name: "3",
     },
     // EMERALD
     {
@@ -317,6 +321,7 @@ const ShapeSelector = () => {
           <rect x="36.65" y="12" width="0.5" height="35"></rect>
         </svg>
       ),
+      name: "4",
     },
     // MARQUISE
     {
@@ -342,6 +347,7 @@ const ShapeSelector = () => {
           <polygon points="20.31 53.51 0.27 29.86 20.11 5.7 20.49 6.01 0.93 29.85 20.69 53.19 20.31 53.51"></polygon>
         </svg>
       ),
+      name: "7",
     },
     // CUSHION
     {
@@ -426,6 +432,7 @@ const ShapeSelector = () => {
           ></rect>
         </svg>
       ),
+      name: "2",
     },
     // PEAR
     {
@@ -455,6 +462,7 @@ const ShapeSelector = () => {
           <polygon points="18.79 59.15 14.19 51.4 8.66 35.15 7.06 29.75 5.94 16.63 15.48 11.36 15.72 11.79 6.46 16.91 7.55 29.65 9.14 35 14.64 51.19 18.81 58.2 23.27 51.17 25.36 44.6 28.77 36.18 30.05 29.63 31.14 16.72 21.78 11.79 22.02 11.35 31.66 16.43 30.55 29.7 29.25 36.32 25.83 44.77 23.71 51.41 18.79 59.15"></polygon>
         </svg>
       ),
+      name: "6",
     },
     // TRILLION
     {
@@ -492,6 +500,7 @@ const ShapeSelector = () => {
           ></rect>
         </svg>
       ),
+      name: "5",
     },
     // ASSCHER
     {
@@ -583,6 +592,7 @@ const ShapeSelector = () => {
           ></path>
         </svg>
       ),
+      name: "8",
     },
     // PRINCESS
     {
@@ -610,6 +620,7 @@ const ShapeSelector = () => {
           <polygon points="7.61 40.44 7.12 40.44 7.12 17.01 7.41 16.81 16.91 16.81 16.91 17.3 7.61 17.3 7.61 40.44"></polygon>
         </svg>
       ),
+      name: "1",
     },
     // RADIANT
     {
@@ -634,6 +645,7 @@ const ShapeSelector = () => {
           <path d="M36.21,11.19c-11.6,0-25.31-5.7-25.47-5.77L10.93,5c.19.08,18.61,7.74,30.68,5.23l.1.48A27.11,27.11,0,0,1,36.21,11.19Z"></path>
         </svg>
       ),
+      name: "9",
     },
   ];
   return (
@@ -646,12 +658,23 @@ const ShapeSelector = () => {
             <div
               key={i}
               className={`${
-                i === currentShape
+                currentShapeOptions.includes(shape.name)
                   ? "text-indigo-700 border-indigo-700 border-b-2"
                   : "text-gray-600"
               }`}
               onClick={() => {
-                setCurrentShape(i);
+                if (currentShapeOptions.includes(shape.name)) {
+                  setCurrentShapeOptions(
+                    currentShapeOptions.filter((op) => {
+                      return op !== shape.name;
+                    })
+                  );
+                } else {
+                  setCurrentShapeOptions((currentShapeOptions) => [
+                    ...currentShapeOptions,
+                    shape.name,
+                  ]);
+                }
               }}
             >
               {shape.svg}
