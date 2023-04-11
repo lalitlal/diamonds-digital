@@ -6,6 +6,7 @@ import { DiamondContext } from "./context/DiamondContext";
 import ProductDetail from "../components/ProductDetail";
 
 const Diamonds = () => {
+  const marginMultiplier = 1.25;
   const caret = (
     <svg
       fill="none"
@@ -232,7 +233,7 @@ const Diamonds = () => {
                         {data.cut}
                       </div>
                       <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 w-1/6 text-center">
-                        {`CA$${data.price}`}
+                        {`CA$${data.price * marginMultiplier}`}
                       </div>
                     </div>
                     <div
@@ -246,7 +247,7 @@ const Diamonds = () => {
                             color={data.color}
                             clarity={data.clarity}
                             cut={data.cut}
-                            price={data.price}
+                            price={data.price * marginMultiplier}
                             data={data}
                           ></ProductDetail>
                         </>
