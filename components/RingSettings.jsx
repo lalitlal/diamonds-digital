@@ -8,7 +8,7 @@ import ImageSlider from "./ImageSlider";
 const RingSettings = () => {
   const { bandColor, setBandColor } = useContext(DiamondContext);
   const [imagesIndex, setImagesIndex] = useState(0);
-  const baseImage = "/../public/rings/class_solitaire/oval/";
+  const baseImage = "/rings/class_solitaire/oval/";
   const imageWidth = 500;
   const imageHeight = 500;
 
