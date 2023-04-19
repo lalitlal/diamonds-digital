@@ -28,11 +28,10 @@ export default function Home() {
       <Testimonials></Testimonials>
       <FAQ></FAQ>
       <Footer></Footer>
-      {/* Custom Ring Banner Page */}
+      {/* Custom Ring Banner PageMasdasd*/}
       {/* Fix Delete Icons Alignment - USING DIVS AND FLEX FOR LINE ITEMS*/}
       {/* Make Hero on Main page to be a slider of images */}
-      {/* 3D renders where the user can 360 the product! */}
-      {/* Fix Pupeteer on Vercel */}
+      {/* 3D renders where the user can 360 the product! IN PROGRESS */}
       {/* PHOTOSHOOT FOR WEDDING BANDS, DIAMONDS, AND RINGS */}
       {/* Fill pictures for GALLERY */}
     </>

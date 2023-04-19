@@ -5,11 +5,9 @@ import heroBandsWater from "../public/assets/hero-bands-water.jpg";
 import heroBands from "../public/assets/hero-bands.jpg";
 import heroBracelet from "../public/assets/hero-bracelet.jpg";
 import heroDiamonds from "../public/assets/hero-diamonds.jpg";
+import ImageSlider from "./ImageSlider";
 
 const Hero = () => {
-  const generateRandomInteger = (max) => {
-    return Math.floor(Math.random() * max);
-  };
   const image_urls = {
     0: heroBandsWater,
     1: heroBands,
@@ -17,7 +15,6 @@ const Hero = () => {
     3: heroDiamonds,
   };
 
-  const imageSelector = generateRandomInteger(Object.keys(image_urls).length);
   return (
     <>
       <div className="flex mx-auto relative">
