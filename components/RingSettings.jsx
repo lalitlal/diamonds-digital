@@ -6,9 +6,11 @@ import { DiamondContext } from "./context/DiamondContext";
 import ImageSlider from "./ImageSlider";
 
 const RingSettings = () => {
-  const { bandColor, setBandColor } = useContext(DiamondContext);
+  const { bandColor, setBandColor, currentSettingDiamondShape, stoneMapping } =
+    useContext(DiamondContext);
   const [imagesIndex, setImagesIndex] = useState(0);
-  const baseImage = "/rings/class_solitaire/oval/";
+  const diamond_name = stoneMapping[currentSettingDiamondShape];
+  const baseImage = `/rings/class_solitaire/${diamond_name}/`;
   const imageWidth = 500;
   const imageHeight = 500;
 
@@ -17,25 +19,25 @@ const RingSettings = () => {
       color: "Rose Gold",
       images: [
         {
-          src: baseImage.concat("rose_gold/rose_a.jpg"),
+          src: baseImage.concat("1_R.jpg"),
           alt: "rose_oval_a",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("rose_gold/rose_b.jpg"),
+          src: baseImage.concat("2_R.jpg"),
           alt: "rose_oval_b",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("rose_gold/rose_c.jpg"),
+          src: baseImage.concat("3_R.jpg"),
           alt: "rose_oval_c",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("rose_gold/rose_d.jpg"),
+          src: baseImage.concat("4_R.jpg"),
           alt: "rose_oval_d",
           width: { imageWidth },
           height: { imageHeight },
@@ -46,25 +48,25 @@ const RingSettings = () => {
       color: "White Gold",
       images: [
         {
-          src: baseImage.concat("white_gold/white_a.jpg"),
+          src: baseImage.concat("1_W.jpg"),
           alt: "white_oval_a",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("white_gold/white_b.jpg"),
+          src: baseImage.concat("2_W.jpg"),
           alt: "white_oval_b",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("white_gold/white_c.jpg"),
+          src: baseImage.concat("3_W.jpg"),
           alt: "white_oval_c",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("white_gold/white_d.jpg"),
+          src: baseImage.concat("4_W.jpg"),
           alt: "white_oval_d",
           width: { imageWidth },
           height: { imageHeight },
@@ -75,25 +77,25 @@ const RingSettings = () => {
       color: "Yellow Gold",
       images: [
         {
-          src: baseImage.concat("yellow_gold/yellow_a.jpg"),
+          src: baseImage.concat("1_Y.jpg"),
           alt: "yellow_oval_a",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("yellow_gold/yellow_b.jpg"),
+          src: baseImage.concat("2_Y.jpg"),
           alt: "yellow_oval_b",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("yellow_gold/yellow_c.jpg"),
+          src: baseImage.concat("3_Y.jpg"),
           alt: "yellow_oval_c",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("yellow_gold/yellow_d.jpg"),
+          src: baseImage.concat("4_Y.jpg"),
           alt: "yellow_oval_d",
           width: { imageWidth },
           height: { imageHeight },
@@ -104,25 +106,25 @@ const RingSettings = () => {
       color: "Platinum",
       images: [
         {
-          src: baseImage.concat("white_gold/white_a.jpg"),
+          src: baseImage.concat("1_W.jpg"),
           alt: "white_oval_a",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("white_gold/white_b.jpg"),
+          src: baseImage.concat("2_W.jpg"),
           alt: "white_oval_b",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("white_gold/white_c.jpg"),
+          src: baseImage.concat("3_W.jpg"),
           alt: "white_oval_c",
           width: { imageWidth },
           height: { imageHeight },
         },
         {
-          src: baseImage.concat("white_gold/white_d.jpg"),
+          src: baseImage.concat("4_W.jpg"),
           alt: "white_oval_d",
           width: { imageWidth },
           height: { imageHeight },

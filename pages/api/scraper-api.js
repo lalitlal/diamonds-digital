@@ -28,44 +28,114 @@ const handler = async (req, res) => {
   res.json(data);
 };
 
-export default handler;
+// const handler = async (req, res) => {
+//   const API_URL = "https://integrations.nivoda.net/api/diamonds";
+//   // the API_URL for production is https://integrations.nivoda.net/api/diamonds';
 
-// if (req.method === "POST") {
-//   try {
-//     // https://scrapingant.com/blog/puppeteer-post-put-delete-request
-//     const browser = await puppeteer.launch({ headless: false });
-//     const page = await browser.newPage();
-//     // Wait for 5 seconds to let everything load
-//     new Promise((r) => setTimeout(r, 5000));
+//   // Great documentation can be found here:
+//   // https://graphql.org/graphql-js/graphql-clients/
 
-//     await page.setRequestInterception(true);
-//     console.log(req.body);
-//     page.once("request", (request) => {
-//       request.continue({
-//         method: "POST",
-//         postData: req.body,
-//         // headers: { "Content-Type": "application/json" },
-//       });
-//     });
-//     await page.goto(
-//       "https://worker.brilliance.com/api/v1/lab-grown-diamond-search"
-//     );
-//     const data = await page.content();
-//     await page.close();
-//     await browser.close();
-
-//     if (data) {
-//       const root = await parse(data);
-//       const json_data = JSON.parse(root.querySelector("pre").rawText);
-//       res
-//         .status(200)
-//         .json({ diamonds: json_data.diamond, message: "SUCCESS" });
-//     } else {
-//       res.status(400).end();
+//   // authentication query
+//   // for production, the username and password are the same as what you would use to login to the Nivoda platform
+//   // for staging, the username and password can be requested from tech @ nivoda dot net
+//   const authenticate_query = `{
+//     authenticate {
+//       username_and_password(username: "team@honestdev.app", password: "Ll123456!") {
+//         token
+//       }
 //     }
-//   } catch (err) {
-//     res.status(500).end();
 //   }
-// } else {
-//   res.status(400).end();
-// }
+//   `;
+
+//   const authenticate_result = await fetch(API_URL, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ query: authenticate_query }),
+//   });
+//   const auth_res = await authenticate_result.json();
+
+//   // the authentication token to get in future requests
+//   console.log(auth_res);
+//   const { token } = auth_res.data.authenticate.username_and_password;
+
+//   // example diamond query
+//   // note that this does not include all available fields, to see more fields please refer to the documentation
+//   const diamond_query = `
+//   query {
+//     diamonds_by_query(
+//       query: {
+//         labgrown: false,
+//         shapes: ["ROUND"],
+//         sizes: [{ from: 1, to: 1.5}],
+//         has_v360: true,
+//         has_image: true,
+//         color: [D,E]
+//       },
+//       offset: 0,
+//       limit: 50,
+//       order: { type: price, direction: ASC }
+//     ) {
+//       items {
+//         id
+//         diamond {
+//           id
+//           video
+//           image
+//           availability
+//           supplierStockId
+//           brown
+//           green
+//           milky
+//           eyeClean
+//           mine_of_origin
+//           certificate {
+//             id
+//             lab
+//             shape
+//             certNumber
+//             cut
+//             carats
+//             clarity
+//             polish
+//             symmetry
+//             color
+//             width
+//             length
+//             depth
+//             girdle
+//             floInt
+//             floCol
+//             depthPercentage
+//             table
+//           }
+//         }
+//         price
+//         discount
+//       }
+//       total_count
+//     }
+//   }
+// `;
+
+//   const result = await fetch(API_URL, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${token}`,
+//     },
+//     body: JSON.stringify({ query: diamond_query }),
+//   });
+
+//   const diamond_res = await result.json();
+//   console.log(diamond_res);
+//   const { items, total_count } = diamond_res.data.diamonds_by_query;
+
+//   console.log({ items, total_count });
+
+//   // example to access a diamond is mapping over the items
+//   // i.e. items[0].diamond.certificate.certNumber will give you the certificate number of the first item
+// };
+
+export default handler;

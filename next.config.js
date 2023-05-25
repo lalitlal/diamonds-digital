@@ -17,4 +17,10 @@ const headers = async () => {
   ];
 };
 
-module.exports = { nextConfig, headers };
+module.exports = {
+  nextConfig,
+  headers,
+  images: {
+    unoptimized: true,
+  },
+};

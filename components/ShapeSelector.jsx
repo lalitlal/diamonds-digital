@@ -1,9 +1,31 @@
 import React, { useContext, useState } from "react";
 import { DiamondContext } from "./context/DiamondContext";
 
-const ShapeSelector = () => {
-  const { currentShapeOptions, setCurrentShapeOptions } =
-    useContext(DiamondContext);
+const ShapeSelector = ({ singular = false }) => {
+  const {
+    currentShapeOptions,
+    setCurrentShapeOptions,
+    setCurrentSettingDiamondShape,
+  } = useContext(DiamondContext);
+
+  const handleClick = (shape) => {
+    if (!singular) {
+      if (currentShapeOptions.includes(shape.name)) {
+        setCurrentShapeOptions(
+          currentShapeOptions.filter((op) => {
+            return op !== shape.name;
+          })
+        );
+      } else {
+        setCurrentShapeOptions((currentShapeOptions) => [
+          ...currentShapeOptions,
+          shape.name,
+        ]);
+      }
+    } else {
+      setCurrentSettingDiamondShape(shape.name);
+    }
+  };
 
   const shapes = [
     // ROUND BRILLIANT
@@ -662,20 +684,7 @@ const ShapeSelector = () => {
                   ? "text-indigo-700 border-indigo-700 border-b-2"
                   : "text-gray-600"
               }`}
-              onClick={() => {
-                if (currentShapeOptions.includes(shape.name)) {
-                  setCurrentShapeOptions(
-                    currentShapeOptions.filter((op) => {
-                      return op !== shape.name;
-                    })
-                  );
-                } else {
-                  setCurrentShapeOptions((currentShapeOptions) => [
-                    ...currentShapeOptions,
-                    shape.name,
-                  ]);
-                }
-              }}
+              onClick={() => handleClick(shape)}
             >
               {shape.svg}
             </div>

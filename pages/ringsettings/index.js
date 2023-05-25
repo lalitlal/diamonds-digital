@@ -13,6 +13,7 @@ import Gallery from "../../components/Gallery";
 import Stepper from "../../components/Stepper";
 import ShapeSelector from "../../components/ShapeSelector";
 import MetalSelector from "../../components/MetalSelector";
+import SingleShapeSelector from "../../components/SingleShapeSelector";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +30,7 @@ export default function Home() {
       <Header></Header>
       <Stepper stage={1}></Stepper>
       <div className="flex justify-center">
-        <ShapeSelector></ShapeSelector>
+        <SingleShapeSelector singular={true}></SingleShapeSelector>
       </div>
       <div className="mt-3">
         <MetalSelector></MetalSelector>
