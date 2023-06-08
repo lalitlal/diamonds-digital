@@ -1,23 +1,15 @@
 import { useState } from "react";
 import Image from "next/image";
 
-function ImageSlider({ images, imageClass }) {
+function ImageSlider({ images, imageClass, checkout = false }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
   };
 
-  const dummyImage = (
-    <img
-      alt="ecommerce"
-      class="object-cover object-center w-full h-full block"
-      src="https://dummyimage.com/420x260"
-    />
-  );
-
   return (
-    <div className="relative h-96">
+    <div className={`relative ${checkout ? "h-48 rounded-3xl" : "h-96"}`}>
       {images.map((image, index) => (
         <div
           key={index}

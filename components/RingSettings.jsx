@@ -6,15 +6,13 @@ import { DiamondContext } from "./context/DiamondContext";
 import ImageSlider from "./ImageSlider";
 
 const RingSettings = () => {
-  const { bandColor, setBandColor, currentSettingDiamondShape, stoneMapping } =
-    useContext(DiamondContext);
+  const { bandColor, currentSettingDiamondShape } = useContext(DiamondContext);
   const [imagesIndex, setImagesIndex] = useState(0);
-  const diamond_name = stoneMapping[currentSettingDiamondShape];
-  const baseImage = `/rings/class_solitaire/${diamond_name}/`;
+  const baseImage = `/rings/class_solitaire/${currentSettingDiamondShape}/`;
   const imageWidth = 500;
   const imageHeight = 500;
 
-  const images = [
+  const fixedImages = [
     {
       color: "Rose Gold",
       images: [
@@ -133,13 +131,13 @@ const RingSettings = () => {
     },
   ];
 
-  const dummyImage = (
-    <img
-      alt="ecommerce"
-      class="object-cover object-center w-full h-full block"
-      src="https://dummyimage.com/420x260"
-    />
-  );
+  // const dummyImage = (
+  //   <img
+  //     alt="ecommerce"
+  //     class="object-cover object-center w-full h-full block"
+  //     src="https://dummyimage.com/420x260"
+  //   />
+  // );
 
   useEffect(() => {
     if (bandColor === "Rose Gold") {
@@ -184,7 +182,7 @@ const RingSettings = () => {
             return (
               <div key={i} class="lg:w-1/4 md:w-1/2 p-4 w-full">
                 <ImageSlider
-                  images={images[imagesIndex].images}
+                  images={fixedImages[imagesIndex].images}
                   imageClass={"w-400 h-400 object-cover object-center"}
                 ></ImageSlider>
 

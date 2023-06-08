@@ -1,36 +1,158 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
+import ImageSlider from "./ImageSlider";
 
 function CheckoutItems({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
-  const diamondContext = useContext(DiamondContext);
-
+  const { bandColor, currentSettingDiamondShape, selectedDiamondShape } =
+    useContext(DiamondContext);
+  const [imagesIndex, setImagesIndex] = useState(0);
   const [cartEmpty, setCartEmpty] = useState(false);
+  const imageWidth = 500;
+  const imageHeight = 500;
+
+  const baseImage = `/rings/class_solitaire/${selectedDiamondShape}/`;
+  const fixedImages = [
+    {
+      color: "Rose Gold",
+      images: [
+        {
+          src: baseImage.concat("1_R.jpg"),
+          alt: "rose_oval_a",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("2_R.jpg"),
+          alt: "rose_oval_b",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("3_R.jpg"),
+          alt: "rose_oval_c",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("4_R.jpg"),
+          alt: "rose_oval_d",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+      ],
+    },
+    {
+      color: "White Gold",
+      images: [
+        {
+          src: baseImage.concat("1_W.jpg"),
+          alt: "white_oval_a",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("2_W.jpg"),
+          alt: "white_oval_b",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("3_W.jpg"),
+          alt: "white_oval_c",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("4_W.jpg"),
+          alt: "white_oval_d",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+      ],
+    },
+    {
+      color: "Yellow Gold",
+      images: [
+        {
+          src: baseImage.concat("1_Y.jpg"),
+          alt: "yellow_oval_a",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("2_Y.jpg"),
+          alt: "yellow_oval_b",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("3_Y.jpg"),
+          alt: "yellow_oval_c",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("4_Y.jpg"),
+          alt: "yellow_oval_d",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+      ],
+    },
+    {
+      color: "Platinum",
+      images: [
+        {
+          src: baseImage.concat("1_W.jpg"),
+          alt: "white_oval_a",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("2_W.jpg"),
+          alt: "white_oval_b",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("3_W.jpg"),
+          alt: "white_oval_c",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+        {
+          src: baseImage.concat("4_W.jpg"),
+          alt: "white_oval_d",
+          width: { imageWidth },
+          height: { imageHeight },
+        },
+      ],
+    },
+  ];
+  const imageSlider = (
+    <ImageSlider
+      checkout={true}
+      images={fixedImages[imagesIndex].images}
+      imageClass={"object-contain object-center"}
+    ></ImageSlider>
+  );
 
   const cartInfo = useMemo(() => {
-    const dummyImage = (
-      <img
-        alt="ecommerce"
-        class="object-cover object-center h-16 w-16 rounded"
-        src="https://dummyimage.com/420x260"
-      />
-    );
     return [
       {
         description: cartContext.diamond,
         name: "Loose Diamond",
         price: `CA$ `.concat(cartContext.diamondPrice),
-        image: dummyImage,
       },
       {
         description:
           cartContext.setting === undefined
             ? undefined
-            : `${cartContext.setting} `.concat(`${diamondContext.bandColor}`),
+            : `${cartContext.setting} `.concat(`${bandColor}`),
         name: "Setting",
         price: `CA$ `.concat(cartContext.settingPrice),
-        image: dummyImage,
       },
     ];
   }, [
@@ -38,7 +160,7 @@ function CheckoutItems({ onRemoveItem }) {
     cartContext.diamondPrice,
     cartContext.setting,
     cartContext.settingPrice,
-    diamondContext.bandColor,
+    bandColor,
   ]);
 
   useEffect(() => {
@@ -51,6 +173,21 @@ function CheckoutItems({ onRemoveItem }) {
       setCartEmpty(false);
     }
   }, [cartInfo]);
+
+  useEffect(() => {
+    if (bandColor === "Rose Gold") {
+      setImagesIndex(0);
+    }
+    if (bandColor === "White Gold") {
+      setImagesIndex(1);
+    }
+    if (bandColor === "Yellow Gold") {
+      setImagesIndex(2);
+    }
+    if (bandColor === "Platinum") {
+      setImagesIndex(3);
+    }
+  }, [bandColor, setImagesIndex]);
 
   return (
     <div>
@@ -73,13 +210,18 @@ function CheckoutItems({ onRemoveItem }) {
                 </div>
               )}
               <div class="space-y-6">
+                {!cartEmpty && imageSlider}
+                {!cartEmpty && (
+                  <div className="text-xs justify-center text-center">
+                    *Picture for reference only
+                  </div>
+                )}
                 {!cartEmpty &&
                   cartInfo.map((lineItem, i) => {
                     return (
                       lineItem.description !== undefined && (
-                        <div key={i} class="flex items-center gap-6">
-                          {lineItem.image}
-                          <div>
+                        <div key={i} class="flex flex-1 items-center gap-6">
+                          <div className="flex flex-col flex-grow">
                             <h3 class="text-sm text-gray-900">
                               {lineItem.name}
                             </h3>

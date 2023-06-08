@@ -64,6 +64,7 @@ const Checkout = () => {
       ),
       settingPrice: cartContext.settingPrice * 100,
       // TODO: Setting thickness
+      // Ring Finger Size!!!
     };
     const res = await fetch(`/api/checkout_sessions`, {
       method: "POST",

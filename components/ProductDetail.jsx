@@ -1,9 +1,16 @@
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import { CartContext } from "./context/CartContext";
+import { DiamondContext } from "./context/DiamondContext";
 
 const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
   const cartContext = useContext(CartContext);
+  const {
+    currentSettingDiamondShape,
+    setCurrentSettingDiamondShape,
+    selectedDiamondShape,
+    setSelectedDiamondShape,
+  } = useContext(DiamondContext);
   const [currentDisplay, setCurrentDisplay] = useState(0);
   const productOptions = [
     {
@@ -120,6 +127,8 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
                     const diamondStatus = `${data.shape} ${data.carat} ${data.color} ${data.clarity} ${data.cut}`;
                     cartContext.setDiamond(diamondStatus);
                     cartContext.setDiamondPrice(data.price);
+                    setCurrentSettingDiamondShape(data.shape.toLowerCase());
+                    setSelectedDiamondShape(data.shape.toLowerCase());
                   }}
                 >
                   Select
