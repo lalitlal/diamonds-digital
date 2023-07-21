@@ -10,6 +10,7 @@ import { deskTool } from "sanity/desk";
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import schemas from "/sanity/schemas";
 
+console.log("WHAT IS GOING ON", dataset, projectId);
 export default defineConfig({
   basePath: "/studio",
   projectId,
