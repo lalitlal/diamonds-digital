@@ -1,169 +1,150 @@
 import Link from "next/link";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import ImageSlider from "./ImageSlider";
+import { getCheckoutItem } from "../sanity/sanity-utils";
 
 function CartModal({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
+  const diamondContext = useContext(DiamondContext);
   const [cartEmpty, setCartEmpty] = useState(false);
-  const { bandColor, currentSettingDiamondShape, selectedDiamondShape } =
-    useContext(DiamondContext);
-  const [imagesIndex, setImagesIndex] = useState(0);
-  const imageWidth = 500;
-  const imageHeight = 500;
+  const [imageSlider, setImageSlider] = useState(undefined);
+  const [products, setProducts] = useState([]);
+  const dummyImageURL = "https://dummyimage.com/420x260";
 
-  const baseImage = `/rings/class_solitaire/${selectedDiamondShape}/`;
-  const fixedImages = [
-    {
-      color: "Rose Gold",
-      images: [
-        {
-          src: baseImage.concat("1_R.jpg"),
-          alt: "rose_oval_a",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("2_R.jpg"),
-          alt: "rose_oval_b",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("3_R.jpg"),
-          alt: "rose_oval_c",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("4_R.jpg"),
-          alt: "rose_oval_d",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-      ],
-    },
-    {
-      color: "White Gold",
-      images: [
-        {
-          src: baseImage.concat("1_W.jpg"),
-          alt: "white_oval_a",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("2_W.jpg"),
-          alt: "white_oval_b",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("3_W.jpg"),
-          alt: "white_oval_c",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("4_W.jpg"),
-          alt: "white_oval_d",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-      ],
-    },
-    {
-      color: "Yellow Gold",
-      images: [
-        {
-          src: baseImage.concat("1_Y.jpg"),
-          alt: "yellow_oval_a",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("2_Y.jpg"),
-          alt: "yellow_oval_b",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("3_Y.jpg"),
-          alt: "yellow_oval_c",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("4_Y.jpg"),
-          alt: "yellow_oval_d",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-      ],
-    },
-    {
-      color: "Platinum",
-      images: [
-        {
-          src: baseImage.concat("1_W.jpg"),
-          alt: "white_oval_a",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("2_W.jpg"),
-          alt: "white_oval_b",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("3_W.jpg"),
-          alt: "white_oval_c",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("4_W.jpg"),
-          alt: "white_oval_d",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-      ],
-    },
-  ];
+  const chosenDiamondShapeUpperCased = useCallback(() => {
+    if (
+      cartContext.diamondShape !== null &&
+      cartContext.diamondShape !== undefined
+    ) {
+      return (
+        cartContext.diamondShape.charAt(0).toUpperCase() +
+        cartContext.diamondShape.slice(1)
+      );
+    }
+    return undefined;
+  }, [cartContext.diamondShape]);
 
-  const imageSlider = (
-    <ImageSlider
-      checkout={true}
-      images={fixedImages[imagesIndex].images}
-      imageClass={"object-contain object-center"}
-    ></ImageSlider>
-  );
+  useEffect(() => {
+    // update cart context if diamond changed
+    if (cartContext.setting !== undefined) {
+      const chosenDiamondShape = chosenDiamondShapeUpperCased();
+      const currentCartSettingDiamond = cartContext.setting.split(" - ")[1];
+      if (
+        currentCartSettingDiamond !== chosenDiamondShape &&
+        chosenDiamondShape !== undefined
+      ) {
+        const newCartSettingDiamond = cartContext.setting.replace(
+          currentCartSettingDiamond,
+          chosenDiamondShape
+        );
+        cartContext.setSetting(newCartSettingDiamond);
+      }
+    }
+  }, [cartContext, chosenDiamondShapeUpperCased]);
+
+  useEffect(() => {
+    // refresh checkout products on context update
+    const fetchProducts = async () => {
+      try {
+        const chosenDiamondShape = chosenDiamondShapeUpperCased();
+
+        const title =
+          cartContext.setting === undefined
+            ? "Classic"
+            : cartContext.setting.split(" - ")[0];
+
+        const variantName =
+          cartContext.setting === undefined
+            ? `Classic - ${
+                chosenDiamondShape === undefined ? "Oval" : chosenDiamondShape
+              } - ${diamondContext.bandColor}`
+            : `${title} - ${
+                chosenDiamondShape === undefined ? "Oval" : chosenDiamondShape
+              } - ${diamondContext.bandColor}`;
+
+        const productsData = await getCheckoutItem(title, variantName);
+        setProducts(productsData);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, [
+    diamondContext.bandColor,
+    cartContext.setting,
+    chosenDiamondShapeUpperCased,
+  ]);
+
+  useEffect(() => {
+    // set image slider on context updates
+    const chosenDiamondShape = chosenDiamondShapeUpperCased();
+    if (products !== null && products != undefined && products.length > 0) {
+      const variant = products[0].variants;
+      const imageAlts = Array.from(
+        {
+          length:
+            variant !== null && variant !== undefined && variant.length > 0
+              ? variant[0].images.length
+              : 1,
+        },
+        (_, index) =>
+          `${
+            variant !== null && variant !== undefined && variant.length > 0
+              ? `${variant[0].variantDescription}_${index}`
+              : `${
+                  chosenDiamondShape === undefined ? "Oval" : chosenDiamondShape
+                }-${diamondContext.bandColor}_${index}_placeholder`
+          }`
+      );
+      const dummyImageSlider = (
+        <ImageSlider
+          checkout={true}
+          images={[dummyImageURL]}
+          imagesAlt={["The Best Diamond Image Slider"]}
+          imageClass={"object-contain object-center"}
+        ></ImageSlider>
+      );
+      const newImageSlider =
+        variant !== undefined && (variant !== null) & (variant.length > 0) ? (
+          <ImageSlider
+            checkout={true}
+            images={variant[0].images}
+            imagesAlt={imageAlts}
+            imageClass={"object-contain object-center"}
+          ></ImageSlider>
+        ) : (
+          { dummyImageSlider }
+        );
+      setImageSlider(newImageSlider);
+    }
+  }, [products, diamondContext.bandColor, chosenDiamondShapeUpperCased]);
 
   const cartInfo = useMemo(() => {
-    const dummyImage = (
-      <img
-        alt="ecommerce"
-        class="object-cover object-center h-16 w-16 rounded"
-        src="https://dummyimage.com/420x260"
-      />
-    );
     return [
       {
-        description: cartContext.diamond,
+        description:
+          cartContext.diamond === undefined
+            ? undefined
+            : ` ${cartContext.diamond} `,
         name: "Loose Diamond",
-        price: `CA$ `.concat(cartContext.diamondPrice),
-        image: dummyImage,
+        price: ` CA$ `.concat(cartContext.diamondPrice),
       },
       {
         description:
           cartContext.setting === undefined
             ? undefined
-            : `${cartContext.setting} `.concat(`${bandColor}`),
+            : ` ${cartContext.setting} `,
         name: "Setting",
-        price: `CA$ `.concat(cartContext.settingPrice),
-        image: dummyImage,
+        price: ` CA$ `.concat(cartContext.settingPrice),
       },
     ];
   }, [
@@ -184,21 +165,6 @@ function CartModal({ onRemoveItem }) {
     }
   }, [cartInfo]);
 
-  useEffect(() => {
-    if (bandColor === "Rose Gold") {
-      setImagesIndex(0);
-    }
-    if (bandColor === "White Gold") {
-      setImagesIndex(1);
-    }
-    if (bandColor === "Yellow Gold") {
-      setImagesIndex(2);
-    }
-    if (bandColor === "Platinum") {
-      setImagesIndex(3);
-    }
-  }, [bandColor, setImagesIndex]);
-
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
       <div className="flex justify-center mt-10 h-5/6">
@@ -206,7 +172,7 @@ function CartModal({ onRemoveItem }) {
           class="w-screen h-auto overflow-y-auto max-w-sm border border-gray-600 bg-gray-100 p-4 pt-4 sm:p-6 lg:p-8 rounded-3xl"
           aria-modal="true"
           role="dialog"
-          tabindex="-1"
+          tabIndex="-1"
         >
           <div className="flex justify-between">
             <h2 className="flex w-full justify-center text-center">
@@ -224,7 +190,7 @@ function CartModal({ onRemoveItem }) {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 class="h-5 w-5"
               >
@@ -284,7 +250,7 @@ function CartModal({ onRemoveItem }) {
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                           stroke="currentColor"
                           class={`w-6 h-6 hover:text-indigo-400 cursor-pointer`}
                         >

@@ -4,6 +4,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   // CART CONTEXTS!
+  const [diamondShape, setDiamondShape] = useState(undefined);
   const [diamond, setDiamond] = useState(undefined);
   const [setting, setSetting] = useState(undefined);
   const [diamondPrice, setDiamondPrice] = useState(0.0);
@@ -14,6 +15,8 @@ export const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
+        diamondShape,
+        setDiamondShape,
         diamond,
         setDiamond,
         setting,

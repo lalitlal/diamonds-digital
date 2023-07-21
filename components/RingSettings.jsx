@@ -4,205 +4,120 @@ import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import ImageSlider from "./ImageSlider";
+import { getProducts, getCustomProduct } from "../sanity/sanity-utils";
 
 const RingSettings = () => {
-  const { bandColor, currentSettingDiamondShape } = useContext(DiamondContext);
-  const [imagesIndex, setImagesIndex] = useState(0);
-  const baseImage = `/rings/class_solitaire/${currentSettingDiamondShape}/`;
-  const imageWidth = 500;
-  const imageHeight = 500;
+  const diamondContext = useContext(DiamondContext);
+  const cartContext = useContext(CartContext);
+  const [products, setProducts] = useState([]);
 
-  const fixedImages = [
-    {
-      color: "Rose Gold",
-      images: [
-        {
-          src: baseImage.concat("1_R.jpg"),
-          alt: "rose_oval_a",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("2_R.jpg"),
-          alt: "rose_oval_b",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("3_R.jpg"),
-          alt: "rose_oval_c",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("4_R.jpg"),
-          alt: "rose_oval_d",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-      ],
-    },
-    {
-      color: "White Gold",
-      images: [
-        {
-          src: baseImage.concat("1_W.jpg"),
-          alt: "white_oval_a",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("2_W.jpg"),
-          alt: "white_oval_b",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("3_W.jpg"),
-          alt: "white_oval_c",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("4_W.jpg"),
-          alt: "white_oval_d",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-      ],
-    },
-    {
-      color: "Yellow Gold",
-      images: [
-        {
-          src: baseImage.concat("1_Y.jpg"),
-          alt: "yellow_oval_a",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("2_Y.jpg"),
-          alt: "yellow_oval_b",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("3_Y.jpg"),
-          alt: "yellow_oval_c",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("4_Y.jpg"),
-          alt: "yellow_oval_d",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-      ],
-    },
-    {
-      color: "Platinum",
-      images: [
-        {
-          src: baseImage.concat("1_W.jpg"),
-          alt: "white_oval_a",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("2_W.jpg"),
-          alt: "white_oval_b",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("3_W.jpg"),
-          alt: "white_oval_c",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-        {
-          src: baseImage.concat("4_W.jpg"),
-          alt: "white_oval_d",
-          width: { imageWidth },
-          height: { imageHeight },
-        },
-      ],
-    },
-  ];
+  const dummyImageURL = "https://dummyimage.com/420x260";
 
-  // const dummyImage = (
-  //   <img
-  //     alt="ecommerce"
-  //     class="object-cover object-center w-full h-full block"
-  //     src="https://dummyimage.com/420x260"
-  //   />
-  // );
+  const upperCaseFirstLetter = () => {
+    if (
+      cartContext.diamondShape !== null &&
+      cartContext.diamondShape !== undefined
+    ) {
+      return (
+        cartContext.diamondShape.charAt(0).toUpperCase() +
+        cartContext.diamondShape.slice(1)
+      );
+    }
+    return undefined;
+  };
 
   useEffect(() => {
-    if (bandColor === "Rose Gold") {
-      setImagesIndex(0);
-    }
-    if (bandColor === "White Gold") {
-      setImagesIndex(1);
-    }
-    if (bandColor === "Yellow Gold") {
-      setImagesIndex(2);
-    }
-    if (bandColor === "Platinum") {
-      setImagesIndex(3);
-    }
-  }, [bandColor, setImagesIndex]);
+    const fetchProducts = async () => {
+      try {
+        const uppercase_stone_str =
+          diamondContext.currentSettingDiamondShape.charAt(0).toUpperCase() +
+          diamondContext.currentSettingDiamondShape.slice(1);
+        const productsData = await getProducts(
+          uppercase_stone_str,
+          diamondContext.bandColor
+        );
+        const customProduct = await getCustomProduct();
+        const clobbered = productsData.concat(customProduct);
+        setProducts(clobbered);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
 
-  const settingInfo = [
-    {
-      category: "Signature Collection",
-      name: "Solitaire",
-      price: 550,
-    },
-    {
-      category: "Classic Collection",
-      name: "Solitaire",
-      price: 550,
-    },
-    { category: "CATEGORY", name: "Solitaire", price: 550 },
-    { category: "CATEGORY", name: "Solitaire", price: 550 },
-    { category: "CATEGORY", name: "Solitaire", price: 550 },
-    { category: "CATEGORY", name: "Solitaire", price: 550 },
-    { category: "CATEGORY", name: "Solitaire", price: 550 },
-    { category: "CATEGORY", name: "Solitaire", price: 550 },
-  ];
-  const cartContext = useContext(CartContext);
+    fetchProducts();
+  }, [diamondContext.currentSettingDiamondShape, diamondContext.bandColor]);
 
   return (
     <section class="text-gray-600 body-font">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap -m-4">
-          {settingInfo.map((setting, i) => {
+          {products.map((prod, i) => {
+            const { _id, title, description, type } = prod;
+            const variant = prod.variants;
+            const imageAlts = Array.from(
+              {
+                length:
+                  variant !== null &&
+                  variant !== undefined &&
+                  variant.length > 0
+                    ? variant[0].images.length
+                    : 1,
+              },
+              (_, index) =>
+                `${
+                  variant !== null &&
+                  variant !== undefined &&
+                  variant.length > 0
+                    ? `${variant[0].variantDescription}_${index}`
+                    : `${upperCaseFirstLetter()}-${
+                        diamondContext.bandColor
+                      }_${index}_placeholder`
+                }`
+            );
             return (
-              <div key={i} class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <ImageSlider
-                  images={fixedImages[imagesIndex].images}
-                  imageClass={"w-400 h-400 object-cover object-center"}
-                ></ImageSlider>
+              <div key={prod._id} class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                {prod.variants !== null &&
+                prod.variants !== undefined &&
+                variant.length > 0 ? (
+                  <ImageSlider
+                    images={variant[0].images}
+                    imageAlts={imageAlts}
+                    imageClass={"w-400 h-400 object-cover object-center"}
+                  ></ImageSlider>
+                ) : (
+                  <ImageSlider
+                    images={[dummyImageURL]}
+                    imageAlts={imageAlts}
+                    imageClass={"w-400 h-400 object-cover object-center"}
+                  ></ImageSlider>
+                )}
 
                 {/* <a class="block relative h-48 rounded overflow-hidden">
                   {setting.image}
                 </a> */}
                 <div class="mt-4">
                   <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                    {setting.category}
+                    {description}
                   </h3>
                   <h2 class="text-gray-900 title-font text-lg font-medium">
-                    {setting.name}
+                    {title}
                   </h2>
-                  <p class="mt-1">{setting.price}</p>
+                  <p class="mt-1">{prod.variants[0].price}</p>
                   <Link href="/checkout">
                     <button
                       onClick={() => {
-                        const settingStatus = `${setting.category} ${setting.name}`;
-                        cartContext.setSetting(settingStatus);
-                        cartContext.setSettingPrice(setting.price);
+                        const settingStatus = `${prod.variants[0].variantDescription}`;
+                        const currentDiamond = upperCaseFirstLetter();
+                        if (currentDiamond !== undefined) {
+                          const newSettingStatus = settingStatus.replace(
+                            settingStatus.split(" - ")[1],
+                            currentDiamond
+                          );
+                          cartContext.setSetting(newSettingStatus);
+                        } else {
+                          cartContext.setSetting(settingStatus);
+                        }
+                        cartContext.setSettingPrice(prod.variants[0].price);
                       }}
                       class="flex ml-auto text-white bg-indigo-700 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-800 rounded"
                     >

@@ -1,13 +1,12 @@
 import { useState } from "react";
 import Image from "next/image";
 
-function ImageSlider({ images, imageClass, checkout = false }) {
+function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
   };
-
   return (
     <div className={`relative ${checkout ? "h-48 rounded-3xl" : "h-96"}`}>
       {images.map((image, index) => (
@@ -19,8 +18,8 @@ function ImageSlider({ images, imageClass, checkout = false }) {
         >
           {/* {dummyImage} */}
           <Image
-            src={image.src}
-            alt={image.alt}
+            src={image}
+            alt={"YUPERS"}
             width={400}
             height={400}
             quality={75}

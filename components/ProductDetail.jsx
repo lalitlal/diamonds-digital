@@ -5,12 +5,7 @@ import { DiamondContext } from "./context/DiamondContext";
 
 const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
   const cartContext = useContext(CartContext);
-  const {
-    currentSettingDiamondShape,
-    setCurrentSettingDiamondShape,
-    selectedDiamondShape,
-    setSelectedDiamondShape,
-  } = useContext(DiamondContext);
+  const diamondContext = useContext(DiamondContext);
   const [currentDisplay, setCurrentDisplay] = useState(0);
   const productOptions = [
     {
@@ -37,7 +32,7 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
       class="w-6 h-6 hover:cursor-pointer ml-2"
     >
@@ -127,8 +122,13 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
                     const diamondStatus = `${data.shape} ${data.carat} ${data.color} ${data.clarity} ${data.cut}`;
                     cartContext.setDiamond(diamondStatus);
                     cartContext.setDiamondPrice(data.price);
-                    setCurrentSettingDiamondShape(data.shape.toLowerCase());
-                    setSelectedDiamondShape(data.shape.toLowerCase());
+                    diamondContext.setCurrentSettingDiamondShape(
+                      data.shape.toLowerCase()
+                    );
+                    diamondContext.setSelectedDiamondShape(
+                      data.shape.toLowerCase()
+                    );
+                    cartContext.setDiamondShape(data.shape.toLowerCase());
                   }}
                 >
                   Select

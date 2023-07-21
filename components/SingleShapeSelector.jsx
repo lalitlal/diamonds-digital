@@ -25,6 +25,7 @@ const SingleShapeSelector = ({ singular = true }) => {
         ]);
       }
     } else {
+      // const uppercased = shapeKey.charAt(0).toUpperCase() + shapeKey.slice(1);
       setCurrentSettingDiamondShape(shapeKey);
     }
   };

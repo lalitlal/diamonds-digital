@@ -8,7 +8,7 @@ const iconObjects = [
         stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
-        stroke-width="2"
+        strokeWidth="2"
         class="w-5 h-5 mr-3"
         viewBox="0 0 24 24"
       >
@@ -24,7 +24,7 @@ const iconObjects = [
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        stroke-width="1.5"
+        strokeWidth="1.5"
         stroke="currentColor"
         class="w-5 h-5 mr-3"
       >
@@ -44,7 +44,7 @@ const iconObjects = [
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        stroke-width="1.5"
+        strokeWidth="1.5"
         stroke="currentColor"
         class="w-5 h-5 mr-3"
       >

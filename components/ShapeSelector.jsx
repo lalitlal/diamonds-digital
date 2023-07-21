@@ -3,6 +3,7 @@ import { DiamondContext } from "./context/DiamondContext";
 
 const ShapeSelector = ({ singular = false }) => {
   const {
+    currentSettingDiamondShape,
     currentShapeOptions,
     setCurrentShapeOptions,
     setCurrentSettingDiamondShape,
