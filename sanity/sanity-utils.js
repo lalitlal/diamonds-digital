@@ -4,7 +4,7 @@ export const getProducts = async (stone, metal) => {
   const client = createClient({
     projectId,
     dataset,
-    apiVersion: "2023-03-04",
+    apiVersion: "2023-07-07",
   });
 
   const groqQuery = `*[_type == "product" && title != 'Completely Custom'] {
@@ -37,7 +37,7 @@ export const getCustomProduct = async () => {
   const client = createClient({
     projectId,
     dataset,
-    apiVersion: "2023-03-04",
+    apiVersion: "2023-07-07",
   });
 
   const groqQuery = `*[_type == "product" && title == $titleFilter] {
@@ -69,7 +69,7 @@ export const getCheckoutItem = async (title, variantDescription) => {
   const client = createClient({
     projectId,
     dataset,
-    apiVersion: "2023-03-04",
+    apiVersion: "2023-07-07",
   });
 
   const groqQuery = `*[_type == "product" && title == $title] {

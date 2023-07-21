@@ -6,7 +6,7 @@ const WhatsIncluded = () => {
       fill="none"
       stroke="currentColor"
       stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinejoin="round"
       strokeWidth="3"
       class="text-slate-500 w-6 h-6 flex-shrink-0 mr-4"
       viewBox="0 0 24 24"
