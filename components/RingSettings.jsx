@@ -27,11 +27,11 @@ const RingSettings = () => {
   };
 
   useEffect(() => {
-    console.log(
-      "Check Token",
-      process.env.NEXT_PUBLIC_SANITY_DATASET,
-      process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-    );
+    // console.log(
+    //   "Check Token",
+    //   process.env.NEXT_PUBLIC_SANITY_DATASET,
+    //   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+    // );
     const fetchProducts = async () => {
       try {
         const uppercase_stone_str =
