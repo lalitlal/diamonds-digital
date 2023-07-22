@@ -4,6 +4,7 @@ import getDiamonds from "../lib/GetDiamonds";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import ProductDetail from "../components/ProductDetail";
+import { bulkUploadDiamondsToSanity } from "../sanity/sanity-utils";
 
 const Diamonds = () => {
   const caret = (
@@ -116,6 +117,7 @@ const Diamonds = () => {
         if (res.status === 200) {
           const res_json = await res.json();
           setDiamondData(res_json.diamonds);
+          bulkUploadDiamondsToSanity(res_json.diamonds);
         }
       } catch (e) {
         console.log("failed fetching from backend: ", e);

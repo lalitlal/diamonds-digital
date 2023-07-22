@@ -8,7 +8,7 @@ import { deskTool } from "sanity/desk";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./sanity/env";
-import schemas from "/sanity/schemas";
+import schemas from "./sanity/schemas";
 
 // console.log("WHAT IS GOING ON", dataset, projectId);
 export default defineConfig({

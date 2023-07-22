@@ -7,6 +7,16 @@ const diamonds = {
   type: "document",
   fields: [
     {
+      name: "id",
+      title: "ID",
+      type: "string",
+    },
+    // {
+    //   name: "title",
+    //   title: "Title",
+    //   type: "string",
+    // },
+    {
       name: "carat",
       title: "Carat",
       type: "number",
@@ -37,7 +47,16 @@ const diamonds = {
       title: "Cut",
       type: "string",
       options: {
-        list: ["Excellent", "Very Good", "Good", "Fair", "Poor", "Other"],
+        list: [
+          "Excellent",
+          "Very Good",
+          "Good",
+          "Fair",
+          "Poor",
+          "Super Ideal",
+          "Ideal",
+          "Other",
+        ],
       },
     },
     {
@@ -71,14 +90,6 @@ const diamonds = {
       title: "Images",
       type: "array",
       of: [{ type: "image" }],
-    },
-    {
-      name: "lastUpdated",
-      title: "Last Updated",
-      type: "datetime",
-      options: {
-        dateFormat: "YYYY-MM-DDTHH",
-      },
     },
   ],
 };
