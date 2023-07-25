@@ -8,6 +8,7 @@ import NumericSlider from "./NumericSlider";
 import PriceSelector from "./PriceSelector";
 import ShapeSelector from "./ShapeSelector";
 import StringSlider from "./StringSlider";
+import { clarityMapping, colorMapping, cutMapping } from "./constants";
 
 const DiamondFilter = () => {
   const diamondContext = useContext(DiamondContext);
@@ -46,18 +47,7 @@ const DiamondFilter = () => {
             setValues={diamondContext.setColorValue}
             minValue={0}
             maxValue={9}
-            marks={{
-              0: "M",
-              1: "L",
-              2: "K",
-              3: "J",
-              4: "I",
-              5: "H",
-              6: "G",
-              7: "F",
-              8: "E",
-              9: "D",
-            }}
+            marks={colorMapping}
           ></StringSlider>
           {/* <ColorSelector></ColorSelector> */}
         </div>
@@ -68,18 +58,7 @@ const DiamondFilter = () => {
             setValues={diamondContext.setClarityValue}
             minValue={0}
             maxValue={9}
-            marks={{
-              0: "I1",
-              1: "SI3",
-              2: "SI2",
-              3: "SI1",
-              4: "VS2",
-              5: "VS1",
-              6: "VVS2",
-              7: "VVS1",
-              8: "IF",
-              9: "FL",
-            }}
+            marks={clarityMapping}
           ></StringSlider>
           {/* <ClaritySelector></ClaritySelector> */}
         </div>
@@ -90,13 +69,7 @@ const DiamondFilter = () => {
             setValues={diamondContext.setCutValue}
             minValue={0}
             maxValue={4}
-            marks={{
-              0: "Good",
-              1: "Very Good",
-              2: "Excellent",
-              3: "Ideal",
-              4: "Super Ideal",
-            }}
+            marks={cutMapping}
           ></StringSlider>
           {/* <CutSelector></CutSelector> */}
         </div>

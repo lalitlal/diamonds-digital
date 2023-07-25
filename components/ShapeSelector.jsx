@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { DiamondContext } from "./context/DiamondContext";
-
 const ShapeSelector = ({ singular = false }) => {
   const {
     currentSettingDiamondShape,
@@ -12,16 +11,16 @@ const ShapeSelector = ({ singular = false }) => {
 
   const handleClick = (key) => {
     if (!singular) {
-      if (currentShapeOptions.includes(shapes[key].name)) {
+      if (currentShapeOptions.includes(key)) {
         setCurrentShapeOptions(
           currentShapeOptions.filter((op) => {
-            return op !== shapes[key].name;
+            return op !== key;
           })
         );
       } else {
         setCurrentShapeOptions((currentShapeOptions) => [
           ...currentShapeOptions,
-          shapes[key].name,
+          key,
         ]);
       }
     } else {
@@ -39,7 +38,7 @@ const ShapeSelector = ({ singular = false }) => {
             <div
               key={i}
               className={`${
-                currentShapeOptions.includes(shapes[key].name)
+                currentShapeOptions.includes(key)
                   ? "text-indigo-700 border-indigo-700 border-b-2"
                   : "text-gray-600"
               }`}

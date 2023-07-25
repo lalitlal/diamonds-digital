@@ -663,19 +663,6 @@ export const DiamondContextProvider = ({ children }) => {
   const [cutValue, setCutValue] = useState([0, 4]);
   const [bandColor, setBandColor] = useState("Yellow Gold");
 
-  const stoneMapping = {
-    0: "round",
-    3: "oval",
-    4: "emerald",
-    7: "marquise",
-    2: "cushion",
-    6: "pear",
-    5: "trillion",
-    8: "asscher",
-    1: "princess",
-    9: "radiant",
-  };
-
   return (
     <DiamondContext.Provider
       value={{
@@ -690,7 +677,6 @@ export const DiamondContextProvider = ({ children }) => {
         cutValue,
         bandColor,
         currentSettingDiamondShape,
-        stoneMapping,
         selectedDiamondShape,
         setSelectedDiamondShape,
         setCurrentSettingDiamondShape,

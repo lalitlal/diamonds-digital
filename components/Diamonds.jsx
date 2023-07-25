@@ -4,7 +4,18 @@ import getDiamonds from "../lib/GetDiamonds";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import ProductDetail from "../components/ProductDetail";
-import { bulkUploadDiamondsToSanity } from "../sanity/sanity-utils";
+import {
+  bulkUploadDiamondsToSanity,
+  getCurrentDiamondsSanity,
+} from "../sanity/sanity-utils";
+import {
+  clarityMapping,
+  colorMapping,
+  cutMapping,
+  shapes,
+  stoneMapping,
+  stoneNameToIndexMapping,
+} from "./constants";
 
 const Diamonds = () => {
   const caret = (
@@ -96,6 +107,45 @@ const Diamonds = () => {
   const diamondContext = useContext(DiamondContext);
   const divRef = useRef(null);
 
+  const getFilterListsForSanity = (post_body) => {
+    const colorList = Object.values(colorMapping).slice(
+      post_body.data.colorMin,
+      post_body.data.colorMax + 1
+    );
+    const clarityList = Object.values(clarityMapping).slice(
+      post_body.data.clarityMin,
+      post_body.data.clarityMax + 1
+    );
+    const cutList = Object.values(cutMapping).slice(
+      post_body.data.cutMin,
+      post_body.data.cutMax + 1
+    );
+
+    // Shape list:
+    // Get all the keys of the object
+    const shapeKeys = Object.keys(shapes);
+
+    // Create a new object where the keys are their indices and values are the original keys
+    const indexedShapes = shapeKeys.reduce((acc, key, index) => {
+      acc[index] = key;
+      return acc;
+    }, {});
+
+    return {
+      colorList: colorList,
+      clarityList: clarityList,
+      cutList: cutList,
+      shapeList:
+        post_body.data.shapeList.length === 0
+          ? Object.keys(shapes).map((shape) => {
+              return shape.charAt(0).toUpperCase() + shape.slice(1);
+            })
+          : post_body.data.shapeList.map((shape) => {
+              return shape.charAt(0).toUpperCase() + shape.slice(1);
+            }),
+    };
+  };
+
   useEffect(() => {
     const handleDiamondFilters = () => {
       post_body.data.shapeList = diamondContext.currentShapeOptions;
@@ -109,15 +159,42 @@ const Diamonds = () => {
       post_body.data.priceMax = diamondContext.priceValue[1];
       post_body.data.cutMin = diamondContext.cutValue[0];
       post_body.data.cutMax = diamondContext.cutValue[1];
+      setPostBody(post_body);
     };
 
     const getDiamondFunc = async () => {
       try {
-        const res = await getDiamonds(postBody);
-        if (res.status === 200) {
-          const res_json = await res.json();
-          setDiamondData(res_json.diamonds);
-          bulkUploadDiamondsToSanity(res_json.diamonds);
+        const sanityFilter = {
+          caratMin: parseFloat(post_body.data.caratMin),
+          caratMax: parseFloat(post_body.data.caratMax),
+          priceMin: post_body.data.priceMin,
+          priceMax: post_body.data.priceMax,
+          ...getFilterListsForSanity(post_body),
+        };
+        const currentDiamonds = await getCurrentDiamondsSanity(sanityFilter);
+        if (
+          currentDiamonds === null ||
+          currentDiamonds === undefined ||
+          currentDiamonds.length === 0
+        ) {
+          console.log("WE DON'T HAVE THIS IN DB, GETTING....");
+          // Unfortunately this shape list needs to be a list of integers because API in brilliance is stupid
+          const scraperShapeList =
+            post_body.data.shapeList.length === 0
+              ? []
+              : post_body.data.shapeList.map((shape) => {
+                  return stoneNameToIndexMapping[shape];
+                });
+          post_body.data.shapeList = scraperShapeList;
+          setPostBody(postBody);
+          const res = await getDiamonds(postBody);
+          if (res.status === 200) {
+            const res_json = await res.json();
+            setDiamondData(res_json.diamonds);
+            bulkUploadDiamondsToSanity(res_json.diamonds);
+          }
+        } else {
+          setDiamondData(currentDiamonds);
         }
       } catch (e) {
         console.log("failed fetching from backend: ", e);
@@ -126,7 +203,6 @@ const Diamonds = () => {
 
     // Handle filtering the data now!
     handleDiamondFilters();
-    setPostBody(post_body);
     getDiamondFunc();
   }, [
     postBody,

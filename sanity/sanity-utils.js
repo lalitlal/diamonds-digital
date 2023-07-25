@@ -204,3 +204,36 @@ export const bulkUploadDiamondsToSanity = async (diamondsArray) => {
     console.error("Error uploading data:", error.message);
   }
 };
+
+export const getCurrentDiamondsSanity = async (diamondFilters) => {
+  try {
+    // Use the Sanity client to query for the document by attributes (carat, clarity, cut, etc.)
+    const result = await client.fetch(
+      `*[_type == 'diamond' &&
+      carat >= $caratMin && carat <= $caratMax &&
+      price >= $priceMin && price <= $priceMax &&
+      clarity in $clarityList &&
+      cut in $cutList &&
+      color in $colorList &&
+      shape in $shapeList]`,
+      {
+        ...diamondFilters,
+      }
+    );
+
+    return result;
+  } catch (error) {
+    console.log(diamondFilters);
+    console.error("Error getting diamond inventory:", error.message);
+    return null;
+  }
+};
+
+// {
+//   maxCarat: 4.00,
+//   minCarat: 1.00,
+//   clarityList: ["SI1", "SI2, VS1"],
+//   colorList: ["D", "E", "F", "G", "H", "I"],
+//   shapeList: ["Pear", "Marquise", "Round", "Oval", "Emerald"],
+//   cutList: ["Super Ideal", "Excellent", "Good", "Ideal"], minPrice: 250, maxPrice: 2000
+// }
