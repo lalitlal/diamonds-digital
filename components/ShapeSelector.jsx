@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DiamondContext } from "./context/DiamondContext";
+import { hiraGray, hiralightGray } from "./constants";
 const ShapeSelector = ({ singular = false }) => {
   const {
     currentSettingDiamondShape,
@@ -30,17 +31,17 @@ const ShapeSelector = ({ singular = false }) => {
 
   return (
     <div>
-      <div className="mb-2 text-center font-bold text-gray-600">Shape</div>
+      {/* <div className="mb-2 text-center font-bold text-gray-600">Shape</div> */}
 
-      <div className="flex flex-wrap justify-start w-full items-stretch">
+      <div className="flex justify-evenly w-screen md:w-full">
         {Object.entries(shapes).map(([key, value], i) => {
           return (
             <div
               key={i}
-              className={`${
+              className={`px-1 ${
                 currentShapeOptions.includes(key)
-                  ? "text-indigo-700 border-indigo-700 border-b-2"
-                  : "text-gray-600"
+                  ? `text-${hiraGray} border-black border-b-2`
+                  : `text-${hiralightGray}`
               }`}
               onClick={() => handleClick(key)}
             >

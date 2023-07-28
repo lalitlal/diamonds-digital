@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import CaratSelector from "./CaratSelector";
 import ClaritySelector from "./ClaritySelector";
 import ColorSelector from "./ColorSelector";
@@ -8,18 +8,35 @@ import NumericSlider from "./NumericSlider";
 import PriceSelector from "./PriceSelector";
 import ShapeSelector from "./ShapeSelector";
 import StringSlider from "./StringSlider";
-import { clarityMapping, colorMapping, cutMapping } from "./constants";
+import {
+  clarityMapping,
+  colorMapping,
+  cutMapping,
+  hiraSlate,
+} from "./constants";
+import TileGrid from "./TileGridSelector";
 
 const DiamondFilter = () => {
   const diamondContext = useContext(DiamondContext);
+  const [showAdvancedFilter, setShowAdvancedFilter] = useState(false);
   return (
-    <div className="mx-10">
+    <div className="mx-5">
       <div className="flex justify-center mb-4">
         <ShapeSelector></ShapeSelector>
       </div>
-      <div className="flex">
-        <div className="w-1/2 mb-10">
-          <div className="font-bold text-gray-600 text-center">Carat</div>
+      <div className="w-full flex justify-end">
+        <div
+          className="border border-black px-8 py-2 hover:cursor-pointer"
+          onClick={() => {
+            setShowAdvancedFilter(!showAdvancedFilter);
+          }}
+        >
+          Filters
+        </div>
+      </div>
+      <div className="flex-col w-full">
+        <div className="mb-2">
+          <div className="text-gray-600 -mb-3">Carat</div>
           <NumericSlider
             values={diamondContext.caratValue}
             setValues={diamondContext.setCaratValue}
@@ -28,8 +45,8 @@ const DiamondFilter = () => {
           ></NumericSlider>
           {/* <CaratSelector></CaratSelector> */}
         </div>
-        <div className="w-1/2 mb-10">
-          <div className="font-bold text-gray-600 text-center">Price</div>
+        <div className="mb-5">
+          <div className="text-gray-600 -mb-3">Price</div>
           <NumericSlider
             values={diamondContext.priceValue}
             setValues={diamondContext.setPriceValue}
@@ -39,17 +56,60 @@ const DiamondFilter = () => {
           {/* <PriceSelector></PriceSelector> */}
         </div>
       </div>
-      <div className="flex">
-        <div className=" w-1/3 mb-10">
-          <div className="font-bold text-center text-gray-600">Color</div>
-          <StringSlider
+      {showAdvancedFilter && (
+        <div className="flex-col">
+          <div className="">
+            <div className="text-left text-gray-600">Color</div>
+            <TileGrid
+              data={Object.values(colorMapping)}
+              listState={diamondContext.currentColorOptions}
+              setListState={diamondContext.setCurrentColorOptions}
+            ></TileGrid>
+
+            <div className="text-left text-gray-600">Clarity</div>
+            <TileGrid
+              data={Object.values(clarityMapping)}
+              listState={diamondContext.currentClarityOptions}
+              setListState={diamondContext.setCurrentClarityOptions}
+            ></TileGrid>
+          </div>
+          <div className="w-full mb-10">
+            <div className="text-left text-gray-600 mb-2">Cut</div>
+            <StringSlider
+              values={diamondContext.cutValue}
+              setValues={diamondContext.setCutValue}
+              minValue={0}
+              maxValue={4}
+              marks={cutMapping}
+            ></StringSlider>
+            {/* <CutSelector></CutSelector> */}
+          </div>
+          <div
+            className={`flex w-full text-center justify-center text-white bg-[${hiraSlate}] py-2 px-8 focus:outline-none hover:bg-gray-600 text-lg my-3`}
+            onClick={() => {
+              setShowAdvancedFilter(false);
+            }}
+          >
+            Save filters
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default DiamondFilter;
+{
+  /* <StringSlider
             values={diamondContext.colorValue}
             setValues={diamondContext.setColorValue}
             minValue={0}
             maxValue={9}
             marks={colorMapping}
-          ></StringSlider>
-          {/* <ColorSelector></ColorSelector> */}
+          ></StringSlider> */
+}
+{
+  /* <ColorSelector></ColorSelector>
         </div>
         <div className="w-1/3 mb-10">
           <div className="font-bold text-center text-gray-600">Clarity</div>
@@ -60,22 +120,5 @@ const DiamondFilter = () => {
             maxValue={9}
             marks={clarityMapping}
           ></StringSlider>
-          {/* <ClaritySelector></ClaritySelector> */}
-        </div>
-        <div className="w-1/3 mb-10">
-          <div className="font-bold text-center text-gray-600">Cut</div>
-          <StringSlider
-            values={diamondContext.cutValue}
-            setValues={diamondContext.setCutValue}
-            minValue={0}
-            maxValue={4}
-            marks={cutMapping}
-          ></StringSlider>
-          {/* <CutSelector></CutSelector> */}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default DiamondFilter;
+          {/* <ClaritySelector></ClaritySelector> */
+}

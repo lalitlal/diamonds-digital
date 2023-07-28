@@ -17,11 +17,11 @@ const Navbar = () => {
   }, [showNavBar, scrollTop]);
   return (
     <div
-      className={`sticky top-0 z-50 transition-opacity duration-400 ease-in bg-white h-auto pb-4 ${
-        showNavBar ? "opacity-100" : "opacity-0"
+      className={`fixed top-0 left-0 right-0 z-50 transition-opacity duration-400 ease-in bg-white h-auto pb-2 -pt-2 ${
+        showNavBar ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="flex justify-between mt-6">
+      <div className="flex justify-between">
         <div className="flex mt-4 md:hidden items-center w-1/3 ml-10 hover:text-gray-500 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"

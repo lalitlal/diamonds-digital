@@ -10,6 +10,7 @@ import CalendlyBooking from "./CalendlyBooking";
 import CartModal from "./CartModal";
 import CheckoutItems from "./CheckoutItems";
 import { DiamondContext } from "./context/DiamondContext";
+import { hiraSlate } from "./constants";
 
 const Checkout = () => {
   const handleRemoveCartItem = (item) => {
@@ -45,7 +46,6 @@ const Checkout = () => {
   const { showBookingModal, setShowBookingModal } = useContext(CartContext);
   const diamondContext = useContext(DiamondContext);
   const router = useRouter();
-  const marginMultiplier = 1.2;
 
   const checkoutBtnClick = async () => {
     if (
@@ -77,26 +77,26 @@ const Checkout = () => {
 
   return (
     <>
-      <div className="flex-col justify-center mx-2 mb-10">
+      <div className="flex-col justify-center mb-10">
         <CheckoutItems
           onRemoveItem={(item) => {
             handleRemoveCartItem(item);
           }}
         ></CheckoutItems>
-        <div className="flex mb-3 justify-center">
+        <div className="flex-col w-full justify-center">
           <button
             onClick={checkoutBtnClick}
-            class="flex text-white bg-gray-500 border-0 py-2 px-8 mx-2 focus:outline-none hover:bg-gray-600 rounded text-lg"
+            class={`flex w-full justify-center text-white bg-[${hiraSlate}] py-4 px-8 focus:outline-none hover:bg-[${hiraSlate}] text-lg`}
           >
-            Checkout
+            <div className="px-32 py-2 border border-white">Checkout</div>
           </button>
           <button
             onClick={() => {
               setShowBookingModal(!showBookingModal);
             }}
-            class="flex  text-white bg-gray-500 border-0 py-2 px-8 mx-2 focus:outline-none hover:bg-gray-600 rounded text-lg"
+            class={`flex w-full text-center justify-center text-white bg-[${hiraSlate}] py-2 px-8 focus:outline-none hover:bg-gray-600 text-lg -mt-2`}
           >
-            Try before buying
+            <div className="py-2 -mt-2">Try before buying</div>
           </button>
         </div>
         {error && <ErrorCheckout setErrorState={setError}></ErrorCheckout>}

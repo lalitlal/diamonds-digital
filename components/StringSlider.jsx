@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import { hiraGray, hiralightGray } from "./constants";
 
-const NumericSlider = ({ values, setValues, minValue, maxValue, marks }) => {
+const StringSlider = ({ values, setValues, minValue, maxValue, marks }) => {
   //   const [values, setValues] = useState([0, 100]);
 
   const handleSliderChange = (newValues) => {
@@ -17,23 +18,10 @@ const NumericSlider = ({ values, setValues, minValue, maxValue, marks }) => {
   };
 
   return (
-    <div className="p-4">
-      <div className="flex justify-between">
-        {/* <input
-          type="number"
-          value={values[0]}
-          onChange={(event) => handleInputChange(0, event)}
-          className="w-24 text-center mr-2"
-        />
-        <input
-          type="number"
-          value={values[1]}
-          onChange={(event) => handleInputChange(1, event)}
-          className="w-24 text-center ml-2"
-        /> */}
-      </div>
+    <div className="">
+      <div className="flex justify-between"></div>
       <Slider
-        className="mt-4"
+        className=""
         range
         min={minValue}
         max={maxValue}
@@ -41,9 +29,17 @@ const NumericSlider = ({ values, setValues, minValue, maxValue, marks }) => {
         value={values}
         marks={marks}
         onChange={handleSliderChange}
+        handleStyle={{
+          borderColor: `${hiraGray}`,
+          backgroundColor: `${hiralightGray}`,
+          height: 20,
+          width: 20,
+          marginTop: -9,
+        }}
+        trackStyle={{ backgroundColor: `${hiraGray}`, height: 2 }}
       />
     </div>
   );
 };
 
-export default NumericSlider;
+export default StringSlider;

@@ -6,6 +6,8 @@ import Hero from "../../components/Hero";
 import Navbar from "../../components/Navbar";
 import DiamondPage from "../../components/DiamondPage";
 import Stepper from "../../components/Stepper";
+import Breadcrumb from "../../components/BreadCrumb";
+import { navigationBreadCrums } from "../../components/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +22,7 @@ export default function Home() {
       </Head>
       <Navbar></Navbar>
       <Header></Header>
+      <Breadcrumb navDetails={navigationBreadCrums["Home"]}></Breadcrumb>
       <Stepper stage={0}></Stepper>
       <DiamondPage></DiamondPage>
     </>

@@ -1,5 +1,12 @@
 import Link from "next/link";
-import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import getDiamonds from "../lib/GetDiamonds";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
@@ -107,54 +114,87 @@ const Diamonds = () => {
   const diamondContext = useContext(DiamondContext);
   const divRef = useRef(null);
 
-  const getFilterListsForSanity = (post_body) => {
-    const colorList = Object.values(colorMapping).slice(
-      post_body.data.colorMin,
-      post_body.data.colorMax + 1
-    );
-    const clarityList = Object.values(clarityMapping).slice(
-      post_body.data.clarityMin,
-      post_body.data.clarityMax + 1
-    );
-    const cutList = Object.values(cutMapping).slice(
-      post_body.data.cutMin,
-      post_body.data.cutMax + 1
-    );
-
-    // Shape list:
-    // Get all the keys of the object
-    const shapeKeys = Object.keys(shapes);
-
-    // Create a new object where the keys are their indices and values are the original keys
-    const indexedShapes = shapeKeys.reduce((acc, key, index) => {
-      acc[index] = key;
-      return acc;
-    }, {});
-
-    return {
-      colorList: colorList,
-      clarityList: clarityList,
-      cutList: cutList,
-      shapeList:
-        post_body.data.shapeList.length === 0
-          ? Object.keys(shapes).map((shape) => {
-              return shape.charAt(0).toUpperCase() + shape.slice(1);
-            })
-          : post_body.data.shapeList.map((shape) => {
-              return shape.charAt(0).toUpperCase() + shape.slice(1);
-            }),
-    };
+  const findMinimumMaxMappedIndexFromListFilter = (listFilter, mapping) => {
+    const indixes = listFilter.map((clarity) => {
+      const index = Object.keys(mapping).find(
+        (key) => mapping[key] === clarity
+      );
+      return index !== undefined ? parseInt(index, 10) : null;
+    });
+    if (indixes.length === 0) {
+      return [0, Math.max(...Object.keys(mapping))];
+    } else {
+      return [Math.min(...indixes), Math.max(...indixes) + 1];
+    }
   };
+  const getFilterListsForSanity = useCallback(
+    (post_body) => {
+      // const colorList = Object.values(colorMapping).slice(
+      //   post_body.data.colorMin,
+      //   post_body.data.colorMax + 1
+      // );
+      // const clarityList = Object.values(clarityMapping).slice(
+      //   post_body.data.clarityMin,
+      //   post_body.data.clarityMax + 1
+      // );
+      const colorList =
+        diamondContext.currentColorOptions.length > 0
+          ? diamondContext.currentColorOptions
+          : Object.values(colorMapping);
+      const clarityList =
+        diamondContext.currentClarityOptions.length > 0
+          ? diamondContext.currentClarityOptions
+          : Object.values(clarityMapping);
+      const cutList = Object.values(cutMapping).slice(
+        post_body.data.cutMin,
+        post_body.data.cutMax + 1
+      );
+
+      return {
+        colorList: colorList,
+        clarityList: clarityList,
+        cutList: cutList,
+        shapeListSanity:
+          post_body.data.shapeListSanity.length === 0
+            ? Object.keys(shapes).map((shape) => {
+                return shape.charAt(0).toUpperCase() + shape.slice(1);
+              })
+            : post_body.data.shapeListSanity.map((shape) => {
+                return shape.charAt(0).toUpperCase() + shape.slice(1);
+              }),
+      };
+    },
+    [diamondContext.currentColorOptions, diamondContext.currentClarityOptions]
+  );
 
   useEffect(() => {
     const handleDiamondFilters = () => {
-      post_body.data.shapeList = diamondContext.currentShapeOptions;
+      // Unfortunately this shape list needs to be a list of integers because API in brilliance is stupid
+      const scraperShapeList =
+        diamondContext.currentShapeOptions === 0
+          ? []
+          : diamondContext.currentShapeOptions.map((shape) => {
+              return stoneNameToIndexMapping[shape];
+            });
+
+      const minMaxColors = findMinimumMaxMappedIndexFromListFilter(
+        diamondContext.currentColorOptions,
+        colorMapping
+      );
+
+      const minMaxClarity = findMinimumMaxMappedIndexFromListFilter(
+        diamondContext.currentClarityOptions,
+        clarityMapping
+      );
+      console.log(scraperShapeList);
+      post_body.data.shapeListScraper = scraperShapeList;
+      post_body.data.shapeListSanity = diamondContext.currentShapeOptions;
       post_body.data.caratMin = diamondContext.caratValue[0];
       post_body.data.caratMax = diamondContext.caratValue[1];
-      post_body.data.colorMin = diamondContext.colorValue[0];
-      post_body.data.colorMax = diamondContext.colorValue[1];
-      post_body.data.clarityMin = diamondContext.clarityValue[0];
-      post_body.data.clarityMax = diamondContext.clarityValue[1];
+      post_body.data.colorMin = minMaxColors[0];
+      post_body.data.colorMax = minMaxColors[1];
+      post_body.data.clarityMin = minMaxClarity[0];
+      post_body.data.clarityMax = minMaxClarity[1];
       post_body.data.priceMin = diamondContext.priceValue[0];
       post_body.data.priceMax = diamondContext.priceValue[1];
       post_body.data.cutMin = diamondContext.cutValue[0];
@@ -178,15 +218,7 @@ const Diamonds = () => {
           currentDiamonds.length === 0
         ) {
           console.log("WE DON'T HAVE THIS IN DB, GETTING....");
-          // Unfortunately this shape list needs to be a list of integers because API in brilliance is stupid
-          const scraperShapeList =
-            post_body.data.shapeList.length === 0
-              ? []
-              : post_body.data.shapeList.map((shape) => {
-                  return stoneNameToIndexMapping[shape];
-                });
-          post_body.data.shapeList = scraperShapeList;
-          setPostBody(postBody);
+          console.log(post_body);
           const res = await getDiamonds(postBody);
           if (res.status === 200) {
             const res_json = await res.json();
@@ -208,11 +240,14 @@ const Diamonds = () => {
     postBody,
     post_body,
     diamondContext.currentShapeOptions,
+    diamondContext.currentColorOptions,
+    diamondContext.currentClarityOptions,
+    getFilterListsForSanity,
     diamondContext.caratValue,
     diamondContext.cutValue,
     diamondContext.priceValue,
-    diamondContext.clarityValue,
-    diamondContext.colorValue,
+    // diamondContext.clarityValue,
+    // diamondContext.colorValue,
   ]);
 
   const scrollToBottom = () => {

@@ -14,6 +14,8 @@ import Stepper from "../../components/Stepper";
 import ShapeSelector from "../../components/ShapeSelector";
 import MetalSelector from "../../components/MetalSelector";
 import SingleShapeSelector from "../../components/SingleShapeSelector";
+import Breadcrumb from "../../components/BreadCrumb";
+import { navigationBreadCrums } from "../../components/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +30,7 @@ export default function Home() {
       </Head>
       <Navbar></Navbar>
       <Header></Header>
+      <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
       <Stepper stage={1}></Stepper>
       <div className="flex justify-center">
         <SingleShapeSelector singular={true}></SingleShapeSelector>

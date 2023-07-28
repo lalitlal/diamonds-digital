@@ -24,6 +24,7 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
             height={400}
             quality={75}
             className={imageClass}
+            objectFit="cover"
           />
         </div>
       ))}

@@ -54,7 +54,7 @@ const RingSettings = () => {
 
   return (
     <section class="text-gray-600 body-font">
-      <div class="container px-5 py-24 mx-auto">
+      <div class="container p-5 mx-auto">
         <div class="flex flex-wrap -m-4">
           {products.map((prod, i) => {
             const { _id, title, description, type } = prod;
@@ -80,20 +80,25 @@ const RingSettings = () => {
                 }`
             );
             return (
-              <div key={prod._id} class="lg:w-1/4 md:w-1/2 p-4 w-full">
+              <div key={prod._id} class="lg:w-1/4 md:w-1/2 p-4 w-1/2 h-1/4">
                 {prod.variants !== null &&
                 prod.variants !== undefined &&
                 variant.length > 0 ? (
                   <ImageSlider
                     images={variant[0].images}
                     imageAlts={imageAlts}
-                    imageClass={"w-400 h-400 object-cover object-center"}
+                    // w-200 h-200 md:w-400 md:h-400
+                    imageClass={
+                      "w-200 h-200 md:w-400 md:h-400 object-center object"
+                    }
                   ></ImageSlider>
                 ) : (
                   <ImageSlider
                     images={[dummyImageURL]}
                     imageAlts={imageAlts}
-                    imageClass={"w-400 h-400 object-cover object-center"}
+                    imageClass={
+                      "w-200 h-200 md:w-400 md:h-400 object-cover object-center"
+                    }
                   ></ImageSlider>
                 )}
 

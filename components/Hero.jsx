@@ -47,14 +47,14 @@ const Hero = () => {
         <div className="font-Raleway mt-4 text-center text-2xl sm:text-4xl font-bold">
           Create your engagement ring
         </div>
-        <div className="w-full max-w-2xl flex flex-col items-center">
+        <div className="w-screen md:w-3/4 max-w-2xl flex flex-col items-center">
           <Link href="/diamond">
-            <button className="w-3/4 my-4 leading-tight tracking-tight text-center text-2xl font-medium border-2 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
+            <button className="w-screen my-4 leading-tight tracking-tight text-center text-2xl font-medium border-2 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
               Start with a diamond
             </button>
           </Link>
           <Link href="/ringsettings">
-            <button className="w-3/4 my-4 leading-tight tracking-tight text-center text-2xl font-medium border-2 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
+            <button className="w-screen md:w-3/4 mt-4 leading-tight tracking-tight text-center text-2xl font-medium border-2 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
               Start with a setting
             </button>
           </Link>

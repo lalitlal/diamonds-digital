@@ -215,7 +215,7 @@ export const getCurrentDiamondsSanity = async (diamondFilters) => {
       clarity in $clarityList &&
       cut in $cutList &&
       color in $colorList &&
-      shape in $shapeList]`,
+      shape in $shapeListSanity]`,
       {
         ...diamondFilters,
       }

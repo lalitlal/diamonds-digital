@@ -700,3 +700,16 @@ export const stoneNameToIndexMapping = {
   asscher: 8,
   radiant: 9,
 };
+
+export const navigationBreadCrums = {
+  Home: { label: "Home", url: "/" },
+  Diamonds: { label: "Diamonds", url: "/diamond" },
+  Settings: { label: "Settings", url: "/ringsettings" },
+  Checkout: { label: "Checkout", url: "/checkout" },
+};
+
+export const hiraGray = "#61626b";
+
+export const hiralightGray = "#b9b9c4";
+
+export const hiraSlate = "#535353";
