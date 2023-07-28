@@ -85,7 +85,7 @@ const DiamondFilter = () => {
             {/* <CutSelector></CutSelector> */}
           </div>
           <div
-            className={`flex w-full text-center justify-center text-white bg-[${hiraSlate}] py-2 px-8 focus:outline-none hover:bg-gray-600 text-lg my-3`}
+            className={`flex w-full text-center justify-center text-white bg-slate-700 py-2 px-8 focus:outline-none hover:bg-gray-600 text-lg my-3`}
             onClick={() => {
               setShowAdvancedFilter(false);
             }}

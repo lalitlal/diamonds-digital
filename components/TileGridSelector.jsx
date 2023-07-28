@@ -23,7 +23,7 @@ const TileGrid = ({ data, listState, setListState }) => {
             key={index}
             className={`hover:cursor-pointer ${
               listState.includes(item)
-                ? `text-white bg-[${hiraSlate}]`
+                ? `text-white bg-slate-700`
                 : "text-black bg-white"
             }  border border-black w-14 h-10 flex justify-evenly px-2 lg:justify-center my-2 items-center md:mx-5`}
             onClick={() => {
