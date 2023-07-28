@@ -86,7 +86,7 @@ const Checkout = () => {
         <div className="flex-col w-full justify-center">
           <button
             onClick={checkoutBtnClick}
-            class={`flex w-full justify-center text-white bg-[${hiraSlate}] py-4 px-8 focus:outline-none hover:bg-[${hiraSlate}] text-lg`}
+            class={`flex w-full justify-center text-white bg-slate-700 py-4 px-8 focus:outline-none active:bg-black focus:bg-black text-lg`}
           >
             <div className="px-32 py-2 border border-white">Checkout</div>
           </button>
@@ -94,7 +94,7 @@ const Checkout = () => {
             onClick={() => {
               setShowBookingModal(!showBookingModal);
             }}
-            class={`flex w-full text-center justify-center text-white bg-[${hiraSlate}] py-2 px-8 focus:outline-none hover:bg-gray-600 text-lg -mt-2`}
+            class={`flex w-full text-center justify-center text-white bg-slate-700 py-2 px-8 focus:outline-none active:bg-black focus:bg-black text-lg -mt-2`}
           >
             <div className="py-2 -mt-2">Try before buying</div>
           </button>
