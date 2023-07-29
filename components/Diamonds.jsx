@@ -23,6 +23,7 @@ import {
   stoneMapping,
   stoneNameToIndexMapping,
 } from "./constants";
+import DiamondsTable from "./DiamondsTable";
 
 const Diamonds = () => {
   const caret = (
@@ -40,42 +41,8 @@ const Diamonds = () => {
       <path d="M6 9l6 6 6-6"></path>
     </svg>
   );
-  const [showProductDetail, setShowProductDetail] = useState(false);
-  const [selectedRow, setSelectedRow] = useState(undefined);
-  const default_diamond_data = [
-    {
-      shape: "Oval",
-      carat: 2.5,
-      color: "F",
-      clarity: "VVS1",
-      cut: "Super Ideal",
-      price: "9993",
-    },
-    {
-      shape: "Princess",
-      carat: 3.3,
-      color: "E",
-      clarity: "VS2",
-      cut: "Excellent",
-      price: "4560",
-    },
-    {
-      shape: "Emerald",
-      carat: 1.5,
-      color: "F",
-      clarity: "SI",
-      cut: "Ideal",
-      price: "7640",
-    },
-    {
-      shape: "Round",
-      carat: 2.86,
-      color: "D",
-      clarity: "VVS1",
-      cut: "Ideal",
-      price: "4550",
-    },
-  ];
+  // const [showProductDetail, setShowProductDetail] = useState(false);
+  // const [selectedRow, setSelectedRow] = useState(undefined);
 
   let post_body = useMemo(() => {
     return {
@@ -250,9 +217,9 @@ const Diamonds = () => {
     // diamondContext.colorValue,
   ]);
 
-  const scrollToBottom = () => {
-    divRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToBottom = () => {
+  //   divRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
 
   const clearFilters = () => {
     diamondContext.setCaratValue([0, 12]);
@@ -262,118 +229,122 @@ const Diamonds = () => {
     diamondContext.setCutValue([0, 4]);
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [selectedRow, showProductDetail]);
+  // useEffect(() => {
+  //   scrollToBottom();
+  // }, [selectedRow, showProductDetail]);
 
   return (
-    <div className="py-4 px-2 bg-[#48565c] mx-5">
-      <section className="py-1 h-screen overflow-y-scroll">
-        <div className="w-full mb-12 xl:mb-0 px-1 mx-auto">
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
-            <div className="rounded-t mb-0 px-4 py-3 border-0">
-              <div className="flex flex-wrap items-center">
-                <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                  <h3 className="font-semibold text-base text-blueGray-700">
-                    All Diamonds
-                  </h3>
-                </div>
-                <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                  <button
-                    className="bg-slate-500 text-white active:bg-slate-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => {
-                      clearFilters();
-                    }}
-                  >
-                    Clear Filters
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="flex overflow-x-auto w-full">
-              <div className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-                Shape
-              </div>
-              <div className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-                Carat
-              </div>
-              <div className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-                Color
-              </div>
-              <div className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-                Clarity
-              </div>
-              <div className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-                Cut
-              </div>
-              <div className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-                Price
-              </div>
-            </div>
-            <div>
-              {diamondData.map((data, i) => {
-                return (
-                  <>
-                    <div
-                      key={data + i}
-                      className="flex hover:bg-indigo-300 transition duration-200 ease-in-out cursor-pointer w-full"
-                      onClick={() => {
-                        if (selectedRow === i) {
-                          setShowProductDetail(false);
-                          setSelectedRow(undefined);
-                        } else {
-                          setShowProductDetail(true);
-                          setSelectedRow(i);
-                        }
-                      }}
-                    >
-                      {selectedRow === i && <div ref={divRef}></div>}
-                      <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 w-1/6 text-center text-indigo-700">
-                        {data.shape}
-                      </div>
-                      <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 w-1/6 text-center ">
-                        {data.carat}
-                      </div>
-                      <div className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 w-1/6 text-center">
-                        {data.color}
-                      </div>
-                      <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 w-1/6 text-center">
-                        {data.clarity}
-                      </div>
-                      <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 w-1/6 text-center">
-                        {data.cut}
-                      </div>
-                      <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 w-1/6 text-center">
-                        {`CA$ ${data.price}`}
-                      </div>
-                    </div>
-                    <div
-                      className={`${selectedRow === i ? "" : "hidden"} w-full`}
-                    >
-                      {showProductDetail && (
-                        <>
-                          <ProductDetail
-                            shape={data.shape}
-                            carat={data.carat}
-                            color={data.color}
-                            clarity={data.clarity}
-                            cut={data.cut}
-                            price={data.price}
-                            data={data}
-                          ></ProductDetail>
-                        </>
-                      )}
-                    </div>
-                  </>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    <>
+      <DiamondsTable data={diamondData}></DiamondsTable>
+    </>
   );
 };
 
 export default Diamonds;
+
+// <div className="">
+//   <section className="py-1 h-screen overflow-y-scroll">
+//     <div className="w-full mb-12 xl:mb-0 px-1 mx-auto">
+//       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg">
+//         <div className="rounded-t mb-0 px-4 py-3 border-0">
+//           <div className="flex flex-wrap items-center">
+//             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+//               <h3 className="text-base text-gray-400">
+//                 {diamondData.length} items
+//               </h3>
+//             </div>
+//             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+//               <button
+//                 className="bg-slate-500 text-white active:bg-slate-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+//                 type="button"
+//                 onClick={() => {
+//                   clearFilters();
+//                 }}
+//               >
+//                 Clear Filters
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="flex w-full mx-2">
+//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
+//             Shape
+//           </div>
+//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
+//             Carat
+//           </div>
+//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
+//             Color
+//           </div>
+//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
+//             Clarity
+//           </div>
+//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
+//             Cut
+//           </div>
+//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
+//             Price
+//           </div>
+//         </div>
+//         <div className="flex flex-col">
+//           {diamondData.map((data, i) => {
+//             return (
+//               <>
+//                 <div
+//                   key={data + i}
+//                   className="flex hover:bg-slate-400 transition duration-200 ease-in-out cursor-pointer mx-1"
+//                   onClick={() => {
+//                     if (selectedRow === i) {
+//                       setShowProductDetail(false);
+//                       setSelectedRow(undefined);
+//                     } else {
+//                       setShowProductDetail(true);
+//                       setSelectedRow(i);
+//                     }
+//                   }}
+//                 >
+//                   {/* {selectedRow === i && <div ref={divRef}></div>} */}
+//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/6 text-center text-slate-700">
+//                     {data.shape}
+//                   </div>
+//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/6 text-center ">
+//                     {data.carat}
+//                   </div>
+//                   <div className="border-t-0 align-center border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/12 text-center">
+//                     {data.color}
+//                   </div>
+//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/12 text-center">
+//                     {data.clarity}
+//                   </div>
+//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/6 text-center">
+//                     {data.cut}
+//                   </div>
+//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/6 text-center">
+//                     {`CA$ ${data.price}`}
+//                   </div>
+//                 </div>
+//                 <div
+//                   className={`${selectedRow === i ? "" : "hidden"} w-full`}
+//                 >
+//                   {showProductDetail && (
+//                     <>
+//                       <ProductDetail
+//                         shape={data.shape}
+//                         carat={data.carat}
+//                         color={data.color}
+//                         clarity={data.clarity}
+//                         cut={data.cut}
+//                         price={data.price}
+//                         data={data}
+//                       ></ProductDetail>
+//                     </>
+//                   )}
+//                 </div>
+//               </>
+//             );
+//           })}
+//         </div>
+//       </div>
+//     </div>
+//   </section>
+// </div>

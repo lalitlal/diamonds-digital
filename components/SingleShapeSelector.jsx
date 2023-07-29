@@ -35,12 +35,12 @@ const SingleShapeSelector = ({ singular = true }) => {
     <div>
       {/* <div className="mb-2 text-center font-bold text-gray-600">Shape</div> */}
 
-      <div className="flex justify-evenly w-full">
+      <div className="flex justify-evenly w-screen md:w-full">
         {Object.entries(shapes).map(([key, value], i) => {
           return (
             <div
               key={i}
-              className={`px-1 ${
+              className={`px-1 mt-2 ${
                 currentSettingDiamondShape === key
                   ? `text-${hiraGray} border-black border-b-2`
                   : `text-${hiralightGray}`

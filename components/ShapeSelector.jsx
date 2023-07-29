@@ -38,7 +38,7 @@ const ShapeSelector = ({ singular = false }) => {
           return (
             <div
               key={i}
-              className={`px-1 ${
+              className={`px-1 mt-2 ${
                 currentShapeOptions.includes(key)
                   ? `text-${hiraGray} border-black border-b-2`
                   : `text-${hiralightGray}`

@@ -21,12 +21,12 @@ const DiamondFilter = () => {
   const [showAdvancedFilter, setShowAdvancedFilter] = useState(false);
   return (
     <div className="mx-5">
-      <div className="flex justify-center mb-4">
+      <div className="flex justify-center">
         <ShapeSelector></ShapeSelector>
       </div>
-      <div className="w-full flex justify-end">
+      <div className="w-full flex justify-end md:justify-center">
         <div
-          className="border border-black px-8 py-2 hover:cursor-pointer"
+          className="border border-black px-8 py-2 mt-5 hover:cursor-pointer"
           onClick={() => {
             setShowAdvancedFilter(!showAdvancedFilter);
           }}
@@ -73,7 +73,7 @@ const DiamondFilter = () => {
               setListState={diamondContext.setCurrentClarityOptions}
             ></TileGrid>
           </div>
-          <div className="w-full mb-10">
+          <div className="mb-10">
             <div className="text-left text-gray-600 mb-2">Cut</div>
             <StringSlider
               values={diamondContext.cutValue}

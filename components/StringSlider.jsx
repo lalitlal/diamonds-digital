@@ -18,10 +18,9 @@ const StringSlider = ({ values, setValues, minValue, maxValue, marks }) => {
   };
 
   return (
-    <div className="">
-      <div className="flex justify-between"></div>
+    <div className="w-4/5 mx-auto py-4 mt-2">
       <Slider
-        className=""
+        className="w-full"
         range
         min={minValue}
         max={maxValue}
@@ -32,9 +31,9 @@ const StringSlider = ({ values, setValues, minValue, maxValue, marks }) => {
         handleStyle={{
           borderColor: `${hiraGray}`,
           backgroundColor: `${hiralightGray}`,
-          height: 20,
-          width: 20,
-          marginTop: -9,
+          height: 15,
+          width: 15,
+          marginTop: -7,
         }}
         trackStyle={{ backgroundColor: `${hiraGray}`, height: 2 }}
       />

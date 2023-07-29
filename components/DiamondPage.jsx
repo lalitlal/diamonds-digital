@@ -4,11 +4,11 @@ import Diamonds from "./Diamonds";
 
 const DiamondPage = () => {
   return (
-    <div className="flex-col h-screen mt-4">
+    <div className="flex-col h-screen">
       <div className="">
         <DiamondFilter></DiamondFilter>
       </div>
-      <div className="">
+      <div className="mt-4">
         <Diamonds></Diamonds>
       </div>
     </div>

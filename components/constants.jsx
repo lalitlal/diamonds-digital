@@ -713,3 +713,106 @@ export const hiraGray = "#61626b";
 export const hiralightGray = "#b9b9c4";
 
 export const hiraSlate = "#535353";
+
+export const default_diamond_data = [
+  {
+    shape: "Oval",
+    carat: 2.5,
+    color: "F",
+    clarity: "VVS1",
+    cut: "Super Ideal",
+    price: "9993",
+  },
+  {
+    shape: "Princess",
+    carat: 3.3,
+    color: "E",
+    clarity: "VS2",
+    cut: "Excellent",
+    price: "4560",
+  },
+  {
+    shape: "Emerald",
+    carat: 1.5,
+    color: "F",
+    clarity: "SI",
+    cut: "Ideal",
+    price: "7640",
+  },
+  {
+    shape: "Round",
+    carat: 2.86,
+    color: "D",
+    clarity: "VVS1",
+    cut: "Ideal",
+    price: "4550",
+  },
+];
+
+export const chevronLeft = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-6 h-6"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M15.75 19.5L8.25 12l7.5-7.5"
+    />
+  </svg>
+);
+
+export const chevronFirst = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-6 h-6"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
+    />
+  </svg>
+);
+
+export const chevronLast = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-6 h-6"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+    />
+  </svg>
+);
+
+export const chevronRight = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-6 h-6"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M8.25 4.5l7.5 7.5-7.5 7.5"
+    />
+  </svg>
+);

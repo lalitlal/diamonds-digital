@@ -20,18 +20,18 @@ const MetalSelector = () => {
     },
   ];
   return (
-    <div className="mb-3 mx-5">
-      <div className="text-left text-gray-600 mb-2">Choose Metal</div>
+    <div className="justify-center mx-5">
+      <div className="text-left text-gray-600 my-5">Choose Metal</div>
       <div className="flex flex-wrap p-2 w-full justify-evenly">
         {options.map((op, i) => {
           return (
             <div
               key={i}
-              className={`mb-4 p-2 border border-black ${
+              className={`mb-4 p-2 border border-black hover:text-slate-300 hover:underline cursor-pointer tracking-tight ${
                 op.opt === bandColor
-                  ? `text-[${hiraGray}] border-[${hiraGray}] border-b-2`
+                  ? `text-[${hiraGray}] border-[${hiraGray}] border underline`
                   : "text-gray-600"
-              } mr-4 hover:text-slate-300 hover:underline cursor-pointer tracking-tight`}
+              }`}
               style={{ width: "calc(50% - 1rem)" }} // Set a fixed width for each option container
               onClick={() => {
                 setBandColor(op.opt);
