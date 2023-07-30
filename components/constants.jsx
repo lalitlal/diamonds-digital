@@ -816,3 +816,5 @@ export const chevronRight = (
     />
   </svg>
 );
+
+export const minSwipeDistance = 25;

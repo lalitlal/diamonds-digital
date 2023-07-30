@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Image from "next/image";
-
+import { minSwipeDistance } from "./constants";
+// https://stackoverflow.com/questions/70612769/how-do-i-recognize-swipe-events-in-react
 function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(null);
-  const minSwipeDistance = 50;
 
   const handlePrev = () => {
     setCurrentSlide((prevIndex) =>
