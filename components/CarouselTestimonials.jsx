@@ -3,6 +3,7 @@ import Testimony from "./Testimony";
 
 const CarouselTestimonials = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
@@ -14,6 +15,27 @@ const CarouselTestimonials = ({ data }) => {
     setCurrentIndex((prevIndex) =>
       prevIndex === data.length - 1 ? 0 : prevIndex + 1
     );
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    const touchEndX = e.touches[0].clientX;
+    const touchDiff = touchEndX - touchStartX;
+
+    if (touchDiff > 50) {
+      // Swipe right
+      if (currentIndex > 0) {
+        setCurrentIndex((prevSlide) => prevSlide - 1);
+      }
+    } else if (touchDiff < -50) {
+      // Swipe left
+      if (currentIndex < data.length - 1) {
+        setCurrentIndex((prevSlide) => prevSlide + 1);
+      }
+    }
   };
 
   const chevronLeft = (
@@ -55,6 +77,8 @@ const CarouselTestimonials = ({ data }) => {
       <div
         className="flex transition-transform duration-300 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
       >
         {data.map((tmoney, index) => (
           <div key={index} className="w-full flex-shrink-0">

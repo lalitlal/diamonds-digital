@@ -52,6 +52,35 @@ const RingSettings = () => {
     fetchProducts();
   }, [diamondContext.currentSettingDiamondShape, diamondContext.bandColor]);
 
+  const handleRingClick = (prod, imageAlts) => {
+    const imageSliderForDetail =
+      prod.variants !== null &&
+      prod.variants !== undefined &&
+      prod.variants.length > 0 ? (
+        <ImageSlider
+          images={prod.variants[0].images}
+          imageAlts={imageAlts}
+          // w-200 h-200 md:w-400 md:h-400
+          imageClass={"w-200 h-200 md:w-400 md:h-400 object-center object"}
+        ></ImageSlider>
+      ) : (
+        <ImageSlider
+          images={[dummyImageURL]}
+          imageAlts={imageAlts}
+          imageClass={
+            "w-200 h-200 md:w-400 md:h-400 object-cover object-center"
+          }
+        ></ImageSlider>
+      );
+    setSettingDetails({
+      name: prod.title,
+      price: prod.variants[0].price,
+      description: prod.description,
+      images: imageSliderForDetail,
+      variantData: prod.variants[0],
+    });
+    setOpenSettingDetail(true);
+  };
   return (
     <section className="text-gray-600 body-font">
       <div className="container p-5 mx-auto">
@@ -82,7 +111,12 @@ const RingSettings = () => {
               );
               return (
                 <div key={prod._id} className="w-full">
-                  <div className="flex flex-col h-full">
+                  <div
+                    className="flex flex-col h-full"
+                    onClick={() => {
+                      handleRingClick(prod, imageAlts);
+                    }}
+                  >
                     {prod.variants !== null &&
                     prod.variants !== undefined &&
                     variant.length > 0 ? (
@@ -115,35 +149,7 @@ const RingSettings = () => {
                         <p className="mt-1">{prod.variants[0].price}</p>
                         <button
                           onClick={() => {
-                            const imageSliderForDetail =
-                              prod.variants !== null &&
-                              prod.variants !== undefined &&
-                              variant.length > 0 ? (
-                                <ImageSlider
-                                  images={variant[0].images}
-                                  imageAlts={imageAlts}
-                                  // w-200 h-200 md:w-400 md:h-400
-                                  imageClass={
-                                    "w-200 h-200 md:w-400 md:h-400 object-center object"
-                                  }
-                                ></ImageSlider>
-                              ) : (
-                                <ImageSlider
-                                  images={[dummyImageURL]}
-                                  imageAlts={imageAlts}
-                                  imageClass={
-                                    "w-200 h-200 md:w-400 md:h-400 object-cover object-center"
-                                  }
-                                ></ImageSlider>
-                              );
-                            setSettingDetails({
-                              name: title,
-                              price: prod.variants[0].price,
-                              description: description,
-                              images: imageSliderForDetail,
-                              variantData: variant[0],
-                            });
-                            setOpenSettingDetail(true);
+                            handleRingClick(prod, imageAlts);
                           }}
                           className="flex mt-2 text-white text-center justify-center bg-slate-700 border-0 py-2 px-6 focus:outline-none hover:bg-slate-800 rounded"
                         >
