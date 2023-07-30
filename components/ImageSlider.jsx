@@ -3,30 +3,43 @@ import Image from "next/image";
 
 function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 100;
 
-  const handleSlideChange = (index) => {
-    setCurrentSlide(index);
+  const handlePrev = () => {
+    setCurrentSlide((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const handleTouchStart = (e) => {
-    setTouchStartX(e.touches[0].clientX);
+    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    setTouchStart(e.targetTouches[0].clientX);
   };
 
-  const handleTouchMove = (e) => {
-    const touchEndX = e.touches[0].clientX;
-    const touchDiff = touchEndX - touchStartX;
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
 
-    if (touchDiff > 50) {
+  const onTouchEnd = (e) => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isRightSwipe) {
       // Swipe right
-      if (currentSlide > 0) {
-        setCurrentSlide((prevSlide) => prevSlide - 1);
+      if (isRightSwipe) {
+        handlePrev();
       }
-    } else if (touchDiff < -50) {
+    } else if (isLeftSwipe) {
       // Swipe left
-      if (currentSlide < images.length - 1) {
-        setCurrentSlide((prevSlide) => prevSlide + 1);
-      }
+      handleNext();
     }
   };
 
@@ -34,8 +47,8 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
     <div
       className={`relative ${checkout ? "h-48 rounded-3xl" : "h-96"}`}
       onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      style={{ paddingBottom: "75%" }} // Set the aspect ratio (height / width) of the container to match the images' aspect ratio
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
       {images.map((image, index) => (
         <div
@@ -54,20 +67,18 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
             className={imageClass}
             objectFit="cover"
           /> */}
-          <Image
+          {/* <Image
             src={image}
             alt={"YUPERS"}
             layout="fill" // Make the Image fill its parent container
             objectFit="cover" // Ensure the Image covers the container without distortion
             quality={75}
+          /> */}
+          <img
+            src={image}
+            alt={`Image ${index + 1}`}
+            className="w-full h-full object-fill"
           />
-          {/* <div key={index} className="w-full flex-shrink">
-            <img
-              src={image}
-              alt={`Image ${index + 1}`}
-              className="w-full h-auto"
-            />
-          </div> */}
         </div>
       ))}
       <div className="absolute bottom-0 w-full flex justify-center space-x-2">
@@ -77,7 +88,7 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
             className={`h-3 w-3 rounded-full ${
               currentSlide === index ? "bg-slate-800" : "bg-gray-500"
             }`}
-            onClick={() => handleSlideChange(index)}
+            // onClick={() => handleSlideChange(index)}
           />
         ))}
       </div>

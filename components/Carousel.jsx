@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { chevronLeft, chevronRight } from "./constants";
 
 const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 100;
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
@@ -17,59 +20,28 @@ const Carousel = ({ images }) => {
   };
 
   const handleTouchStart = (e) => {
-    setTouchStartX(e.touches[0].clientX);
+    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    setTouchStart(e.targetTouches[0].clientX);
   };
 
-  const handleTouchMove = (e) => {
-    const touchEndX = e.touches[0].clientX;
-    const touchDiff = touchEndX - touchStartX;
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
 
-    if (touchDiff > 50) {
+  const onTouchEnd = (e) => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isRightSwipe) {
       // Swipe right
-      if (currentIndex > 0) {
-        setCurrentIndex((prevSlide) => prevSlide - 1);
+      if (isRightSwipe) {
+        handlePrev();
       }
-    } else if (touchDiff < -50) {
+    } else if (isLeftSwipe) {
       // Swipe left
-      if (currentIndex < images.length - 1) {
-        setCurrentIndex((prevSlide) => prevSlide + 1);
-      }
+      handleNext();
     }
   };
-
-  const chevronLeft = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-6 h-6"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M15.75 19.5L8.25 12l7.5-7.5"
-      />
-    </svg>
-  );
-
-  const chevronRight = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-6 h-6"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-      />
-    </svg>
-  );
 
   return (
     <div className="relative overflow-hidden">
@@ -77,7 +49,8 @@ const Carousel = ({ images }) => {
         className="flex transition-transform duration-300 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
         {images.map((img, index) => (
           <div key={index} className="w-full flex-shrink-0">
