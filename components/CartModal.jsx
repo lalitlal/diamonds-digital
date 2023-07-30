@@ -10,6 +10,7 @@ import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import ImageSlider from "./ImageSlider";
 import { getCheckoutItem } from "../sanity/sanity-utils";
+import Carousel from "./Carousel";
 
 function CartModal({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
@@ -115,13 +116,14 @@ function CartModal({ onRemoveItem }) {
       );
       const newImageSlider =
         variant !== undefined && (variant !== null) & (variant.length > 0) ? (
-          <ImageSlider
-            checkout={true}
-            images={variant[0].images}
-            imagesAlt={imageAlts}
-            imageClass={"object-contain object-center"}
-          ></ImageSlider>
+          <Carousel images={variant[0].images} />
         ) : (
+          // <ImageSlider
+          //   checkout={true}
+          //   images={variant[0].images}
+          //   imagesAlt={imageAlts}
+          //   imageClass={"object-contain object-center"}
+          // ></ImageSlider>
           { dummyImageSlider }
         );
       setImageSlider(newImageSlider);
@@ -167,19 +169,19 @@ function CartModal({ onRemoveItem }) {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="flex justify-center mt-10 h-5/6">
+      <div className="flex justify-center h-5/6">
         <div
-          class="w-screen h-auto overflow-y-auto max-w-sm border border-gray-600 bg-gray-100 p-4 pt-4 sm:p-6 lg:p-8 rounded-3xl"
+          class="w-screen h-auto overflow-y-auto max-w-sm border border-gray-600 bg-white p-4 pt-4 sm:p-6 lg:p-8"
           aria-modal="true"
           role="dialog"
           tabIndex="-1"
         >
           <div className="flex justify-between">
-            <h2 className="flex w-full justify-center text-center">
+            <h2 className="flex w-full justify-center text-center ml-4">
               Your Shopping Cart
             </h2>
             <button
-              class="relative ml-auto -mr-4 block text-gray-600 transition hover:scale-110"
+              class="relative ml-auto block text-gray-600 transition hover:scale-110"
               onClick={() => {
                 cartContext.setShowCartModal(false);
               }}

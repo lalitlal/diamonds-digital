@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { chevronLeft, chevronRight, minSwipeDistance } from "./constants";
+import Image from "next/image";
 
-const Carousel = ({ images }) => {
+const Carousel = ({ images, zvalue = 50 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -45,7 +46,7 @@ const Carousel = ({ images }) => {
   return (
     <div className="relative overflow-hidden">
       <div
-        className="flex transition-transform duration-300 ease-in-out"
+        className="flex transition-transform duration-300 ease-in-out md:scale-75"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         onTouchStart={handleTouchStart}
         onTouchMove={onTouchMove}
@@ -55,6 +56,8 @@ const Carousel = ({ images }) => {
           <div key={index} className="w-full flex-shrink-0">
             <img
               src={img}
+              // width={400}
+              // height={400}
               alt={`Image ${index + 1}`}
               className="w-full h-auto"
             />

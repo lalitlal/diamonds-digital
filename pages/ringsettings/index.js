@@ -32,12 +32,12 @@ export default function Home() {
       <Header></Header>
       <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
       <Stepper stage={1}></Stepper>
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <SingleShapeSelector singular={true}></SingleShapeSelector>
-      </div>
-      <div className="mt-3">
+      </div> */}
+      {/* <div className="mt-3">
         <MetalSelector></MetalSelector>
-      </div>
+      </div> */}
       <RingSettings></RingSettings>
       <Footer></Footer>
     </>

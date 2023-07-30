@@ -8,6 +8,8 @@ import { getProducts, getCustomProduct } from "../sanity/sanity-utils";
 import SettingsProductDetail from "./SettingsProductDetail";
 import Carousel from "./Carousel";
 import { chevronLeft } from "./constants";
+import MetalSelector from "./MetalSelector";
+import SingleShapeSelector from "./SingleShapeSelector";
 
 const RingSettings = () => {
   const diamondContext = useContext(DiamondContext);
@@ -82,107 +84,120 @@ const RingSettings = () => {
     setOpenSettingDetail(true);
   };
   return (
-    <section className="text-gray-600 body-font">
-      <div className="container p-5 mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {!openSettingDetail &&
-            products.map((prod, i) => {
-              const { _id, title, description, type } = prod;
-              const variant = prod.variants;
-              const imageAlts = Array.from(
-                {
-                  length:
-                    variant !== null &&
-                    variant !== undefined &&
-                    variant.length > 0
-                      ? variant[0].images.length
-                      : 1,
-                },
-                (_, index) =>
-                  `${
-                    variant !== null &&
-                    variant !== undefined &&
-                    variant.length > 0
-                      ? `${variant[0].variantDescription}_${index}`
-                      : `${upperCaseFirstLetter()}-${
-                          diamondContext.bandColor
-                        }_${index}_placeholder`
-                  }`
-              );
-              return (
-                <div key={prod._id} className="w-full">
-                  <div
-                    className="flex flex-col h-full"
-                    onClick={() => {
-                      handleRingClick(prod, imageAlts);
-                    }}
-                  >
-                    {prod.variants !== null &&
-                    prod.variants !== undefined &&
-                    variant.length > 0 ? (
-                      <ImageSlider
-                        images={variant[0].images}
-                        imageAlts={imageAlts}
-                        // w-200 h-200 md:w-400 md:h-400
-                        imageClass={
-                          "w-200 h-200 md:w-400 md:h-400 object-center object"
-                        }
-                      ></ImageSlider>
-                    ) : (
-                      <ImageSlider
-                        images={[dummyImageURL]}
-                        imageAlts={imageAlts}
-                        imageClass={
-                          "w-200 h-200 md:w-400 md:h-400 object-cover object-center"
-                        }
-                      ></ImageSlider>
-                    )}
+    <>
+      {!openSettingDetail && (
+        <>
+          <div className="flex justify-center">
+            <SingleShapeSelector singular={true}></SingleShapeSelector>
+          </div>
+          <div className="mt-3">
+            <MetalSelector></MetalSelector>
+          </div>
+        </>
+      )}
 
-                    {!openSettingDetail && (
-                      <div className="flex flex-col justify-between -mt-10 z-[50] h-40 overflow-hidden">
-                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                          {description}
-                        </h3>
-                        <h2 className="text-gray-900 title-font text-lg font-medium">
-                          {title}
-                        </h2>
-                        <p className="mt-1">{prod.variants[0].price}</p>
-                        <button
-                          onClick={() => {
-                            handleRingClick(prod, imageAlts);
-                          }}
-                          className="flex mt-2 text-white text-center justify-center bg-slate-700 border-0 py-2 px-6 focus:outline-none hover:bg-slate-800 rounded"
-                        >
-                          Select
-                        </button>
-                      </div>
-                    )}
+      <section className="text-gray-600 body-font">
+        <div className="container p-5 mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {!openSettingDetail &&
+              products.map((prod, i) => {
+                const { _id, title, description, type } = prod;
+                const variant = prod.variants;
+                const imageAlts = Array.from(
+                  {
+                    length:
+                      variant !== null &&
+                      variant !== undefined &&
+                      variant.length > 0
+                        ? variant[0].images.length
+                        : 1,
+                  },
+                  (_, index) =>
+                    `${
+                      variant !== null &&
+                      variant !== undefined &&
+                      variant.length > 0
+                        ? `${variant[0].variantDescription}_${index}`
+                        : `${upperCaseFirstLetter()}-${
+                            diamondContext.bandColor
+                          }_${index}_placeholder`
+                    }`
+                );
+                return (
+                  <div key={prod._id} className="w-full">
+                    <div
+                      className="flex flex-col h-full"
+                      onClick={() => {
+                        handleRingClick(prod, imageAlts);
+                      }}
+                    >
+                      {prod.variants !== null &&
+                      prod.variants !== undefined &&
+                      variant.length > 0 ? (
+                        <ImageSlider
+                          images={variant[0].images}
+                          imageAlts={imageAlts}
+                          // w-200 h-200 md:w-400 md:h-400
+                          imageClass={
+                            "w-200 h-200 md:w-400 md:h-400 object-center object"
+                          }
+                        ></ImageSlider>
+                      ) : (
+                        <ImageSlider
+                          images={[dummyImageURL]}
+                          imageAlts={imageAlts}
+                          imageClass={
+                            "w-200 h-200 md:w-400 md:h-400 object-cover object-center"
+                          }
+                        ></ImageSlider>
+                      )}
+
+                      {!openSettingDetail && (
+                        <div className="flex flex-col justify-between -mt-10 z-[5] h-40 overflow-hidden">
+                          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
+                            {description}
+                          </h3>
+                          <h2 className="text-gray-900 title-font text-lg font-medium">
+                            {title}
+                          </h2>
+                          <p className="mt-1">{prod.variants[0].price}</p>
+                          <button
+                            onClick={() => {
+                              handleRingClick(prod, imageAlts);
+                            }}
+                            className="flex mt-2 text-white text-center justify-center bg-slate-700 border-0 py-2 px-6 focus:outline-none hover:bg-slate-800 rounded"
+                          >
+                            Select
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+          </div>
+          {openSettingDetail && (
+            <>
+              <div
+                className="flex items-center mt-4 pb-4 hover:underline"
+                onClick={() => {
+                  setOpenSettingDetail(false);
+                }}
+              >
+                {chevronLeft} Back to catalog
+              </div>
+              <SettingsProductDetail
+                name={settingDetails.name}
+                price={settingDetails.price}
+                description={settingDetails.description}
+                images={settingDetails.images}
+                variantData={settingDetails.variantData}
+              ></SettingsProductDetail>
+            </>
+          )}
         </div>
-        {openSettingDetail && (
-          <>
-            <div
-              className="flex items-center mt-4 ml-6 pb-4 hover:underline"
-              onClick={() => {
-                setOpenSettingDetail(false);
-              }}
-            >
-              {chevronLeft} Back to catalog
-            </div>
-            <SettingsProductDetail
-              name={settingDetails.name}
-              price={settingDetails.price}
-              description={settingDetails.description}
-              images={settingDetails.images}
-              variantData={settingDetails.variantData}
-            ></SettingsProductDetail>
-          </>
-        )}
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

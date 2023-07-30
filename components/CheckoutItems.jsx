@@ -9,6 +9,7 @@ import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import ImageSlider from "./ImageSlider";
 import { getCheckoutItem } from "../sanity/sanity-utils";
+import Carousel from "./Carousel";
 
 function CheckoutItems({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
@@ -114,12 +115,7 @@ function CheckoutItems({ onRemoveItem }) {
       );
       const newImageSlider =
         variant !== undefined && (variant !== null) & (variant.length > 0) ? (
-          <ImageSlider
-            checkout={true}
-            images={variant[0].images}
-            imagesAlt={imageAlts}
-            imageClass={"object-contain object-center"}
-          ></ImageSlider>
+          <Carousel images={variant[0].images} />
         ) : (
           { dummyImageSlider }
         );
