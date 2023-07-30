@@ -45,7 +45,7 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
 
   return (
     <div
-      className={`relative ${checkout ? "h-48 rounded-3xl" : "h-96"}`}
+      className={`relative ${checkout ? "h-24 rounded-3xl" : "h-96"}`}
       onTouchStart={handleTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -77,15 +77,15 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
           <img
             src={image}
             alt={`Image ${index + 1}`}
-            className="w-full h-full object-fill"
+            className="w-full h-auto object-contain"
           />
         </div>
       ))}
-      <div className="absolute bottom-0 w-full flex justify-center space-x-2">
+      <div className="absolute bottom-0 w-full h-auto flex justify-center space-x-2">
         {images.map((_, index) => (
           <button
             key={index}
-            className={`h-3 w-3 rounded-full ${
+            className={`h-3 w-3 -mt-16 rounded-full ${
               currentSlide === index ? "bg-slate-800" : "bg-gray-500"
             }`}
             // onClick={() => handleSlideChange(index)}

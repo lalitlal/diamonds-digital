@@ -139,7 +139,7 @@ const RingSettings = () => {
                     )}
 
                     {!openSettingDetail && (
-                      <div className="flex flex-col justify-between mt-4 h-40 overflow-hidden">
+                      <div className="flex flex-col justify-between -mt-10 z-[50] h-40 overflow-hidden">
                         <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                           {description}
                         </h3>
