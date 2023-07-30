@@ -192,9 +192,9 @@ const DiamondsTable = ({ data }) => {
                         <td className="px-2 py-4" style={columnStyles.price}>
                           {item.price}
                         </td>
-                        <td className="px-2 py-4" style={columnStyles.caret}>
+                        {/* <td className="px-2 py-4" style={columnStyles.caret}>
                           {caret(index)}
-                        </td>
+                        </td> */}
                       </tr>
                       {selectedRow === index && (
                         <tr>

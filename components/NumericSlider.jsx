@@ -18,7 +18,7 @@ const NumericSlider = ({ values, setValues, minValue, maxValue }) => {
   };
 
   return (
-    <div className="w-4/5 mx-auto py-4 mt-2">
+    <div className="w-3/5 mx-auto py-4 mt-2">
       <Slider
         className="w-full"
         range
@@ -30,9 +30,9 @@ const NumericSlider = ({ values, setValues, minValue, maxValue }) => {
         handleStyle={{
           borderColor: `${hiraGray}`,
           backgroundColor: `${hiralightGray}`,
-          height: 15,
-          width: 15,
-          marginTop: -7,
+          height: 20,
+          width: 20,
+          marginTop: -9,
         }}
         trackStyle={{ backgroundColor: `${hiraGray}`, height: 2 }}
       />
