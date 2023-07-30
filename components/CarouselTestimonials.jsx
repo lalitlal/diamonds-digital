@@ -5,7 +5,7 @@ const CarouselTestimonials = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(null);
-  const minSwipeDistance = 100;
+  const minSwipeDistance = 50;
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
