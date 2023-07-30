@@ -17,7 +17,7 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
           }`}
         >
           {/* {dummyImage} */}
-          <Image
+          {/* <Image
             src={image}
             alt={"YUPERS"}
             width={400}
@@ -25,6 +25,11 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
             quality={75}
             className={imageClass}
             objectFit="cover"
+          /> */}
+          <img
+            src={image}
+            alt={`Image ${index + 1}`}
+            className="w-full h-auto"
           />
         </div>
       ))}
