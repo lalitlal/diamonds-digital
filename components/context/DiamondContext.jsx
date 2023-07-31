@@ -12,6 +12,8 @@ export const DiamondContextProvider = ({ children }) => {
     useState("oval");
 
   const [selectedDiamondShape, setSelectedDiamondShape] = useState("oval");
+  const [settingDetails, setSettingDetails] = useState({});
+
   const shapes = {
     // ROUND BRILLIANT
     round: {
@@ -678,6 +680,8 @@ export const DiamondContextProvider = ({ children }) => {
         bandColor,
         currentSettingDiamondShape,
         selectedDiamondShape,
+        settingDetails,
+        setSettingDetails,
         setSelectedDiamondShape,
         setCurrentSettingDiamondShape,
         setCurrentShapeOptions,

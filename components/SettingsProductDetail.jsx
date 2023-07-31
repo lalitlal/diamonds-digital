@@ -1,19 +1,10 @@
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
-import Breadcrumb from "./BreadCrumb";
-import { navigationBreadCrums } from "./constants";
-import Image from "next/image";
 import Carousel from "./Carousel";
 
-const SettingsProductDetail = ({
-  name,
-  price,
-  description,
-  images,
-  variantData,
-}) => {
+const SettingsProductDetail = ({}) => {
   const cartContext = useContext(CartContext);
   const diamondContext = useContext(DiamondContext);
 
@@ -40,18 +31,20 @@ const SettingsProductDetail = ({
                 HIRA
               </h2>
               <h1 class="text-gray-900 text-3xl title-font font-medium mb-2">
-                {name}
+                {diamondContext.settingDetails.name}
               </h1>
               <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                {description}
+                {diamondContext.settingDetails.description}
               </h3>
-              <Carousel images={variantData.images} />
-              <div class="flex justify-center w-full">
+              <Carousel
+                images={diamondContext.settingDetails.variantData.images}
+              />
+              <div class="flex justify-center w-full items-center">
                 <Link href="/checkout">
                   <button
-                    class="flex w-full text-center justify-center text-white bg-slate-700 py-2 px-8 focus:outline-none active:bg-black focus:bg-black text-lg -mt-2"
+                    class="flex w-full text-center justify-center text-white bg-slate-700 py-2 px-8 focus:outline-none active:bg-black focus:bg-black text-lg"
                     onClick={() => {
-                      const settingStatus = `${variantData.variantDescription}`;
+                      const settingStatus = `${diamondContext.settingDetails.variantData.variantDescription}`;
                       const currentDiamond = upperCaseFirstLetter();
                       if (currentDiamond !== undefined) {
                         const newSettingStatus = settingStatus.replace(
@@ -62,10 +55,13 @@ const SettingsProductDetail = ({
                       } else {
                         cartContext.setSetting(settingStatus);
                       }
-                      cartContext.setSettingPrice(variantData.price);
+                      cartContext.setSettingPrice(
+                        diamondContext.settingDetails.variantData.price
+                      );
                     }}
                   >
-                    Add to bag CA${price}
+                    Add to bag CA$
+                    {diamondContext.settingDetails.variantData.price}
                   </button>
                 </Link>
               </div>

@@ -4,7 +4,7 @@ import Diamonds from "./Diamonds";
 
 const DiamondPage = () => {
   return (
-    <div className="flex-col h-screen">
+    <div className="flex-col h-screen overflow-x-hidden">
       <div className="">
         <DiamondFilter></DiamondFilter>
       </div>

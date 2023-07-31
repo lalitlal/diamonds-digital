@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductDetail from "./ProductDetail";
 import {
   chevronLeft,
@@ -6,6 +6,7 @@ import {
   chevronLast,
   chevronRight,
 } from "./constants";
+import { DiamondContext } from "./context/DiamondContext";
 
 const DiamondsTable = ({ data }) => {
   const [showProductDetail, setShowProductDetail] = useState(false);
@@ -18,6 +19,7 @@ const DiamondsTable = ({ data }) => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const diamondContext = useContext(DiamondContext);
   //   const scrollToBottom = () => {
   //     divRef.current?.scrollIntoView({ behavior: "smooth" });
   //   };
@@ -27,7 +29,6 @@ const DiamondsTable = ({ data }) => {
 
   // Function to handle page change
   const handlePageChange = (pageNumber) => {
-    console.log("RECIVED PAGE NUMBER", pageNumber);
     setCurrentPage(pageNumber);
   };
 
@@ -87,12 +88,24 @@ const DiamondsTable = ({ data }) => {
     caret: { width: "50px" }, // Set the width of the caret column
   };
 
-  const rowClass = `hover:cursor-pointer border-b whitespace-nowrap text-center px-2 py-4 transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600`;
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [
+    diamondContext.currentCutOptions,
+    diamondContext.currentClarityOptions,
+    diamondContext.currentColorOptions,
+    diamondContext.currentShapeOptions,
+    diamondContext.currentSettingDiamondShape,
+    diamondContext.caratValue,
+    diamondContext.priceValue,
+    diamondContext.cutValue,
+  ]);
 
+  const rowClass = `hover:cursor-pointer border-b whitespace-nowrap text-center px-2 py-4 transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600`;
   const colClass = "px-2 py-4 text-center";
   return (
     <>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center overflow-x-hidden">
         <h3 className="text-base text-gray-400 ml-4">{data.length} items</h3>
         <div className="flex items-center">
           <label

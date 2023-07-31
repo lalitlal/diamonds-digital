@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import ImageSlider from "./ImageSlider";
@@ -16,11 +16,10 @@ const RingSettings = () => {
   const cartContext = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [openSettingDetail, setOpenSettingDetail] = useState(false);
-  const [settingDetails, setSettingDetails] = useState({});
 
   const dummyImageURL = "https://dummyimage.com/420x260";
 
-  const upperCaseFirstLetter = () => {
+  const upperCaseFirstLetter = useCallback(() => {
     if (
       cartContext.diamondShape !== null &&
       cartContext.diamondShape !== undefined
@@ -31,30 +30,19 @@ const RingSettings = () => {
       );
     }
     return undefined;
+  }, [cartContext.diamondShape]);
+
+  const generateImageAlts = (prod) => {
+    const imageAlts = Array.from(
+      {
+        length: prod.variants[0].images.length,
+      },
+      (_, index) => `${`${prod.variants[0].variantDescription}_${index}`}`
+    );
+    return imageAlts;
   };
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const uppercase_stone_str =
-          diamondContext.currentSettingDiamondShape.charAt(0).toUpperCase() +
-          diamondContext.currentSettingDiamondShape.slice(1);
-        const productsData = await getProducts(
-          uppercase_stone_str,
-          diamondContext.bandColor
-        );
-        const customProduct = await getCustomProduct();
-        const clobbered = productsData.concat(customProduct);
-        setProducts(clobbered);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    fetchProducts();
-  }, [diamondContext.currentSettingDiamondShape, diamondContext.bandColor]);
-
-  const handleRingClick = (prod, imageAlts) => {
+  const generateImageSlider = (prod, imageAlts) => {
     const imageSliderForDetail =
       prod.variants !== null &&
       prod.variants !== undefined &&
@@ -74,7 +62,60 @@ const RingSettings = () => {
           }
         ></ImageSlider>
       );
-    setSettingDetails({
+    return imageSliderForDetail;
+  };
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const uppercase_stone_str =
+          diamondContext.currentSettingDiamondShape.charAt(0).toUpperCase() +
+          diamondContext.currentSettingDiamondShape.slice(1);
+        const productsData = await getProducts(
+          uppercase_stone_str,
+          diamondContext.bandColor
+        );
+        const customProduct = await getCustomProduct();
+        const clobbered = productsData.concat(customProduct);
+        setProducts(clobbered);
+        // Handle setting detail changes:
+        const newProduct = clobbered.filter((product) => {
+          return product.title === diamondContext.settingDetails.name;
+        });
+
+        if (
+          newProduct !== undefined &&
+          newProduct !== null &&
+          newProduct[0].variants[0] !==
+            diamondContext.settingDetails.variantData
+        ) {
+          const imageAlts = generateImageAlts(newProduct[0]);
+          const imageSliderForDetail = generateImageSlider(
+            newProduct[0],
+            imageAlts
+          );
+
+          diamondContext.setSettingDetails({
+            name: newProduct[0].title,
+            price: newProduct[0].variants[0].price,
+            description: newProduct[0].description,
+            images: imageSliderForDetail,
+            variantData: newProduct[0].variants[0],
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+    // It would be great if we can also set the setting details here!
+  }, [diamondContext.currentSettingDiamondShape, diamondContext.bandColor]);
+
+  const handleRingClick = (prod, imageAlts) => {
+    const imageSliderForDetail = generateImageSlider(prod, imageAlts);
+
+    diamondContext.setSettingDetails({
       name: prod.title,
       price: prod.variants[0].price,
       description: prod.description,
@@ -85,17 +126,6 @@ const RingSettings = () => {
   };
   return (
     <>
-      {!openSettingDetail && (
-        <>
-          <div className="flex justify-center">
-            <SingleShapeSelector singular={true}></SingleShapeSelector>
-          </div>
-          <div className="mt-3">
-            <MetalSelector></MetalSelector>
-          </div>
-        </>
-      )}
-
       <section className="text-gray-600 body-font">
         <div className="container p-5 mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -103,26 +133,7 @@ const RingSettings = () => {
               products.map((prod, i) => {
                 const { _id, title, description, type } = prod;
                 const variant = prod.variants;
-                const imageAlts = Array.from(
-                  {
-                    length:
-                      variant !== null &&
-                      variant !== undefined &&
-                      variant.length > 0
-                        ? variant[0].images.length
-                        : 1,
-                  },
-                  (_, index) =>
-                    `${
-                      variant !== null &&
-                      variant !== undefined &&
-                      variant.length > 0
-                        ? `${variant[0].variantDescription}_${index}`
-                        : `${upperCaseFirstLetter()}-${
-                            diamondContext.bandColor
-                          }_${index}_placeholder`
-                    }`
-                );
+                const imageAlts = generateImageAlts(prod);
                 return (
                   <div key={prod._id} className="w-full">
                     <div
@@ -186,13 +197,7 @@ const RingSettings = () => {
               >
                 {chevronLeft} Back to catalog
               </div>
-              <SettingsProductDetail
-                name={settingDetails.name}
-                price={settingDetails.price}
-                description={settingDetails.description}
-                images={settingDetails.images}
-                variantData={settingDetails.variantData}
-              ></SettingsProductDetail>
+              <SettingsProductDetail></SettingsProductDetail>
             </>
           )}
         </div>
