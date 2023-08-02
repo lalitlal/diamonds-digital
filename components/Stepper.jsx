@@ -15,7 +15,7 @@ const iconObjects = [
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
       </svg>
     ),
-    title: "Diamond",
+    title: "Diamonds",
     href: "/diamond",
   },
   {
@@ -35,7 +35,7 @@ const iconObjects = [
         />
       </svg>
     ),
-    title: "Setting",
+    title: "Settings",
     href: "/ringsettings",
   },
   // {
@@ -62,25 +62,28 @@ const iconObjects = [
 
 const Stepper = ({ stage }) => {
   return (
-    <section className="text-gray-600 body-font w-full">
-      <div className="px-1 py-4 flex justify-center w-full">
-        <div className="flex">
-          {iconObjects.map((iconObj, i) => {
-            return (
-              <Link
-                href={iconObj.href}
-                key={i}
-                className={`sm:px-6 py-3 px-14 w-1/2 sm:w-auto justify-center sm:justify-start border title-font font-medium border-[#61626b] inline-flex items-center leading-none tracking-wider ${
-                  i === stage
-                    ? `bg-[#61626b] text-white`
-                    : ` hover:text-[#61626b]`
-                } `}
-              >
-                {iconObj.icon}
-                {iconObj.title}
-              </Link>
-            );
-          })}
+    <section className="text-gray-600 body-font w-full overflow-x-hidden">
+      <div className="py-4 flex justify-center w-full">
+        <div className="w-screen mx-4">
+          <div className="flex">
+            {iconObjects.map((iconObj, i) => {
+              return (
+                <Link
+                  href={iconObj.href}
+                  key={i}
+                  // px-6?
+                  className={`flex-grow py-3 w-1/2 justify-center border font-bold font-Raleway border-[#61626b] inline-flex items-center leading-none tracking-wider ${
+                    i === stage
+                      ? `bg-[#61626b] text-white`
+                      : ` hover:text-[#61626b]`
+                  } `}
+                >
+                  {iconObj.icon}
+                  {iconObj.title}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

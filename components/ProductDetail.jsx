@@ -136,6 +136,7 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
                       data.shape.toLowerCase()
                     );
                     cartContext.setDiamondShape(data.shape.toLowerCase());
+                    diamondContext.setDiamondJustSelected(true);
                   }}
                 >
                   Add to ring CA${data.price}

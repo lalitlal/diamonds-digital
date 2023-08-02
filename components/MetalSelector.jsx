@@ -20,9 +20,9 @@ const MetalSelector = () => {
     },
   ];
   return (
-    <div className="justify-center mx-5">
+    <div className="justify-center mx-4">
       <div className="text-left text-gray-600 my-5">Choose Metal</div>
-      <div className="flex flex-wrap p-2 w-full justify-evenly">
+      <div className="flex flex-wrap w-full justify-between ">
         {options.map((op, i) => {
           return (
             <div

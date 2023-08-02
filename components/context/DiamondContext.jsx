@@ -13,6 +13,7 @@ export const DiamondContextProvider = ({ children }) => {
 
   const [selectedDiamondShape, setSelectedDiamondShape] = useState("oval");
   const [settingDetails, setSettingDetails] = useState({});
+  const [diamondJustSelected, setDiamondJustSelected] = useState(false);
 
   const shapes = {
     // ROUND BRILLIANT
@@ -681,6 +682,8 @@ export const DiamondContextProvider = ({ children }) => {
         currentSettingDiamondShape,
         selectedDiamondShape,
         settingDetails,
+        diamondJustSelected,
+        setDiamondJustSelected,
         setSettingDetails,
         setSelectedDiamondShape,
         setCurrentSettingDiamondShape,

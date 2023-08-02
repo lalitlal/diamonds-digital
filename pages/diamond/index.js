@@ -8,6 +8,7 @@ import DiamondPage from "../../components/DiamondPage";
 import Stepper from "../../components/Stepper";
 import Breadcrumb from "../../components/BreadCrumb";
 import { navigationBreadCrums } from "../../components/constants";
+import Footer from "../../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 

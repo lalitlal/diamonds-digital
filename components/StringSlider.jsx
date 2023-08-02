@@ -18,25 +18,27 @@ const StringSlider = ({ values, setValues, minValue, maxValue, marks }) => {
   };
 
   return (
-    <div className="w-4/5 mx-auto py-4 mt-2">
-      <Slider
-        className="w-full"
-        range
-        min={minValue}
-        max={maxValue}
-        defaultValue={[minValue, maxValue]}
-        value={values}
-        marks={marks}
-        onChange={handleSliderChange}
-        handleStyle={{
-          borderColor: `${hiraGray}`,
-          backgroundColor: `${hiralightGray}`,
-          height: 15,
-          width: 15,
-          marginTop: -7,
-        }}
-        trackStyle={{ backgroundColor: `${hiraGray}`, height: 2 }}
-      />
+    <div className="mt-4">
+      <div className="mx-3">
+        <Slider
+          className=""
+          range
+          min={minValue}
+          max={maxValue}
+          defaultValue={[minValue, maxValue]}
+          value={values}
+          marks={marks}
+          onChange={handleSliderChange}
+          handleStyle={{
+            borderColor: `${hiraGray}`,
+            backgroundColor: `white`,
+            height: 28,
+            width: 28,
+            marginTop: -14,
+          }}
+          trackStyle={{ backgroundColor: `${hiraGray}`, height: 2 }}
+        />
+      </div>
     </div>
   );
 };

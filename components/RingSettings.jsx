@@ -32,6 +32,17 @@ const RingSettings = () => {
     return undefined;
   }, [cartContext.diamondShape]);
 
+  useEffect(() => {
+    const checkDiamondSelected = () => {
+      if (diamondContext.diamondJustSelected === true) {
+        setTimeout(() => {
+          diamondContext.setDiamondJustSelected(false);
+        }, 3000);
+      }
+    };
+    checkDiamondSelected();
+  }, [diamondContext.diamondJustSelected]);
+
   const generateImageAlts = (prod) => {
     const imageAlts = Array.from(
       {
@@ -164,14 +175,14 @@ const RingSettings = () => {
                       )}
 
                       {!openSettingDetail && (
-                        <div className="flex flex-col justify-between -mt-10 z-[5] h-40 overflow-hidden">
-                          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
+                        <div className="flex flex-col justify-between z-[5] h-40 overflow-hidden">
+                          <h3 className="text-gray-500 text-xs tracking-widest title-font mt-4">
                             {description}
                           </h3>
                           <h2 className="text-gray-900 title-font text-lg font-medium">
                             {title}
                           </h2>
-                          <p className="mt-1">{prod.variants[0].price}</p>
+                          <p className="">{prod.variants[0].price}</p>
                           <button
                             onClick={() => {
                               handleRingClick(prod, imageAlts);

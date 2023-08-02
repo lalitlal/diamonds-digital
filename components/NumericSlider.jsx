@@ -4,8 +4,6 @@ import "rc-slider/assets/index.css";
 import { hiraGray, hiralightGray } from "./constants";
 
 const NumericSlider = ({ values, setValues, minValue, maxValue }) => {
-  //   const [values, setValues] = useState([0, 100]);
-
   const handleSliderChange = (newValues) => {
     setValues(newValues);
   };
@@ -18,37 +16,39 @@ const NumericSlider = ({ values, setValues, minValue, maxValue }) => {
   };
 
   return (
-    <div className="w-3/5 mx-auto py-4 mt-2">
-      <Slider
-        className="w-full"
-        range
-        min={minValue}
-        max={maxValue}
-        defaultValue={[minValue, maxValue]}
-        value={values}
-        onChange={handleSliderChange}
-        handleStyle={{
-          borderColor: `${hiraGray}`,
-          backgroundColor: `${hiralightGray}`,
-          height: 20,
-          width: 20,
-          marginTop: -9,
-        }}
-        trackStyle={{ backgroundColor: `${hiraGray}`, height: 2 }}
-      />
-      <div className="flex justify-between">
-        <input
-          type="number"
-          value={values[0]}
-          onChange={(event) => handleInputChange(0, event)}
-          className="w-24 text-left -ml-2"
+    <div className="mt-4">
+      <div className="mx-3">
+        <Slider
+          className=""
+          range
+          min={minValue}
+          max={maxValue}
+          defaultValue={[minValue, maxValue]}
+          value={values}
+          onChange={handleSliderChange}
+          handleStyle={{
+            borderColor: `${hiraGray}`,
+            backgroundColor: `white`,
+            height: 28,
+            width: 28,
+            marginTop: -14,
+          }}
+          trackStyle={{ backgroundColor: `${hiraGray}`, height: 2 }}
         />
-        <input
-          type="number"
-          value={values[1]}
-          onChange={(event) => handleInputChange(1, event)}
-          className="w-24 text-right -mr-2"
-        />
+        <div className="flex justify-between mt-2">
+          <input
+            type="number"
+            value={values[0]}
+            onChange={(event) => handleInputChange(0, event)}
+            className="w-full text-left -ml-2"
+          />
+          <input
+            type="number"
+            value={values[1]}
+            onChange={(event) => handleInputChange(1, event)}
+            className="w-full text-right -mr-2"
+          />
+        </div>
       </div>
     </div>
   );

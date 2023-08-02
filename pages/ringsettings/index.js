@@ -16,6 +16,7 @@ import MetalSelector from "../../components/MetalSelector";
 import SingleShapeSelector from "../../components/SingleShapeSelector";
 import Breadcrumb from "../../components/BreadCrumb";
 import { navigationBreadCrums } from "../../components/constants";
+import DiamondSelectedNotification from "../../components/DiamondSelectedNotification";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function Home() {
       <Navbar></Navbar>
       <Header></Header>
       <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
+      <DiamondSelectedNotification></DiamondSelectedNotification>
       <Stepper stage={1}></Stepper>
       <div className="flex justify-center">
         <SingleShapeSelector singular={true}></SingleShapeSelector>

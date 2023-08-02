@@ -46,7 +46,7 @@ const Carousel = ({ images, zvalue = 50 }) => {
   return (
     <div className="relative overflow-hidden">
       <div
-        className="flex transition-transform duration-300 ease-in-out md:scale-75"
+        className="flex transition-transform duration-300 ease-in-out scale-50"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         onTouchStart={handleTouchStart}
         onTouchMove={onTouchMove}
