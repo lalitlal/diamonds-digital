@@ -2,6 +2,9 @@ import Link from "next/link";
 import React, { useContext, useState } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
+import TrustedHtmlContent from "./TrustedHTMLContent";
+import Script from "next/script";
+import Image from "next/image";
 
 const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
   const cartContext = useContext(CartContext);
@@ -45,10 +48,10 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
   );
 
   return (
-    <section class="text-gray-600 body-font overflow-hidden">
-      <div class="container px-5 py-2 mx-auto">
-        <div class="lg:w-4/5 mx-auto flex flex-wrap">
-          <div class="lg:w-full w-full mb-6 lg:mb-0">
+    <div class="text-gray-600 body-font">
+      <div class="px-5 py-2 w-full justify-center ">
+        <div class="w-full justify-center items-center text-center ">
+          <div class="md:w-4/5 w-full mb-6 lg:mb-0 mx-auto">
             <h2 class="text-sm title-font text-gray-500 tracking-widest">
               HIRA
             </h2>
@@ -56,12 +59,20 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
               {shape} Shape Diamond
               {/* {carat} {color} {clarity} {cut} */}
             </h1>
-            <img
+            {/* <img
               alt="ecommerce"
               class="lg w-full lg:h-1/3 h-64 object-cover object-center"
               // src={`${productOptions[currentDisplay].Content.image}`}
               src="https://dummyimage.com/400x400"
-            />
+            /> */}
+            <div className="w-full">
+              <div className="w-full flex justify-center items-center text-center">
+                <TrustedHtmlContent
+                  url={data.diamond.video}
+                ></TrustedHtmlContent>
+              </div>
+            </div>
+
             <div class="flex mb-4">
               {productOptions.map((prod, i) => {
                 return (
@@ -126,27 +137,25 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
                 <button
                   class="flex w-full text-center justify-center text-white bg-slate-700 py-2 px-8 focus:outline-none active:bg-black focus:bg-black text-lg -mt-2"
                   onClick={() => {
-                    const diamondStatus = `${data.shape} ${data.carat} ${data.color} ${data.clarity} ${data.cut}`;
+                    const diamondStatus = `${shape.toLowerCase()} ${carat} ${color} ${clarity} ${cut}`;
                     cartContext.setDiamond(diamondStatus);
-                    cartContext.setDiamondPrice(data.price);
+                    cartContext.setDiamondPrice(price);
                     diamondContext.setCurrentSettingDiamondShape(
-                      data.shape.toLowerCase()
+                      shape.toLowerCase()
                     );
-                    diamondContext.setSelectedDiamondShape(
-                      data.shape.toLowerCase()
-                    );
-                    cartContext.setDiamondShape(data.shape.toLowerCase());
+                    diamondContext.setSelectedDiamondShape(shape.toLowerCase());
+                    cartContext.setDiamondShape(shape.toLowerCase());
                     diamondContext.setDiamondJustSelected(true);
                   }}
                 >
-                  Add to ring CA${data.price}
+                  Add to ring CA${price}
                 </button>
               </Link>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -157,7 +157,7 @@ const DiamondFilter = () => {
               values={diamondContext.cutValue}
               setValues={diamondContext.setCutValue}
               minValue={0}
-              maxValue={4}
+              maxValue={3}
               marks={cutMapping}
             ></StringSlider>
             {/* <CutSelector></CutSelector> */}

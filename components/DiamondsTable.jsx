@@ -179,53 +179,71 @@ const DiamondsTable = ({ data }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentItems.map((item, index) => (
-                    <React.Fragment key={index}>
-                      <tr
-                        className={`${rowClass} ${
-                          index % 2 === 0 ? "" : "bg-gray-300"
-                        }`}
-                        onClick={() => handleRowClick(index)}
-                      >
-                        <td className="px-2 py-4" style={columnStyles.shape}>
-                          {item.shape}
-                        </td>
-                        <td className="px-2 py-4" style={columnStyles.carat}>
-                          {item.carat}
-                        </td>
-                        <td className="px-2 py-4" style={columnStyles.color}>
-                          {item.color}
-                        </td>
-                        <td className="px-2 py-4" style={columnStyles.clarity}>
-                          {item.clarity}
-                        </td>
-                        <td className="px-2 py-4" style={columnStyles.cut}>
-                          {item.cut}
-                        </td>
-                        <td className="px-2 py-4" style={columnStyles.price}>
-                          {item.price}
-                        </td>
-                        {/* <td className="px-2 py-4" style={columnStyles.caret}>
+                  {currentItems.map(
+                    (item, index) =>
+                      item.diamond.video && (
+                        <React.Fragment key={index}>
+                          <tr
+                            className={`${rowClass} ${
+                              index % 2 === 0 ? "" : "bg-gray-300"
+                            }`}
+                            onClick={() => handleRowClick(index)}
+                          >
+                            <td
+                              className="px-2 py-4"
+                              style={columnStyles.shape}
+                            >
+                              {item.diamond.certificate.shape}
+                            </td>
+                            <td
+                              className="px-2 py-4"
+                              style={columnStyles.carat}
+                            >
+                              {item.diamond.certificate.carats}
+                            </td>
+                            <td
+                              className="px-2 py-4"
+                              style={columnStyles.color}
+                            >
+                              {item.diamond.certificate.color}
+                            </td>
+                            <td
+                              className="px-2 py-4"
+                              style={columnStyles.clarity}
+                            >
+                              {item.diamond.certificate.clarity}
+                            </td>
+                            <td className="px-2 py-4" style={columnStyles.cut}>
+                              {item.diamond.certificate.cut}
+                            </td>
+                            <td
+                              className="px-2 py-4"
+                              style={columnStyles.price}
+                            >
+                              {item.price}
+                            </td>
+                            {/* <td className="px-2 py-4" style={columnStyles.caret}>
                           {caret(index)}
                         </td> */}
-                      </tr>
-                      {selectedRow === index && (
-                        <tr>
-                          <td colSpan="7">
-                            <ProductDetail
-                              shape={item.shape}
-                              carat={item.carat}
-                              color={item.color}
-                              clarity={item.clarity}
-                              cut={item.cut}
-                              price={item.price}
-                              data={item}
-                            />
-                          </td>
-                        </tr>
-                      )}
-                    </React.Fragment>
-                  ))}
+                          </tr>
+                          {selectedRow === index && (
+                            <tr>
+                              <td colSpan="7">
+                                <ProductDetail
+                                  shape={item.diamond.certificate.shape}
+                                  carat={item.diamond.certificate.carats}
+                                  color={item.diamond.certificate.color}
+                                  clarity={item.diamond.certificate.clarity}
+                                  cut={item.diamond.certificate.cut}
+                                  price={item.price}
+                                  data={item}
+                                />
+                              </td>
+                            </tr>
+                          )}
+                        </React.Fragment>
+                      )
+                  )}
                 </tbody>
               </table>
             </div>

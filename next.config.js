@@ -22,5 +22,6 @@ module.exports = {
   headers,
   images: {
     unoptimized: true,
+    domains: ["loupe360.com"],
   },
 };

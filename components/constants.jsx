@@ -29,7 +29,14 @@ export const cutMapping = {
   1: "Very Good",
   2: "Excellent",
   3: "Ideal",
-  4: "Super Ideal",
+  // 4: "Super Ideal",
+};
+
+export const cutAbbreviations = {
+  Good: "GD",
+  "Very Good": "VG",
+  Excellent: "EX",
+  Ideal: "ID",
 };
 
 export const shapes = {

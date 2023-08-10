@@ -18,6 +18,7 @@ import {
 import {
   clarityMapping,
   colorMapping,
+  cutAbbreviations,
   cutMapping,
   shapes,
   stoneMapping,
@@ -101,18 +102,23 @@ const Diamonds = () => {
         post_body.data.cutMin,
         post_body.data.cutMax + 1
       );
+      const abbreviatedCutList = cutList.map((cut, i) => {
+        return cutAbbreviations[cut];
+      });
 
       return {
         colorList: colorList,
         clarityList: clarityList,
-        cutList: cutList,
+        cutList: abbreviatedCutList,
         shapeListSanity:
           post_body.data.shapeListSanity.length === 0
             ? Object.keys(shapes).map((shape) => {
-                return shape.charAt(0).toUpperCase() + shape.slice(1);
+                // return shape.charAt(0).toUpperCase() + shape.slice(1);
+                return shape.toUpperCase();
               })
             : post_body.data.shapeListSanity.map((shape) => {
-                return shape.charAt(0).toUpperCase() + shape.slice(1);
+                // return shape.charAt(0).toUpperCase() + shape.slice(1);
+                return shape.toUpperCase();
               }),
       };
     },
@@ -138,7 +144,6 @@ const Diamonds = () => {
         diamondContext.currentClarityOptions,
         clarityMapping
       );
-      console.log(scraperShapeList);
       post_body.data.shapeListScraper = scraperShapeList;
       post_body.data.shapeListSanity = diamondContext.currentShapeOptions;
       post_body.data.caratMin = diamondContext.caratValue[0];
@@ -163,19 +168,18 @@ const Diamonds = () => {
           priceMax: post_body.data.priceMax,
           ...getFilterListsForSanity(post_body),
         };
-        const currentDiamonds = await getCurrentDiamondsSanity(sanityFilter);
+        // const currentDiamonds = await getCurrentDiamondsSanity(sanityFilter);
+        const currentDiamonds = [];
         if (
           currentDiamonds === null ||
           currentDiamonds === undefined ||
           currentDiamonds.length === 0
         ) {
-          console.log("WE DON'T HAVE THIS IN DB, GETTING....");
-          console.log(post_body);
-          const res = await getDiamonds(postBody);
+          const res = await getDiamonds(sanityFilter);
           if (res.status === 200) {
             const res_json = await res.json();
-            setDiamondData(res_json.diamonds);
-            bulkUploadDiamondsToSanity(res_json.diamonds);
+            setDiamondData(res_json.data);
+            // bulkUploadDiamondsToSanity(res_json.diamonds);
           }
         } else {
           setDiamondData(currentDiamonds);
@@ -226,110 +230,3 @@ const Diamonds = () => {
 };
 
 export default Diamonds;
-
-// <div className="">
-//   <section className="py-1 h-screen overflow-y-scroll">
-//     <div className="w-full mb-12 xl:mb-0 px-1 mx-auto">
-//       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg">
-//         <div className="rounded-t mb-0 px-4 py-3 border-0">
-//           <div className="flex flex-wrap items-center">
-//             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-//               <h3 className="text-base text-gray-400">
-//                 {diamondData.length} items
-//               </h3>
-//             </div>
-//             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-//               <button
-//                 className="bg-slate-500 text-white active:bg-slate-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-//                 type="button"
-//                 onClick={() => {
-//                   clearFilters();
-//                 }}
-//               >
-//                 Clear Filters
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="flex w-full mx-2">
-//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-//             Shape
-//           </div>
-//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-//             Carat
-//           </div>
-//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-//             Color
-//           </div>
-//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-//             Clarity
-//           </div>
-//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-//             Cut
-//           </div>
-//           <div className="bg-blueGray-50 text-blueGray-500 border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center w-1/6">
-//             Price
-//           </div>
-//         </div>
-//         <div className="flex flex-col">
-//           {diamondData.map((data, i) => {
-//             return (
-//               <>
-//                 <div
-//                   key={data + i}
-//                   className="flex hover:bg-slate-400 transition duration-200 ease-in-out cursor-pointer mx-1"
-//                   onClick={() => {
-//                     if (selectedRow === i) {
-//                       setShowProductDetail(false);
-//                       setSelectedRow(undefined);
-//                     } else {
-//                       setShowProductDetail(true);
-//                       setSelectedRow(i);
-//                     }
-//                   }}
-//                 >
-//                   {/* {selectedRow === i && <div ref={divRef}></div>} */}
-//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/6 text-center text-slate-700">
-//                     {data.shape}
-//                   </div>
-//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/6 text-center ">
-//                     {data.carat}
-//                   </div>
-//                   <div className="border-t-0 align-center border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/12 text-center">
-//                     {data.color}
-//                   </div>
-//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/12 text-center">
-//                     {data.clarity}
-//                   </div>
-//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/6 text-center">
-//                     {data.cut}
-//                   </div>
-//                   <div className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4 w-1/6 text-center">
-//                     {`CA$ ${data.price}`}
-//                   </div>
-//                 </div>
-//                 <div
-//                   className={`${selectedRow === i ? "" : "hidden"} w-full`}
-//                 >
-//                   {showProductDetail && (
-//                     <>
-//                       <ProductDetail
-//                         shape={data.shape}
-//                         carat={data.carat}
-//                         color={data.color}
-//                         clarity={data.clarity}
-//                         cut={data.cut}
-//                         price={data.price}
-//                         data={data}
-//                       ></ProductDetail>
-//                     </>
-//                   )}
-//                 </div>
-//               </>
-//             );
-//           })}
-//         </div>
-//       </div>
-//     </div>
-//   </section>
-// </div>
