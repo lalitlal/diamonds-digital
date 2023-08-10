@@ -97,6 +97,8 @@ const RingSettings = () => {
         if (
           newProduct !== undefined &&
           newProduct !== null &&
+          newProduct[0].variants !== null &&
+          newProduct[0].variants !== undefined &&
           newProduct[0].variants[0] !==
             diamondContext.settingDetails.variantData
         ) {

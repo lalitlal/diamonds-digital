@@ -825,3 +825,11 @@ export const chevronRight = (
 );
 
 export const minSwipeDistance = 25;
+
+export const upperCaseFirstLetter = (value) => {
+  if (value !== null && value !== undefined) {
+    const newVal = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+    return newVal;
+  }
+  return undefined;
+};

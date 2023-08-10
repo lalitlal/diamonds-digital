@@ -5,6 +5,7 @@ import {
   chevronFirst,
   chevronLast,
   chevronRight,
+  upperCaseFirstLetter,
 } from "./constants";
 import { DiamondContext } from "./context/DiamondContext";
 
@@ -193,7 +194,9 @@ const DiamondsTable = ({ data }) => {
                               className="px-2 py-4"
                               style={columnStyles.shape}
                             >
-                              {item.diamond.certificate.shape}
+                              {upperCaseFirstLetter(
+                                item.diamond.certificate.shape
+                              )}
                             </td>
                             <td
                               className="px-2 py-4"
@@ -230,7 +233,9 @@ const DiamondsTable = ({ data }) => {
                             <tr>
                               <td colSpan="7">
                                 <ProductDetail
-                                  shape={item.diamond.certificate.shape}
+                                  shape={upperCaseFirstLetter(
+                                    item.diamond.certificate.shape
+                                  )}
                                   carat={item.diamond.certificate.carats}
                                   color={item.diamond.certificate.color}
                                   clarity={item.diamond.certificate.clarity}

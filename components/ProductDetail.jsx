@@ -137,7 +137,7 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
                 <button
                   class="flex w-full text-center justify-center text-white bg-slate-700 py-2 px-8 focus:outline-none active:bg-black focus:bg-black text-lg -mt-2"
                   onClick={() => {
-                    const diamondStatus = `${shape.toLowerCase()} ${carat} ${color} ${clarity} ${cut}`;
+                    const diamondStatus = `${shape} ${carat} ${color} ${clarity} ${cut}`;
                     cartContext.setDiamond(diamondStatus);
                     cartContext.setDiamondPrice(price);
                     diamondContext.setCurrentSettingDiamondShape(
