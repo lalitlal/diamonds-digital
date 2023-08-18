@@ -189,7 +189,7 @@ const ProductDetail = ({ shape, data }) => {
                 setSeeFullDetails(!seeFullDetails);
               }}
             >
-              {seeFullDetails ? "Show" : "Hide"} full information
+              {seeFullDetails ? "Hide" : "Show"} full information
             </div>
 
             <div class="justify-center w-full">
