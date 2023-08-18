@@ -6,6 +6,7 @@ import heroBands from "../public/assets/hero-bands.jpg";
 import heroBracelet from "../public/assets/hero-bracelet.jpg";
 import heroDiamonds from "../public/assets/hero-diamonds.jpg";
 import ImageSlider from "./ImageSlider";
+import { hiraBlackBG } from "./constants";
 
 const Hero = () => {
   const image_urls = {
@@ -49,12 +50,16 @@ const Hero = () => {
         </div>
         <div className="font-Raleway w-screen md:w-3/4 max-w-2xl flex flex-col items-center">
           <Link href="/diamond">
-            <button className="w-screen my-4 leading-tight tracking-tight text-center text-2xl font-bold border -r-0 borborderder-l-0 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
+            <button
+              className={`w-screen my-2 leading-tight tracking-tight text-center text-2xl font-bold border -r-0 border-black p-3 ${hiraBlackBG} text-white hover:bg-black active:bg-slate-900 hover:text-white transition duration-300 ease-in-out`}
+            >
               Start with a diamond
             </button>
           </Link>
           <Link href="/ringsettings">
-            <button className="w-screen md:w-3/4 mt-4 leading-tight tracking-tight text-center text-2xl font-bold border borborderder-l-0 border-slate-800 text-slate-800 p-3 hover:bg-slate-800 active:bg-slate-900 hover:text-white transition duration-300 ease-in-out">
+            <button
+              className={`w-screen md:w-3/4 leading-tight tracking-tight text-center text-2xl font-bold border border-black p-3 ${hiraBlackBG} text-white  hover:bg-black active:bg-slate-900 hover:text-white transition duration-300 ease-in-out`}
+            >
               Start with a setting
             </button>
           </Link>

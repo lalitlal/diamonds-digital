@@ -130,7 +130,7 @@ const DiamondsTable = ({ data }) => {
       </div>
       <div className="flex flex-col">
         <div className="">
-          <div className="inline-block min-w-full">
+          <div className="min-w-full">
             <div className="overflow-hidden">
               <table className="min-w-full text-left text-sm font-light">
                 <thead className="border-b font-medium dark:border-neutral-500">
