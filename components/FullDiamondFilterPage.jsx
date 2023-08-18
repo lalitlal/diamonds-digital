@@ -48,7 +48,7 @@ const FullDiamondFilterPage = () => {
   return (
     diamondContext.showAdvancedFilter && (
       <div className="bg-white z-[50] fixed inset-0 left-0 top-0">
-        <div className="mx-4 mt-4">
+        <div className="mx-4 mt-4 mb-20">
           <div className="flex justify-between border-black border-b">
             <div>Diamonds Filter</div>
             <div
