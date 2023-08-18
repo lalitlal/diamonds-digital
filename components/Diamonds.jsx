@@ -156,6 +156,10 @@ const Diamonds = () => {
       post_body.data.priceMax = diamondContext.priceValue[1];
       post_body.data.cutMin = diamondContext.cutValue[0];
       post_body.data.cutMax = diamondContext.cutValue[1];
+      post_body.order = {
+        type: diamondContext.orderDiamonds.type,
+        direction: diamondContext.orderDiamonds.direction,
+      };
       setPostBody(post_body);
     };
 
@@ -166,6 +170,7 @@ const Diamonds = () => {
           caratMax: parseFloat(post_body.data.caratMax),
           priceMin: post_body.data.priceMin,
           priceMax: post_body.data.priceMax,
+          order: post_body.order,
           ...getFilterListsForSanity(post_body),
         };
         // const currentDiamonds = await getCurrentDiamondsSanity(sanityFilter);
@@ -202,6 +207,7 @@ const Diamonds = () => {
     diamondContext.caratValue,
     diamondContext.cutValue,
     diamondContext.priceValue,
+    diamondContext.orderDiamonds,
     // diamondContext.clarityValue,
     // diamondContext.colorValue,
   ]);

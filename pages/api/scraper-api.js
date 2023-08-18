@@ -60,10 +60,10 @@ const handler = async (req, res) => {
   const auth_res = await authenticate_result.json();
 
   // the authentication token to get in future requests
-  console.log(auth_res);
+  // console.log(auth_res);
   const { token } = auth_res.data.authenticate.username_and_password;
   const params = JSON.parse(req.body);
-  console.log(params);
+  // console.log(params);
   const wrapWithQuotes = (arr) => arr.map((item) => `"${item}"`).join(", ");
 
   const shapesString = wrapWithQuotes(params.shapeListSanity);
@@ -89,7 +89,11 @@ const handler = async (req, res) => {
       },
       offset: 0,
       limit: 50,
-      order: { type: price, direction: ASC }
+      order: ${
+        params.order
+          ? `{type: ${params.order.type}, direction: ${params.order.direction}}`
+          : "{ type: price, direction: ASC }"
+      }
     ) {
       items {
         id
@@ -144,10 +148,8 @@ const handler = async (req, res) => {
   });
 
   const diamond_res = await result.json();
-  // console.log(diamond_res);
   const { items, total_count } = diamond_res.data.diamonds_by_query;
 
-  // console.log(items[0]);
   res.json({ data: items, total_count: total_count });
   // example to access a diamond is mapping over the items
   // i.e. items[0].diamond.certificate.certNumber will give you the certificate number of the first item
@@ -209,4 +211,43 @@ export default handler;
 //     }
 //     total_count
 //   }
+// }
+
+//
+// {
+//   id: 'DIAMOND/d587ab13-cd21-47bb-964c-db3d4132259e',
+//   diamond: {
+//     id: 'd587ab13-cd21-47bb-964c-db3d4132259e',
+//     video: null,
+//     image: null,
+//     availability: 'AVAILABLE',
+//     supplierStockId: '40145485',
+//     brown: 'No',
+//     green: 'No',
+//     milky: 'No',
+//     eyeClean: null,
+//     mine_of_origin: null,
+//     certificate: {
+//       id: 'bb58d3c4-0e80-55fd-9faa-0c028cda5ff6',
+//       lab: 'GCAL',
+//       shape: 'OVAL',
+//       certNumber: '322650682',
+//       cut: 'EX',
+//       carats: 1.01,
+//       clarity: 'VS2',
+//       polish: 'EX',
+//       symmetry: 'EX',
+//       color: 'L',
+//       width: '5.73',
+//       length: '7.96',
+//       depth: '3.57',
+//       girdle: 'STK to THK',
+//       floInt: 'NON',
+//       floCol: null,
+//       depthPercentage: '62.3',
+//       table: '58'
+//     }
+//   },
+//   price: 15644,
+//   discount: -9260
 // }

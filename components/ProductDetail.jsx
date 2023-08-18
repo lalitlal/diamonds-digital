@@ -7,18 +7,19 @@ import Script from "next/script";
 import Image from "next/image";
 import { borderHiraBlack, hiraBlackBG, hiraWhiteBG } from "./constants";
 
-const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
+const ProductDetail = ({ shape, data }) => {
   const cartContext = useContext(CartContext);
   const diamondContext = useContext(DiamondContext);
   const [currentDisplay, setCurrentDisplay] = useState(0);
+  const [seeFullDetails, setSeeFullDetails] = useState(false);
   const productOptions = [
     {
       Header: "Description",
-      Content: `${shape} Shape Diamond, ${data.report} Certified`,
+      Content: `${shape} Shape Diamond`,
     },
     // { Header: "Reviews", Content: "Some Reviews" },
     {
-      Header: "Details",
+      Header: "Certificate",
       Content: {
         report: `https://cdn.diamonds/cert_files/gia/`.concat(
           `${data.reportNumber}.pdf`
@@ -85,7 +86,7 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
               })}
             </div>
             <p class="leading-relaxed mb-4">
-              {productOptions[currentDisplay].Header !== "Details" ? (
+              {productOptions[currentDisplay].Header !== "Certificate" ? (
                 productOptions[currentDisplay].Content
               ) : (
                 <Link
@@ -102,23 +103,93 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
             </p>
             <div class="flex border-t border-gray-200 py-2">
               <span class="text-gray-500">Carat</span>
-              <span class="ml-auto text-gray-900">{carat}</span>
+              <span class="ml-auto text-gray-900">
+                {data.diamond.certificate.carats}
+              </span>
             </div>
             <div class="flex border-t border-gray-200 py-2">
               <span class="text-gray-500">Color</span>
-              <span class="ml-auto text-gray-900">{color}</span>
+              <span class="ml-auto text-gray-900">
+                {data.diamond.certificate.color}
+              </span>
             </div>
             <div class="flex border-t border-gray-200 py-2">
               <span class="text-gray-500">Clarity</span>
-              <span class="ml-auto text-gray-900">{clarity}</span>
+              <span class="ml-auto text-gray-900">
+                {data.diamond.certificate.clarity}
+              </span>
             </div>
             <div class="flex border-t border-gray-200 py-2">
               <span class="text-gray-500">Cut</span>
-              <span class="ml-auto text-gray-900">{cut}</span>
+              <span class="ml-auto text-gray-900">
+                {data.diamond.certificate.cut}
+              </span>
             </div>
-            <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+            <div class="flex border-t border-b border-gray-200 py-2">
               <span class="text-gray-500">Report</span>
               <span class="ml-auto text-gray-900">{data.report || "IGI"}</span>
+            </div>
+            {seeFullDetails && (
+              <>
+                <div class="flex border-t border-b border-gray-200 py-2">
+                  <span class="text-gray-500">Polish</span>
+                  <span class="ml-auto text-gray-900">
+                    {data.diamond.certificate.polish}
+                  </span>
+                </div>
+                <div class="flex border-t border-b border-gray-200 py-2">
+                  <span class="text-gray-500">Symetry</span>
+                  <span class="ml-auto text-gray-900">
+                    {data.diamond.certificate.symmetry}
+                  </span>
+                </div>
+                <div class="flex border-t border-b border-gray-200 py-2">
+                  <span class="text-gray-500">Width</span>
+                  <span class="ml-auto text-gray-900">
+                    {Number(data.diamond.certificate.width).toFixed(2)}
+                  </span>
+                </div>
+                <div class="flex border-t border-b border-gray-200 py-2">
+                  <span class="text-gray-500">Length</span>
+                  <span class="ml-auto text-gray-900">
+                    {Number(data.diamond.certificate.length).toFixed(2)}
+                  </span>
+                </div>
+                <div class="flex border-t border-b border-gray-200 py-2">
+                  <span class="text-gray-500">Depth</span>
+                  <span class="ml-auto text-gray-900">
+                    {Number(data.diamond.certificate.depth).toFixed(2)}
+                  </span>
+                </div>
+                <div class="flex border-t border-b border-gray-200 py-2">
+                  <span class="text-gray-500">Depth Pct.</span>
+                  <span class="ml-auto text-gray-900">
+                    {Number(data.diamond.certificate.depthPercentage).toFixed(
+                      2
+                    )}
+                  </span>
+                </div>
+                <div class="flex border-t border-b border-gray-200 py-2">
+                  <span class="text-gray-500">Table</span>
+                  <span class="ml-auto text-gray-900">
+                    {Number(data.diamond.certificate.table).toFixed(2)}
+                  </span>
+                </div>
+                <div class="flex border-t border-b border-gray-200 py-2">
+                  <span class="text-gray-500">Girdle</span>
+                  <span class="ml-auto text-gray-900">
+                    {data.diamond.certificate.girdle}
+                  </span>
+                </div>
+              </>
+            )}
+            <div
+              className="text-black underline text-left mb-6 font-medium tracking-wider py-2"
+              onClick={() => {
+                setSeeFullDetails(!seeFullDetails);
+              }}
+            >
+              {seeFullDetails ? "Show" : "Hide"} full information
             </div>
 
             <div class="justify-center w-full">
@@ -134,9 +205,9 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
                 <button
                   class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                   onClick={() => {
-                    const diamondStatus = `${shape} ${carat} ${color} ${clarity} ${cut}`;
+                    const diamondStatus = `${shape} ${data.diamond.certificate.carats} ${data.diamond.certificate.color} ${data.diamond.certificate.clarity} ${data.diamond.certificate.cut}`;
                     cartContext.setDiamond(diamondStatus);
-                    cartContext.setDiamondPrice(price);
+                    cartContext.setDiamondPrice(data.price);
                     diamondContext.setCurrentSettingDiamondShape(
                       shape.toLowerCase()
                     );
@@ -145,7 +216,7 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
                     diamondContext.setDiamondJustSelected(true);
                   }}
                 >
-                  Add to ring (CA$ {price})
+                  Add to ring (CA$ {data.price})
                 </button>
               </Link>
             </div>

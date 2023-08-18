@@ -1,10 +1,12 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Cart from "./Cart";
+import { CartContext } from "./context/CartContext";
 
 const Navbar = () => {
   const [showNavBar, setShowNavBar] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
+  const cartContext = useContext(CartContext);
 
   useEffect(() => {
     const onScroll = (e) => {
@@ -30,6 +32,13 @@ const Navbar = () => {
             strokeWidth={1.5}
             stroke="currentColor"
             className="w-6 h-6 align-middle inline-block md:hidden"
+            onClick={() => {
+              cartContext.setShowMobileMenu(!cartContext.showMobileMenu);
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+              });
+            }}
           >
             <path
               strokeLinecap="round"

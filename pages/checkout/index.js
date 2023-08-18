@@ -11,6 +11,7 @@ import WhatsIncluded from "../../components/WhatsIncluded";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/BreadCrumb";
 import { navigationBreadCrums } from "../../components/constants";
+import MobileMenu from "../../components/MobileMenu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +24,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar></Navbar>
-      <Header></Header>
+      <div className="relative">
+        <Navbar></Navbar>
+        <Header></Header>
+        <MobileMenu></MobileMenu>
+      </div>
       {/* <Stepper stage={2}></Stepper> */}
       <Breadcrumb navDetails={navigationBreadCrums["Settings"]}></Breadcrumb>
       <Checkout></Checkout>

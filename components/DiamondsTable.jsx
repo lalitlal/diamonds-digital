@@ -6,6 +6,8 @@ import {
   chevronLast,
   chevronRight,
   upperCaseFirstLetter,
+  caretIcon,
+  hiraGrayText,
 } from "./constants";
 import { DiamondContext } from "./context/DiamondContext";
 
@@ -21,6 +23,14 @@ const DiamondsTable = ({ data }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   const diamondContext = useContext(DiamondContext);
+  const [showSortOptions, setShowSortOptions] = useState(false);
+
+  const sortOptions = [
+    { type: "price", direction: "ASC", name: "Price (low to high)" },
+    { type: "price", direction: "DESC", name: "Price (high to low)" },
+    // { type: "carat", direction: "ASC", name: "Carat (low to high)" },
+    // { type: "carat", direction: "DESC", name: "Carat (high to low)" },
+  ];
   //   const scrollToBottom = () => {
   //     divRef.current?.scrollIntoView({ behavior: "smooth" });
   //   };
@@ -106,26 +116,46 @@ const DiamondsTable = ({ data }) => {
   const colClass = "px-2 py-4 text-center";
   return (
     <>
-      <div className="flex justify-between items-center overflow-x-hidden">
-        <h3 className="text-base text-gray-400 ml-4">{data.length} items</h3>
-        <div className="flex items-center">
-          <label
-            htmlFor="itemsPerPageSelect"
-            className="mx-2 text-gray-400 px-2"
+      <div className="mx-4">
+        <div className="flex w-full justify-between items-center overflow-x-hidden">
+          <h3 className="text-base text-gray-400">{data.length} items</h3>
+          <div
+            className="flex items-center hover:cursor-pointer"
+            onClick={() => {
+              setShowSortOptions(!showSortOptions);
+            }}
           >
-            Items Per Page:
-          </label>
-          <select
-            id="itemsPerPageSelect"
-            value={itemsPerPage}
-            onChange={handleItemsPerPageChange}
-            className="w-24 px-2 py-1 border mx-2"
-          >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-          </select>
+            {diamondContext.orderDiamonds.name}
+            <div className="ml-2">{caretIcon}</div>
+          </div>
+        </div>
+        <div>
+          <div className="relative">
+            <div className="">
+              {showSortOptions && (
+                <div className="absolute border pb-2 text-right border-black top-1 right-0 z-[60] bg-white shadow-2xl shadow-black w-fit px-2">
+                  {sortOptions.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`text-left pt-2 hover:cursor-pointer ${
+                          item.name === diamondContext.orderDiamonds.name
+                            ? "text-black"
+                            : "text-gray-400"
+                        }`}
+                        onClick={() => {
+                          diamondContext.setOrderDiamonds(item);
+                          setShowSortOptions(false);
+                        }}
+                      >
+                        {item.name}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <div className="flex flex-col">
@@ -224,11 +254,6 @@ const DiamondsTable = ({ data }) => {
                                 shape={upperCaseFirstLetter(
                                   item.diamond.certificate.shape
                                 )}
-                                carat={item.diamond.certificate.carats}
-                                color={item.diamond.certificate.color}
-                                clarity={item.diamond.certificate.clarity}
-                                cut={item.diamond.certificate.cut}
-                                price={item.price}
                                 data={item}
                               />
                             </td>

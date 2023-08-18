@@ -11,6 +11,7 @@ export const CartProvider = ({ children }) => {
   const [settingPrice, setSettingPrice] = useState(0.0);
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
     <CartContext.Provider
@@ -29,6 +30,8 @@ export const CartProvider = ({ children }) => {
         setShowBookingModal,
         showCartModal,
         setShowCartModal,
+        showMobileMenu,
+        setShowMobileMenu,
       }}
     >
       {children}

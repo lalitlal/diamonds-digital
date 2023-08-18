@@ -46,7 +46,10 @@ const Header = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 inline-block md:hidden hover:text-gray-500 cursor-pointer"
+            className="w-6 h-6 inline-block md:hidden hover:text-gray-500 hover:cursor-pointer"
+            onClick={() => {
+              cartContext.setShowMobileMenu(!cartContext.showMobileMenu);
+            }}
           >
             <path
               strokeLinecap="round"
@@ -65,7 +68,7 @@ const Header = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 ml-2  cursor-pointer"
+              className="w-6 h-6 ml-2  hover:cursor-pointer"
             >
               <path
                 strokeLinecap="round"
@@ -73,7 +76,7 @@ const Header = () => {
                 d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
               />
             </svg>
-            <a className="hidden lg:inline-flex cursor-pointer">
+            <a className="hidden lg:inline-flex hover:cursor-pointer">
               Book an appointment
             </a>
           </div>
@@ -81,7 +84,7 @@ const Header = () => {
         <div>
           <Link
             href="/"
-            className="text-center font-Raleway text-4xl font-bold w-1/3 cursor-pointer"
+            className="text-center font-Raleway text-4xl font-bold w-1/3 hover:cursor-pointer"
           >
             HIRA
           </Link>
@@ -93,7 +96,7 @@ const Header = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 hover:text-gray-500 cursor-pointer"
+            className="w-6 h-6 hover:text-gray-500 hover:cursor-pointer"
           >
             <path
               strokeLinecap="round"
@@ -107,31 +110,31 @@ const Header = () => {
       <div className="hidden md:flex justify-center w-full items-center mt-6 objects-center text-sm lg:flex-grow">
         <Link
           href="/"
-          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 hover:cursor-pointer"
         >
           Engagement
         </Link>
         <Link
           href="/diamond"
-          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 hover:cursor-pointer"
         >
           Diamonds
         </Link>
         <Link
           href="/ringsettings"
-          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 hover:cursor-pointer"
         >
           Settings
         </Link>
         <Link
           href="/"
-          className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 hover:cursor-pointer"
         >
           About
         </Link>
         <Link
           href="/gallery"
-          className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer"
+          className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline hover:cursor-pointer"
         >
           Gallery
         </Link>

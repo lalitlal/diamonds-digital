@@ -15,6 +15,9 @@ import TileGrid from "./TileGridSelector";
 
 const FullDiamondFilterPage = () => {
   const diamondContext = useContext(DiamondContext);
+  const [showColorInfo, setShowColorInfo] = useState(false);
+  const [showClarityInfo, setshowClarityInfo] = useState(false);
+  const [showCutInfo, setShowCutInfo] = useState(false);
 
   const moreInfoIcon = (
     <svg
@@ -47,11 +50,12 @@ const FullDiamondFilterPage = () => {
 
   return (
     diamondContext.showAdvancedFilter && (
-      <div className="bg-white z-[50] fixed inset-0 left-0 top-0">
+      <div className="bg-white z-[50] fixed inset-0 left-0 top-0 overflow-y-scroll">
         <div className="mx-4 mt-4 mb-20">
           <div className="flex justify-between border-black border-b">
             <div>Diamonds Filter</div>
             <div
+              className="hover:cursor-pointer"
               onClick={() => {
                 diamondContext.setShowAdvancedFilter(false);
               }}
@@ -85,9 +89,23 @@ const FullDiamondFilterPage = () => {
           <div className="flex-col w-full">
             <div className="">
               <div className="text-left text-gray-600 flex">
-                Color {moreInfoIcon}
+                Color
+                <div
+                  onClick={() => {
+                    setShowColorInfo(!showColorInfo);
+                  }}
+                >
+                  {moreInfoIcon}
+                </div>
               </div>
-              <div className="">
+              <div className="relative">
+                {showColorInfo && (
+                  <div className="flex absolute border border-black top-0 left-0 z-[60] bg-white shadow-2xl shadow-black w-3/4 px-2">
+                    Some Color Info box!It enim ad minim, veniam, quis nostrud
+                    excercitation some other stuff too because I am the coolest
+                    color guy in the world
+                  </div>
+                )}
                 <TileGrid
                   data={Object.values(colorMapping)}
                   listState={diamondContext.currentColorOptions}
@@ -96,27 +114,59 @@ const FullDiamondFilterPage = () => {
               </div>
 
               <div className="text-left text-gray-600 flex ">
-                Clarity {moreInfoIcon}
+                Clarity
+                <div
+                  onClick={() => {
+                    setshowClarityInfo(!showClarityInfo);
+                  }}
+                >
+                  {moreInfoIcon}
+                </div>
               </div>
               <div>
-                <TileGrid
-                  data={Object.values(clarityMapping)}
-                  listState={diamondContext.currentClarityOptions}
-                  setListState={diamondContext.setCurrentClarityOptions}
-                ></TileGrid>
+                <div className="relative">
+                  {showClarityInfo && (
+                    <div className="flex absolute border border-black top-0 left-0 z-[60] bg-white shadow-2xl shadow-black w-3/4 px-2">
+                      Some clarity Info box!It enim ad minim, veniam, quis
+                      nostrud excercitation some other stuff too because I am
+                      the coolest clarity guy in the world
+                    </div>
+                  )}
+                  <TileGrid
+                    data={Object.values(clarityMapping)}
+                    listState={diamondContext.currentClarityOptions}
+                    setListState={diamondContext.setCurrentClarityOptions}
+                  ></TileGrid>
+                </div>
               </div>
             </div>
             <div className="w-full mb-12">
               <div className="text-left text-gray-600 mb-2 flex">
-                Cut {moreInfoIcon}
+                Cut
+                <div
+                  onClick={() => {
+                    setShowCutInfo(!showCutInfo);
+                  }}
+                >
+                  {moreInfoIcon}
+                </div>
               </div>
-              <StringSlider
-                values={diamondContext.cutValue}
-                setValues={diamondContext.setCutValue}
-                minValue={0}
-                maxValue={3}
-                marks={cutMapping}
-              ></StringSlider>
+              <div className="relative">
+                {showCutInfo && (
+                  <div className="flex absolute border border-black top-0 left-0 z-[60] bg-white shadow-2xl shadow-black w-3/4 px-2">
+                    Some cut Info box!It enim ad minim, veniam, quis nostrud
+                    excercitation some other stuff too because I am the coolest
+                    cut guy in the world
+                  </div>
+                )}
+                <StringSlider
+                  values={diamondContext.cutValue}
+                  setValues={diamondContext.setCutValue}
+                  minValue={0}
+                  maxValue={3}
+                  marks={cutMapping}
+                ></StringSlider>
+              </div>
               {/* <CutSelector></CutSelector> */}
             </div>
             <div className="py-5 border-t">
@@ -132,6 +182,9 @@ const FullDiamondFilterPage = () => {
                 <div
                   className={`flex transition ease-in-out duration-300 w-full text-center justify-center text-white ${hiraBlackBG} py-2 focus:outline-none hover:bg-gray-600 text-lg hover:cursor-pointer`}
                   onClick={() => {
+                    setShowColorInfo(false);
+                    setshowClarityInfo(false);
+                    setShowCutInfo(false);
                     diamondContext.setShowAdvancedFilter(false);
                   }}
                 >

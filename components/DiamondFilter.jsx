@@ -129,65 +129,6 @@ const DiamondFilter = () => {
           </div>
         </div>
       </div>
-      {/* {showAdvancedFilter && (
-        <div className="flex-col w-full">
-          <div className="">
-            <div className="text-left text-gray-600 flex">
-              Color {moreInfoIcon}
-            </div>
-            <div className="">
-              <TileGrid
-                data={Object.values(colorMapping)}
-                listState={diamondContext.currentColorOptions}
-                setListState={diamondContext.setCurrentColorOptions}
-              ></TileGrid>
-            </div>
-
-            <div className="text-left text-gray-600 flex ">
-              Clarity {moreInfoIcon}
-            </div>
-            <div>
-              <TileGrid
-                data={Object.values(clarityMapping)}
-                listState={diamondContext.currentClarityOptions}
-                setListState={diamondContext.setCurrentClarityOptions}
-              ></TileGrid>
-            </div>
-          </div>
-          <div className="w-full mb-16">
-            <div className="text-left text-gray-600 mb-2 flex">
-              Cut {moreInfoIcon}
-            </div>
-            <StringSlider
-              values={diamondContext.cutValue}
-              setValues={diamondContext.setCutValue}
-              minValue={0}
-              maxValue={3}
-              marks={cutMapping}
-            ></StringSlider>
-          </div>
-          <div className="py-5 border-t">
-            <div className="flex justify-center py-2">
-              <div
-                className="flex border hover:bg-gray-300 transition ease-in-out duration-300 w-full items-center text-center justify-center hover:cursor-pointer"
-                onClick={() => {
-                  clearFilters();
-                }}
-              >
-                Clear filters
-              </div>
-              <div
-                className={`flex transition ease-in-out duration-300 w-full text-center justify-center text-white ${hiraBlackBG} py-2 focus:outline-none hover:bg-gray-600 text-lg hover:cursor-pointer`}
-                onClick={() => {
-                  setShowAdvancedFilter(false);
-                }}
-              >
-                Save filters
-              </div>
-            </div>
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };

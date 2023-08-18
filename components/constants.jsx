@@ -725,6 +725,12 @@ export const hiraGrayBG = `bg-[#D9D9D9]`;
 export const hiralightGrayBG = `bg-[#F6F6F6]`;
 export const hiraWhiteBG = `bg-[#FFFFFF]`;
 
+export const hiraBlackText = `text-[#050505]`;
+export const hiraDarkGrayText = `text-[#848484]`;
+export const hiraGrayText = `text-[#D9D9D9]`;
+export const hiralightGrayText = `text-[#F6F6F6]`;
+export const hiraWhiteText = `text-[#FFFFFF]`;
+
 export const hiraBlack = `#050505`;
 export const hiraDarkGray = `#848484`;
 export const hiraGray = `#D9D9D9`;
@@ -859,6 +865,23 @@ export const xIcon = (
       stroke-linecap="round"
       stroke-linejoin="round"
       d="M6 18L18 6M6 6l12 12"
+    />
+  </svg>
+);
+
+export const caretIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-6 h-6"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
     />
   </svg>
 );
