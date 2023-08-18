@@ -19,7 +19,7 @@ import TileGrid from "./TileGridSelector";
 
 const DiamondFilter = () => {
   const diamondContext = useContext(DiamondContext);
-  const [showAdvancedFilter, setShowAdvancedFilter] = useState(false);
+  // const [showAdvancedFilter, setShowAdvancedFilter] = useState(false);
   const listViewIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,9 @@ const DiamondFilter = () => {
           <div
             className="border border-black px-4 py-2 hover:cursor-pointer flex items-center space-x-4"
             onClick={() => {
-              setShowAdvancedFilter(!showAdvancedFilter);
+              diamondContext.setShowAdvancedFilter(
+                !diamondContext.showAdvancedFilter
+              );
             }}
           >
             <div>Filters</div>
@@ -127,7 +129,7 @@ const DiamondFilter = () => {
           </div>
         </div>
       </div>
-      {showAdvancedFilter && (
+      {/* {showAdvancedFilter && (
         <div className="flex-col w-full">
           <div className="">
             <div className="text-left text-gray-600 flex">
@@ -163,7 +165,6 @@ const DiamondFilter = () => {
               maxValue={3}
               marks={cutMapping}
             ></StringSlider>
-            {/* <CutSelector></CutSelector> */}
           </div>
           <div className="py-5 border-t">
             <div className="flex justify-center py-2">
@@ -186,32 +187,9 @@ const DiamondFilter = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 
 export default DiamondFilter;
-{
-  /* <StringSlider
-            values={diamondContext.colorValue}
-            setValues={diamondContext.setColorValue}
-            minValue={0}
-            maxValue={9}
-            marks={colorMapping}
-          ></StringSlider> */
-}
-{
-  /* <ColorSelector></ColorSelector>
-        </div>
-        <div className="w-1/3 mb-10">
-          <div className="font-bold text-center text-gray-600">Clarity</div>
-          <StringSlider
-            values={diamondContext.clarityValue}
-            setValues={diamondContext.setClarityValue}
-            minValue={0}
-            maxValue={9}
-            marks={clarityMapping}
-          ></StringSlider>
-          {/* <ClaritySelector></ClaritySelector> */
-}

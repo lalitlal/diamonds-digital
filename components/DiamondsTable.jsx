@@ -245,7 +245,7 @@ const DiamondsTable = ({ data }) => {
       <div className="flex justify-center w-full mt-4 mb-16">
         {/* Pagination controls */}
         <div className="flex justify-center">
-          <div className="flex">
+          <div className="flex pb-20">
             <div
               onClick={() => handlePageChange(1)}
               disabled={indexOfLastItem >= data.length}

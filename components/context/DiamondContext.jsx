@@ -665,6 +665,7 @@ export const DiamondContextProvider = ({ children }) => {
   const [clarityValue, setClarityValue] = useState([0, 9]);
   const [cutValue, setCutValue] = useState([0, 4]);
   const [bandColor, setBandColor] = useState("Yellow Gold");
+  const [showAdvancedFilter, setShowAdvancedFilter] = useState(false);
 
   return (
     <DiamondContext.Provider
@@ -698,6 +699,8 @@ export const DiamondContextProvider = ({ children }) => {
         setCutValue,
         setBandColor,
         shapes,
+        showAdvancedFilter,
+        setShowAdvancedFilter,
       }}
     >
       {children}
