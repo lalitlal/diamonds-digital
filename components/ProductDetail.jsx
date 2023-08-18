@@ -58,7 +58,7 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
               {shape} Shape Diamond
             </h1>
             <div className="w-full">
-              <div className="w-full flex justify-center items-center text-center">
+              <div className="flex justify-center items-center text-center">
                 <TrustedHtmlContent
                   url={data.diamond.video}
                 ></TrustedHtmlContent>
