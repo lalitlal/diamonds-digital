@@ -106,7 +106,7 @@ const FullDiamondFilterPage = () => {
                 ></TileGrid>
               </div>
             </div>
-            <div className="w-full mb-16">
+            <div className="w-full mb-12">
               <div className="text-left text-gray-600 mb-2 flex">
                 Cut {moreInfoIcon}
               </div>
@@ -120,7 +120,7 @@ const FullDiamondFilterPage = () => {
               {/* <CutSelector></CutSelector> */}
             </div>
             <div className="py-5 border-t">
-              <div className="flex justify-center py-2">
+              <div className="flex justify-center py-2 mb-12">
                 <div
                   className="flex border hover:bg-gray-300 transition ease-in-out duration-300 w-full items-center text-center justify-center hover:cursor-pointer"
                   onClick={() => {
