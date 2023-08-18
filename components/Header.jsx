@@ -11,18 +11,22 @@ const Header = () => {
   const cartContext = useContext(CartContext);
 
   const handleOpenBookingModal = () => {
+    cartContext.setShowMobileMenu(false);
     cartContext.setShowBookingModal(true);
   };
 
   const handleCloseBookingModal = () => {
+    cartContext.setShowMobileMenu(false);
     cartContext.setShowBookingModal(false);
   };
 
   const handleOpenCartModal = () => {
+    cartContext.setShowMobileMenu(false);
     cartContext.setShowCartModal(true);
   };
 
   const handleCloseCartModal = () => {
+    cartContext.setShowMobileMenu(false);
     cartContext.setShowCartModal(false);
   };
 

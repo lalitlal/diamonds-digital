@@ -27,6 +27,7 @@ const Cart = () => {
       <div
         className="flex justify-center hover:text-gray-500"
         onClick={() => {
+          cartContext.setShowMobileMenu(false);
           cartContext.setShowCartModal(true);
         }}
       >

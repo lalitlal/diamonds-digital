@@ -87,6 +87,7 @@ const Navbar = () => {
         </div>
         <div className="flex justify-end items-center align-middle w-1/3 mr-10 mt-4">
           <svg
+            // search icon
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
