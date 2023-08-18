@@ -130,205 +130,189 @@ const DiamondsTable = ({ data }) => {
       </div>
       <div className="flex flex-col">
         <div className="">
-          <div className="min-w-full">
-            <div className="overflow-hidden">
-              <table className="min-w-full text-left text-sm font-light">
-                <thead className="border-b font-medium dark:border-neutral-500">
-                  <tr>
-                    <th
-                      scope="col"
-                      className={`${colClass}`}
-                      // style={columnStyles.shape}
-                    >
-                      Shape
-                    </th>
-                    <th
-                      scope="col"
-                      className={`${colClass}`}
-                      // style={columnStyles.carat}
-                    >
-                      Carat
-                    </th>
-                    <th
-                      scope="col"
-                      className={`${colClass}`}
-                      // style={columnStyles.color}
-                    >
-                      Color
-                    </th>
-                    <th
-                      scope="col"
-                      className={`${colClass}`}
-                      // style={columnStyles.clarity}
-                    >
-                      Clarity
-                    </th>
-                    <th
-                      scope="col"
-                      className={`${colClass}`}
-                      // style={columnStyles.cut}
-                    >
-                      Cut
-                    </th>
-                    <th
-                      scope="col"
-                      className={`${colClass}`}
-                      // style={columnStyles.price}
-                    >
-                      Price
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map(
-                    (item, index) =>
-                      item.diamond.video && (
-                        <React.Fragment key={index}>
-                          <tr
-                            className={`${rowClass} ${
-                              index % 2 === 0 ? "" : "bg-gray-300"
-                            }`}
-                            onClick={() => handleRowClick(index)}
+          {/* <div className="min-w-full"> */}
+          <div className="overflow-hidden">
+            <table className="w-full text-left text-sm font-light table-fixed">
+              <thead className="border-b font-medium dark:border-neutral-500">
+                <tr>
+                  <th
+                    scope="col"
+                    className={`${colClass}`}
+                    // style={columnStyles.shape}
+                  >
+                    Shape
+                  </th>
+                  <th
+                    scope="col"
+                    className={`${colClass}`}
+                    // style={columnStyles.carat}
+                  >
+                    Carat
+                  </th>
+                  <th
+                    scope="col"
+                    className={`${colClass}`}
+                    // style={columnStyles.color}
+                  >
+                    Color
+                  </th>
+                  <th
+                    scope="col"
+                    className={`${colClass}`}
+                    // style={columnStyles.clarity}
+                  >
+                    Clarity
+                  </th>
+                  <th
+                    scope="col"
+                    className={`${colClass}`}
+                    // style={columnStyles.cut}
+                  >
+                    Cut
+                  </th>
+                  <th
+                    scope="col"
+                    className={`${colClass}`}
+                    // style={columnStyles.price}
+                  >
+                    Price
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentItems.map(
+                  (item, index) =>
+                    item.diamond.video && (
+                      <React.Fragment key={index}>
+                        <tr
+                          className={`${rowClass} ${
+                            index % 2 === 0 ? "" : "bg-gray-300"
+                          }`}
+                          onClick={() => handleRowClick(index)}
+                        >
+                          <td className="px-2 py-4" style={columnStyles.shape}>
+                            {upperCaseFirstLetter(
+                              item.diamond.certificate.shape
+                            )}
+                          </td>
+                          <td className="px-2 py-4" style={columnStyles.carat}>
+                            {item.diamond.certificate.carats}
+                          </td>
+                          <td className="px-2 py-4" style={columnStyles.color}>
+                            {item.diamond.certificate.color}
+                          </td>
+                          <td
+                            className="px-2 py-4"
+                            style={columnStyles.clarity}
                           >
-                            <td
-                              className="px-2 py-4"
-                              style={columnStyles.shape}
-                            >
-                              {upperCaseFirstLetter(
-                                item.diamond.certificate.shape
-                              )}
-                            </td>
-                            <td
-                              className="px-2 py-4"
-                              style={columnStyles.carat}
-                            >
-                              {item.diamond.certificate.carats}
-                            </td>
-                            <td
-                              className="px-2 py-4"
-                              style={columnStyles.color}
-                            >
-                              {item.diamond.certificate.color}
-                            </td>
-                            <td
-                              className="px-2 py-4"
-                              style={columnStyles.clarity}
-                            >
-                              {item.diamond.certificate.clarity}
-                            </td>
-                            <td className="px-2 py-4" style={columnStyles.cut}>
-                              {item.diamond.certificate.cut}
-                            </td>
-                            <td
-                              className="px-2 py-4"
-                              style={columnStyles.price}
-                            >
-                              {item.price}
-                            </td>
-                            {/* <td className="px-2 py-4" style={columnStyles.caret}>
+                            {item.diamond.certificate.clarity}
+                          </td>
+                          <td className="px-2 py-4" style={columnStyles.cut}>
+                            {item.diamond.certificate.cut}
+                          </td>
+                          <td className="px-2 py-4" style={columnStyles.price}>
+                            {item.price}
+                          </td>
+                          {/* <td className="px-2 py-4" style={columnStyles.caret}>
                           {caret(index)}
                         </td> */}
+                        </tr>
+                        {selectedRow === index && (
+                          <tr>
+                            <td colSpan={6}>
+                              <ProductDetail
+                                shape={upperCaseFirstLetter(
+                                  item.diamond.certificate.shape
+                                )}
+                                carat={item.diamond.certificate.carats}
+                                color={item.diamond.certificate.color}
+                                clarity={item.diamond.certificate.clarity}
+                                cut={item.diamond.certificate.cut}
+                                price={item.price}
+                                data={item}
+                              />
+                            </td>
                           </tr>
-                          {selectedRow === index && (
-                            <tr>
-                              <td colSpan={6}>
-                                <ProductDetail
-                                  shape={upperCaseFirstLetter(
-                                    item.diamond.certificate.shape
-                                  )}
-                                  carat={item.diamond.certificate.carats}
-                                  color={item.diamond.certificate.color}
-                                  clarity={item.diamond.certificate.clarity}
-                                  cut={item.diamond.certificate.cut}
-                                  price={item.price}
-                                  data={item}
-                                />
-                              </td>
-                            </tr>
-                          )}
-                        </React.Fragment>
-                      )
-                  )}
-                </tbody>
-              </table>
-            </div>
+                        )}
+                      </React.Fragment>
+                    )
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
-        <div className="flex justify-center w-full mt-4 mb-16">
-          {/* Pagination controls */}
-          <div className="flex justify-center">
-            <div className="flex">
-              <div
-                onClick={() => handlePageChange(1)}
-                disabled={indexOfLastItem >= data.length}
-                className="flex px-2 py-1 hover:cursor-pointer items-center"
-              >
-                {chevronFirst}
-              </div>
-              <div
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="flex px-2 py-1 mr-2 hover:cursor-pointer items-center"
-              >
-                {chevronLeft}
-              </div>
-              <div className="flex bg-white items-center">
-                {pageNums.map((pageNum, index) => {
-                  return (
-                    <div
-                      className={`bg-white px-4 py-2 ${
-                        (pageNum === currentPage + 1 ||
-                          pageNum === currentPage) &&
-                        numPages - currentPage > 2
-                          ? "hover:text-gray-200 hover:cursor-pointer"
-                          : "hidden"
-                      } ${
-                        pageNum === currentPage ? "border border-black" : ""
-                      }`}
-                      key={index}
-                      onClick={() => handlePageChange(pageNum)}
-                    >
-                      {pageNum}
-                    </div>
-                  );
-                })}
-                <div className="px-2 py-1">...</div>
-                {pageNums.map((pageNum, index) => {
-                  return (
-                    <div
-                      className={`bg-white px-4 py-2 ${
-                        numPages - pageNum < 2
-                          ? "hover:text-gray-200 hover:cursor-pointer"
-                          : "hidden"
-                      } ${
-                        pageNum === currentPage ? "border border-black" : ""
-                      }`}
-                      key={index}
-                      onClick={() => handlePageChange(pageNum)}
-                    >
-                      {pageNum}
-                    </div>
-                  );
-                })}
-              </div>
-              <div
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={indexOfLastItem >= data.length}
-                className="flex px-2 py-1 hover:cursor-pointer items-center"
-              >
-                {chevronRight}
-              </div>
-              <div
-                onClick={() => handlePageChange(numPages)}
-                disabled={indexOfLastItem >= data.length}
-                className="flex px-2 py-1 hover:cursor-pointer items-center"
-              >
-                {chevronLast}
-              </div>
+      </div>
+      <div className="flex justify-center w-full mt-4 mb-16">
+        {/* Pagination controls */}
+        <div className="flex justify-center">
+          <div className="flex">
+            <div
+              onClick={() => handlePageChange(1)}
+              disabled={indexOfLastItem >= data.length}
+              className="flex px-2 py-1 hover:cursor-pointer items-center"
+            >
+              {chevronFirst}
+            </div>
+            <div
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="flex px-2 py-1 mr-2 hover:cursor-pointer items-center"
+            >
+              {chevronLeft}
+            </div>
+            <div className="flex bg-white items-center">
+              {pageNums.map((pageNum, index) => {
+                return (
+                  <div
+                    className={`bg-white px-4 py-2 ${
+                      (pageNum === currentPage + 1 ||
+                        pageNum === currentPage) &&
+                      numPages - currentPage > 2
+                        ? "hover:text-gray-200 hover:cursor-pointer"
+                        : "hidden"
+                    } ${pageNum === currentPage ? "border border-black" : ""}`}
+                    key={index}
+                    onClick={() => handlePageChange(pageNum)}
+                  >
+                    {pageNum}
+                  </div>
+                );
+              })}
+              <div className="px-2 py-1">...</div>
+              {pageNums.map((pageNum, index) => {
+                return (
+                  <div
+                    className={`bg-white px-4 py-2 ${
+                      numPages - pageNum < 2
+                        ? "hover:text-gray-200 hover:cursor-pointer"
+                        : "hidden"
+                    } ${pageNum === currentPage ? "border border-black" : ""}`}
+                    key={index}
+                    onClick={() => handlePageChange(pageNum)}
+                  >
+                    {pageNum}
+                  </div>
+                );
+              })}
+            </div>
+            <div
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={indexOfLastItem >= data.length}
+              className="flex px-2 py-1 hover:cursor-pointer items-center"
+            >
+              {chevronRight}
+            </div>
+            <div
+              onClick={() => handlePageChange(numPages)}
+              disabled={indexOfLastItem >= data.length}
+              className="flex px-2 py-1 hover:cursor-pointer items-center"
+            >
+              {chevronLast}
             </div>
           </div>
         </div>
       </div>
+      {/* </div> */}
     </>
   );
 };
