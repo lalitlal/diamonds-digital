@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { hiraGray, hiralightGray } from "./constants";
+import { hiraBlack, hiraGray, hiralightGray } from "./constants";
 
 const NumericSlider = ({ values, setValues, minValue, maxValue }) => {
   const handleSliderChange = (newValues) => {
@@ -27,13 +27,13 @@ const NumericSlider = ({ values, setValues, minValue, maxValue }) => {
           value={values}
           onChange={handleSliderChange}
           handleStyle={{
-            borderColor: `${hiraGray}`,
+            borderColor: `${hiraBlack}`,
             backgroundColor: `white`,
             height: 28,
             width: 28,
             marginTop: -14,
           }}
-          trackStyle={{ backgroundColor: `${hiraGray}`, height: 2 }}
+          trackStyle={{ backgroundColor: `${hiraBlack}`, height: 2 }}
         />
         <div className="flex justify-between mt-2">
           <input

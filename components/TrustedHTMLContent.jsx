@@ -36,7 +36,7 @@ const TrustedHtmlContent = ({ url }) => {
 
   return (
     <iframe
-      className="m-0"
+      className=""
       src={usedURL}
       width={`${usedBP}px`}
       height={`${usedBP}px`}
@@ -44,7 +44,6 @@ const TrustedHtmlContent = ({ url }) => {
       frameborder="0"
     />
   );
-  // <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
 };
 
 export default TrustedHtmlContent;

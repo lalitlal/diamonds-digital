@@ -12,6 +12,7 @@ import {
   clarityMapping,
   colorMapping,
   cutMapping,
+  hiraBlackBG,
   hiraSlate,
 } from "./constants";
 import TileGrid from "./TileGridSelector";
@@ -84,8 +85,10 @@ const DiamondFilter = () => {
 
   return (
     <div className="mx-4">
-      <div className="flex justify-center">
+      <div className="w-full">
+        {/* <div className="flex justify-center"> */}
         <ShapeSelector></ShapeSelector>
+        {/* </div> */}
       </div>
       <div className="flex-col w-full mt-8">
         <div className="mb-5">
@@ -173,7 +176,7 @@ const DiamondFilter = () => {
                 Clear filters
               </div>
               <div
-                className={`flex transition ease-in-out duration-300 w-full text-center justify-center text-white bg-slate-700 py-2 focus:outline-none hover:bg-gray-600 text-lg hover:cursor-pointer`}
+                className={`flex transition ease-in-out duration-300 w-full text-center justify-center text-white ${hiraBlackBG} py-2 focus:outline-none hover:bg-gray-600 text-lg hover:cursor-pointer`}
                 onClick={() => {
                   setShowAdvancedFilter(false);
                 }}

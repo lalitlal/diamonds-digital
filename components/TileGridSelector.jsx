@@ -1,5 +1,5 @@
 import React from "react";
-import { hiraSlate } from "./constants";
+import { hiraBlackBG, hiraSlate } from "./constants";
 
 const TileGrid = ({ data, listState, setListState }) => {
   return (
@@ -10,7 +10,7 @@ const TileGrid = ({ data, listState, setListState }) => {
             key={index}
             className={`hover:cursor-pointer ${
               listState.includes(item)
-                ? `text-white bg-slate-700`
+                ? `text-white ${hiraBlackBG}`
                 : "text-black bg-white"
             } border border-black flex justify-center my-2 w-1/6 mx-1 items-center`}
             onClick={() => {

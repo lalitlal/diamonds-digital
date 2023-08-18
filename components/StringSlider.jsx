@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { hiraGray, hiralightGray } from "./constants";
+import { hiraBlack, hiraGray, hiralightGray } from "./constants";
 
 const StringSlider = ({ values, setValues, minValue, maxValue, marks }) => {
   //   const [values, setValues] = useState([0, 100]);
@@ -30,13 +30,13 @@ const StringSlider = ({ values, setValues, minValue, maxValue, marks }) => {
           marks={marks}
           onChange={handleSliderChange}
           handleStyle={{
-            borderColor: `${hiraGray}`,
+            borderColor: `${hiraBlack}`,
             backgroundColor: `white`,
             height: 28,
             width: 28,
             marginTop: -14,
           }}
-          trackStyle={{ backgroundColor: `${hiraGray}`, height: 2 }}
+          trackStyle={{ backgroundColor: `${hiraBlack}`, height: 2 }}
         />
       </div>
     </div>

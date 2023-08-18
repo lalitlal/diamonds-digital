@@ -5,6 +5,7 @@ import { DiamondContext } from "./context/DiamondContext";
 import TrustedHtmlContent from "./TrustedHTMLContent";
 import Script from "next/script";
 import Image from "next/image";
+import { borderHiraBlack, hiraBlackBG, hiraWhiteBG } from "./constants";
 
 const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
   const cartContext = useContext(CartContext);
@@ -52,19 +53,10 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
       <div class="px-5 py-2 w-full justify-center ">
         <div class="w-full justify-center items-center text-center ">
           <div class="md:w-4/5 w-full mb-6 lg:mb-0 mx-auto">
-            <h2 class="text-sm title-font text-gray-500 tracking-widest">
-              HIRA
-            </h2>
-            <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
+            <h2 class="text-sm title-font text-black tracking-widest">HIRA</h2>
+            <h1 class="text-gray-900 text-xl lg:text-3xl title-font font-medium mb-2 lg:mb-4">
               {shape} Shape Diamond
-              {/* {carat} {color} {clarity} {cut} */}
             </h1>
-            {/* <img
-              alt="ecommerce"
-              class="lg w-full lg:h-1/3 h-64 object-cover object-center"
-              // src={`${productOptions[currentDisplay].Content.image}`}
-              src="https://dummyimage.com/400x400"
-            /> */}
             <div className="w-full">
               <div className="w-full flex justify-center items-center text-center">
                 <TrustedHtmlContent
@@ -129,13 +121,18 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
               <span class="ml-auto text-gray-900">{data.report || "IGI"}</span>
             </div>
 
-            <div class="flex justify-center w-full">
-              {/* <span class="title-font font-medium text-2xl text-gray-900">
-                CA${data.price}
-              </span> */}
+            <div class="justify-center w-full">
               <Link href="/ringsettings">
                 <button
-                  class="flex w-full text-center justify-center text-white bg-slate-700 py-2 px-8 focus:outline-none active:bg-black focus:bg-black text-lg -mt-2"
+                  class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
+                  onClick={() => {
+                    console.log("Speak to expert clicked");
+                  }}
+                >
+                  Speak to an expert
+                </button>
+                <button
+                  class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                   onClick={() => {
                     const diamondStatus = `${shape} ${carat} ${color} ${clarity} ${cut}`;
                     cartContext.setDiamond(diamondStatus);
@@ -148,7 +145,7 @@ const ProductDetail = ({ shape, carat, color, clarity, cut, price, data }) => {
                     diamondContext.setDiamondJustSelected(true);
                   }}
                 >
-                  Add to ring CA${price}
+                  Add to ring (CA$ {price})
                 </button>
               </Link>
             </div>

@@ -25,7 +25,7 @@ export const DiamondContextProvider = ({ children }) => {
           fill="none"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+          className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
         >
           <title>Round Brilliant</title>
           <path d="M29.4,59A29.5,29.5,0,1,1,58.8,29.5,29.48,29.48,0,0,1,29.4,59Zm0-58A28.5,28.5,0,1,0,57.8,29.5,28.49,28.49,0,0,0,29.4,1Z"></path>
@@ -97,7 +97,7 @@ export const DiamondContextProvider = ({ children }) => {
           fill="none"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+          className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
         >
           <title>Oval</title>
           <path d="M19.4,59C8.7,59,0,45.77,0,29.5S8.7,0,19.4,0,38.8,13.23,38.8,29.5,30.1,59,19.4,59Zm0-58C9.25,1,1,13.79,1,29.5S9.25,58,19.4,58,37.8,45.21,37.8,29.5,29.55,1,19.4,1Z"></path>
@@ -140,7 +140,7 @@ export const DiamondContextProvider = ({ children }) => {
           fill="none"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+          className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
         >
           <title>Emerald</title>
           <path d="M38.31,59H7.09L0,51.91V7.09L7.09,0H38.31L45.4,7.09V51.91ZM7.51,58H37.89l6.51-6.51v-44L37.89,1H7.51L1,7.51v44Z"></path>
@@ -342,7 +342,7 @@ export const DiamondContextProvider = ({ children }) => {
           fill="none"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+          className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
         >
           <title>Marquise</title>
           <path
@@ -368,7 +368,7 @@ export const DiamondContextProvider = ({ children }) => {
           fill="none"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+          className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
         >
           <title>Cushion</title>
           <path d="M29,58,13.52,56.56,5.83,52.17,1.28,44.28,0,29,1.29,13.51,5.83,5.83l7.89-4.55L29,0,44.49,1.29l7.68,4.54,4.54,7.68L58,29,56.66,44.49l-4.49,7.68-7.79,4.45ZM13.91,55.65,29,57l15.14-1.37,7.27-4.2,4.3-7.36L57,29,55.75,13.82l-4.3-7.27-7.27-4.3L29,1l-15,1.27L6.55,6.55l-4.3,7.27L1,29,2.25,44.09l4.3,7.36Z"></path>
@@ -453,7 +453,7 @@ export const DiamondContextProvider = ({ children }) => {
           fill="none"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+          className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
         >
           <title>Pear</title>
           <path
@@ -483,7 +483,7 @@ export const DiamondContextProvider = ({ children }) => {
     //       fill="none"
     //       strokeWidth={1}
     //       stroke="currentColor"
-    //       className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+    //       className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
     //     >
     //       <title>Trillion</title>
     //       <path
@@ -521,7 +521,7 @@ export const DiamondContextProvider = ({ children }) => {
     //       fill="none"
     //       strokeWidth={1}
     //       stroke="currentColor"
-    //       className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+    //       className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
     //     >
     //       <title>Asscher</title>
     //       <path
@@ -613,7 +613,7 @@ export const DiamondContextProvider = ({ children }) => {
           fill="none"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+          className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
         >
           <title>Princess</title>
           <path d="M57.94,58H0V0H57.94ZM1,57H57V1H1Z"></path>
@@ -641,7 +641,7 @@ export const DiamondContextProvider = ({ children }) => {
     //       fill="none"
     //       strokeWidth={1}
     //       stroke="currentColor"
-    //       className="w-6 h-6 mx-2 hover:text-gray-500 cursor-pointer my-2 scale-150"
+    //       className="w-6 h-6 hover:text-gray-500 cursor-pointer text-white"
     //     >
     //       <path d="M40.11,58H6.67L0,51.36V6.16L6.16,0H40.65l6.1,6.11V51.36Zm-33-1H39.71L45.77,51V6.51L40.24,1H6.56L1,6.56V51Z"></path>
     //       <path d="M36.75,53H10.44L5.25,47.57V10.43l5.48-5.69H35.89l6,5.64V47.57Zm-26.1-.49H36.54l4.88-5.09V10.59L35.69,5.23H10.94l-5.2,5.4V47.38Z"></path>

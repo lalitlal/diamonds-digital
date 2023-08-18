@@ -108,7 +108,7 @@ const DiamondsTable = ({ data }) => {
     <>
       <div className="flex justify-between items-center overflow-x-hidden">
         <h3 className="text-base text-gray-400 ml-4">{data.length} items</h3>
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <label
             htmlFor="itemsPerPageSelect"
             className="mx-2 text-gray-400 px-2"
@@ -126,7 +126,7 @@ const DiamondsTable = ({ data }) => {
             <option value="20">20</option>
             <option value="50">50</option>
           </select>
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-col">
         <div className="">
@@ -231,7 +231,7 @@ const DiamondsTable = ({ data }) => {
                           </tr>
                           {selectedRow === index && (
                             <tr>
-                              <td colSpan="7">
+                              <td colSpan={6}>
                                 <ProductDetail
                                   shape={upperCaseFirstLetter(
                                     item.diamond.certificate.shape

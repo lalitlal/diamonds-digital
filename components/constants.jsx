@@ -715,11 +715,23 @@ export const navigationBreadCrums = {
   Checkout: { label: "Checkout", url: "/checkout" },
 };
 
-export const hiraGray = "#61626b";
+// export const hiraGray = `[#61626b]`;
+// export const hiralightGray = `[#b9b9c4]`;
+// export const hiraSlate = `[#535353]`;
 
-export const hiralightGray = "#b9b9c4";
+export const hiraBlackBG = `bg-[#050505]`;
+export const hiraDarkGrayBG = `bg-[#848484]`;
+export const hiraGrayBG = `bg-[#D9D9D9]`;
+export const hiralightGrayBG = `bg-[#F6F6F6]`;
+export const hiraWhiteBG = `bg-[#FFFFFF]`;
 
-export const hiraSlate = "#535353";
+export const hiraBlack = `#050505`;
+export const hiraDarkGray = `#848484`;
+export const hiraGray = `#D9D9D9`;
+export const hiralightGray = `#F6F6F6`;
+export const hiraWhite = `#FFFFFF`;
+
+export const borderHiraBlack = `border-[#050505]`;
 
 export const default_diamond_data = [
   {
