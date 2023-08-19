@@ -10,6 +10,7 @@ import ImageSlider from "./ImageSlider";
 const SettingsProductDetail = ({}) => {
   const cartContext = useContext(CartContext);
   const diamondContext = useContext(DiamondContext);
+  const dummyImageURL = "https://dummyimage.com/420x260";
 
   const generateImageAlts = (prod) => {
     const imageAlts = Array.from(
