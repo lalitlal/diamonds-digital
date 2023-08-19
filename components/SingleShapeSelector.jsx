@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DiamondContext } from "./context/DiamondContext";
-import { hiraGray, hiralightGray } from "./constants";
+import { hiraBlackBG, hiraGray, hiraGrayBG, hiralightGray } from "./constants";
 
 const SingleShapeSelector = ({ singular = true }) => {
   const {
@@ -34,23 +34,24 @@ const SingleShapeSelector = ({ singular = true }) => {
   return (
     <div>
       {/* <div className="mb-2 text-center font-bold text-gray-600">Shape</div> */}
-
-      <div className="flex justify-evenly w-screen md:w-full">
-        {Object.entries(shapes).map(([key, value], i) => {
-          return (
-            <div
-              key={i}
-              className={`px-1 mt-2 ${
-                currentSettingDiamondShape === key
-                  ? `text-${hiraGray} border-black border-b-2`
-                  : `text-${hiralightGray}`
-              }`}
-              onClick={() => handleClick(key)}
-            >
-              {shapes[key].svg}
-            </div>
-          );
-        })}
+      <div className="mx-4">
+        <div className="flex justify-between w-full md:w-full">
+          {Object.entries(shapes).map(([key, value], i) => {
+            return (
+              <div
+                key={i}
+                className={`p-2 cursor-pointer transform transition-transform ${
+                  currentSettingDiamondShape === key
+                    ? `border-black text-white ${hiraBlackBG}`
+                    : `text-black ${hiraGrayBG}`
+                }`}
+                onClick={() => handleClick(key)}
+              >
+                {shapes[key].svg}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

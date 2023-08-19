@@ -38,9 +38,9 @@ export default function Home() {
       <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
       <DiamondSelectedNotification></DiamondSelectedNotification>
       <Stepper stage={1}></Stepper>
-      <div className="flex justify-center">
-        <SingleShapeSelector singular={true}></SingleShapeSelector>
-      </div>
+      {/* <div className="flex justify-center"> */}
+      <SingleShapeSelector singular={true}></SingleShapeSelector>
+      {/* </div> */}
       <div className="mt-3">
         <MetalSelector></MetalSelector>
       </div>

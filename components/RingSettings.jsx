@@ -7,7 +7,14 @@ import ImageSlider from "./ImageSlider";
 import { getProducts, getCustomProduct } from "../sanity/sanity-utils";
 import SettingsProductDetail from "./SettingsProductDetail";
 import Carousel from "./Carousel";
-import { chevronLeft } from "./constants";
+import {
+  borderHiraBlack,
+  chevronLeft,
+  hiraDarkGrayText,
+  hiraGrayBG,
+  hiraGrayText,
+  hiralightGrayBG,
+} from "./constants";
 import MetalSelector from "./MetalSelector";
 import SingleShapeSelector from "./SingleShapeSelector";
 
@@ -86,9 +93,10 @@ const RingSettings = () => {
           uppercase_stone_str,
           diamondContext.bandColor
         );
-        const customProduct = await getCustomProduct();
-        const clobbered = productsData.concat(customProduct);
-        setProducts(clobbered);
+        // const customProduct = await getCustomProduct();
+        // const clobbered = productsData.concat(customProduct);
+
+        setProducts(productsData);
         // Handle setting detail changes:
         const newProduct = clobbered.filter((product) => {
           return product.title === diamondContext.settingDetails.name;
@@ -139,6 +147,9 @@ const RingSettings = () => {
   };
   return (
     <>
+      <div className="mx-4">
+        <div className={`${hiraDarkGrayText}`}> {products.length} Items</div>
+      </div>
       <section className="text-gray-600 body-font">
         <div className="container p-5 mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -148,9 +159,9 @@ const RingSettings = () => {
                 const variant = prod.variants;
                 const imageAlts = generateImageAlts(prod);
                 return (
-                  <div key={prod._id} className="w-full">
+                  <div key={prod._id} className={`w-full ${hiralightGrayBG}`}>
                     <div
-                      className="flex flex-col h-full"
+                      className={`flex flex-col h-full`}
                       onClick={() => {
                         handleRingClick(prod, imageAlts);
                       }}
@@ -162,9 +173,7 @@ const RingSettings = () => {
                           images={variant[0].images}
                           imageAlts={imageAlts}
                           // w-200 h-200 md:w-400 md:h-400
-                          imageClass={
-                            "w-200 h-200 md:w-400 md:h-400 object-center object"
-                          }
+                          imageClass={`w-200 h-200 md:w-400 md:h-400 object-center object`}
                         ></ImageSlider>
                       ) : (
                         <ImageSlider
@@ -177,19 +186,21 @@ const RingSettings = () => {
                       )}
 
                       {!openSettingDetail && (
-                        <div className="flex flex-col justify-between z-[5] h-40 overflow-hidden">
-                          <h3 className="text-gray-500 text-xs tracking-widest title-font mt-4">
+                        <div className="flex flex-col justify-between z-[5] h-fit overflow-hidden mt-2">
+                          {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mt-4">
                             {description}
-                          </h3>
-                          <h2 className="text-gray-900 title-font text-lg font-medium">
+                          </h3> */}
+                          <h2
+                            className={`${hiraDarkGrayText} mx-1 title-font text-lg font-medium`}
+                          >
                             {title}
                           </h2>
-                          <p className="">{prod.variants[0].price}</p>
+                          <p className="mx-1">CA$ {prod.variants[0].price}</p>
                           <button
                             onClick={() => {
                               handleRingClick(prod, imageAlts);
                             }}
-                            className="flex mt-2 text-white text-center justify-center bg-slate-700 border-0 py-2 px-6 focus:outline-none hover:bg-slate-800 rounded"
+                            className={`flex mt-2 mx-1 text-black text-center justify-center ${hiralightGrayBG} border ${borderHiraBlack} py-2 px-6 focus:outline-none hover:bg-black`}
                           >
                             Select
                           </button>

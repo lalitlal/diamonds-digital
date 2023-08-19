@@ -1,6 +1,11 @@
 import React, { useContext } from "react";
 import { DiamondContext } from "./context/DiamondContext";
-import { hiraGray } from "./constants";
+import {
+  hiraBlackBG,
+  hiraGray,
+  hiraWhiteText,
+  hiralightGrayText,
+} from "./constants";
 
 const MetalSelector = () => {
   const { bandColor, setBandColor } = useContext(DiamondContext);
@@ -21,18 +26,20 @@ const MetalSelector = () => {
   ];
   return (
     <div className="justify-center mx-4">
-      <div className="text-left text-gray-600 my-5">Choose Metal</div>
+      <div className={`text-left text-gray-600 ${hiralightGrayText} mb-2`}>
+        Choose Metal
+      </div>
       <div className="flex flex-wrap w-full justify-between ">
         {options.map((op, i) => {
           return (
             <div
               key={i}
-              className={`mb-4 p-2 border border-black hover:text-slate-300 hover:underline cursor-pointer tracking-tight ${
+              className={`mb-4 p-2 border border-black hover:text-slate-300 cursor-pointer tracking-tight ${
                 op.opt === bandColor
-                  ? `text-[${hiraGray}] border-[${hiraGray}] border underline`
+                  ? `${hiraBlackBG} ${hiraWhiteText}`
                   : "text-gray-600"
               }`}
-              style={{ width: "calc(50% - 1rem)" }} // Set a fixed width for each option container
+              style={{ width: "calc(50% - 0.4rem)" }} // Set a fixed width for each option container
               onClick={() => {
                 setBandColor(op.opt);
               }}

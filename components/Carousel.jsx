@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { chevronLeft, chevronRight, minSwipeDistance } from "./constants";
+import {
+  chevronLeft,
+  chevronRight,
+  hiraBlackBG,
+  minSwipeDistance,
+} from "./constants";
 import Image from "next/image";
 
 const Carousel = ({ images, zvalue = 50 }) => {
@@ -65,13 +70,13 @@ const Carousel = ({ images, zvalue = 50 }) => {
         ))}
       </div>
       <button
-        className="absolute top-1/2 transform -translate-y-1/2 left-0  bg-gray-600 text-white z-10"
+        className={`absolute top-1/2 transform -translate-y-1/2 left-0  ${hiraBlackBG} text-white z-10`}
         onClick={handlePrev}
       >
         {chevronLeft}
       </button>
       <button
-        className="absolute top-1/2 transform -translate-y-1/2 right-0 bg-gray-600 text-white z-10"
+        className={`absolute top-1/2 transform -translate-y-1/2 right-0 ${hiraBlackBG} text-white z-10`}
         onClick={handleNext}
       >
         {chevronRight}
