@@ -1,11 +1,6 @@
 import React, { useContext } from "react";
 import { DiamondContext } from "./context/DiamondContext";
-import {
-  hiraBlackBG,
-  hiraGray,
-  hiraWhiteText,
-  hiralightGrayText,
-} from "./constants";
+import { hiraBlackBG, hiraWhiteText, hiralightGrayText } from "./constants";
 
 const MetalSelector = () => {
   const { bandColor, setBandColor } = useContext(DiamondContext);

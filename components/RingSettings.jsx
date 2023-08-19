@@ -1,29 +1,19 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import ImageSlider from "./ImageSlider";
-import { getProducts, getCustomProduct } from "../sanity/sanity-utils";
-import SettingsProductDetail from "./SettingsProductDetail";
-import Carousel from "./Carousel";
+import { getProducts } from "../sanity/sanity-utils";
 import {
   borderHiraBlack,
-  chevronLeft,
   hiraDarkGrayText,
-  hiraGrayBG,
-  hiraGrayText,
   hiralightGrayBG,
 } from "./constants";
-import MetalSelector from "./MetalSelector";
-import SingleShapeSelector from "./SingleShapeSelector";
 
 const RingSettings = () => {
   const diamondContext = useContext(DiamondContext);
   const cartContext = useContext(CartContext);
   const [products, setProducts] = useState([]);
-  const [openSettingDetail, setOpenSettingDetail] = useState(false);
-
   const dummyImageURL = "https://dummyimage.com/420x260";
 
   const upperCaseFirstLetter = useCallback(() => {
@@ -98,7 +88,7 @@ const RingSettings = () => {
 
         setProducts(productsData);
         // Handle setting detail changes:
-        const newProduct = clobbered.filter((product) => {
+        const newProduct = productsData.filter((product) => {
           return product.title === diamondContext.settingDetails.name;
         });
 
@@ -143,7 +133,6 @@ const RingSettings = () => {
       images: imageSliderForDetail,
       variantData: prod.variants[0],
     });
-    setOpenSettingDetail(true);
   };
   return (
     <>
@@ -153,77 +142,64 @@ const RingSettings = () => {
       <section className="text-gray-600 body-font">
         <div className="container p-5 mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {!openSettingDetail &&
-              products.map((prod, i) => {
-                const { _id, title, description, type } = prod;
-                const variant = prod.variants;
-                const imageAlts = generateImageAlts(prod);
-                return (
-                  <div key={prod._id} className={`w-full ${hiralightGrayBG}`}>
-                    <div
-                      className={`flex flex-col h-full`}
-                      onClick={() => {
-                        handleRingClick(prod, imageAlts);
-                      }}
-                    >
-                      {prod.variants !== null &&
-                      prod.variants !== undefined &&
-                      variant.length > 0 ? (
-                        <ImageSlider
-                          images={variant[0].images}
-                          imageAlts={imageAlts}
-                          // w-200 h-200 md:w-400 md:h-400
-                          imageClass={`w-200 h-200 md:w-400 md:h-400 object-center object`}
-                        ></ImageSlider>
-                      ) : (
-                        <ImageSlider
-                          images={[dummyImageURL]}
-                          imageAlts={imageAlts}
-                          imageClass={
-                            "w-200 h-200 md:w-400 md:h-400 object-cover object-center"
-                          }
-                        ></ImageSlider>
-                      )}
+            {products.map((prod, i) => {
+              const { _id, title, description, type } = prod;
+              const variant = prod.variants;
+              const imageAlts = generateImageAlts(prod);
+              return (
+                <div key={prod._id} className={`w-full ${hiralightGrayBG}`}>
+                  <div
+                    className={`flex flex-col h-full`}
+                    onClick={() => {
+                      handleRingClick(prod, imageAlts);
+                    }}
+                  >
+                    {prod.variants !== null &&
+                    prod.variants !== undefined &&
+                    variant.length > 0 ? (
+                      <ImageSlider
+                        images={variant[0].images}
+                        imageAlts={imageAlts}
+                        // w-200 h-200 md:w-400 md:h-400
+                        imageClass={`w-200 h-200 md:w-400 md:h-400 object-center object`}
+                      ></ImageSlider>
+                    ) : (
+                      <ImageSlider
+                        images={[dummyImageURL]}
+                        imageAlts={imageAlts}
+                        imageClass={
+                          "w-200 h-200 md:w-400 md:h-400 object-cover object-center"
+                        }
+                      ></ImageSlider>
+                    )}
 
-                      {!openSettingDetail && (
-                        <div className="flex flex-col justify-between z-[5] h-fit overflow-hidden mt-2">
-                          {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mt-4">
+                    {
+                      <div className="flex flex-col justify-between z-[5] h-fit overflow-hidden mt-2">
+                        {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mt-4">
                             {description}
                           </h3> */}
-                          <h2
-                            className={`${hiraDarkGrayText} mx-1 title-font text-lg font-medium`}
-                          >
-                            {title}
-                          </h2>
-                          <p className="mx-1">CA$ {prod.variants[0].price}</p>
-                          <button
-                            onClick={() => {
-                              handleRingClick(prod, imageAlts);
-                            }}
-                            className={`flex mt-2 mx-1 text-black text-center justify-center ${hiralightGrayBG} border ${borderHiraBlack} py-2 px-6 focus:outline-none hover:bg-black`}
-                          >
-                            Select
-                          </button>
-                        </div>
-                      )}
-                    </div>
+                        <h2
+                          className={`${hiraDarkGrayText} mx-1 title-font text-lg font-medium`}
+                        >
+                          {title}
+                        </h2>
+                        <p className="mx-1">CA$ {prod.variants[0].price}</p>
+                        <Link
+                          onClick={() => {
+                            handleRingClick(prod, imageAlts);
+                          }}
+                          href="/settingdetail"
+                          className={`flex mt-2 mx-1 text-black text-center justify-center ${hiralightGrayBG} border ${borderHiraBlack} py-2 px-6 focus:outline-none hover:bg-black`}
+                        >
+                          Select
+                        </Link>
+                      </div>
+                    }
                   </div>
-                );
-              })}
+                </div>
+              );
+            })}
           </div>
-          {openSettingDetail && (
-            <>
-              <div
-                className="flex items-center mt-4 pb-4 hover:underline"
-                onClick={() => {
-                  setOpenSettingDetail(false);
-                }}
-              >
-                {chevronLeft} Back to catalog
-              </div>
-              <SettingsProductDetail></SettingsProductDetail>
-            </>
-          )}
         </div>
       </section>
     </>

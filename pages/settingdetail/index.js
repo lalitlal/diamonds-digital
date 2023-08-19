@@ -3,15 +3,15 @@ import { Inter } from "@next/font/google";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import RingSettings from "../../components/RingSettings";
-import Stepper from "../../components/Stepper";
 import MetalSelector from "../../components/MetalSelector";
 import SingleShapeSelector from "../../components/SingleShapeSelector";
 import Breadcrumb from "../../components/BreadCrumb";
 import { navigationBreadCrums } from "../../components/constants";
-import DiamondSelectedNotification from "../../components/DiamondSelectedNotification";
 import MobileMenu from "../../components/MobileMenu";
-
+import SettingsProductDetail from "../../components/SettingsProductDetail";
+import ShippingInfo from "../../components/ShippingInfo";
+import RefundPolicy from "../../components/RefundPolicy";
+import SettingDetailDescription from "../../components/SettingDetailDescription";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -28,16 +28,15 @@ export default function Home() {
         <Header></Header>
         <MobileMenu></MobileMenu>
       </div>
-      <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
-      <DiamondSelectedNotification></DiamondSelectedNotification>
-      <Stepper stage={1}></Stepper>
-      {/* <div className="flex justify-center"> */}
+      <Breadcrumb navDetails={navigationBreadCrums["Settings"]}></Breadcrumb>
+      <SettingsProductDetail></SettingsProductDetail>
       <SingleShapeSelector singular={true}></SingleShapeSelector>
-      {/* </div> */}
       <div className="mt-3">
         <MetalSelector></MetalSelector>
       </div>
-      <RingSettings></RingSettings>
+      <SettingDetailDescription></SettingDetailDescription>
+      <ShippingInfo></ShippingInfo>
+      <RefundPolicy></RefundPolicy>
       <Footer></Footer>
     </>
   );
