@@ -41,7 +41,6 @@ const TrustedHtmlContent = ({ url }) => {
       width={`${usedBP}px`}
       height={`${usedBP}px`}
       title="External Content"
-      frameborder="0"
     />
   );
 };

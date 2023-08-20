@@ -1,4 +1,5 @@
 import React from "react";
+import { hiraDarkGrayBG } from "./constants";
 
 const WhatsIncluded = () => {
   const featureSvg = (
@@ -8,7 +9,7 @@ const WhatsIncluded = () => {
       stroke-linecap="round"
       strokeLinejoin="round"
       strokeWidth="3"
-      class="text-slate-500  h-6 flex-shrink-0 w-full"
+      class="w-6 h-6"
       viewBox="0 0 24 24"
     >
       <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
@@ -33,14 +34,20 @@ const WhatsIncluded = () => {
             commitment. Every HIRA partner enjoys the following benefits:
           </p>
         </div>
-        <div class="flex flex-wrap lg:w-4/5 sm:mb-2 justify-center text-center mx-auto">
+        <div class="flex lg:w-4/5 sm:mb-2 justify-between text-center items-center">
           {includedFeatures.map((feat, i) => {
             return (
-              <div key={i} class="flex justify-center p-2 w-1/2">
-                <div class="flex-col w-full text-center bg-gray-100 rounded p-4 h-full items-center">
-                  {featureSvg}
-                  <span class="title-font font-medium">{feat.name}</span>
+              <div key={i} className="">
+                <div class="flex">
+                  <div class="">
+                    <div className={`flex justify-center`}>{featureSvg}</div>
+                  </div>
                 </div>
+                {/* <div class="flex">
+                  <div class="">
+                    <div class="flex justify-center">{feat.name}</div>
+                  </div>
+                </div> */}
               </div>
             );
           })}
