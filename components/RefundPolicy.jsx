@@ -9,7 +9,7 @@ import {
 
 const RefundPolicy = () => {
   return (
-    <div className="mx-4 mt-4">
+    <div className="mt-4 mb-8">
       <div className={`${hiraDarkGrayText}`}>Refund Policy + Money Back</div>
       <div className="flex justify-between">
         <div

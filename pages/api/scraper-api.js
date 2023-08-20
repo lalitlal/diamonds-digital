@@ -43,7 +43,7 @@ const handler = async (req, res) => {
   // for staging, the username and password can be requested from tech @ nivoda dot net
   const authenticate_query = `{
     authenticate {
-      username_and_password(username: "testaccount@sample.com", password: "staging-nivoda-22") {
+      username_and_password(username: "${process.env.NEXT_PUBLIC_NIV_USER}", password: "${process.env.NEXT_PUBLIC_NIV_PASS}") {
         token
       }
     }

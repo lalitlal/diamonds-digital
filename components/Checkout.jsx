@@ -10,7 +10,13 @@ import CalendlyBooking from "./CalendlyBooking";
 import CartModal from "./CartModal";
 import CheckoutItems from "./CheckoutItems";
 import { DiamondContext } from "./context/DiamondContext";
-import { hiraSlate } from "./constants";
+import {
+  borderHiraBlack,
+  hiraBlackBG,
+  hiraSlate,
+  hiraWhiteBG,
+} from "./constants";
+import Link from "next/link";
 
 const Checkout = () => {
   const handleRemoveCartItem = (item) => {
@@ -74,6 +80,9 @@ const Checkout = () => {
     // console.log(redirectURL);
     router.push(redirectURL.url);
   };
+  const [totalPrice, setTotalPrice] = useState(
+    cartContext.diamondPrice + cartContext.settingPrice
+  );
 
   return (
     <>
@@ -83,20 +92,24 @@ const Checkout = () => {
             handleRemoveCartItem(item);
           }}
         ></CheckoutItems>
-        <div className="flex-col w-full justify-center">
+        <div class="justify-center w-full">
           <button
-            onClick={checkoutBtnClick}
-            class={`flex w-full justify-center text-white bg-slate-700 py-4 px-8 focus:outline-none active:bg-black focus:bg-black text-lg`}
-          >
-            <div className="px-32 py-2 border border-white">Checkout</div>
-          </button>
-          <button
+            class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
             onClick={() => {
               setShowBookingModal(!showBookingModal);
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+              });
             }}
-            class={`flex w-full text-center justify-center text-white bg-slate-700 py-2 px-8 focus:outline-none active:bg-black focus:bg-black text-lg -mt-2`}
           >
-            <div className="py-2 -mt-2">Try before buying</div>
+            Speak to an expert
+          </button>
+          <button
+            class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
+            onClick={checkoutBtnClick}
+          >
+            Complete Ring (CA$ {totalPrice})
           </button>
         </div>
         {error && <ErrorCheckout setErrorState={setError}></ErrorCheckout>}

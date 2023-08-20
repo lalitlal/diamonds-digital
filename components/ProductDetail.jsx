@@ -6,6 +6,7 @@ import TrustedHtmlContent from "./TrustedHTMLContent";
 import Script from "next/script";
 import Image from "next/image";
 import { borderHiraBlack, hiraBlackBG, hiraWhiteBG } from "./constants";
+import FullDiamondDetails from "./FullDiamondDetails";
 
 const ProductDetail = ({ shape, data }) => {
   const cartContext = useContext(CartContext);
@@ -101,107 +102,24 @@ const ProductDetail = ({ shape, data }) => {
                 </Link>
               )}
             </p>
-            <div class="flex border-t border-gray-200 py-2">
-              <span class="text-gray-500">Carat</span>
-              <span class="ml-auto text-gray-900">
-                {data.diamond.certificate.carats}
-              </span>
-            </div>
-            <div class="flex border-t border-gray-200 py-2">
-              <span class="text-gray-500">Color</span>
-              <span class="ml-auto text-gray-900">
-                {data.diamond.certificate.color}
-              </span>
-            </div>
-            <div class="flex border-t border-gray-200 py-2">
-              <span class="text-gray-500">Clarity</span>
-              <span class="ml-auto text-gray-900">
-                {data.diamond.certificate.clarity}
-              </span>
-            </div>
-            <div class="flex border-t border-gray-200 py-2">
-              <span class="text-gray-500">Cut</span>
-              <span class="ml-auto text-gray-900">
-                {data.diamond.certificate.cut}
-              </span>
-            </div>
-            <div class="flex border-t border-b border-gray-200 py-2">
-              <span class="text-gray-500">Report</span>
-              <span class="ml-auto text-gray-900">{data.report || "IGI"}</span>
-            </div>
-            {seeFullDetails && (
-              <>
-                <div class="flex border-t border-b border-gray-200 py-2">
-                  <span class="text-gray-500">Polish</span>
-                  <span class="ml-auto text-gray-900">
-                    {data.diamond.certificate.polish}
-                  </span>
-                </div>
-                <div class="flex border-t border-b border-gray-200 py-2">
-                  <span class="text-gray-500">Symetry</span>
-                  <span class="ml-auto text-gray-900">
-                    {data.diamond.certificate.symmetry}
-                  </span>
-                </div>
-                <div class="flex border-t border-b border-gray-200 py-2">
-                  <span class="text-gray-500">Width</span>
-                  <span class="ml-auto text-gray-900">
-                    {Number(data.diamond.certificate.width).toFixed(2)}
-                  </span>
-                </div>
-                <div class="flex border-t border-b border-gray-200 py-2">
-                  <span class="text-gray-500">Length</span>
-                  <span class="ml-auto text-gray-900">
-                    {Number(data.diamond.certificate.length).toFixed(2)}
-                  </span>
-                </div>
-                <div class="flex border-t border-b border-gray-200 py-2">
-                  <span class="text-gray-500">Depth</span>
-                  <span class="ml-auto text-gray-900">
-                    {Number(data.diamond.certificate.depth).toFixed(2)}
-                  </span>
-                </div>
-                <div class="flex border-t border-b border-gray-200 py-2">
-                  <span class="text-gray-500">Depth Pct.</span>
-                  <span class="ml-auto text-gray-900">
-                    {Number(data.diamond.certificate.depthPercentage).toFixed(
-                      2
-                    )}
-                  </span>
-                </div>
-                <div class="flex border-t border-b border-gray-200 py-2">
-                  <span class="text-gray-500">Table</span>
-                  <span class="ml-auto text-gray-900">
-                    {Number(data.diamond.certificate.table).toFixed(2)}
-                  </span>
-                </div>
-                <div class="flex border-t border-b border-gray-200 py-2">
-                  <span class="text-gray-500">Girdle</span>
-                  <span class="ml-auto text-gray-900">
-                    {data.diamond.certificate.girdle}
-                  </span>
-                </div>
-              </>
-            )}
-            <div
-              className="text-black underline text-left mb-6 font-medium tracking-wider py-2"
-              onClick={() => {
-                setSeeFullDetails(!seeFullDetails);
-              }}
-            >
-              {seeFullDetails ? "Hide" : "Show"} full information
-            </div>
+            <FullDiamondDetails data={data}></FullDiamondDetails>
 
             <div class="justify-center w-full">
-              <Link href="/ringsettings">
-                <button
-                  class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
-                  onClick={() => {
-                    console.log("Speak to expert clicked");
-                  }}
-                >
-                  Speak to an expert
-                </button>
+              <button
+                class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
+                onClick={() => {
+                  cartContext.setShowBookingModal(
+                    !cartContext.showBookingModal
+                  );
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+                  });
+                }}
+              >
+                Speak to an expert
+              </button>
+              <Link href={"/ringsettings"}>
                 <button
                   class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                   onClick={() => {
@@ -214,6 +132,7 @@ const ProductDetail = ({ shape, data }) => {
                     diamondContext.setSelectedDiamondShape(shape.toLowerCase());
                     cartContext.setDiamondShape(shape.toLowerCase());
                     diamondContext.setDiamondJustSelected(true);
+                    diamondContext.setDiamondDetails(data);
                   }}
                 >
                   Add to ring (CA$ {data.price})

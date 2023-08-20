@@ -13,6 +13,7 @@ export const DiamondContextProvider = ({ children }) => {
 
   const [selectedDiamondShape, setSelectedDiamondShape] = useState("oval");
   const [settingDetails, setSettingDetails] = useState({});
+  const [diamondDetails, setDiamondDetails] = useState(null);
   const [diamondJustSelected, setDiamondJustSelected] = useState(false);
 
   const shapes = {
@@ -708,6 +709,8 @@ export const DiamondContextProvider = ({ children }) => {
         setShowAdvancedFilter,
         orderDiamonds,
         setOrderDiamonds,
+        diamondDetails,
+        setDiamondDetails,
       }}
     >
       {children}

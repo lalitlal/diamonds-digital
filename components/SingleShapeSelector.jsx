@@ -34,7 +34,7 @@ const SingleShapeSelector = ({ singular = true }) => {
   return (
     <div>
       {/* <div className="mb-2 text-center font-bold text-gray-600">Shape</div> */}
-      <div className="mx-4">
+      <div className="">
         <div className="flex justify-between w-full md:w-full">
           {Object.entries(shapes).map(([key, value], i) => {
             return (

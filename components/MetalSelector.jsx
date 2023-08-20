@@ -20,7 +20,7 @@ const MetalSelector = () => {
     },
   ];
   return (
-    <div className="justify-center mx-4">
+    <div className="justify-center mt-3">
       <div className={`text-left text-gray-600 ${hiralightGrayText} mb-2`}>
         Choose Metal
       </div>

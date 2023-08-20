@@ -27,8 +27,10 @@ export default function Home() {
         <Header></Header>
         <MobileMenu></MobileMenu>
       </div>
-      <Breadcrumb navDetails={navigationBreadCrums["Home"]}></Breadcrumb>
-      <Stepper stage={0}></Stepper>
+      <div className="mx-4">
+        <Breadcrumb navDetails={navigationBreadCrums["Home"]}></Breadcrumb>
+        <Stepper stage={0}></Stepper>
+      </div>
       <DiamondPage></DiamondPage>
     </>
   );

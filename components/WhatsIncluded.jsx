@@ -23,7 +23,7 @@ const WhatsIncluded = () => {
   ];
   return (
     <section class="text-gray-600 body-font justify-center">
-      <div class="container px-5 py-5 mx-auto">
+      <div class="">
         <div class="text-center">
           <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
             Shop HIRA with confidence

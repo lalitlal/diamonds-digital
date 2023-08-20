@@ -12,6 +12,7 @@ import SettingsProductDetail from "../../components/SettingsProductDetail";
 import ShippingInfo from "../../components/ShippingInfo";
 import RefundPolicy from "../../components/RefundPolicy";
 import SettingDetailDescription from "../../components/SettingDetailDescription";
+import RingSizePicker from "../../components/RingSizePicker";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -28,15 +29,16 @@ export default function Home() {
         <Header></Header>
         <MobileMenu></MobileMenu>
       </div>
-      <Breadcrumb navDetails={navigationBreadCrums["Settings"]}></Breadcrumb>
-      <SettingsProductDetail></SettingsProductDetail>
-      <SingleShapeSelector singular={true}></SingleShapeSelector>
-      <div className="mt-3">
+      <div className="mx-4">
+        <Breadcrumb navDetails={navigationBreadCrums["Settings"]}></Breadcrumb>
+        <SettingsProductDetail></SettingsProductDetail>
+        <SingleShapeSelector singular={true}></SingleShapeSelector>
         <MetalSelector></MetalSelector>
+        <RingSizePicker></RingSizePicker>
+        <SettingDetailDescription></SettingDetailDescription>
+        <ShippingInfo></ShippingInfo>
+        <RefundPolicy></RefundPolicy>
       </div>
-      <SettingDetailDescription></SettingDetailDescription>
-      <ShippingInfo></ShippingInfo>
-      <RefundPolicy></RefundPolicy>
       <Footer></Footer>
     </>
   );

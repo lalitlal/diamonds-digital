@@ -28,16 +28,14 @@ export default function Home() {
         <Header></Header>
         <MobileMenu></MobileMenu>
       </div>
-      <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
-      <DiamondSelectedNotification></DiamondSelectedNotification>
-      <Stepper stage={1}></Stepper>
-      {/* <div className="flex justify-center"> */}
-      <SingleShapeSelector singular={true}></SingleShapeSelector>
-      {/* </div> */}
-      <div className="mt-3">
+      <div className="mx-4">
+        <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
+        <DiamondSelectedNotification></DiamondSelectedNotification>
+        <Stepper stage={1}></Stepper>
+        <SingleShapeSelector singular={true}></SingleShapeSelector>
         <MetalSelector></MetalSelector>
+        <RingSettings></RingSettings>
       </div>
-      <RingSettings></RingSettings>
       <Footer></Footer>
     </>
   );

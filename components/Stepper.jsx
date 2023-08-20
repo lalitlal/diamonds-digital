@@ -89,7 +89,7 @@ const Stepper = ({ stage }) => {
   return (
     <section className="text-gray-600 body-font w-full overflow-x-hidden">
       <div className="py-4 flex justify-center w-full">
-        <div className="w-screen mx-4">
+        <div className="w-screen">
           <div className="flex">
             {iconObjects.map((iconObj, i) => {
               return (

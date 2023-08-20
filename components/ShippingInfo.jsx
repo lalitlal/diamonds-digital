@@ -8,7 +8,7 @@ import {
 
 const ShippingInfo = () => {
   return (
-    <div className="mx-4">
+    <div className="mb-8">
       <div className={`${hiraDarkGrayText}`}>Shipping Info</div>
       <div className="flex justify-center">
         <div

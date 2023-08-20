@@ -112,7 +112,7 @@ const SettingsProductDetail = ({}) => {
     <>
       {setDetailProducts && diamondContext.settingDetails.variantData && (
         <section class="text-gray-600 body-font overflow-hidden">
-          <div class="container px-5 py-2 mx-auto">
+          <div class="">
             <div class="lg:w-4/5 mx-auto flex flex-wrap">
               <div class="lg:w-full w-full mb-6 lg:mb-0">
                 <h2 class="text-sm title-font text-gray-500 tracking-widest">
@@ -131,7 +131,13 @@ const SettingsProductDetail = ({}) => {
                   <button
                     class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
                     onClick={() => {
-                      console.log("Speak to expert clicked");
+                      cartContext.setShowBookingModal(
+                        !cartContext.showBookingModal
+                      );
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+                      });
                     }}
                   >
                     Speak to an expert
