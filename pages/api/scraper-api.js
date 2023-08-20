@@ -32,7 +32,7 @@ import { parse } from "node-html-parser";
 const handler = async (req, res) => {
   // console.log("IN GRAPH API");
   // console.log(req.body);
-  const API_URL = "https://intg-customer-staging.nivodaapi.net/api/diamonds";
+  const API_URL = process.env.NEXT_PUBLIC_GRAPHQL_API_NIV;
   // the API_URL for production is https://integrations.nivoda.net/api/diamonds';
 
   // Great documentation can be found here:
