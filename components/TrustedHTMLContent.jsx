@@ -1,27 +1,18 @@
-// components/TrustedHtmlContent.js
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Script from "next/script";
-import Link from "next/link";
+import React, { useState, useEffect, useRef } from "react";
 
 const TrustedHtmlContent = ({ url }) => {
-  const [htmlContent, setHtmlContent] = useState("");
   const [usedBP, setUsedBP] = useState(500);
   const [usedURL, setUsedURL] = useState(url);
-  // const baseUrl = url.replace("/500/500", "");
-  // Define tailwind breakpoints and corresponding integer values
+
+  const iframeRef = useRef(null);
 
   useEffect(() => {
-    // Get the current screen width
     const screenWidth = window.innerWidth;
     const breakpoints = {
       sm: 320,
       md: 500,
-      // lg: 1024,
-      // xl: 1280,
-      // "2xl": 1536,
     };
-    // Find the appropriate breakpoint based on screen width
+
     let breakpoint = "sm";
     for (const bp in breakpoints) {
       if (screenWidth >= breakpoints[bp]) {
@@ -34,9 +25,20 @@ const TrustedHtmlContent = ({ url }) => {
     setUsedURL(newUrl);
   }, [usedURL, url, usedBP]);
 
+  useEffect(() => {
+    // Programmatically trigger multiple clicks on the iframe element
+    if (iframeRef.current) {
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          iframeRef.current.click();
+        }, i * 3000); // Delay each click by 1 second
+      }
+    }
+  }, []);
+
   return (
     <iframe
-      className=""
+      ref={iframeRef}
       src={usedURL}
       width={`${usedBP}px`}
       height={`${usedBP}px`}
