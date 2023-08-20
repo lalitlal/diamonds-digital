@@ -206,7 +206,7 @@ function CheckoutItems({ onRemoveItem }) {
                 {!cartEmpty && imageSlider}
                 {!cartEmpty && (
                   <div className="text-xs justify-center text-center">
-                    *Picture shown with 3mm band, 3 carat diamond.
+                    *Picture shown 3 carat diamond and 2mm band.
                   </div>
                 )}
                 {!cartEmpty &&
