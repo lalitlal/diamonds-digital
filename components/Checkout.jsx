@@ -57,7 +57,8 @@ const Checkout = () => {
   const checkoutBtnClick = async () => {
     if (
       cartContext.diamond === undefined ||
-      cartContext.setting === undefined
+      cartContext.setting === undefined ||
+      !cartContext.ringSize
     ) {
       setError(true);
       return;

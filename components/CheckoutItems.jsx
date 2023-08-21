@@ -263,6 +263,9 @@ function CheckoutItems({ onRemoveItem }) {
                       <Link
                         className="hover:underline"
                         href={lineItem.editLink}
+                        onClick={() => {
+                          cartContext.setShowCartModal(false);
+                        }}
                       >
                         Edit
                       </Link>
@@ -293,7 +296,12 @@ function CheckoutItems({ onRemoveItem }) {
                   {showDetailsArray[i].getter && lineItem.detailDiv}
                 </div>
               ) : (
-                <Link href={lineItem.editLink}>
+                <Link
+                  href={lineItem.editLink}
+                  onClick={() => {
+                    cartContext.setShowCartModal(false);
+                  }}
+                >
                   <div
                     className={`border ${borderHiraBlack} ${hiralightGrayBG} text-center p-4 text-lg space-y-px hover:cursor-pointer hover:underline mt-2`}
                   >
