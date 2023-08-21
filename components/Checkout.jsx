@@ -84,6 +84,9 @@ const Checkout = () => {
   const [totalPrice, setTotalPrice] = useState(
     cartContext.diamondPrice + cartContext.settingPrice
   );
+  useEffect(() => {
+    setTotalPrice(cartContext.diamondPrice + cartContext.settingPrice);
+  }, [cartContext.diamondPrice, cartContext.settingPrice]);
 
   return (
     <>
