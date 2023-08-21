@@ -32,6 +32,7 @@ export default function Home() {
         <Stepper stage={0}></Stepper>
       </div>
       <DiamondPage></DiamondPage>
+      <Footer></Footer>
     </>
   );
 }

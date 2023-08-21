@@ -9,7 +9,8 @@ const ErrorCheckout = ({ setErrorState }) => {
       >
         <strong class="font-bold">Error Checking Out!</strong>
         <span class="block sm:inline ml-2">
-          Do you have both a diamond and setting?
+          Do you have both a diamond and setting? If so, make sure your ring
+          size is also selected.
         </span>
         <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
           <svg
