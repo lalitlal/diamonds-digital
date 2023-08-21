@@ -32,8 +32,8 @@ export default function Home() {
       {/* <Stepper stage={2}></Stepper> */}
       <div className="mx-4">
         <Breadcrumb navDetails={navigationBreadCrums["Settings"]}></Breadcrumb>
+        {/* <WhatsIncluded></WhatsIncluded> */}
         <Checkout></Checkout>
-        <WhatsIncluded></WhatsIncluded>
       </div>
       <Footer></Footer>
     </>

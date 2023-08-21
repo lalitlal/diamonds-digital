@@ -12,13 +12,20 @@ import { getCheckoutItem } from "../sanity/sanity-utils";
 import Carousel from "./Carousel";
 import FullDiamondDetails from "./FullDiamondDetails";
 import RingSizePicker from "../components/RingSizePicker";
-import { borderHiraBlack, caretIcon, hiraDarkGrayText } from "./constants";
+import {
+  borderHiraBlack,
+  caretIcon,
+  hiraDarkGrayText,
+  hiraWhiteBG,
+  hiralightGrayBG,
+} from "./constants";
 import Link from "next/link";
 
 function CheckoutItems({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
   const diamondContext = useContext(DiamondContext);
   const [cartEmpty, setCartEmpty] = useState(false);
+  const [unfinishedCart, setUnfinishedCart] = useState(false);
   const [imageSlider, setImageSlider] = useState(undefined);
   const [products, setProducts] = useState([]);
   const [showCheckoutDiamondDetails, setShowCheckoutDiamondDetails] =
@@ -157,6 +164,7 @@ function CheckoutItems({ onRemoveItem }) {
           ></FullDiamondDetails>
         ),
         editLink: "/diamond",
+        missingText: "Select Diamond",
       },
       {
         description:
@@ -167,6 +175,7 @@ function CheckoutItems({ onRemoveItem }) {
         price: ` CA$ `.concat(cartContext.settingPrice),
         detailDiv: <RingSizePicker></RingSizePicker>,
         editLink: "/ringsettings",
+        missingText: "Select Ring",
       },
     ];
   }, [
@@ -185,95 +194,126 @@ function CheckoutItems({ onRemoveItem }) {
     } else {
       setCartEmpty(false);
     }
+
+    if (
+      cartInfo[0].description === undefined ||
+      cartInfo[1].description === undefined
+    ) {
+      setUnfinishedCart(true);
+    } else {
+      setUnfinishedCart(false);
+    }
   }, [cartInfo]);
 
   return (
     <div>
-      <div className="justify-center items-center mb-10">
-        <div className="flex justify-center h-5/6">
-          <div class=" " aria-modal="true" role="dialog" tabIndex="-1">
-            <h3 className="text-center font-Raleway font-bold text-lg">
-              Your Shopping Cart
-            </h3>
-
-            <div class="mt-6 my-5">
-              {cartEmpty && (
-                <div className="text-center font-Raleway">
-                  Your shopping cart is empty. Explore around!
-                </div>
-              )}
-              <div class="space-y-6">
-                {!cartEmpty && imageSlider}
-                {!cartEmpty && (
-                  <div className="text-xs justify-center text-center">
-                    *Picture shown 3 carat diamond and 2mm band.
-                  </div>
-                )}
-                {!cartEmpty &&
-                  cartInfo.map((lineItem, i) => {
-                    return (
-                      lineItem.description !== undefined && (
-                        <div className={`border ${borderHiraBlack} p-2`}>
-                          <div
-                            key={i}
-                            class={`flex flex-1 items-center gap-6 `}
-                            onClick={() => {
-                              showDetailsArray[i].setter(
-                                !showDetailsArray[i].getter
-                              );
-                            }}
-                          >
-                            <div className="flex flex-col flex-grow">
-                              <div class={`text-lg ${hiraDarkGrayText}`}>
-                                {lineItem.name}
-                              </div>
-
-                              <div class={`mt-0.5 space-y-px text-lg`}>
-                                <div>
-                                  <div class="inline">{lineItem.price}</div>
-                                </div>
-                              </div>
-                            </div>
-                            {/* DELETE BUTTON */}
-                            <div className="flex">
-                              <Link
-                                className="hover:underline"
-                                href={lineItem.editLink}
-                              >
-                                Edit
-                              </Link>
-                              <div className="mx-2">{caretIcon}</div>
-                              {/* <div
-                                className="flex justify-end"
-                                onClick={() => {
-                                  onRemoveItem(lineItem);
-                                }}
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth="1.5"
-                                  stroke="currentColor"
-                                  class={`w-6 h-6 hover:text-indigo-400 cursor-pointer`}
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    strokeLinejoin="round"
-                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                  />
-                                </svg>
-                              </div> */}
-                            </div>
-                          </div>
-                          {showDetailsArray[i].getter && lineItem.detailDiv}
-                        </div>
-                      )
-                    );
-                  })}
-              </div>
-            </div>
+      <h3 className="text-center font-Raleway font-bold text-lg">
+        Your Shopping Cart
+      </h3>
+      {unfinishedCart && (
+        <div
+          className={`flex w-full justify-center items-center text-center py-2 ${hiraDarkGrayText} ${hiralightGrayBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2 h-48`}
+        >
+          <div className="mx-8">
+            To continue, please select a diamond and ring
           </div>
+        </div>
+      )}
+
+      <div class="mt-6 my-5">
+        <div class="space-y-6">
+          {cartInfo[0].description !== undefined &&
+            cartInfo[1].description !== undefined &&
+            imageSlider}
+          {cartInfo[0].description !== undefined &&
+            cartInfo[1].description !== undefined && (
+              <div className="text-xs justify-center text-center">
+                *Picture shown 3 carat diamond and 2mm band.
+              </div>
+            )}
+          {!cartEmpty &&
+            cartInfo.map((lineItem, i) => {
+              return lineItem.description ? (
+                <div className={`border ${borderHiraBlack} p-2`}>
+                  <div
+                    key={i}
+                    class={`flex flex-1 items-center gap-6 `}
+                    // onClick={() => {
+                    //   showDetailsArray[i].setter(!showDetailsArray[i].getter);
+                    // }}
+                  >
+                    <div
+                      className="flex flex-col flex-grow"
+                      onClick={() => {
+                        showDetailsArray[i].setter(!showDetailsArray[i].getter);
+                      }}
+                    >
+                      <div class={`text-lg ${hiraDarkGrayText}`}>
+                        {lineItem.name}
+                      </div>
+
+                      <div class={`mt-0.5 space-y-px text-lg`}>
+                        <div>
+                          <div class="inline">{lineItem.price}</div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* DELETE BUTTON */}
+                    <div className="flex">
+                      <Link
+                        className="hover:underline"
+                        href={lineItem.editLink}
+                      >
+                        Edit
+                      </Link>
+                      <div className="mx-2">{caretIcon}</div>
+                      <div
+                        className="flex justify-end"
+                        onClick={() => {
+                          onRemoveItem(lineItem);
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          class={`w-6 h-6 hover:text-indigo-400 cursor-pointer`}
+                        >
+                          <path
+                            stroke-linecap="round"
+                            strokeLinejoin="round"
+                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  {showDetailsArray[i].getter && lineItem.detailDiv}
+                </div>
+              ) : (
+                <Link href={lineItem.editLink}>
+                  <div
+                    className={`border ${borderHiraBlack} ${hiralightGrayBG} text-center p-4 text-lg space-y-px hover:cursor-pointer hover:underline mt-2`}
+                  >
+                    <div
+                      key={i}
+                      class={`flex flex-1 items-center gap-6 `}
+                      onClick={() => {
+                        showDetailsArray[i].setter(!showDetailsArray[i].getter);
+                      }}
+                    >
+                      <div className="flex flex-col flex-grow">
+                        <div class={`text-lg text-black`}>
+                          {lineItem.missingText}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
         </div>
       </div>
     </div>

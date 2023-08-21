@@ -25,17 +25,6 @@ const TrustedHtmlContent = ({ url }) => {
     setUsedURL(newUrl);
   }, [usedURL, url, usedBP]);
 
-  useEffect(() => {
-    // Programmatically trigger multiple clicks on the iframe element
-    if (iframeRef.current) {
-      for (let i = 0; i < 3; i++) {
-        setTimeout(() => {
-          iframeRef.current.click();
-        }, i * 3000); // Delay each click by 1 second
-      }
-    }
-  }, []);
-
   return (
     <iframe
       ref={iframeRef}

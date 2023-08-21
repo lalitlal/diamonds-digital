@@ -32,7 +32,7 @@ const WhatsIncluded = () => {
   return (
     <div class="text-gray-600 body-font justify-center mb-8">
       <div class="">
-        <div class="text-center">
+        {/* <div class="text-center">
           <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
             Shop HIRA with confidence
           </h1>
@@ -40,7 +40,7 @@ const WhatsIncluded = () => {
             We get it, this is big decision. Your proposal is a lifetime
             commitment. Every HIRA partner enjoys the following benefits:
           </p>
-        </div>
+        </div> */}
         <div class="flex flex-wrap lg:w-4/5 sm:mb-2 justify-center text-center mx-auto">
           {includedFeatures.map((feat, i) => {
             return (

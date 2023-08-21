@@ -31,7 +31,7 @@ const Header = () => {
   };
 
   const handleRemoveCartItem = (item) => {
-    if (item.name === "Loose Diamond") {
+    if (item.editLink === "/diamond") {
       cartContext.setDiamond(undefined);
       cartContext.setDiamondPrice(0);
     } else {

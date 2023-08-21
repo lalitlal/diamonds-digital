@@ -17,10 +17,11 @@ import {
   hiraWhiteBG,
 } from "./constants";
 import Link from "next/link";
+import WhatsIncluded from "./WhatsIncluded";
 
 const Checkout = () => {
   const handleRemoveCartItem = (item) => {
-    if (item.name === "Loose Diamond") {
+    if (item.editLink === "/diamond") {
       cartContext.setDiamond(undefined);
       cartContext.setDiamondPrice(0);
     } else {
@@ -92,6 +93,7 @@ const Checkout = () => {
             handleRemoveCartItem(item);
           }}
         ></CheckoutItems>
+        <WhatsIncluded></WhatsIncluded>
         <div class="justify-center w-full">
           <button
             class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
