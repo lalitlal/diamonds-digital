@@ -169,6 +169,9 @@ function CartModal({ onRemoveItem }) {
     cartContext.settingPrice,
   ]);
 
+  const [totalPrice, setTotalPrice] = useState(
+    cartContext.diamondPrice + cartContext.settingPrice
+  );
   useEffect(() => {
     if (
       cartInfo[0].description === undefined &&
@@ -179,9 +182,10 @@ function CartModal({ onRemoveItem }) {
       setCartEmpty(false);
     }
   }, [cartInfo]);
-  const [totalPrice, setTotalPrice] = useState(
-    cartContext.diamondPrice + cartContext.settingPrice
-  );
+
+  useEffect(() => {
+    setTotalPrice(cartContext.diamondPrice + cartContext.settingPrice);
+  }, [cartContext.diamondPrice, cartContext.settingPrice]);
 
   return (
     // <div className="mx-4">
