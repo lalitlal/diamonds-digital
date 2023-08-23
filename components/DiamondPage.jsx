@@ -5,12 +5,8 @@ import FullDiamondFilterPage from "./FullDiamondFilterPage";
 
 const DiamondPage = () => {
   return (
-    <div className="flex-col h-screen">
-      <FullDiamondFilterPage></FullDiamondFilterPage>
-      <DiamondFilter></DiamondFilter>
-      <div className="mt-4">
-        <Diamonds></Diamonds>
-      </div>
+    <div className="flex-col h-full">
+      <Diamonds></Diamonds>
     </div>
   );
 };

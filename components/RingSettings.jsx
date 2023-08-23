@@ -142,7 +142,10 @@ const RingSettings = () => {
       </div>
       <div className="text-gray-600 body-font">
         <div className="">
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-3 max-w-screen-lg"
+            style={{ gridAutoFlow: "row" }}
+          >
             {products.map((prod, i) => {
               const { _id, title, description, type } = prod;
               const variant = prod.variants;

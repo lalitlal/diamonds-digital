@@ -20,7 +20,7 @@ const Breadcrumb = ({ navDetails }) => {
   );
 
   return (
-    <nav className="flex items-center mt-4 pb-4">
+    <nav className="flex items-center mt-4 pb-4 lg:hidden">
       {navDetails.label && navDetails.url && (
         <>
           <div>{backTick}</div>

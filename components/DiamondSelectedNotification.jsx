@@ -5,8 +5,8 @@ const DiamondSelectedNotification = () => {
   const diamondContext = useContext(DiamondContext);
   return (
     diamondContext.diamondJustSelected && (
-      <div className="">
-        <div className="flex text-lg justify-start px-2 py-2 w-full md:justify-center bg-gray-100 mx-auto border border-black">
+      <div className="w-full">
+        <div className="flex text-lg justify-start px-2 py-2 w-full bg-gray-100 border border-black mb-2 lg:justify-center">
           Your diamond has been added to cart. Lets pick a setting!
         </div>
       </div>

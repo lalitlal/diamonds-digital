@@ -29,7 +29,6 @@ export default function Home() {
         <Header></Header>
         <MobileMenu></MobileMenu>
       </div>
-      {/* <Stepper stage={2}></Stepper> */}
       <div className="mx-4">
         <Breadcrumb navDetails={navigationBreadCrums["Settings"]}></Breadcrumb>
         {/* <WhatsIncluded></WhatsIncluded> */}

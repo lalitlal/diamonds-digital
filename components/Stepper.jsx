@@ -85,10 +85,10 @@ const Stepper = ({ stage }) => {
     <div className="rounded-full">1</div>
   );
 
-  const commonStyling = `flex-grow py-3 w-1/2 justify-center border font-black font-Raleway ${borderHiraBlack} inline-flex items-center text-center leading-none tracking-wider active:bg-[#848484] active:text-black`;
+  const commonStyling = `py-3 w-1/2 justify-center border font-black font-Raleway ${borderHiraBlack} flex items-center text-center active:bg-[#848484] active:text-black`;
   return (
-    <section className="text-gray-600 body-font w-full overflow-x-hidden">
-      <div className="py-4 flex justify-center w-full">
+    <div className="text-gray-600 body-font w-full overflow-x-hidden lg:w-1/4">
+      <div className="py-4 lg:pt-0 flex justify-center w-full">
         <div className="w-screen">
           <div className="flex">
             {iconObjects.map((iconObj, i) => {
@@ -117,7 +117,7 @@ const Stepper = ({ stage }) => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

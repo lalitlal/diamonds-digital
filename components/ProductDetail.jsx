@@ -5,7 +5,12 @@ import { DiamondContext } from "./context/DiamondContext";
 import TrustedHtmlContent from "./TrustedHTMLContent";
 import Script from "next/script";
 import Image from "next/image";
-import { borderHiraBlack, hiraBlackBG, hiraWhiteBG } from "./constants";
+import {
+  borderHiraBlack,
+  hiraBlackBG,
+  hiraDarkGrayText,
+  hiraWhiteBG,
+} from "./constants";
 import FullDiamondDetails from "./FullDiamondDetails";
 
 const ProductDetail = ({ shape, data }) => {
@@ -52,92 +57,109 @@ const ProductDetail = ({ shape, data }) => {
 
   return (
     <div class="text-gray-600 body-font">
-      <div class="px-5 py-2 w-full justify-center ">
+      <div class="px-5 py-2 w-full justify-center">
         <div class="w-full justify-center items-center text-center ">
-          <div class="md:w-4/5 w-full mb-6 lg:mb-0 mx-auto">
-            <h2 class="text-sm title-font text-black tracking-widest">HIRA</h2>
-            <h1 class="text-gray-900 text-xl lg:text-3xl title-font font-medium mb-2 lg:mb-4">
-              {shape} Shape Diamond
-            </h1>
-            <div className="w-full">
-              <div className="flex justify-center items-center text-center">
-                <TrustedHtmlContent
-                  url={data.diamond.video}
-                ></TrustedHtmlContent>
+          <div class="md:w-4/5 w-full mb-6 lg:mb-0 mx-auto lg:flex">
+            <div className={`lg:text-left`}>
+              <h2 class="text-sm title-font text-black tracking-widest">
+                HIRA
+              </h2>
+              <div className={`lg:flex`}>
+                <h1
+                  class={`${hiraDarkGrayText} text-xl title-font font-medium mb-2 lg:mb-4`}
+                >
+                  {shape} Shape Diamond
+                </h1>
+                <h1
+                  class={`${hiraDarkGrayText} text-xl title-font font-medium mb-2 lg:mb-4 hidden lg:flex lg:ml-2`}
+                >
+                  {" Carat: "}
+                  {data.diamond.certificate.carats}
+                </h1>
+              </div>
+
+              <div className="w-full">
+                <div className="flex justify-center items-center text-center lg:justify-start">
+                  <TrustedHtmlContent
+                    url={data.diamond.video}
+                  ></TrustedHtmlContent>
+                </div>
               </div>
             </div>
-
-            <div class="flex mb-4">
-              {productOptions.map((prod, i) => {
-                return (
-                  <div
-                    key={i}
-                    className={`flex-grow border-b-2 border-gray-300 py-2 text-lg px-1 hover:cursor-pointer ${
-                      i === currentDisplay
-                        ? "border-gray-500 text-gray-500"
-                        : "border-gray-300 text-gray-300"
-                    }`}
-                    onClick={() => {
-                      setCurrentDisplay(i);
-                    }}
-                  >
-                    {prod.Header}
-                  </div>
-                );
-              })}
-            </div>
-            <p class="leading-relaxed mb-4">
-              {productOptions[currentDisplay].Header !== "Certificate" ? (
-                productOptions[currentDisplay].Content
-              ) : (
-                <Link
-                  href={productOptions[currentDisplay].Content.report}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="flex hover:cursor-pointer">
-                    <a>See Certificate</a>
-                    {openArrow}
-                  </div>
-                </Link>
-              )}
-            </p>
-            <FullDiamondDetails data={data}></FullDiamondDetails>
-
-            <div class="justify-center w-full">
-              <button
-                class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
-                onClick={() => {
-                  cartContext.setShowBookingModal(
-                    !cartContext.showBookingModal
+            <div className={`lg:flex lg:flex-col lg:w-1/2 lg:ml-8`}>
+              <div class="flex mb-4">
+                {productOptions.map((prod, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className={`flex-grow border-b-2 border-gray-300 py-2 text-lg px-1 hover:cursor-pointer ${
+                        i === currentDisplay
+                          ? "border-gray-500 text-gray-500"
+                          : "border-gray-300 text-gray-300"
+                      }`}
+                      onClick={() => {
+                        setCurrentDisplay(i);
+                      }}
+                    >
+                      {prod.Header}
+                    </div>
                   );
-                  window.scrollTo({
-                    top: 0,
-                    behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
-                  });
-                }}
-              >
-                Speak to an expert
-              </button>
-              <Link href={"/ringsettings"}>
+                })}
+              </div>
+              <p class="leading-relaxed mb-4">
+                {productOptions[currentDisplay].Header !== "Certificate" ? (
+                  productOptions[currentDisplay].Content
+                ) : (
+                  <Link
+                    href={productOptions[currentDisplay].Content.report}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="flex hover:cursor-pointer">
+                      <a>See Certificate</a>
+                      {openArrow}
+                    </div>
+                  </Link>
+                )}
+              </p>
+              <FullDiamondDetails data={data}></FullDiamondDetails>
+              <div class="justify-center w-full">
                 <button
-                  class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
+                  class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
                   onClick={() => {
-                    const diamondStatus = `${shape} ${data.diamond.certificate.carats} ${data.diamond.certificate.color} ${data.diamond.certificate.clarity} ${data.diamond.certificate.cut}`;
-                    cartContext.setDiamond(diamondStatus);
-                    cartContext.setDiamondPrice(data.price);
-                    diamondContext.setCurrentSettingDiamondShape(
-                      shape.toLowerCase()
+                    cartContext.setShowBookingModal(
+                      !cartContext.showBookingModal
                     );
-                    diamondContext.setSelectedDiamondShape(shape.toLowerCase());
-                    cartContext.setDiamondShape(shape.toLowerCase());
-                    diamondContext.setDiamondJustSelected(true);
-                    diamondContext.setDiamondDetails(data);
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+                    });
                   }}
                 >
-                  Add to ring (CA$ {data.price})
+                  Speak to an expert
                 </button>
-              </Link>
+                <Link href={"/ringsettings"}>
+                  <button
+                    class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
+                    onClick={() => {
+                      const diamondStatus = `${shape} ${data.diamond.certificate.carats} ${data.diamond.certificate.color} ${data.diamond.certificate.clarity} ${data.diamond.certificate.cut}`;
+                      cartContext.setDiamond(diamondStatus);
+                      cartContext.setDiamondPrice(data.price);
+                      diamondContext.setCurrentSettingDiamondShape(
+                        shape.toLowerCase()
+                      );
+                      diamondContext.setSelectedDiamondShape(
+                        shape.toLowerCase()
+                      );
+                      cartContext.setDiamondShape(shape.toLowerCase());
+                      diamondContext.setDiamondJustSelected(true);
+                      diamondContext.setDiamondDetails(data);
+                    }}
+                  >
+                    Add to ring (CA$ {data.price})
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

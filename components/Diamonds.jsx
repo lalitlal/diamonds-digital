@@ -229,9 +229,9 @@ const Diamonds = () => {
   // }, [selectedRow, showProductDetail]);
 
   return (
-    <>
+    <div className="mt-4">
       <DiamondsTable data={diamondData}></DiamondsTable>
-    </>
+    </div>
   );
 };
 

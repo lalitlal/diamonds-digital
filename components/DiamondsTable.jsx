@@ -8,6 +8,9 @@ import {
   upperCaseFirstLetter,
   caretIcon,
   hiraGrayText,
+  hiralightGrayBG,
+  hiraDarkGrayBG,
+  hiraGrayBG,
 } from "./constants";
 import { DiamondContext } from "./context/DiamondContext";
 
@@ -216,7 +219,7 @@ const DiamondsTable = ({ data }) => {
                       <React.Fragment key={index}>
                         <tr
                           className={`${rowClass} ${
-                            index % 2 === 0 ? "" : "bg-gray-300"
+                            index % 2 === 0 ? "" : `${hiraGrayBG}`
                           }`}
                           onClick={() => handleRowClick(index)}
                         >

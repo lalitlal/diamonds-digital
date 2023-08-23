@@ -18,6 +18,7 @@ import {
 } from "./constants";
 import Link from "next/link";
 import WhatsIncluded from "./WhatsIncluded";
+import CheckoutImageSlider from "./CheckoutImageSlider";
 
 const Checkout = () => {
   const handleRemoveCartItem = (item) => {
@@ -92,33 +93,44 @@ const Checkout = () => {
   return (
     <>
       <div className="flex-col justify-center mb-10">
-        <CheckoutItems
-          onRemoveItem={(item) => {
-            handleRemoveCartItem(item);
-          }}
-        ></CheckoutItems>
-        <WhatsIncluded></WhatsIncluded>
-        <div class="justify-center w-full">
-          <button
-            class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
-            onClick={() => {
-              setShowBookingModal(!showBookingModal);
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
-              });
-            }}
-          >
-            Speak to an expert
-          </button>
-          <button
-            class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
-            onClick={checkoutBtnClick}
-          >
-            Complete Ring (CA$ {totalPrice})
-          </button>
+        <h3 className="text-center font-Raleway font-bold text-lg">
+          Your Shopping Cart
+        </h3>
+        <div className={`lg:flex`}>
+          <div className={`lg:w-1/2 lg:mx-2`}>
+            <CheckoutImageSlider></CheckoutImageSlider>
+          </div>
+          <div className={`lg:w-1/2`}>
+            <CheckoutItems
+              onRemoveItem={(item) => {
+                handleRemoveCartItem(item);
+              }}
+            ></CheckoutItems>
+            <WhatsIncluded></WhatsIncluded>
+            <div className="justify-center w-full lg:flex">
+              <button
+                className={`flex w-full border border-black justify-center py-3 text-black ${hiraWhiteBG} ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2 mr-2 lg:mb-0 lg:mr-1`}
+                onClick={() => {
+                  setShowBookingModal(!showBookingModal);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                Speak to an expert
+              </button>
+              <button
+                className={`flex w-full justify-center py-3 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
+                onClick={checkoutBtnClick}
+              >
+                Complete Ring (CA$ {totalPrice})
+              </button>
+            </div>
+
+            {error && <ErrorCheckout setErrorState={setError}></ErrorCheckout>}
+          </div>
         </div>
-        {error && <ErrorCheckout setErrorState={setError}></ErrorCheckout>}
       </div>
     </>
   );

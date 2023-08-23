@@ -9,14 +9,15 @@ const TrustedHtmlContent = ({ url }) => {
   useEffect(() => {
     const screenWidth = window.innerWidth;
     const breakpoints = {
-      sm: 320,
-      md: 500,
+      sm: [320, 320],
+      md: [500, 500],
+      lg: [1024, 320],
     };
 
     let breakpoint = "sm";
     for (const bp in breakpoints) {
-      if (screenWidth >= breakpoints[bp]) {
-        setUsedBP(breakpoints[bp]);
+      if (screenWidth >= breakpoints[bp][0]) {
+        setUsedBP(breakpoints[bp][1]);
       } else {
         break;
       }

@@ -57,23 +57,6 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
             currentSlide === index ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* {dummyImage} */}
-          {/* <Image
-            src={image}
-            alt={"YUPERS"}
-            width={400}
-            height={400}
-            quality={75}
-            className={imageClass}
-            objectFit="cover"
-          /> */}
-          {/* <Image
-            src={image}
-            alt={"YUPERS"}
-            layout="fill" // Make the Image fill its parent container
-            objectFit="cover" // Ensure the Image covers the container without distortion
-            quality={75}
-          /> */}
           <img
             src={image}
             alt={`Image ${index + 1}`}

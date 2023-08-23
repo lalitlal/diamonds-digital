@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, {
   useCallback,
   useContext,
@@ -8,31 +7,23 @@ import React, {
 } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
+import {
+  borderHiraBlack,
+  hiraDarkGrayText,
+  hiralightGrayBG,
+} from "./constants";
 import ImageSlider from "./ImageSlider";
-import { getCheckoutItem } from "../sanity/sanity-utils";
 import Carousel from "./Carousel";
-import Checkout from "./Checkout";
-import CheckoutItems from "./CheckoutItems";
-import { borderHiraBlack, hiraBlackBG, hiraWhiteBG, xIcon } from "./constants";
-import CheckoutImageSlider from "./CheckoutImageSlider";
+import { getCheckoutItem } from "../sanity/sanity-utils";
 
-function CartModal({ onRemoveItem }) {
+const CheckoutImageSlider = () => {
   const cartContext = useContext(CartContext);
   const diamondContext = useContext(DiamondContext);
-  const [cartEmpty, setCartEmpty] = useState(false);
+  const [unfinishedCart, setUnfinishedCart] = useState(false);
   const [imageSlider, setImageSlider] = useState(undefined);
   const [products, setProducts] = useState([]);
-  const dummyImageURL = "https://dummyimage.com/420x260";
 
-  const handleRemoveCartItem = (item) => {
-    if (item.editLink === "/diamond") {
-      cartContext.setDiamond(undefined);
-      cartContext.setDiamondPrice(0);
-    } else {
-      cartContext.setSetting(undefined);
-      cartContext.setSettingPrice(0);
-    }
-  };
+  const dummyImageURL = "https://dummyimage.com/420x260";
 
   const chosenDiamondShapeUpperCased = useCallback(() => {
     if (
@@ -132,12 +123,6 @@ function CartModal({ onRemoveItem }) {
         variant !== undefined && (variant !== null) & (variant.length > 0) ? (
           <Carousel images={variant[0].images} />
         ) : (
-          // <ImageSlider
-          //   checkout={true}
-          //   images={variant[0].images}
-          //   imagesAlt={imageAlts}
-          //   imageClass={"object-contain object-center"}
-          // ></ImageSlider>
           { dummyImageSlider }
         );
       setImageSlider(newImageSlider);
@@ -151,16 +136,20 @@ function CartModal({ onRemoveItem }) {
           cartContext.diamond === undefined
             ? undefined
             : ` ${cartContext.diamond} `,
-        name: "Loose Diamond",
+        name: `${cartContext.diamond}`,
         price: ` CA$ `.concat(cartContext.diamondPrice),
+        editLink: "/diamond",
+        missingText: "Select Diamond",
       },
       {
         description:
           cartContext.setting === undefined
             ? undefined
             : ` ${cartContext.setting} `,
-        name: "Setting",
+        name: diamondContext.settingDetails.name,
         price: ` CA$ `.concat(cartContext.settingPrice),
+        editLink: "/ringsettings",
+        missingText: "Select Ring",
       },
     ];
   }, [
@@ -170,75 +159,39 @@ function CartModal({ onRemoveItem }) {
     cartContext.settingPrice,
   ]);
 
-  const [totalPrice, setTotalPrice] = useState(
-    cartContext.diamondPrice + cartContext.settingPrice
-  );
   useEffect(() => {
     if (
-      cartInfo[0].description === undefined &&
+      cartInfo[0].description === undefined ||
       cartInfo[1].description === undefined
     ) {
-      setCartEmpty(true);
+      setUnfinishedCart(true);
     } else {
-      setCartEmpty(false);
+      setUnfinishedCart(false);
     }
   }, [cartInfo]);
 
-  useEffect(() => {
-    setTotalPrice(cartContext.diamondPrice + cartContext.settingPrice);
-  }, [cartContext.diamondPrice, cartContext.settingPrice]);
-
   return (
-    // <div className="mx-4">
-    <div className="fixed top-0 w-full h-full bg-white justify-center items-center z-[70] lg:w-1/4 lg:right-0">
-      <div className="mx-4">
-        <div className="flex justify-between border-black border-b my-4">
-          <div>Shopping Cart</div>
-          <div
-            className="hover:cursor-pointer"
-            onClick={() => {
-              cartContext.setShowMobileMenu(false);
-              cartContext.setShowCartModal(false);
-            }}
-          >
-            {xIcon}
+    <>
+      {unfinishedCart && (
+        <div
+          className={`flex w-full lg:h-full lg:py-24 justify-center items-center text-center py-2 ${hiraDarkGrayText} ${hiralightGrayBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2 h-48`}
+        >
+          <div className="mx-8">
+            To continue, please select a diamond and ring
           </div>
         </div>
-        <div className={``}>
-          <CheckoutImageSlider></CheckoutImageSlider>
-        </div>
-        <CheckoutItems
-          onRemoveItem={(item) => {
-            handleRemoveCartItem(item);
-          }}
-        ></CheckoutItems>
-        <div class="justify-center w-full">
-          <button
-            class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
-            onClick={() => {
-              cartContext.setShowBookingModal(!cartContext.showBookingModal);
-              cartContext.setShowCartModal(false);
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
-              });
-            }}
-          >
-            Speak to an expert
-          </button>
-          <Link
-            onClick={() => {
-              cartContext.setShowCartModal(false);
-            }}
-            href={"/checkout"}
-            class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
-          >
-            Go to checkout (CA$ {totalPrice})
-          </Link>
-        </div>
-      </div>
-    </div>
+      )}
+      {cartInfo[0].description !== undefined &&
+        cartInfo[1].description !== undefined &&
+        imageSlider}
+      {cartInfo[0].description !== undefined &&
+        cartInfo[1].description !== undefined && (
+          <div className="text-xs justify-center text-center">
+            *Picture shown 3 carat diamond and 2mm band.
+          </div>
+        )}
+    </>
   );
-}
+};
 
-export default CartModal;
+export default CheckoutImageSlider;

@@ -8,9 +8,13 @@ import Stepper from "../../components/Stepper";
 import MetalSelector from "../../components/MetalSelector";
 import SingleShapeSelector from "../../components/SingleShapeSelector";
 import Breadcrumb from "../../components/BreadCrumb";
-import { navigationBreadCrums } from "../../components/constants";
+import {
+  hiralightGrayBGMD,
+  navigationBreadCrums,
+} from "../../components/constants";
 import DiamondSelectedNotification from "../../components/DiamondSelectedNotification";
 import MobileMenu from "../../components/MobileMenu";
+import RingSizePicker from "../../components/RingSizePicker";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,13 +32,34 @@ export default function Home() {
         <Header></Header>
         <MobileMenu></MobileMenu>
       </div>
-      <div className="mx-4">
-        <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
+      <div className={`mx-4 `}>
         <DiamondSelectedNotification></DiamondSelectedNotification>
+      </div>
+      <div className={`mx-4 lg:hidden`}>
+        <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
         <Stepper stage={1}></Stepper>
-        <SingleShapeSelector singular={true}></SingleShapeSelector>
-        <MetalSelector></MetalSelector>
-        <RingSettings></RingSettings>
+      </div>
+      <div className={`lg:flex lg:overflow-x-hidden`}>
+        <div className={`${hiralightGrayBGMD}`}>
+          <div className={`mx-4`}>
+            <SingleShapeSelector singular={true}></SingleShapeSelector>
+            <MetalSelector></MetalSelector>
+            <div className="hidden lg:block">
+              <RingSizePicker></RingSizePicker>
+            </div>
+          </div>
+        </div>
+        <div className={`mx-4`}>
+          <div className="hidden lg:block w-full">
+            <div className="">
+              {/* <div className="w-fit"> */}
+              {/* <DiamondSelectedNotification /> */}
+              {/* </div> */}
+              <Stepper stage={1} />
+            </div>
+          </div>
+          <RingSettings></RingSettings>
+        </div>
       </div>
       <Footer></Footer>
     </>

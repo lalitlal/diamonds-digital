@@ -13,6 +13,7 @@ import ShippingInfo from "../../components/ShippingInfo";
 import RefundPolicy from "../../components/RefundPolicy";
 import SettingDetailDescription from "../../components/SettingDetailDescription";
 import RingSizePicker from "../../components/RingSizePicker";
+import CTASetting from "../../components/CTASetting";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -29,15 +30,29 @@ export default function Home() {
         <Header></Header>
         <MobileMenu></MobileMenu>
       </div>
-      <div className="mx-4">
+      <div className="mx-4 lg:hidden">
         <Breadcrumb navDetails={navigationBreadCrums["Settings"]}></Breadcrumb>
-        <SettingsProductDetail></SettingsProductDetail>
-        <SingleShapeSelector singular={true}></SingleShapeSelector>
-        <MetalSelector></MetalSelector>
-        <RingSizePicker></RingSizePicker>
-        <SettingDetailDescription></SettingDetailDescription>
-        <ShippingInfo></ShippingInfo>
-        <RefundPolicy></RefundPolicy>
+      </div>
+      <div className={`mx-4 lg:flex`}>
+        <div>
+          <SettingsProductDetail></SettingsProductDetail>
+          <div className={`hidden lg:flex`}>
+            <SettingDetailDescription></SettingDetailDescription>
+          </div>
+        </div>
+        <div>
+          <SingleShapeSelector singular={true}></SingleShapeSelector>
+          <MetalSelector></MetalSelector>
+          <RingSizePicker></RingSizePicker>
+          <div className={`lg:hidden`}>
+            <SettingDetailDescription></SettingDetailDescription>
+          </div>
+          <ShippingInfo></ShippingInfo>
+          <RefundPolicy></RefundPolicy>
+          <div className="hidden lg:block">
+            <CTASetting></CTASetting>
+          </div>
+        </div>
       </div>
       <Footer></Footer>
     </>

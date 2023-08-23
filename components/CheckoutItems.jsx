@@ -25,9 +25,6 @@ function CheckoutItems({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
   const diamondContext = useContext(DiamondContext);
   const [cartEmpty, setCartEmpty] = useState(false);
-  const [unfinishedCart, setUnfinishedCart] = useState(false);
-  const [imageSlider, setImageSlider] = useState(undefined);
-  const [products, setProducts] = useState([]);
   const [showCheckoutDiamondDetails, setShowCheckoutDiamondDetails] =
     useState(false);
   const [showCheckoutSettingDetails, setShowCheckoutSettingDetails] =
@@ -43,7 +40,6 @@ function CheckoutItems({ onRemoveItem }) {
       setter: setShowCheckoutSettingDetails,
     },
   ];
-  const dummyImageURL = "https://dummyimage.com/420x260";
 
   const chosenDiamondShapeUpperCased = useCallback(() => {
     if (
@@ -75,79 +71,6 @@ function CheckoutItems({ onRemoveItem }) {
       }
     }
   }, [cartContext, chosenDiamondShapeUpperCased]);
-
-  useEffect(() => {
-    // refresh checkout products on context update
-    const fetchProducts = async () => {
-      try {
-        const chosenDiamondShape = chosenDiamondShapeUpperCased();
-
-        const title =
-          cartContext.setting === undefined
-            ? "Classic"
-            : cartContext.setting.split(" - ")[0];
-
-        const variantName =
-          cartContext.setting === undefined
-            ? `Classic - ${
-                chosenDiamondShape === undefined ? "Oval" : chosenDiamondShape
-              } - ${diamondContext.bandColor}`
-            : `${title} - ${
-                chosenDiamondShape === undefined ? "Oval" : chosenDiamondShape
-              } - ${diamondContext.bandColor}`;
-
-        const productsData = await getCheckoutItem(title, variantName);
-        setProducts(productsData);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    fetchProducts();
-  }, [
-    diamondContext.bandColor,
-    cartContext.setting,
-    chosenDiamondShapeUpperCased,
-  ]);
-
-  useEffect(() => {
-    // set image slider on context updates
-    const chosenDiamondShape = chosenDiamondShapeUpperCased();
-    if (products !== null && products != undefined && products.length > 0) {
-      const variant = products[0].variants;
-      const imageAlts = Array.from(
-        {
-          length:
-            variant !== null && variant !== undefined && variant.length > 0
-              ? variant[0].images.length
-              : 1,
-        },
-        (_, index) =>
-          `${
-            variant !== null && variant !== undefined && variant.length > 0
-              ? `${variant[0].variantDescription}_${index}`
-              : `${
-                  chosenDiamondShape === undefined ? "Oval" : chosenDiamondShape
-                }-${diamondContext.bandColor}_${index}_placeholder`
-          }`
-      );
-      const dummyImageSlider = (
-        <ImageSlider
-          checkout={true}
-          images={[dummyImageURL]}
-          imagesAlt={["The Best Diamond Image Slider"]}
-          imageClass={"object-contain object-center"}
-        ></ImageSlider>
-      );
-      const newImageSlider =
-        variant !== undefined && (variant !== null) & (variant.length > 0) ? (
-          <Carousel images={variant[0].images} />
-        ) : (
-          { dummyImageSlider }
-        );
-      setImageSlider(newImageSlider);
-    }
-  }, [products, diamondContext.bandColor, chosenDiamondShapeUpperCased]);
 
   const cartInfo = useMemo(() => {
     return [
@@ -194,50 +117,19 @@ function CheckoutItems({ onRemoveItem }) {
     } else {
       setCartEmpty(false);
     }
-
-    if (
-      cartInfo[0].description === undefined ||
-      cartInfo[1].description === undefined
-    ) {
-      setUnfinishedCart(true);
-    } else {
-      setUnfinishedCart(false);
-    }
   }, [cartInfo]);
 
   return (
     <div>
-      <h3 className="text-center font-Raleway font-bold text-lg">
-        Your Shopping Cart
-      </h3>
-      {unfinishedCart && (
-        <div
-          className={`flex w-full justify-center items-center text-center py-2 ${hiraDarkGrayText} ${hiralightGrayBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2 h-48`}
-        >
-          <div className="mx-8">
-            To continue, please select a diamond and ring
-          </div>
-        </div>
-      )}
-
-      <div class="mt-6 my-5">
-        <div class="space-y-6">
-          {cartInfo[0].description !== undefined &&
-            cartInfo[1].description !== undefined &&
-            imageSlider}
-          {cartInfo[0].description !== undefined &&
-            cartInfo[1].description !== undefined && (
-              <div className="text-xs justify-center text-center">
-                *Picture shown 3 carat diamond and 2mm band.
-              </div>
-            )}
+      <div class="my-5 lg:my-0">
+        <div class="">
           {!cartEmpty &&
             cartInfo.map((lineItem, i) => {
               return lineItem.description ? (
-                <div className={`border ${borderHiraBlack} p-2`}>
+                <div className={`border ${borderHiraBlack} p-2 my-2`}>
                   <div
                     key={i}
-                    class={`flex flex-1 items-center gap-6 `}
+                    class={`flex flex-1 items-center gap-6`}
                     // onClick={() => {
                     //   showDetailsArray[i].setter(!showDetailsArray[i].getter);
                     // }}
@@ -303,7 +195,7 @@ function CheckoutItems({ onRemoveItem }) {
                   }}
                 >
                   <div
-                    className={`border ${borderHiraBlack} ${hiralightGrayBG} text-center p-4 text-lg space-y-px hover:cursor-pointer hover:underline mt-2`}
+                    className={`border ${borderHiraBlack} ${hiralightGrayBG} text-center p-4 text-lg space-y-px hover:cursor-pointer hover:underline my-2 lg:mt-0`}
                   >
                     <div
                       key={i}

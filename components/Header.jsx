@@ -41,7 +41,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex-col items-center object-center">
+    <div className="flex-col items-center object-center mb-4">
       <div className="flex justify-around mt-6">
         <div className="flex items-center w-1/3 ml-6">
           <svg
@@ -157,6 +157,7 @@ const Header = () => {
         isOpen={cartContext.showCartModal}
         onClose={handleCloseCartModal}
       >
+        <div className="fixed inset-0 bg-gray-700 opacity-50 z-[69]"></div>;
         <CartModal
           onRemoveItem={(item) => {
             handleRemoveCartItem(item);

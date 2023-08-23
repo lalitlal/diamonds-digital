@@ -86,9 +86,7 @@ const DiamondFilter = () => {
   return (
     <div className="mx-4">
       <div className="w-full">
-        {/* <div className="flex justify-center"> */}
         <ShapeSelector></ShapeSelector>
-        {/* </div> */}
       </div>
       <div className="flex-col w-full mt-8">
         <div className="mb-5">
@@ -99,7 +97,6 @@ const DiamondFilter = () => {
             minValue={0}
             maxValue={12}
           ></NumericSlider>
-          {/* <CaratSelector></CaratSelector> */}
         </div>
         <div className="mb-5">
           <div className="text-gray-600 flex">Price</div>
@@ -109,7 +106,6 @@ const DiamondFilter = () => {
             minValue={100}
             maxValue={75000}
           ></NumericSlider>
-          {/* <PriceSelector></PriceSelector> */}
         </div>
         <div className="w-full flex justify-between">
           <div className="flex justify-between text-center items-center">

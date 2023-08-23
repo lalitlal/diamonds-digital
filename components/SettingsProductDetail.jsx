@@ -6,6 +6,7 @@ import Carousel from "./Carousel";
 import { borderHiraBlack, hiraBlackBG, hiraWhiteBG } from "./constants";
 import { getProducts } from "../sanity/sanity-utils";
 import ImageSlider from "./ImageSlider";
+import ImageGrid from "./ImageGrid";
 
 const SettingsProductDetail = ({}) => {
   const cartContext = useContext(CartContext);
@@ -113,7 +114,7 @@ const SettingsProductDetail = ({}) => {
       {setDetailProducts && diamondContext.settingDetails.variantData && (
         <section class="text-gray-600 body-font overflow-hidden">
           <div class="">
-            <div class="lg:w-4/5 mx-auto flex flex-wrap">
+            <div class="mx-auto flex flex-wrap">
               <div class="lg:w-full w-full mb-6 lg:mb-0">
                 <h2 class="text-sm title-font text-gray-500 tracking-widest">
                   HIRA
@@ -124,10 +125,17 @@ const SettingsProductDetail = ({}) => {
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
                   {diamondContext.settingDetails.description}
                 </h3>
-                <Carousel
-                  images={diamondContext.settingDetails.variantData.images}
-                />
-                <div class="justify-center w-full items-center">
+                <div className={`lg:hidden`}>
+                  <Carousel
+                    images={diamondContext.settingDetails.variantData.images}
+                  />
+                </div>
+                <div className={`hidden lg:block`}>
+                  <ImageGrid
+                    images={diamondContext.settingDetails.variantData.images}
+                  ></ImageGrid>
+                </div>
+                <div class="justify-center w-full items-center lg:hidden">
                   <button
                     class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
                     onClick={() => {

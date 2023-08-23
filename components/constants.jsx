@@ -725,6 +725,12 @@ export const hiraGrayBG = `bg-[#D9D9D9]`;
 export const hiralightGrayBG = `bg-[#F6F6F6]`;
 export const hiraWhiteBG = `bg-[#FFFFFF]`;
 
+export const hiraBlackBGMD = `md:bg-[#050505]`;
+export const hiraDarkGrayBGMD = `md:bg-[#848484]`;
+export const hiraGrayBGMD = `md:bg-[#D9D9D9]`;
+export const hiralightGrayBGMD = `md:bg-[#F6F6F6]`;
+export const hiraWhiteBGMD = `md:bg-[#FFFFFF]`;
+
 export const hiraBlackText = `text-[#050505]`;
 export const hiraDarkGrayText = `text-[#848484]`;
 export const hiraGrayText = `text-[#D9D9D9]`;

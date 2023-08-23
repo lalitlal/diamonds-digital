@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DiamondContext } from "./context/DiamondContext";
 import { hiraBlackBG, hiraWhiteText, hiralightGrayText } from "./constants";
 
@@ -19,6 +19,22 @@ const MetalSelector = () => {
       color: "bg-gradient-to-r from-[#c1937c] to-[#c1937c]",
     },
   ];
+
+  const largeBreakpoint = 1024; // Define your large breakpoint in pixels
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  const handleResize = () => {
+    setIsLargeScreen(window.innerWidth > largeBreakpoint);
+  };
+
+  useEffect(() => {
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div className="justify-center mt-3">
       <div className={`text-left text-gray-600 ${hiralightGrayText} mb-2`}>
@@ -34,7 +50,9 @@ const MetalSelector = () => {
                   ? `${hiraBlackBG} ${hiraWhiteText}`
                   : "text-gray-600"
               }`}
-              style={{ width: "calc(50% - 0.4rem)" }} // Set a fixed width for each option container
+              style={{
+                width: !isLargeScreen ? `calc(50% - 0.4rem)` : "calc(100%)",
+              }} // Set a fixed width for each option container
               onClick={() => {
                 setBandColor(op.opt);
               }}

@@ -7,9 +7,15 @@ import Navbar from "../../components/Navbar";
 import DiamondPage from "../../components/DiamondPage";
 import Stepper from "../../components/Stepper";
 import Breadcrumb from "../../components/BreadCrumb";
-import { navigationBreadCrums } from "../../components/constants";
+import {
+  hiraBlackBGMD,
+  hiralightGrayBGMD,
+  navigationBreadCrums,
+} from "../../components/constants";
 import Footer from "../../components/Footer";
 import MobileMenu from "../../components/MobileMenu";
+import FullDiamondFilterPage from "../../components/FullDiamondFilterPage";
+import DiamondFilter from "../../components/DiamondFilter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,11 +33,24 @@ export default function Home() {
         <Header></Header>
         <MobileMenu></MobileMenu>
       </div>
-      <div className="mx-4">
+      <div className="mx-4 lg:hidden">
         <Breadcrumb navDetails={navigationBreadCrums["Home"]}></Breadcrumb>
         <Stepper stage={0}></Stepper>
       </div>
-      <DiamondPage></DiamondPage>
+      <div className="lg:flex">
+        <div className={`${hiralightGrayBGMD}`}>
+          <FullDiamondFilterPage></FullDiamondFilterPage>
+          <div className={`lg:hidden`}>
+            <DiamondFilter></DiamondFilter>
+          </div>
+        </div>
+        <div className={`lg:max-h-1/3 lg:overflow-y-scroll lg:mx-4`}>
+          <div className="hidden lg:block">
+            <Stepper stage={0}></Stepper>
+          </div>
+          <DiamondPage></DiamondPage>
+        </div>
+      </div>
       <Footer></Footer>
     </>
   );
