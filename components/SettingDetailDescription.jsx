@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { hiraDarkGrayText } from "./constants";
+import { DiamondContext } from "./context/DiamondContext";
 
 const SettingDetailDescription = () => {
+  const diamondContext = useContext(DiamondContext);
   return (
     <div className={`mb-8`}>
       <div className={`${hiraDarkGrayText}`}>Description</div>
-      <div>The most eloquent ring.</div>
+      <div>
+        {Object.values(diamondContext.settingDetails).length === 0
+          ? "No setting chosen"
+          : "The most eloquent ring."}
+      </div>
     </div>
   );
 };

@@ -3,7 +3,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import Carousel from "./Carousel";
-import { borderHiraBlack, hiraBlackBG, hiraWhiteBG } from "./constants";
+import {
+  borderHiraBlack,
+  hiraBlackBG,
+  hiraDarkGrayText,
+  hiraWhiteBG,
+  hiralightGrayBG,
+} from "./constants";
 import { getProducts } from "../sanity/sanity-utils";
 import ImageSlider from "./ImageSlider";
 import ImageGrid from "./ImageGrid";
@@ -110,7 +116,20 @@ const SettingsProductDetail = ({}) => {
   };
 
   return (
-    <>
+    <div className="flex w-full">
+      {Object.values(diamondContext.settingDetails).length === 0 && (
+        <div
+          className={`flex w-full lg:h-full lg:py-24 justify-center items-center text-center py-2 ${hiraDarkGrayText} ${hiralightGrayBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2 h-48`}
+        >
+          <div class="">
+            <div class="flex">
+              <div class="lg:w-full w-full mb-6 lg:mb-0">
+                <h2 class="text-sm">Please select a setting</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {setDetailProducts && diamondContext.settingDetails.variantData && (
         <section class="text-gray-600 body-font overflow-hidden">
           <div class="">
@@ -180,7 +199,7 @@ const SettingsProductDetail = ({}) => {
           </div>
         </section>
       )}
-    </>
+    </div>
   );
 };
 
