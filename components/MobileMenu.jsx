@@ -7,6 +7,7 @@ import {
   hiraBlackBG,
   hiraBlackText,
   hiraDarkGrayText,
+  hiraWhiteBG,
   hiraWhiteText,
   instaIcon,
 } from "./constants";
@@ -17,7 +18,7 @@ const MobileMenu = () => {
   return (
     cartContext.showMobileMenu && (
       <div
-        className="absolute bg-white z-[80] left-0 top-18 w-full h-screen"
+        className="absolute bg-white z-[100] left-0 top-18 w-full h-fit"
         onClick={() => {
           cartContext.setShowMobileMenu(false);
         }}
@@ -43,7 +44,7 @@ const MobileMenu = () => {
               <div className={`py-2 lg:pb-0 ${hiraDarkGrayText} mt-4 lg:mt-0`}>
                 Schedule Meet
               </div>
-              <div className={`lg:flex`}>
+              <div className={`lg:flex justify-center`}>
                 <div className="py-2 lg:mr-2">team@hiradiamonds.com</div>
                 <div className="py-2">(647) 984-4711</div>
               </div>
@@ -70,7 +71,9 @@ const MobileMenu = () => {
               </div>
             </div>
           </div>
-          <div className={` mt-6 ${hiraBlackText} justify-start flex flex-col`}>
+          <div
+            className={` mt-6 ${hiraBlackText} justify-start flex flex-col ${hiraWhiteBG}`}
+          >
             <div class="justify-center w-full hover:cursor-pointer">
               <button
                 class={`flex w-full mt-4 lg:mt-0 justify-center py-2 ${hiraWhiteText} ${hiraBlackBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}

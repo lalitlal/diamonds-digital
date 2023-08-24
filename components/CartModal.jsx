@@ -190,7 +190,7 @@ function CartModal({ onRemoveItem }) {
 
   return (
     // <div className="mx-4">
-    <div className="fixed top-0 w-full h-full bg-white justify-center items-center z-[70] lg:w-1/4 lg:right-0">
+    <div className="fixed top-0 w-full h-full bg-white justify-center items-center z-[70] lg:w-1/4 lg:right-0 overflow-y-scroll lg:overflow-y-hidden">
       <div className="mx-4">
         <div className="flex justify-between border-black border-b my-4">
           <div>Shopping Cart</div>
