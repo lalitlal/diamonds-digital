@@ -16,6 +16,7 @@ import Footer from "../../components/Footer";
 import MobileMenu from "../../components/MobileMenu";
 import FullDiamondFilterPage from "../../components/FullDiamondFilterPage";
 import DiamondFilter from "../../components/DiamondFilter";
+import SecondaryHeader from "../../components/SecondaryHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,14 +31,14 @@ export default function Home() {
       </Head>
       <div className="relative">
         <Navbar></Navbar>
-        <Header></Header>
+        <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
       <div className="mx-4 lg:hidden">
         <Breadcrumb navDetails={navigationBreadCrums["Home"]}></Breadcrumb>
         <Stepper stage={0}></Stepper>
       </div>
-      <div className="lg:flex">
+      <div className="lg:flex lg:h-screen">
         <div className={`${hiralightGrayBGMD}`}>
           <FullDiamondFilterPage></FullDiamondFilterPage>
           <div className={`lg:hidden`}>

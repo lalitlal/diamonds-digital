@@ -17,11 +17,11 @@ const Footer = () => {
 
   return (
     <footer
-      class={`p-4 ${hiraBlackBG} ${hiraWhiteText} shadow md:px-6 md:py-0 lg:fixed lg:left-0 lg:bottom-0 lg:w-full z-50`}
+      class={`p-4 ${hiraBlackBG} ${hiraWhiteText} shadow md:px-6 md:py-0 lg:left-0 lg:bottom-0 lg:w-full z-50 lg:pb-8`}
     >
       <div class="items-center lg:items-start justify-between lg:justify-around lg:flex">
         <div
-          class={`lg:mt-6 justyify-center text-center text-4xl font-semibold whitespace-nowrap ${hiraWhiteText} font-Raleway`}
+          class={`lg:mt-6 justyify-center text-center lg:text-left text-4xl font-semibold whitespace-nowrap ${hiraWhiteText} font-Raleway`}
         >
           HIRA
         </div>

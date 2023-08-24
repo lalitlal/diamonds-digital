@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import CheckoutSuccess from "../../components/CheckoutSuccess";
+import SecondaryHeader from "../../components/SecondaryHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar></Navbar>
-      <Header></Header>
+      <SecondaryHeader></SecondaryHeader>
       <CheckoutSuccess></CheckoutSuccess>
       <Footer></Footer>
     </>

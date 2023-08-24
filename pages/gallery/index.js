@@ -11,6 +11,7 @@ import RingSettings from "../../components/RingSettings";
 import Testimony from "../../components/Testimony";
 import Gallery from "../../components/Gallery";
 import MobileMenu from "../../components/MobileMenu";
+import SecondaryHeader from "../../components/SecondaryHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,7 @@ export default function Home() {
       </Head>
       <div className="relative">
         <Navbar></Navbar>
-        <Header></Header>
+        <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
       <Hero></Hero>

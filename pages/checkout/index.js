@@ -12,6 +12,7 @@ import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/BreadCrumb";
 import { navigationBreadCrums } from "../../components/constants";
 import MobileMenu from "../../components/MobileMenu";
+import SecondaryHeader from "../../components/SecondaryHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,7 @@ export default function Home() {
       </Head>
       <div className="relative">
         <Navbar></Navbar>
-        <Header></Header>
+        <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
       <div className="mx-4">

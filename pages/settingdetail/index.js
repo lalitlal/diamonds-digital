@@ -14,6 +14,7 @@ import RefundPolicy from "../../components/RefundPolicy";
 import SettingDetailDescription from "../../components/SettingDetailDescription";
 import RingSizePicker from "../../components/RingSizePicker";
 import CTASetting from "../../components/CTASetting";
+import SecondaryHeader from "../../components/SecondaryHeader";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -27,7 +28,7 @@ export default function Home() {
       </Head>
       <div className="relative">
         <Navbar></Navbar>
-        <Header></Header>
+        <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
       <div className="mx-4 lg:hidden">

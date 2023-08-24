@@ -15,6 +15,7 @@ import {
 import DiamondSelectedNotification from "../../components/DiamondSelectedNotification";
 import MobileMenu from "../../components/MobileMenu";
 import RingSizePicker from "../../components/RingSizePicker";
+import SecondaryHeader from "../../components/SecondaryHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +30,7 @@ export default function Home() {
       </Head>
       <div className="relative">
         <Navbar></Navbar>
-        <Header></Header>
+        <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
       <div className={`mx-4 `}>
@@ -39,7 +40,7 @@ export default function Home() {
         <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
         <Stepper stage={1}></Stepper>
       </div>
-      <div className={`lg:flex lg:overflow-x-hidden`}>
+      <div className={`lg:flex lg:overflow-x-hidden lg:h-screen`}>
         <div className={`${hiralightGrayBGMD}`}>
           <div className={`mx-4`}>
             <SingleShapeSelector singular={true}></SingleShapeSelector>
