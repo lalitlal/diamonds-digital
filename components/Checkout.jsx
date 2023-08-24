@@ -92,7 +92,7 @@ const Checkout = () => {
 
   return (
     <>
-      <div className="flex-col justify-center mb-10">
+      <div className="flex-col justify-center mb-10 lg:h-screen">
         <h3 className="text-center font-Raleway font-bold text-lg">
           Your Shopping Cart
         </h3>

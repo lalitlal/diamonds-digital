@@ -86,7 +86,7 @@ const FullDiamondDetails = ({ data }) => {
         </>
       )}
       <div
-        className="text-black underline text-left mb-6 font-medium tracking-wider py-2"
+        className="text-black underline text-left mb-6 font-medium tracking-wider py-2 hover:cursor-pointer"
         onClick={() => {
           setSeeFullDetails(!seeFullDetails);
         }}

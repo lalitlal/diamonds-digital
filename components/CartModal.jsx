@@ -190,7 +190,7 @@ function CartModal({ onRemoveItem }) {
 
   return (
     // <div className="mx-4">
-    <div className="fixed top-0 w-full h-full bg-white justify-center items-center z-[70] lg:w-1/4 lg:right-0 overflow-y-scroll lg:overflow-y-hidden">
+    <div className="fixed top-0 w-full h-full bg-white justify-center items-center z-[70] lg:w-1/4 lg:right-0 overflow-y-scroll lg:overflow-y-scroll">
       <div className="mx-4">
         <div className="flex justify-between border-black border-b my-4">
           <div>Shopping Cart</div>
@@ -212,7 +212,7 @@ function CartModal({ onRemoveItem }) {
             handleRemoveCartItem(item);
           }}
         ></CheckoutItems>
-        <div class="justify-center w-full">
+        <div class="justify-center w-full mb-6">
           <button
             class={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
             onClick={() => {
