@@ -26,7 +26,7 @@ const RingSizePicker = () => {
         onClick={() => {
           setShowRingSizes(!showRingSizes);
         }}
-        className={`flex mt-2 mb-8 w-full justify-between text-center items-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
+        className={`flex mt-2 mb-8 w-full justify-between text-center items-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} hover:cursor-pointer focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
       >
         <div className="ml-2">{cartContext.ringSize || "Choose Ring Size"}</div>
         <div className="mr-2">{caretIcon}</div>
