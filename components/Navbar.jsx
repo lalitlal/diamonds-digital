@@ -2,7 +2,12 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import Cart from "./Cart";
 import { CartContext } from "./context/CartContext";
-import { hiraBlackBG, hiraWhiteText } from "./constants";
+import {
+  borderHiraBlack,
+  hiraBlackBG,
+  hiraWhiteBG,
+  hiraWhiteText,
+} from "./constants";
 
 const Navbar = () => {
   const [showNavBar, setShowNavBar] = useState(false);
@@ -87,7 +92,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex justify-end items-center align-middle w-1/3 mr-10 mt-4">
-          <svg
+          {/* <svg
             // search icon
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -101,8 +106,25 @@ const Navbar = () => {
               strokeLinejoin="round"
               d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
             />
-          </svg>
+          </svg> */}
           <Cart></Cart>
+          <div className="flex hover:text-gray-500 ml-4 hover:cursor-pointer">
+            <div class="justify-center w-full">
+              <button
+                class={`w-full hidden lg:flex justify-center py-2  px-4 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none text-lg`}
+                onClick={() => {
+                  // handleOpenBookingModal();
+                  cartContext.setShowBookingModal(true);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+                  });
+                }}
+              >
+                Book Meet
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -146,7 +146,7 @@ const SecondaryHeader = () => {
             onClick={handleOpenBookingModal}
             className="flex hover:text-gray-500 ml-4"
           >
-            <div class="justify-center w-full">
+            <div class="justify-center w-full hover:cursor-pointer">
               <button
                 class={`w-full hidden lg:flex justify-center py-2  px-4 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none text-lg`}
                 onClick={() => {

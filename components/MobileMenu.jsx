@@ -71,7 +71,7 @@ const MobileMenu = () => {
             </div>
           </div>
           <div className={` mt-6 ${hiraBlackText} justify-start flex flex-col`}>
-            <div class="justify-center w-full">
+            <div class="justify-center w-full hover:cursor-pointer">
               <button
                 class={`flex w-full mt-4 lg:mt-0 justify-center py-2 ${hiraWhiteText} ${hiraBlackBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
                 onClick={() => {
