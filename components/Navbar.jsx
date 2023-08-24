@@ -30,7 +30,7 @@ const Navbar = () => {
       }`}
     >
       <div className="flex justify-between">
-        <div className="flex mt-4 md:hidden items-center w-1/3 ml-10 hover:text-gray-500 cursor-pointer">
+        <div className="flex mt-4 md:hidden items-center w-1/3 ml-4 hover:text-gray-500 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -52,6 +52,32 @@ const Navbar = () => {
               d="M3.75 9h16.5m-16.5 6.75h16.5"
             />
           </svg>
+          <div
+            onClick={() => {
+              cartContext.setShowMobileMenu(false);
+              cartContext.setShowBookingModal(true);
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+              });
+            }}
+            className="flex hover:text-gray-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6 ml-2 hover:cursor-pointer"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+              />
+            </svg>
+          </div>
         </div>
         <Link
           href="/"
@@ -91,7 +117,7 @@ const Navbar = () => {
             Gallery
           </Link>
         </div>
-        <div className="flex justify-end items-center align-middle w-1/3 mr-10 mt-4">
+        <div className="flex justify-end items-center align-middle w-1/3 mr-4 mt-4">
           {/* <svg
             // search icon
             xmlns="http://www.w3.org/2000/svg"
