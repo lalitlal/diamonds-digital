@@ -47,7 +47,7 @@ const WhatsIncluded = () => {
               <div key={i} className="w-1/4">
                 <div class="flex justify-center p-2">
                   <div
-                    class={`flex-col flex justify-center text-black w-full text-center rounded-full p-4 h-full items-center ${hiralightGrayBG}`}
+                    class={`flex-col flex justify-center text-black w-full text-center p-4 h-full items-center ${hiralightGrayBG}`}
                   >
                     {feat.svg}
                   </div>

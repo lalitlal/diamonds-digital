@@ -131,7 +131,7 @@ const SettingsProductDetail = ({}) => {
         </div>
       )}
       {setDetailProducts && diamondContext.settingDetails.variantData && (
-        <section class="text-gray-600 body-font overflow-hidden">
+        <section class={`${hiraDarkGrayText} body-font`}>
           <div class="">
             <div class="mx-auto flex flex-wrap">
               <div class="lg:w-full w-full mb-6 lg:mb-0">

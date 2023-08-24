@@ -31,17 +31,17 @@ export default function Home() {
         <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
-      <div className="mx-4 lg:hidden">
+      <div className="mx-4">
         <Breadcrumb navDetails={navigationBreadCrums["Settings"]}></Breadcrumb>
       </div>
       <div className={`mx-4 lg:flex`}>
-        <div>
+        <div className={`lg:flex-grow`}>
           <SettingsProductDetail></SettingsProductDetail>
           <div className={`hidden lg:flex`}>
             <SettingDetailDescription></SettingDetailDescription>
           </div>
         </div>
-        <div>
+        <div className={`lg:flex-shrink lg:mx-4`}>
           <SingleShapeSelector singular={true}></SingleShapeSelector>
           <MetalSelector></MetalSelector>
           <RingSizePicker></RingSizePicker>
@@ -55,6 +55,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <Footer></Footer>
     </>
   );

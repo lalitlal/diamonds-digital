@@ -1,25 +1,18 @@
-import React, { useState } from "react";
-import {
-  chevronLeft,
-  chevronRight,
-  hiraBlackBG,
-  minSwipeDistance,
-} from "./constants";
-import Image from "next/image";
+import React from "react";
 
 const ImageGrid = ({ images }) => {
   return (
-    <div className="mb-4 mr-2">
-      <div className="grid grid-cols-2 gap-4">
+    <div className="mb-4 w-full">
+      <div className="flex flex-grow flex-wrap">
         {images.map((img, index) => (
-          <div key={index} className="w-full items-center">
+          <div key={index} className="w-1/4">
             {/* Apply CSS styles to control image dimensions */}
             <img
               src={img}
               alt={`Image ${index + 1}`}
-              className="border border-black"
-              width={"100%"}
-              height={"100%"}
+              className="border border-black my-2"
+              width={400}
+              height={400}
             />
           </div>
         ))}

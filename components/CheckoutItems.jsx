@@ -7,16 +7,12 @@ import React, {
 } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
-import ImageSlider from "./ImageSlider";
-import { getCheckoutItem } from "../sanity/sanity-utils";
-import Carousel from "./Carousel";
 import FullDiamondDetails from "./FullDiamondDetails";
 import RingSizePicker from "../components/RingSizePicker";
 import {
   borderHiraBlack,
   caretIcon,
   hiraDarkGrayText,
-  hiraWhiteBG,
   hiralightGrayBG,
 } from "./constants";
 import Link from "next/link";
@@ -29,6 +25,26 @@ function CheckoutItems({ onRemoveItem }) {
     useState(false);
   const [showCheckoutSettingDetails, setShowCheckoutSettingDetails] =
     useState(false);
+
+  const largeBreakpoint = 1024; // Define your large breakpoint in pixels
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  const handleResize = () => {
+    setIsLargeScreen(window.innerWidth > largeBreakpoint);
+    if (window.innerWidth > largeBreakpoint) {
+      setShowCheckoutDiamondDetails(true);
+      setShowCheckoutSettingDetails(true);
+    }
+  };
+
+  useEffect(() => {
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const showDetailsArray = [
     {
@@ -135,9 +151,13 @@ function CheckoutItems({ onRemoveItem }) {
                     // }}
                   >
                     <div
-                      className="flex flex-col flex-grow"
+                      className="flex flex-col flex-grow hover:cursor-pointer"
                       onClick={() => {
-                        showDetailsArray[i].setter(!showDetailsArray[i].getter);
+                        if (!isLargeScreen) {
+                          showDetailsArray[i].setter(
+                            !showDetailsArray[i].getter
+                          );
+                        }
                       }}
                     >
                       <div class={`text-lg ${hiraDarkGrayText}`}>
@@ -161,7 +181,9 @@ function CheckoutItems({ onRemoveItem }) {
                       >
                         Edit
                       </Link>
-                      <div className="mx-2">{caretIcon}</div>
+                      <div className="mx-2 hover:cursor-pointer">
+                        {caretIcon}
+                      </div>
                       <div
                         className="flex justify-end"
                         onClick={() => {
