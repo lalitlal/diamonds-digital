@@ -87,7 +87,7 @@ const Stepper = ({ stage }) => {
 
   const commonStyling = `py-3 w-1/2 justify-center border font-black font-Raleway ${borderHiraBlack} flex items-center text-center active:bg-[#848484] active:text-black`;
   return (
-    <div className="text-gray-600 body-font w-full overflow-x-hidden lg:w-1/4">
+    <div className="text-gray-600 body-font w-full overflow-x-hidden">
       <div className="py-4 lg:pt-0 flex justify-center w-full">
         <div className="w-screen">
           <div className="flex">

@@ -59,7 +59,7 @@ const RingSettings = () => {
           images={prod.variants[0].images}
           imageAlts={imageAlts}
           // w-200 h-200 md:w-400 md:h-400
-          imageClass={"w-200 h-200 md:w-400 md:h-400 object-center object"}
+          imageClass={"w-200 h-200 md:w-full md:h-auto object-center"}
         ></ImageSlider>
       ) : (
         <ImageSlider
@@ -143,7 +143,7 @@ const RingSettings = () => {
       <div className="text-gray-600 body-font">
         <div className="">
           <div
-            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-3 max-w-screen-lg"
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-2"
             style={{ gridAutoFlow: "row" }}
           >
             {products.map((prod, i) => {
@@ -151,7 +151,10 @@ const RingSettings = () => {
               const variant = prod.variants;
               const imageAlts = generateImageAlts(prod);
               return (
-                <div key={prod._id} className={`w-full ${hiralightGrayBG}`}>
+                <div
+                  key={prod._id}
+                  className={`w-full md:flex-wrap ${hiralightGrayBG}`}
+                >
                   <div
                     className={`flex flex-col h-full`}
                     onClick={() => {
@@ -165,7 +168,7 @@ const RingSettings = () => {
                         images={variant[0].images}
                         imageAlts={imageAlts}
                         // w-200 h-200 md:w-400 md:h-400
-                        imageClass={`w-200 h-200 md:w-400 md:h-400 object-center object`}
+                        imageClass={`object-cover object-center`}
                       ></ImageSlider>
                     ) : (
                       <ImageSlider
@@ -179,9 +182,6 @@ const RingSettings = () => {
 
                     {
                       <div className="flex flex-col justify-between z-[5] h-fit overflow-hidden mt-2">
-                        {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mt-4">
-                            {description}
-                          </h3> */}
                         <h2
                           className={`${hiraDarkGrayText} mx-1 title-font text-lg font-medium`}
                         >

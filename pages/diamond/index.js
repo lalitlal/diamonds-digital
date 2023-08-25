@@ -40,14 +40,18 @@ export default function Home() {
       </div>
       <div className="lg:flex lg:h-screen">
         <div className={`${hiralightGrayBGMD}`}>
-          <FullDiamondFilterPage></FullDiamondFilterPage>
+          <div className="">
+            <FullDiamondFilterPage></FullDiamondFilterPage>
+          </div>
           <div className={`lg:hidden`}>
             <DiamondFilter></DiamondFilter>
           </div>
         </div>
-        <div className={`lg:max-h-1/3 lg:overflow-y-scroll lg:mx-4`}>
-          <div className="hidden lg:block">
-            <Stepper stage={0}></Stepper>
+        <div className={`lg:max-h-screen lg:overflow-y-hidden lg:mx-4`}>
+          <div className="hidden lg:block w-full">
+            <div>
+              <Stepper stage={0}></Stepper>
+            </div>
           </div>
           <DiamondPage></DiamondPage>
         </div>

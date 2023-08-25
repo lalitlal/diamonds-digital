@@ -40,7 +40,7 @@ export default function Home() {
         <Breadcrumb navDetails={navigationBreadCrums["Diamonds"]}></Breadcrumb>
         <Stepper stage={1}></Stepper>
       </div>
-      <div className={`lg:flex lg:overflow-x-hidden lg:h-screen`}>
+      <div className={`lg:flex lg:h-screen`}>
         <div className={`${hiralightGrayBGMD}`}>
           <div className={`mx-4`}>
             <SingleShapeSelector singular={true}></SingleShapeSelector>
@@ -50,12 +50,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className={`mx-4`}>
+        <div className={`mx-4 lg:overflow-y-scroll`}>
           <div className="hidden lg:block w-full">
             <div className="">
-              {/* <div className="w-fit"> */}
-              {/* <DiamondSelectedNotification /> */}
-              {/* </div> */}
               <Stepper stage={1} />
             </div>
           </div>
