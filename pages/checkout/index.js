@@ -13,6 +13,7 @@ import Breadcrumb from "../../components/BreadCrumb";
 import { navigationBreadCrums } from "../../components/constants";
 import MobileMenu from "../../components/MobileMenu";
 import SecondaryHeader from "../../components/SecondaryHeader";
+import LiveExpertBanner from "../../components/LiveExpertBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <LiveExpertBanner></LiveExpertBanner>
       <div className="relative">
         <Navbar></Navbar>
         <SecondaryHeader></SecondaryHeader>
