@@ -16,6 +16,8 @@ import RingSizePicker from "../../components/RingSizePicker";
 import CTASetting from "../../components/CTASetting";
 import SecondaryHeader from "../../components/SecondaryHeader";
 import LiveExpertBanner from "../../components/LiveExpertBanner";
+import SettingMaterialDescription from "../../components/SettingMaterialDescription";
+import RingKaratPicker from "../../components/RingKaratPicker";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -47,9 +49,11 @@ export default function Home() {
           <SingleShapeSelector singular={true}></SingleShapeSelector>
           <MetalSelector></MetalSelector>
           <RingSizePicker></RingSizePicker>
+          <RingKaratPicker></RingKaratPicker>
           <div className={`lg:hidden`}>
             <SettingDetailDescription></SettingDetailDescription>
           </div>
+          <SettingMaterialDescription></SettingMaterialDescription>
           <ShippingInfo></ShippingInfo>
           <RefundPolicy></RefundPolicy>
           <div className="hidden lg:block">

@@ -16,6 +16,7 @@ import {
   hiralightGrayBG,
 } from "./constants";
 import Link from "next/link";
+import RingKaratPicker from "./RingKaratPicker";
 
 function CheckoutItems({ onRemoveItem }) {
   const cartContext = useContext(CartContext);
@@ -112,7 +113,12 @@ function CheckoutItems({ onRemoveItem }) {
             : ` ${cartContext.setting} `,
         name: diamondContext.settingDetails.name,
         price: ` CA$ `.concat(cartContext.settingPrice),
-        detailDiv: <RingSizePicker></RingSizePicker>,
+        detailDiv: (
+          <>
+            <RingSizePicker></RingSizePicker>
+            <RingKaratPicker></RingKaratPicker>
+          </>
+        ),
         editLink: "/ringsettings",
         missingText: "Select Ring",
       },

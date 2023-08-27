@@ -17,6 +17,7 @@ import MobileMenu from "../../components/MobileMenu";
 import RingSizePicker from "../../components/RingSizePicker";
 import SecondaryHeader from "../../components/SecondaryHeader";
 import LiveExpertBanner from "../../components/LiveExpertBanner";
+import RingKaratPicker from "../../components/RingKaratPicker";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,6 +50,7 @@ export default function Home() {
             <MetalSelector></MetalSelector>
             <div className="hidden lg:block">
               <RingSizePicker></RingSizePicker>
+              <RingKaratPicker></RingKaratPicker>
             </div>
           </div>
         </div>

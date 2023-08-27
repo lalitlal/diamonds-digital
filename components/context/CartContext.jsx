@@ -13,6 +13,7 @@ export const CartProvider = ({ children }) => {
   const [showCartModal, setShowCartModal] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [ringSize, setRingSize] = useState(null);
+  const [ringKarats, setRingKarats] = useState(null);
 
   return (
     <CartContext.Provider
@@ -35,6 +36,8 @@ export const CartProvider = ({ children }) => {
         setShowMobileMenu,
         ringSize,
         setRingSize,
+        ringKarats,
+        setRingKarats,
       }}
     >
       {children}
