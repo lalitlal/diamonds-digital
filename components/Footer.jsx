@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useContext } from "react";
 import {
   borderHiraBlack,
+  callNumber,
   facebookIcon,
   hiraBlackBG,
   hiraDarkGrayText,
@@ -49,7 +50,7 @@ const Footer = () => {
             </div>
             <div className={`lg:flex`}>
               <div className="py-2 lg:mr-2">team@hiradiamonds.com</div>
-              <div className="py-2">(647) 984-4711</div>
+              <div className="py-2">{callNumber}</div>
             </div>
             <div class="text-center text-sm text-white sm:text-center hidden lg:block">
               <div className={`${hiraDarkGrayText}`}>Follow Us</div>

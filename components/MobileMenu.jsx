@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CartContext } from "./context/CartContext";
 import {
   borderHiraBlack,
+  callNumber,
   facebookIcon,
   hiraBlackBG,
   hiraBlackText,
@@ -46,7 +47,7 @@ const MobileMenu = () => {
               </div>
               <div className={`lg:flex justify-center`}>
                 <div className="py-2 lg:mr-2">team@hiradiamonds.com</div>
-                <div className="py-2">(647) 984-4711</div>
+                <div className="py-2">{callNumber}</div>
               </div>
               <div class="text-center text-sm text-white sm:text-center hidden lg:block">
                 <div className={`${hiraDarkGrayText}`}>Follow Us</div>
