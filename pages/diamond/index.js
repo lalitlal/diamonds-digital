@@ -49,7 +49,7 @@ export default function Home() {
             <DiamondFilter></DiamondFilter>
           </div>
         </div>
-        <div className={`lg:max-h-screen lg:overflow-y-hidden lg:mx-4`}>
+        <div className={`lg:max-h-screen lg:overflow-y-scroll lg:mx-4`}>
           <div className="hidden lg:block w-full">
             <div>
               <Stepper stage={0}></Stepper>
