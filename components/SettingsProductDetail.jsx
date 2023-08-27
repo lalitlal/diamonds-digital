@@ -141,9 +141,9 @@ const SettingsProductDetail = ({}) => {
                 <h1 class="text-gray-900 text-3xl title-font font-medium mb-2">
                   {diamondContext.settingDetails.name}
                 </h1>
-                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                {/* <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
                   {diamondContext.settingDetails.description}
-                </h3>
+                </h3> */}
                 <div className={`lg:hidden`}>
                   <Carousel
                     images={diamondContext.settingDetails.variantData.images}
