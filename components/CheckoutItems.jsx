@@ -116,7 +116,7 @@ function CheckoutItems({ onRemoveItem }) {
         detailDiv: (
           <>
             <RingSizePicker></RingSizePicker>
-            <RingKaratPicker></RingKaratPicker>
+            {/* <RingKaratPicker></RingKaratPicker> */}
           </>
         ),
         editLink: "/ringsettings",

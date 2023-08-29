@@ -49,7 +49,7 @@ export default function Home() {
           <SingleShapeSelector singular={true}></SingleShapeSelector>
           <MetalSelector></MetalSelector>
           <RingSizePicker></RingSizePicker>
-          <RingKaratPicker></RingKaratPicker>
+          {/* <RingKaratPicker></RingKaratPicker> */}
           <div className={`lg:hidden`}>
             <SettingDetailDescription></SettingDetailDescription>
           </div>

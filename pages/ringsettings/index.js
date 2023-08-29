@@ -50,7 +50,7 @@ export default function Home() {
             <MetalSelector></MetalSelector>
             <div className="hidden lg:block">
               <RingSizePicker></RingSizePicker>
-              <RingKaratPicker></RingKaratPicker>
+              {/* <RingKaratPicker></RingKaratPicker> */}
             </div>
           </div>
         </div>
