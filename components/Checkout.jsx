@@ -68,9 +68,10 @@ const Checkout = () => {
     const checkoutData = {
       diamondPrice: cartContext.diamondPrice * 100, // cents,
       diamondData: cartContext.diamond,
-      settingData: `${cartContext.setting} `.concat(
-        `${diamondContext.bandColor}`
-      ),
+      settingData: `${cartContext.setting} `,
+      // settingData: `${cartContext.setting} `.concat(
+      //   `${diamondContext.bandColor}`
+      // ),
       settingPrice: cartContext.settingPrice * 100,
       // TODO: Setting thickness
       // Ring Finger Size!!!

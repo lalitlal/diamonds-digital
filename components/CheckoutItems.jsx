@@ -111,7 +111,7 @@ function CheckoutItems({ onRemoveItem }) {
           cartContext.setting === undefined
             ? undefined
             : ` ${cartContext.setting} `,
-        name: diamondContext.settingDetails.name,
+        name: cartContext.setting,
         price: ` USD$ `.concat(cartContext.settingPrice),
         detailDiv: (
           <>
@@ -166,11 +166,11 @@ function CheckoutItems({ onRemoveItem }) {
                         }
                       }}
                     >
-                      <div class={`text-lg ${hiraDarkGrayText}`}>
+                      <div class={`text-sm md:text-lg ${hiraDarkGrayText}`}>
                         {lineItem.name}
                       </div>
 
-                      <div class={`mt-0.5 space-y-px text-lg`}>
+                      <div class={`mt-0.5 space-y-px text-sm md:text-lg`}>
                         <div>
                           <div class="inline">{lineItem.price}</div>
                         </div>
