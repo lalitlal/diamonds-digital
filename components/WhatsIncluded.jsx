@@ -41,7 +41,7 @@ const WhatsIncluded = () => {
             commitment. Every HIRA partner enjoys the following benefits:
           </p>
         </div> */}
-        <div class="flex flex-wrap lg:w-4/5 sm:mb-2 justify-center text-center mx-auto">
+        <div class="flex flex-wrap sm:mb-2 justify-center text-center mx-auto">
           {includedFeatures.map((feat, i) => {
             return (
               <div key={i} className="w-1/4">

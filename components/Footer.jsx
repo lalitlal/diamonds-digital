@@ -14,11 +14,11 @@ import { CartContext } from "./context/CartContext";
 
 const Footer = () => {
   const { setShowBookingModal, showBookingModal } = useContext(CartContext);
-  const standardStyling = `block mt-2 lg:inline-block lg:mt-0  text-center lg:text-left lg:mb-2 hover:text-gray-500 hover:underline hover:cursor-pointer`;
+  const standardStyling = `text-center lg:text-left hover:underline hover:cursor-pointer`;
 
   return (
-    <footer
-      class={`p-4 ${hiraBlackBG} ${hiraWhiteText} shadow md:px-6 md:py-0 lg:left-0 lg:bottom-0 lg:w-full z-50 lg:pb-8`}
+    <div
+      class={`p-4 ${hiraBlackBG} ${hiraWhiteText} md:px-6 md:py-0 lg:left-0 lg:bottom-0 lg:w-full z-50 lg:pb-8`}
     >
       <div class="items-center lg:items-start justify-between lg:justify-around lg:flex">
         <div
@@ -119,7 +119,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 };
 

@@ -125,10 +125,38 @@ const FullDiamondFilterPage = () => {
                   </div>
                   <div className="relative">
                     {showColorInfo && (
-                      <div className="flex absolute border border-black top-0 left-0 z-[60] bg-white shadow-2xl shadow-black w-3/4 px-2">
-                        Some Color Info box!It enim ad minim, veniam, quis
-                        nostrud excercitation some other stuff too because I am
-                        the coolest color guy in the world
+                      <div className="flex flex-col absolute border border-black top-0 left-0 z-[60] bg-white shadow-2xl shadow-black w-fit lg:w-full">
+                        <div className="w-full flex h-full">
+                          <div className="flex flex-col bg-white text-center justify-center px-2">
+                            <div className="flex text-center justify-center">
+                              <div className="px-1">D</div>
+                              <div className="px-1">E</div>
+                              <div className="px-1">F</div>
+                            </div>
+                            <div className="text-center justify-center">
+                              Colorless
+                            </div>
+                          </div>
+                          <div className="flex flex-col bg-yellow-50 bg-opacity-25 text-center justify-center px-2 border-l border-r">
+                            <div className="flex text-center justify-center">
+                              <div className="px-1">G</div>
+                              <div className="px-1">H</div>
+                              <div className="px-1">I</div>
+                              <div className="px-1">J</div>
+                            </div>
+                            <div className="flex text-center justify-center">
+                              Near Colorless
+                            </div>
+                          </div>
+                          <div className="flex flex-col bg-yellow-50 bg-opacity-60 text-center justify-center px-2">
+                            <div className="flex text-center justify-center">
+                              <div className="px-1">K</div>
+                              <div className="px-1">L</div>
+                              <div className="px-1">M</div>
+                            </div>
+                            <div>Faint</div>
+                          </div>
+                        </div>
                       </div>
                     )}
                     <TileGrid
@@ -151,10 +179,46 @@ const FullDiamondFilterPage = () => {
                   <div>
                     <div className="relative">
                       {showClarityInfo && (
-                        <div className="flex absolute border border-black top-0 left-0 z-[60] bg-white shadow-2xl shadow-black w-3/4 px-2">
-                          Some clarity Info box!It enim ad minim, veniam, quis
-                          nostrud excercitation some other stuff too because I
-                          am the coolest clarity guy in the world
+                        <div className="flex flex-col absolute border border-black top-0 left-0 z-[60] bg-white shadow-2xl shadow-black w-full lg:w-fit text-xs">
+                          <div className="w-full flex h-full">
+                            <div className="flex flex-col bg-white text-center justify-center px-2">
+                              <div className="flex text-center justify-center">
+                                <div className="px-1">FL</div>
+                              </div>
+                              <div className="text-center justify-center">
+                                Flawless
+                              </div>
+                            </div>
+                            <div className="flex flex-col bg-yellow-50 bg-opacity-25 text-center justify-center px-2 border-l border-r">
+                              <div className="flex text-center justify-center">
+                                <div className="px-1">IF</div>
+                              </div>
+                              <div className="flex text-center justify-center">
+                                Internally Flawless
+                              </div>
+                            </div>
+                            <div className="flex flex-col bg-yellow-50 bg-opacity-60 text-center justify-center px-2 border-r">
+                              <div className="flex text-center justify-center">
+                                <div className="px-1">VVS1</div>
+                                <div className="px-1">VVS2</div>
+                              </div>
+                              <div>Very Very Slightly Included</div>
+                            </div>
+                            <div className="flex flex-col bg-yellow-50 bg-opacity-60 text-center justify-center px-2">
+                              <div className="flex text-center justify-center">
+                                <div className="px-1">VS1</div>
+                                <div className="px-1">VS2</div>
+                              </div>
+                              <div>Very Slightly Included</div>
+                            </div>
+                            {/* <div className="flex flex-col bg-yellow-50 bg-opacity-60 text-center justify-center px-2">
+                              <div className="flex text-center justify-center">
+                                <div className="px-1">S1</div>
+                                <div className="px-1">S1</div>
+                              </div>
+                              <div>Slightly Included</div>
+                            </div> */}
+                          </div>
                         </div>
                       )}
                       <TileGrid
@@ -178,10 +242,33 @@ const FullDiamondFilterPage = () => {
                   </div>
                   <div className="relative">
                     {showCutInfo && (
-                      <div className="flex absolute border border-black top-0 left-0 z-[60] bg-white shadow-2xl shadow-black w-3/4 px-2">
-                        Some cut Info box!It enim ad minim, veniam, quis nostrud
-                        excercitation some other stuff too because I am the
-                        coolest cut guy in the world
+                      <div className="flex flex-col absolute border border-black top-0 left-0 z-[60] bg-white shadow-2xl shadow-black lg:w-96 text-xs">
+                        <div className="w-full flex h-full">
+                          <div className="flex flex-col bg-white text-center justify-center px-2">
+                            <div className="flex text-center justify-center mb-2">
+                              <div className="px-1">Ideal</div>
+                            </div>
+                            <div className="text-center justify-center">
+                              Maximum light reflection and brilliance.
+                            </div>
+                          </div>
+                          <div className="flex flex-col bg-yellow-50 bg-opacity-25 text-center justify-center px-2 border-l border-r">
+                            <div className="flex text-center justify-center mb-2">
+                              <div className="px-1">Excellent</div>
+                            </div>
+                            <div className="flex text-center justify-center">
+                              Almost maximum light reflection and brilliance.
+                            </div>
+                          </div>
+                          <div className="flex flex-col bg-yellow-50 bg-opacity-60 text-center justify-center px-2">
+                            <div className="flex text-center justify-center mb-2">
+                              <div className="px-1">Very Good</div>
+                            </div>
+                            <div>
+                              Cost-effective yet outstanding reflection.
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     )}
                     <StringSlider
