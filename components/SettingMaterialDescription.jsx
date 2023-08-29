@@ -22,8 +22,7 @@ const SettingMaterialDescription = () => {
         {showContent && (
           <div className={`overflow-y-hidden text-justify`}>
             <div className="">
-              {/* Hello */}
-              {`All of our settings are crafted in solid (14k or 18k) gold. These
+              {`All of our settings are crafted in solid 14k gold. These
               pieces are made to last, and will not color or oxidize. Daily
               wear? Special occasions? Doesn't matter, these pieces are here to
               last.`}
