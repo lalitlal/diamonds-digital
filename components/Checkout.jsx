@@ -73,8 +73,7 @@ const Checkout = () => {
       //   `${diamondContext.bandColor}`
       // ),
       settingPrice: cartContext.settingPrice * 100,
-      // TODO: Setting thickness
-      // Ring Finger Size!!!
+      ringSize: cartContext.ringSize,
     };
     const res = await fetch(`/api/checkout_sessions`, {
       method: "POST",

@@ -46,7 +46,7 @@ export default async function handler(req, res) {
               currency: "usd",
               product_data: {
                 name: checkoutData.settingData, //"Random Custom Line Item",
-                description: "Setting",
+                description: `Setting Size: ${checkoutData.ringSize}`,
               },
               tax_behavior: "inclusive",
               unit_amount: checkoutData.settingPrice, //550000.0, // cents
