@@ -1092,3 +1092,9 @@ export const minusIcon = (
     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
   </svg>
 );
+
+export const marginMultiplier = 1.6 / 100.0; // convert to cents
+
+export const toFixedDecimal = (num) => {
+  return Number(num).toFixed(2);
+};

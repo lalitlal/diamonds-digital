@@ -14,7 +14,7 @@ import { DiamondContext } from "./context/DiamondContext";
 const CTASetting = () => {
   const cartContext = useContext(CartContext);
   const diamondContext = useContext(DiamondContext);
-  console.log(diamondContext.settingDetails);
+
   return (
     <>
       {Object.values(diamondContext.settingDetails).length > 0 && (
@@ -51,7 +51,7 @@ const CTASetting = () => {
                 );
               }}
             >
-              Complete Ring (CA${" "}
+              Complete Ring (USD${" "}
               {diamondContext.settingDetails.variantData.price})
             </button>
           </Link>

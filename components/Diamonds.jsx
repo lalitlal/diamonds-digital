@@ -27,9 +27,6 @@ import {
 import DiamondsTable from "./DiamondsTable";
 
 const Diamonds = () => {
-  // const [showProductDetail, setShowProductDetail] = useState(false);
-  // const [selectedRow, setSelectedRow] = useState(undefined);
-
   let post_body = useMemo(() => {
     return {
       data: {
@@ -126,6 +123,8 @@ const Diamonds = () => {
   );
 
   useEffect(() => {
+    setDiamondData([]);
+    diamondContext.setIsLoading(true);
     const handleDiamondFilters = () => {
       // Unfortunately this shape list needs to be a list of integers because API in brilliance is stupid
       const scraperShapeList =
@@ -180,6 +179,7 @@ const Diamonds = () => {
           currentDiamonds === undefined ||
           currentDiamonds.length === 0
         ) {
+          diamondContext.setIsLoading(true);
           const res = await getDiamonds(sanityFilter);
           if (res.status === 200) {
             const res_json = await res.json();
@@ -192,6 +192,7 @@ const Diamonds = () => {
       } catch (e) {
         console.log("failed fetching from backend: ", e);
       }
+      diamondContext.setIsLoading(false);
     };
 
     // Handle filtering the data now!
@@ -201,15 +202,10 @@ const Diamonds = () => {
     postBody,
     post_body,
     diamondContext.currentShapeOptions,
-    diamondContext.currentColorOptions,
-    diamondContext.currentClarityOptions,
-    getFilterListsForSanity,
     diamondContext.caratValue,
-    diamondContext.cutValue,
     diamondContext.priceValue,
     diamondContext.orderDiamonds,
-    // diamondContext.clarityValue,
-    // diamondContext.colorValue,
+    diamondContext.runQuery,
   ]);
 
   // const scrollToBottom = () => {

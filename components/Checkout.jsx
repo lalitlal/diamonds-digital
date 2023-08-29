@@ -84,10 +84,16 @@ const Checkout = () => {
     router.push(redirectURL.url);
   };
   const [totalPrice, setTotalPrice] = useState(
-    cartContext.diamondPrice + cartContext.settingPrice
+    parseFloat(String(cartContext.diamondPrice)) +
+      parseFloat(String(cartContext.settingPrice))
   );
   useEffect(() => {
-    setTotalPrice(cartContext.diamondPrice + cartContext.settingPrice);
+    setTotalPrice(
+      (
+        parseFloat(String(cartContext.diamondPrice)) +
+        parseFloat(String(cartContext.settingPrice))
+      ).toFixed(2)
+    );
   }, [cartContext.diamondPrice, cartContext.settingPrice]);
 
   return (
@@ -124,7 +130,7 @@ const Checkout = () => {
                 className={`flex w-full justify-center py-3 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                 onClick={checkoutBtnClick}
               >
-                Complete Ring (CA$ {totalPrice})
+                Complete Ring (USD$ {totalPrice})
               </button>
             </div>
 

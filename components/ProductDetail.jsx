@@ -10,6 +10,8 @@ import {
   hiraBlackBG,
   hiraDarkGrayText,
   hiraWhiteBG,
+  marginMultiplier,
+  toFixedDecimal,
 } from "./constants";
 import FullDiamondDetails from "./FullDiamondDetails";
 
@@ -144,7 +146,9 @@ const ProductDetail = ({ shape, data }) => {
                     onClick={() => {
                       const diamondStatus = `${shape} ${data.diamond.certificate.carats} ${data.diamond.certificate.color} ${data.diamond.certificate.clarity} ${data.diamond.certificate.cut}`;
                       cartContext.setDiamond(diamondStatus);
-                      cartContext.setDiamondPrice(data.price);
+                      cartContext.setDiamondPrice(
+                        toFixedDecimal(data.price * marginMultiplier)
+                      );
                       diamondContext.setCurrentSettingDiamondShape(
                         shape.toLowerCase()
                       );
@@ -156,7 +160,8 @@ const ProductDetail = ({ shape, data }) => {
                       diamondContext.setDiamondDetails(data);
                     }}
                   >
-                    Add to ring (CA$ {data.price})
+                    Add to ring (USD${" "}
+                    {toFixedDecimal(data.price * marginMultiplier)})
                   </button>
                 </Link>
               </div>

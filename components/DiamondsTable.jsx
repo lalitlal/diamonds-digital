@@ -11,8 +11,11 @@ import {
   hiralightGrayBG,
   hiraDarkGrayBG,
   hiraGrayBG,
+  marginMultiplier,
+  toFixedDecimal,
 } from "./constants";
 import { DiamondContext } from "./context/DiamondContext";
+import LoadingSkeleton from "./LoadingSkeleton";
 
 const DiamondsTable = ({ data }) => {
   const [showProductDetail, setShowProductDetail] = useState(false);
@@ -244,7 +247,7 @@ const DiamondsTable = ({ data }) => {
                             {item.diamond.certificate.cut}
                           </td>
                           <td className="px-2 py-4" style={columnStyles.price}>
-                            {item.price}
+                            {toFixedDecimal(item.price * marginMultiplier)}
                           </td>
                           {/* <td className="px-2 py-4" style={columnStyles.caret}>
                           {caret(index)}
@@ -267,6 +270,7 @@ const DiamondsTable = ({ data }) => {
                 )}
               </tbody>
             </table>
+            {/* {diamondContext.isLoading && <LoadingSkeleton></LoadingSkeleton>} */}
           </div>
         </div>
       </div>

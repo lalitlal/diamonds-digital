@@ -152,7 +152,7 @@ function CartModal({ onRemoveItem }) {
             ? undefined
             : ` ${cartContext.diamond} `,
         name: "Loose Diamond",
-        price: ` CA$ `.concat(cartContext.diamondPrice),
+        price: ` USD$ `.concat(cartContext.diamondPrice),
       },
       {
         description:
@@ -160,7 +160,7 @@ function CartModal({ onRemoveItem }) {
             ? undefined
             : ` ${cartContext.setting} `,
         name: "Setting",
-        price: ` CA$ `.concat(cartContext.settingPrice),
+        price: ` USD$ `.concat(cartContext.settingPrice),
       },
     ];
   }, [
@@ -171,7 +171,8 @@ function CartModal({ onRemoveItem }) {
   ]);
 
   const [totalPrice, setTotalPrice] = useState(
-    cartContext.diamondPrice + cartContext.settingPrice
+    parseFloat(String(cartContext.diamondPrice)) +
+      parseFloat(String(cartContext.settingPrice))
   );
   useEffect(() => {
     if (
@@ -185,7 +186,12 @@ function CartModal({ onRemoveItem }) {
   }, [cartInfo]);
 
   useEffect(() => {
-    setTotalPrice(cartContext.diamondPrice + cartContext.settingPrice);
+    setTotalPrice(
+      (
+        parseFloat(String(cartContext.diamondPrice)) +
+        parseFloat(String(cartContext.settingPrice))
+      ).toFixed(2)
+    );
   }, [cartContext.diamondPrice, cartContext.settingPrice]);
 
   return (
@@ -233,7 +239,7 @@ function CartModal({ onRemoveItem }) {
             href={"/checkout"}
             class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
           >
-            Go to checkout (CA$ {totalPrice})
+            Go to checkout (USD$ {totalPrice})
           </Link>
         </div>
       </div>

@@ -298,6 +298,7 @@ const FullDiamondFilterPage = () => {
                         setshowClarityInfo(false);
                         setShowCutInfo(false);
                         diamondContext.setShowAdvancedFilter(false);
+                        diamondContext.setRunQuery(!diamondContext.runQuery);
                       }}
                     >
                       Save filters

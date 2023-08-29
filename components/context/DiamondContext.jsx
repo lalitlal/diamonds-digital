@@ -15,6 +15,8 @@ export const DiamondContextProvider = ({ children }) => {
   const [settingDetails, setSettingDetails] = useState({});
   const [diamondDetails, setDiamondDetails] = useState(null);
   const [diamondJustSelected, setDiamondJustSelected] = useState(false);
+  const [runQuery, setRunQuery] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const shapes = {
     // ROUND BRILLIANT
@@ -711,6 +713,10 @@ export const DiamondContextProvider = ({ children }) => {
         setOrderDiamonds,
         diamondDetails,
         setDiamondDetails,
+        runQuery,
+        setRunQuery,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

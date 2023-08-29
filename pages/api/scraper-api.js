@@ -78,6 +78,9 @@ const handler = async (req, res) => {
     diamonds_by_query(
       query: {
         labgrown: true,
+        has_certpdf: true,
+        hide_memo: true,
+        returns: true,
         shapes: [${shapesString}],
         sizes: [{ from: ${params.caratMin}, to: ${params.caratMax}}],
         has_v360: true,

@@ -4,7 +4,6 @@ import { DiamondContext } from "./context/DiamondContext";
 
 const SettingDetailDescription = () => {
   const diamondContext = useContext(DiamondContext);
-  console.log(diamondContext.settingDetails, "setting details!!");
   return (
     <div className={`mb-8`}>
       <div className={`${hiraDarkGrayText}`}>Description</div>
