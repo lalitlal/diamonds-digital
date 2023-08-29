@@ -144,7 +144,13 @@ const ProductDetail = ({ shape, data }) => {
                   <button
                     class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                     onClick={() => {
-                      const diamondStatus = `${shape} ${data.diamond.certificate.carats} ${data.diamond.certificate.color} ${data.diamond.certificate.clarity} ${data.diamond.certificate.cut}`;
+                      data.diamond.certificate.cut =
+                        data.diamond.certificate.cut || "UKN";
+                      const diamondStatus = `${shape} ${
+                        data.diamond.certificate.carats
+                      } ${data.diamond.certificate.color} ${
+                        data.diamond.certificate.clarity
+                      } ${data.diamond.certificate.cut || "UKN"}`;
                       cartContext.setDiamond(diamondStatus);
                       cartContext.setDiamondPrice(
                         toFixedDecimal(data.price * marginMultiplier)
