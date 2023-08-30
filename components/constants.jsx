@@ -1093,7 +1093,7 @@ export const minusIcon = (
   </svg>
 );
 
-export const marginMultiplier = 2.2 / 100.0; // convert to cents
+export const marginMultiplier = 2.5 / 100.0; // convert to cents
 
 export const toFixedDecimal = (num) => {
   return Number(num).toFixed(2);

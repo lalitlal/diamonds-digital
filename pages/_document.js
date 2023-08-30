@@ -6,12 +6,13 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body>
+        <Script
+          async
+          type="text/javascript"
+          src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=TyD9bU"
+        ></Script>
         <Main />
         <NextScript />
-        <Script
-          type="text/javascript"
-          src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=TyD9bU"
-        ></Script>
       </body>
     </Html>
   );
