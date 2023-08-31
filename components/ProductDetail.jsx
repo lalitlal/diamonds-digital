@@ -14,6 +14,7 @@ import {
   toFixedDecimal,
 } from "./constants";
 import FullDiamondDetails from "./FullDiamondDetails";
+import { event } from "../pages/gtag";
 
 const ProductDetail = ({ shape, data }) => {
   const cartContext = useContext(CartContext);
@@ -164,6 +165,12 @@ const ProductDetail = ({ shape, data }) => {
                       cartContext.setDiamondShape(shape.toLowerCase());
                       diamondContext.setDiamondJustSelected(true);
                       diamondContext.setDiamondDetails(data);
+                      event({
+                        action: "Button Click",
+                        category: "Diamonds",
+                        label: "Add to Cart",
+                        value: data.price * marginMultiplier,
+                      });
                     }}
                   >
                     Add to ring (USD${" "}

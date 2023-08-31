@@ -7,6 +7,7 @@ import heroBracelet from "../public/assets/hero-bracelet.jpg";
 import heroDiamonds from "../public/assets/hero-diamonds.jpg";
 import ImageSlider from "./ImageSlider";
 import { hiraBlackBG } from "./constants";
+import { event } from "../pages/gtag";
 
 const Hero = () => {
   const image_urls = {
@@ -28,18 +29,40 @@ const Hero = () => {
           Engagement rings, made for one.
         </p>
         <div className="absolute top-1/2 flex flex-1 flex-wrap w-1/4">
-          <Link
-            href="/diamond"
-            className="hidden md:flex absolute justify-center w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
+          <div
+            onClick={() => {
+              event({
+                action: "Button Click",
+                category: "Hero Page",
+                label: "Start with diamond",
+                value: 0,
+              });
+            }}
           >
-            Start with a diamond
-          </Link>
-          <Link
-            href="/ringsettings"
-            className="hidden md:flex absolute justify-center w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
+            <Link
+              href="/diamond"
+              className="hidden md:flex absolute justify-center w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
+            >
+              Start with a diamond
+            </Link>
+          </div>
+          <div
+            onClick={() => {
+              event({
+                action: "Button Click",
+                category: "Hero Page",
+                label: "Start with setting",
+                value: 0,
+              });
+            }}
           >
-            Start with a setting
-          </Link>
+            <Link
+              href="/ringsettings"
+              className="hidden md:flex absolute justify-center w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
+            >
+              Start with a setting
+            </Link>
+          </div>
         </div>
       </div>
 

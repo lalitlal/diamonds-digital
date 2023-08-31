@@ -19,6 +19,7 @@ import {
 import Link from "next/link";
 import WhatsIncluded from "./WhatsIncluded";
 import CheckoutImageSlider from "./CheckoutImageSlider";
+import { event } from "../pages/gtag";
 
 const Checkout = () => {
   const handleRemoveCartItem = (item) => {
@@ -81,6 +82,12 @@ const Checkout = () => {
     });
     const redirectURL = await res.json();
     // console.log(redirectURL);
+    event({
+      action: "Button Click",
+      category: "Checkout",
+      label: "Go to Stripe",
+      value: totalPrice,
+    });
     router.push(redirectURL.url);
   };
   const [totalPrice, setTotalPrice] = useState(

@@ -13,6 +13,7 @@ import {
 import { getProducts } from "../sanity/sanity-utils";
 import ImageSlider from "./ImageSlider";
 import ImageGrid from "./ImageGrid";
+import { event } from "../pages/gtag";
 
 const SettingsProductDetail = ({}) => {
   const cartContext = useContext(CartContext);
@@ -187,6 +188,13 @@ const SettingsProductDetail = ({}) => {
                         cartContext.setSettingPrice(
                           diamondContext.settingDetails.variantData.price
                         );
+                        event({
+                          action: "Button Click",
+                          category: "Settings Product Detail",
+                          label: "Add to Cart",
+                          value:
+                            diamondContext.settingDetails.variantData.price,
+                        });
                       }}
                     >
                       Complete Ring (USD${" "}
