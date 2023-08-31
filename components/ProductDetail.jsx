@@ -15,6 +15,7 @@ import {
 } from "./constants";
 import FullDiamondDetails from "./FullDiamondDetails";
 import { event } from "../lib/gtag";
+import { Document, Page } from "react-pdf";
 
 const ProductDetail = ({ shape, data }) => {
   const cartContext = useContext(CartContext);
@@ -113,16 +114,19 @@ const ProductDetail = ({ shape, data }) => {
                 {productOptions[currentDisplay].Header !== "Certificate" ? (
                   productOptions[currentDisplay].Content
                 ) : (
-                  <Link
-                    href={productOptions[currentDisplay].Content.report}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="flex hover:cursor-pointer">
-                      <a>See Certificate</a>
-                      {openArrow}
-                    </div>
-                  </Link>
+                  // <Link
+                  //   href={productOptions[currentDisplay].Content.report}
+                  //   target="_blank"
+                  //   rel="noopener noreferrer"
+                  // >
+                  //   <div className="flex hover:cursor-pointer">
+                  //     <a>See Certificate</a>
+                  //     {openArrow}
+                  //   </div>
+                  // </Link>
+                  <Document file={data.diamond.certificate.pdfUrl}>
+                    <Page pageNumber={1} />
+                  </Document>
                 )}
               </p>
               <FullDiamondDetails data={data}></FullDiamondDetails>

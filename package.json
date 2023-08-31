@@ -27,6 +27,7 @@
     "react": "18.2.0",
     "react-calendly": "^4.1.1",
     "react-dom": "18.2.0",
+    "react-pdf": "^7.3.3",
     "sanity": "^3.14.2",
     "stripe": "^11.12.0"
   },
