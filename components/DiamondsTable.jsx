@@ -270,7 +270,12 @@ const DiamondsTable = ({ data }) => {
                 )}
               </tbody>
             </table>
-            {diamondContext.isLoading && <LoadingSkeleton></LoadingSkeleton>}
+            {diamondContext.isLoading && (
+              <LoadingSkeleton
+                header={"HIRA"}
+                footer={"Loading Gems"}
+              ></LoadingSkeleton>
+            )}
           </div>
         </div>
       </div>

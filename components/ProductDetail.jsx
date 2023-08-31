@@ -15,14 +15,14 @@ import {
 } from "./constants";
 import FullDiamondDetails from "./FullDiamondDetails";
 import { event } from "../lib/gtag";
-import { Document, Page } from "react-pdf";
+import CustomIframe from "./CustomIframe";
 
 const ProductDetail = ({ shape, data }) => {
   const cartContext = useContext(CartContext);
   const diamondContext = useContext(DiamondContext);
   const [currentDisplay, setCurrentDisplay] = useState(0);
   const [seeFullDetails, setSeeFullDetails] = useState(false);
-  console.log("IN PRODUCT DETAIL: ", data);
+
   const productOptions = [
     {
       Header: "Description",
@@ -114,20 +114,24 @@ const ProductDetail = ({ shape, data }) => {
               <p class="leading-relaxed mb-4">
                 {productOptions[currentDisplay].Header !== "Certificate" ? (
                   productOptions[currentDisplay].Content
+                ) : data.diamond.certificate.lab === "IGI" ? (
+                  <>
+                    <CustomIframe
+                      url={`https://www.igi.org/viewpdf.php?r=${data.diamond.certificate.certNumber}`}
+                    ></CustomIframe>
+                    <Link
+                      href={`https://www.igi.org/viewpdf.php?r=${data.diamond.certificate.certNumber}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div className="flex hover:cursor-pointer">
+                        <a>See Certificate</a>
+                        {openArrow}
+                      </div>
+                    </Link>
+                  </>
                 ) : (
-                  // <Link
-                  //   href={productOptions[currentDisplay].Content.report}
-                  //   target="_blank"
-                  //   rel="noopener noreferrer"
-                  // >
-                  //   <div className="flex hover:cursor-pointer">
-                  //     <a>See Certificate</a>
-                  //     {openArrow}
-                  //   </div>
-                  // </Link>
-                  <Document file={data.diamond.certificate.pdfUrl}>
-                    <Page pageNumber={1} />
-                  </Document>
+                  <div>Call/Text Us!</div>
                 )}
               </p>
               <FullDiamondDetails data={data}></FullDiamondDetails>
