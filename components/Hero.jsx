@@ -7,7 +7,7 @@ import heroBracelet from "../public/assets/hero-bracelet.jpg";
 import heroDiamonds from "../public/assets/hero-diamonds.jpg";
 import ImageSlider from "./ImageSlider";
 import { hiraBlackBG } from "./constants";
-import { event } from "../pages/gtag";
+import { event } from "../lib/gtag";
 
 const Hero = () => {
   const image_urls = {

@@ -4,7 +4,7 @@ import { DiamondContextProvider } from "../components/context/DiamondContext";
 
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { pageview } from "./gtag";
+import { pageview } from "../lib/gtag";
 import Script from "next/script";
 
 export default function App({ Component, pageProps }) {

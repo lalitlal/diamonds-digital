@@ -14,7 +14,7 @@ import {
   toFixedDecimal,
 } from "./constants";
 import FullDiamondDetails from "./FullDiamondDetails";
-import { event } from "../pages/gtag";
+import { event } from "../lib/gtag";
 
 const ProductDetail = ({ shape, data }) => {
   const cartContext = useContext(CartContext);

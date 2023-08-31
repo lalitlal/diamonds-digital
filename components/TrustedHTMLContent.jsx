@@ -30,6 +30,7 @@ const TrustedHtmlContent = ({ url }) => {
     <iframe
       ref={iframeRef}
       src={usedURL}
+      rel="preconnect"
       width={`${usedBP}px`}
       height={`${usedBP}px`}
       title="External Content"

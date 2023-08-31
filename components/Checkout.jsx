@@ -19,7 +19,7 @@ import {
 import Link from "next/link";
 import WhatsIncluded from "./WhatsIncluded";
 import CheckoutImageSlider from "./CheckoutImageSlider";
-import { event } from "../pages/gtag";
+import { event } from "../lib/gtag";
 
 const Checkout = () => {
   const handleRemoveCartItem = (item) => {

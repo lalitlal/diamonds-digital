@@ -13,7 +13,7 @@ import {
 import { getProducts } from "../sanity/sanity-utils";
 import ImageSlider from "./ImageSlider";
 import ImageGrid from "./ImageGrid";
-import { event } from "../pages/gtag";
+import { event } from "../lib/gtag";
 
 const SettingsProductDetail = ({}) => {
   const cartContext = useContext(CartContext);
