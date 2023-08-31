@@ -22,6 +22,7 @@ const ProductDetail = ({ shape, data }) => {
   const diamondContext = useContext(DiamondContext);
   const [currentDisplay, setCurrentDisplay] = useState(0);
   const [seeFullDetails, setSeeFullDetails] = useState(false);
+  console.log("IN PRODUCT DETAIL: ", data);
   const productOptions = [
     {
       Header: "Description",
