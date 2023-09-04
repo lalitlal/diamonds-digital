@@ -1,27 +1,34 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import heroBandsWater from "../public/assets/hero-bands-water.jpg";
-import heroBands from "../public/assets/hero-bands.jpg";
-import heroBracelet from "../public/assets/hero-bracelet.jpg";
-import heroDiamonds from "../public/assets/hero-diamonds.jpg";
-import ImageSlider from "./ImageSlider";
 import { hiraBlackBG } from "./constants";
 import { event } from "../lib/gtag";
+import { getDisplayImages } from "../sanity/sanity-utils";
+import { client } from "../sanity/lib/client";
+
+import urlBuilder from "@sanity/image-url";
 
 const Hero = () => {
-  const image_urls = {
-    0: heroBandsWater,
-    1: heroBands,
-    2: heroBracelet,
-    3: heroDiamonds,
-  };
+  const imgUrlBuilder = urlBuilder(client);
+  const [heroImages, setHeroImages] = useState([]);
+
+  useEffect(() => {
+    const fetchHeroSanity = async () => {
+      const res = await getDisplayImages("Hero");
+      const randomIndex = Math.floor(Math.random() * res.length); // Generate a random index
+      const randomHeroImage = res[randomIndex]; // Get the random element from res
+      const imageSource = imgUrlBuilder.image(randomHeroImage.image).url();
+      console.log(imageSource, "EFADS");
+      setHeroImages([imageSource]); // Note that we wrap the imageSource in an array to match your setHeroImages usage
+    };
+    fetchHeroSanity();
+    return () => {};
+  }, []);
 
   return (
     <>
       <div className="flex mx-auto relative">
-        <Image
-          src={image_urls[1]}
+        <img
+          src={heroImages[0]}
           className=" w-screen pt-3 md:w-full h-auto md:h-[60vh] lg:h-[100vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
           alt=""
         />

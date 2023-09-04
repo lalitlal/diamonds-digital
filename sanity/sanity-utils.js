@@ -229,11 +229,17 @@ export const getCurrentDiamondsSanity = async (diamondFilters) => {
   }
 };
 
-// {
-//   maxCarat: 4.00,
-//   minCarat: 1.00,
-//   clarityList: ["SI1", "SI2, VS1"],
-//   colorList: ["D", "E", "F", "G", "H", "I"],
-//   shapeList: ["Pear", "Marquise", "Round", "Oval", "Emerald"],
-//   cutList: ["Super Ideal", "Excellent", "Good", "Ideal"], minPrice: 250, maxPrice: 2000
-// }
+export const getDisplayImages = async (type) => {
+  const groqQuery = `*[_type == "image_asset" && type == $typeFilter] {
+      _id,
+      title,
+      description,
+      type,
+      image,
+    }`;
+
+  const values = await client.fetch(groqQuery, {
+    typeFilter: type,
+  });
+  return values;
+};

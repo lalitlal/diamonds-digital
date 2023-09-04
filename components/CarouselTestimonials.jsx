@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import Testimony from "./Testimony";
-import { chevronLeft, chevronRight, minSwipeDistance } from "./constants";
+import {
+  chevronLeft,
+  chevronRight,
+  hiraBlackBG,
+  minSwipeDistance,
+} from "./constants";
 const CarouselTestimonials = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
@@ -63,13 +68,13 @@ const CarouselTestimonials = ({ data }) => {
         ))}
       </div>
       <button
-        className="absolute top-1/2 transform -translate-y-1/2 left-0  bg-gray-600 text-white z-10"
+        className={`absolute top-1/2 transform -translate-y-1/2 left-0  text-white z-10 ${hiraBlackBG}`}
         onClick={handlePrev}
       >
         {chevronLeft}
       </button>
       <button
-        className="absolute top-1/2 transform -translate-y-1/2 right-0 bg-gray-600 text-white z-10"
+        className={`absolute top-1/2 transform -translate-y-1/2 right-0 text-white z-10 ${hiraBlackBG}`}
         onClick={handleNext}
       >
         {chevronRight}
