@@ -31,8 +31,9 @@ export default function Home() {
         <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
-      <Hero></Hero>
-      <Gallery></Gallery>
+      <div className="mx-4">
+        <Gallery></Gallery>
+      </div>
       <Footer></Footer>
     </>
   );
