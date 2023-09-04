@@ -8,7 +8,6 @@ const IGFeed = () => {
       const res = await fetch(`/api/get-instagram-media`);
       const res_json = await res.json();
       setFeed(res_json);
-      console.log("FEED!!", feed);
     };
     fetchInsta();
     return () => {};
