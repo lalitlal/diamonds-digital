@@ -17,7 +17,6 @@ const Hero = () => {
       const randomIndex = Math.floor(Math.random() * res.length); // Generate a random index
       const randomHeroImage = res[randomIndex]; // Get the random element from res
       const imageSource = imgUrlBuilder.image(randomHeroImage.image).url();
-      console.log(imageSource, "EFADS");
       setHeroImages([imageSource]); // Note that we wrap the imageSource in an array to match your setHeroImages usage
     };
     fetchHeroSanity();
