@@ -47,7 +47,7 @@ const Hero = () => {
           >
             <Link
               href="/diamond"
-              className="hidden md:flex absolute justify-center w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
+              className="flex absolute justify-center w-48 md:w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white px-3 py-4 hover:bg-black hover:text-white transition duration-300 ease-in-out"
             >
               Start with a diamond
             </Link>
@@ -64,7 +64,7 @@ const Hero = () => {
           >
             <Link
               href="/ringsettings"
-              className="hidden md:flex absolute justify-center w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-gray-500 text-gray-500 p-3 hover:bg-gray-500 hover:text-white transition duration-300 ease-in-out"
+              className="flex absolute justify-center w-48 md:w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white px-3 py-4 hover:bg-black hover:text-white transition duration-300 ease-in-out"
             >
               Start with a setting
             </Link>
@@ -73,7 +73,7 @@ const Hero = () => {
       </div>
 
       {/* MOBILE CREATE YOUR RING SECTION */}
-      <div className="flex flex-col md:hidden">
+      {/* <div className="flex flex-col md:hidden">
         <div className="font-Raleway mt-4 text-center text-2xl sm:text-4xl font-bold">
           Create your engagement ring
         </div>
@@ -93,7 +93,7 @@ const Hero = () => {
             </button>
           </Link>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

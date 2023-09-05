@@ -40,7 +40,7 @@ export default function Home() {
         <Breadcrumb navDetails={navigationBreadCrums["Home"]}></Breadcrumb>
         <Stepper stage={0}></Stepper>
       </div>
-      <div className="lg:flex lg:h-screen">
+      <div className="lg:flex">
         <div className={`${hiralightGrayBGMD}`}>
           <div className="">
             <FullDiamondFilterPage></FullDiamondFilterPage>

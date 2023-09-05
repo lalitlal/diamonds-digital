@@ -3,18 +3,34 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
 import ImageSlider from "./ImageSlider";
-import { getProducts } from "../sanity/sanity-utils";
+import { getDisplayImages, getProducts } from "../sanity/sanity-utils";
+import { client } from "../sanity/lib/client";
 import {
   borderHiraBlack,
   hiraDarkGrayText,
   hiralightGrayBG,
 } from "./constants";
+import urlBuilder from "@sanity/image-url";
 
 const RingSettings = () => {
   const diamondContext = useContext(DiamondContext);
   const cartContext = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const dummyImageURL = "https://dummyimage.com/420x260";
+  const imgUrlBuilder = urlBuilder(client);
+  const [lifestyleImages, setLifestyleImages] = useState([]);
+
+  useEffect(() => {
+    const fetchHeroSanity = async () => {
+      const res = await getDisplayImages("Lifestyle");
+      const resURLs = res.map((data, index) => {
+        return imgUrlBuilder.image(data.image).url();
+      });
+      setLifestyleImages(resURLs); // Note that we wrap the imageSource in an array to match your setHeroImages usage
+    };
+    fetchHeroSanity();
+    return () => {};
+  }, []);
 
   const upperCaseFirstLetter = useCallback(() => {
     if (
@@ -146,7 +162,73 @@ const RingSettings = () => {
             className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-2"
             style={{ gridAutoFlow: "row" }}
           >
-            {products.map((prod, i) => {
+            {products.slice(0, 2).map((prod, i) => {
+              const { _id, title, description, type } = prod;
+              const variant = prod.variants;
+              const imageAlts = generateImageAlts(prod);
+              return (
+                <div
+                  key={prod._id}
+                  className={`w-full md:flex-wrap ${hiralightGrayBG} md:flex-shrink-0`}
+                >
+                  <div
+                    className={`flex flex-col h-full`}
+                    onClick={() => {
+                      handleRingClick(prod, imageAlts);
+                    }}
+                  >
+                    {prod.variants !== null &&
+                    prod.variants !== undefined &&
+                    variant.length > 0 ? (
+                      <ImageSlider
+                        images={variant[0].images}
+                        imageAlts={imageAlts}
+                        // w-200 h-200 md:w-400 md:h-400
+                        imageClass={`object-cover object-center`}
+                      ></ImageSlider>
+                    ) : (
+                      <ImageSlider
+                        images={[dummyImageURL]}
+                        imageAlts={imageAlts}
+                        imageClass={
+                          "w-200 h-200 md:w-400 md:h-400 object-cover object-center"
+                        }
+                      ></ImageSlider>
+                    )}
+
+                    {
+                      <div className="flex flex-col justify-between z-[5] h-fit overflow-hidden mt-2">
+                        <h2
+                          className={`${hiraDarkGrayText} mx-1 title-font text-lg font-medium`}
+                        >
+                          {title}
+                        </h2>
+                        <p className="mx-1">USD$ {prod.variants[0].price}</p>
+                        <Link
+                          onClick={() => {
+                            handleRingClick(prod, imageAlts);
+                          }}
+                          href="/settingdetail"
+                          className={`flex mt-2 mx-1 text-black text-center justify-center ${hiralightGrayBG} border ${borderHiraBlack} py-2 px-6 focus:outline-none hover:bg-black`}
+                        >
+                          Select
+                        </Link>
+                      </div>
+                    }
+                  </div>
+                </div>
+              );
+            })}
+            <div className="col-span-2 mt-4 w-screen -mx-4 lg:mx-0 lg:w-full lg:mt-0 md:col-span-2">
+              <img
+                src={lifestyleImages[0]}
+                alt={`Lifestyle Image`}
+                // w-200 h-200 md:w-400 md:h-400 object-cover object-center
+                // className="w-full h-auto object-contain border"
+                className={""}
+              />
+            </div>
+            {products.slice(2).map((prod, i) => {
               const { _id, title, description, type } = prod;
               const variant = prod.variants;
               const imageAlts = generateImageAlts(prod);

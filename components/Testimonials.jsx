@@ -48,7 +48,7 @@ const Testimonials = () => {
     },
   ];
   return (
-    <section class="text-black body-font">
+    <div class="text-black body-font">
       <div class="container px-5 py-10 mx-auto">
         <div class="flex flex-col text-center w-full mb-20">
           <h1 class="sm:text-3xl text-2xl font-Raleway title-font mb-4 text-black">
@@ -58,8 +58,10 @@ const Testimonials = () => {
             Hear from real customers that chose HIRA.
           </p>
         </div>
-        <CarouselTestimonials data={testimonials}></CarouselTestimonials>
-        {/* <div class="flex flex-wrap -m-4 justify-center">
+        <div className="lg:hidden">
+          <CarouselTestimonials data={testimonials}></CarouselTestimonials>
+        </div>
+        <div class="hidden -m-4 justify-center lg:flex lg:flex-wrap">
           {testimonials.map((tmoney, i) => {
             return (
               <>
@@ -74,9 +76,9 @@ const Testimonials = () => {
               </>
             );
           })}
-        </div> */}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
