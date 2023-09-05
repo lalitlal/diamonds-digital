@@ -31,7 +31,7 @@ const Hero = () => {
           className=" w-screen pt-3 md:w-full h-auto md:h-[60vh] lg:h-[100vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
           alt=""
         />
-        <p className="hidden font-Raleway md:flex absolute  text-gray-500 w-full text-center justify-center h-auto text-2xl lg:text-4xl mt-5  md:top-[5vh] lg:top-[10vh]">
+        <p className="hidden font-Raleway md:flex absolute  text-white w-full text-center justify-center h-auto text-2xl lg:text-4xl mt-5  md:top-[5vh] lg:top-[10vh]">
           Engagement rings, made for one.
         </p>
         <div className="absolute top-1/2 flex flex-1 flex-wrap w-1/4">
