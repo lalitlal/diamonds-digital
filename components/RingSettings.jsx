@@ -11,6 +11,7 @@ import {
   hiralightGrayBG,
 } from "./constants";
 import urlBuilder from "@sanity/image-url";
+import Image from "next/image";
 
 const RingSettings = () => {
   const diamondContext = useContext(DiamondContext);
@@ -220,7 +221,9 @@ const RingSettings = () => {
               );
             })}
             <div className="col-span-2 mt-4 w-screen -mx-4 lg:mx-0 lg:w-full lg:mt-0 md:col-span-2">
-              <img
+              <Image
+                width={400}
+                height={400}
                 src={lifestyleImages[0]}
                 alt={`Lifestyle Image`}
                 // w-200 h-200 md:w-400 md:h-400 object-cover object-center
