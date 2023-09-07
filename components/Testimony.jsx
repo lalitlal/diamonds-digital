@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import heroBracelet from "../public/assets/hero-bracelet.jpg";
-import { hiraBlackBG } from "./constants";
+// import heroBracelet from "../public/assets/hero-bracelet.jpg";
+import { hiraBlackBG, hiralightGrayText } from "./constants";
 
 const Testimony = ({ name, purchase, review, source }) => {
   return (
@@ -9,15 +9,15 @@ const Testimony = ({ name, purchase, review, source }) => {
       <div
         class={`w-full max-w-xl px-5 pt-5 pb-10 mx-auto text-gray-800 shadow-lg ${hiraBlackBG} h-full`}
       >
-        <div class="w-full pt-1 pb-5 mx-auto -mt-16 text-center">
-          <a href="#" class="relative block">
-            <Image
+        {/* <div class="w-full pt-1 pb-5 mx-auto -mt-16 text-center"> */}
+        {/* <a href="#" class="relative block"> */}
+        {/* <Image
               alt="profil"
               src={heroBracelet}
               class="mx-auto object-cover h-40 w-40"
-            />
-          </a>
-        </div>
+            /> */}
+        {/* </a> */}
+        {/* </div> */}
         <div class="w-full mb-10">
           <div class="h-3 text-3xl leading-tight text-left text-gray-500">
             “
@@ -30,7 +30,9 @@ const Testimony = ({ name, purchase, review, source }) => {
           </div>
         </div>
         <div class="w-full">
-          <p class="font-bold text-center text-yellow-600 text-md">{name}</p>
+          <p class={`font-bold text-center ${hiralightGrayText} text-md`}>
+            {name}
+          </p>
           <p class="text-xs text-center text-gray-500 dark:text-gray-300">
             {purchase}
           </p>
