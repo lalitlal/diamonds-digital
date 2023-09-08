@@ -7,6 +7,7 @@ import { client } from "../sanity/lib/client";
 
 import urlBuilder from "@sanity/image-url";
 import Image from "next/image";
+import SanityImages from "./SanityImages";
 
 const Hero = () => {
   const imgUrlBuilder = urlBuilder(client);
@@ -27,14 +28,18 @@ const Hero = () => {
   return (
     <>
       <div className="flex mx-auto relative">
-        <Image
+        {/* <Image
           priority
           width={400}
           height={400}
           src={heroImages[0]}
           className=" w-screen pt-3 md:w-full h-auto md:h-[60vh] lg:h-[80vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
           alt="Diamond Engagement Ring Deals"
-        />
+        /> */}
+        <SanityImages
+          type={"Hero"}
+          className=" w-screen pt-3 md:w-full h-auto md:h-[60vh] lg:h-[80vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+        ></SanityImages>
         <p className="hidden font-Raleway md:flex absolute  text-white w-full text-center justify-center h-auto text-2xl lg:text-4xl mt-5  md:top-[5vh] lg:top-[10vh]">
           Engagement rings, made for one.
         </p>

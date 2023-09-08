@@ -180,7 +180,7 @@ const Header = () => {
           Settings
         </Link>
         <Link
-          href="/"
+          href="/about"
           className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 hover:cursor-pointer"
         >
           About

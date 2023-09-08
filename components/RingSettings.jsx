@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { CartContext } from "./context/CartContext";
 import { DiamondContext } from "./context/DiamondContext";
+import SanityImages from "./SanityImages";
 import ImageSlider from "./ImageSlider";
 import { getDisplayImages, getProducts } from "../sanity/sanity-utils";
 import { client } from "../sanity/lib/client";
@@ -221,7 +222,7 @@ const RingSettings = () => {
               );
             })}
             <div className="col-span-2 mt-4 w-screen -mx-4 lg:mx-0 lg:w-full lg:mt-0 md:col-span-2">
-              <Image
+              {/* <Image
                 width={400}
                 height={400}
                 src={lifestyleImages[0]}
@@ -230,7 +231,8 @@ const RingSettings = () => {
                 // className="w-full h-auto object-contain border"
                 className={""}
                 priority
-              />
+              /> */}
+              <SanityImages type="Lifestyle"></SanityImages>
             </div>
             {products.slice(2).map((prod, i) => {
               const { _id, title, description, type } = prod;

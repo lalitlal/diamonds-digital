@@ -34,7 +34,7 @@ const MobileMenu = () => {
           <Link href="/ringsettings" className={`${standardStyling}`}>
             Settings
           </Link>
-          <Link href="/" className={`${standardStyling}`}>
+          <Link href="/about" className={`${standardStyling}`}>
             About
           </Link>
           <Link href="/gallery" className={`${standardStyling}`}>
