@@ -57,9 +57,11 @@ function ImageSlider({ images, imageClass, imagesAlt, checkout = false }) {
             currentSlide === index ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img
+          <Image
+            width={400}
+            height={400}
             src={image}
-            alt={`Image ${index + 1}`}
+            alt={`Image ${index + 1} Diamong Engagement Ring Deal`}
             // w-200 h-200 md:w-400 md:h-400 object-cover object-center
             // className="w-full h-auto object-contain border"
             className={imageClass}

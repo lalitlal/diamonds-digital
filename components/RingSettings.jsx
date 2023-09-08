@@ -229,6 +229,7 @@ const RingSettings = () => {
                 // w-200 h-200 md:w-400 md:h-400 object-cover object-center
                 // className="w-full h-auto object-contain border"
                 className={""}
+                priority
               />
             </div>
             {products.slice(2).map((prod, i) => {
