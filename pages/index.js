@@ -49,7 +49,7 @@ export default function Home() {
           <h1 className="mb-4 font-bold text-4xl flex justify-center">
             Our Values
           </h1>
-          <div className="lg:flex">
+          <div className="lg:flex lg:text-center lg:items-center lg:justify-center">
             <div>
               <h1 className="mb-4 font-bold text-2xl justify-center">
                 <div className="flex justify-center py-4">
@@ -57,7 +57,7 @@ export default function Home() {
                 </div>
                 Uncompromised Quality
               </h1>
-              <div>
+              <div className="lg:mx-2">
                 Our ancestry of goldsmiths has inspired us to take our family
                 business digital. Ever since 1949, our mission has been to
                 deliver fine crafted jewelery.
@@ -70,7 +70,7 @@ export default function Home() {
                 </div>
                 Uncompromised Service
               </h1>
-              <div>
+              <div className="lg:mx-2">
                 Our ancestry of goldsmiths has inspired us to take our family
                 business digital. Ever since 1949, our mission has been to
                 deliver fine crafted jewelery.
@@ -81,9 +81,9 @@ export default function Home() {
                 <div className="flex justify-center py-4">
                   {shapes.pear.svg}
                 </div>
-                Uncompromised Experience
+                Uncompromised Journey
               </h1>
-              <div>
+              <div className="lg:mx-2">
                 Our ancestry of goldsmiths has inspired us to take our family
                 business digital. Ever since 1949, our mission has been to
                 deliver fine crafted jewelery.
@@ -96,7 +96,7 @@ export default function Home() {
                 </div>
                 Uncompromised Integrity
               </h1>
-              <div>
+              <div className="lg:mx-2">
                 Our ancestry of goldsmiths has inspired us to take our family
                 business digital. Ever since 1949, our mission has been to
                 deliver fine crafted jewelery.
