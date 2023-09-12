@@ -20,6 +20,7 @@ import Link from "next/link";
 import WhatsIncluded from "./WhatsIncluded";
 import CheckoutImageSlider from "./CheckoutImageSlider";
 import { event } from "../lib/gtag";
+import TrustedHtmlContent from "./TrustedHTMLContent";
 
 const Checkout = () => {
   const handleRemoveCartItem = (item) => {
@@ -59,21 +60,20 @@ const Checkout = () => {
   const checkoutBtnClick = async () => {
     if (
       cartContext.diamond === undefined ||
-      cartContext.setting === undefined ||
-      !cartContext.ringSize
+      (cartContext.setting === undefined && !cartContext.ringSize)
     ) {
       setError(true);
       return;
     }
     setError(false);
     const checkoutData = {
-      diamondPrice: cartContext.diamondPrice * 100, // cents,
+      diamondPrice: parseInt(cartContext.diamondPrice * 100), // cents,
       diamondData: cartContext.diamond,
       settingData: `${cartContext.setting} `,
       // settingData: `${cartContext.setting} `.concat(
       //   `${diamondContext.bandColor}`
       // ),
-      settingPrice: cartContext.settingPrice * 100,
+      settingPrice: parseInt(cartContext.settingPrice * 100),
       ringSize: cartContext.ringSize,
     };
     const res = await fetch(`/api/checkout_sessions`, {
@@ -111,8 +111,18 @@ const Checkout = () => {
         </h3>
         <div className={`lg:flex`}>
           <div className={`lg:w-1/2 lg:mx-2`}>
-            <CheckoutImageSlider></CheckoutImageSlider>
+            {cartContext.setting && <CheckoutImageSlider></CheckoutImageSlider>}
           </div>
+          {cartContext.setting === undefined && cartContext.diamond ? (
+            <div className="flex justify-center items-center text-center lg:justify-start">
+              <TrustedHtmlContent
+                url={diamondContext.diamondDetails.diamond.video}
+              ></TrustedHtmlContent>
+            </div>
+          ) : (
+            ""
+          )}
+
           <div className={`lg:w-1/2`}>
             <CheckoutItems
               onRemoveItem={(item) => {
@@ -137,7 +147,9 @@ const Checkout = () => {
                 className={`flex w-full justify-center py-3 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                 onClick={checkoutBtnClick}
               >
-                Complete Ring (USD$ {totalPrice})
+                {cartContext.setting
+                  ? `Complete Ring (USD$ ${totalPrice})`
+                  : `Buy Diamond (USD$ ${totalPrice})`}
               </button>
             </div>
 

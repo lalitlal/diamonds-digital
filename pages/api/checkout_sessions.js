@@ -41,7 +41,7 @@ export default async function handler(req, res) {
             },
             quantity: 1,
           },
-          {
+          checkoutData.settingData && {
             price_data: {
               currency: "usd",
               product_data: {

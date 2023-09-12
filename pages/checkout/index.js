@@ -34,7 +34,6 @@ export default function Home() {
       </div>
       <div className="mx-4">
         <Breadcrumb navDetails={navigationBreadCrums["Settings"]}></Breadcrumb>
-        {/* <WhatsIncluded></WhatsIncluded> */}
         <Checkout></Checkout>
       </div>
       <Footer></Footer>
