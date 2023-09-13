@@ -111,10 +111,10 @@ const Checkout = () => {
         </h3>
         <div className={`lg:flex`}>
           <div className={`lg:w-1/2 lg:mx-2`}>
-            {cartContext.setting && <CheckoutImageSlider></CheckoutImageSlider>}
+            {<CheckoutImageSlider></CheckoutImageSlider>}
           </div>
           {cartContext.setting === undefined && cartContext.diamond ? (
-            <div className="flex justify-center items-center text-center lg:justify-start">
+            <div className="flex justify-center items-center text-center lg:justify-start lg:w-full">
               <TrustedHtmlContent
                 url={diamondContext.diamondDetails.diamond.video}
               ></TrustedHtmlContent>

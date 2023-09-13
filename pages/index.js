@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import LiveExpertBanner from "../components/LiveExpertBanner";
 import { hiraBlackBG, shapes } from "../components/constants";
+import OurValues from "../components/OurValues";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,69 +43,7 @@ export default function Home() {
       </div>
 
       <Testimonials></Testimonials>
-      <div
-        className={`w-screen ${hiraBlackBG} text-white text-center font-Raleway`}
-      >
-        <div className="p-10">
-          <h1 className="mb-4 font-bold text-4xl flex justify-center">
-            Our Values
-          </h1>
-          <div className="lg:flex lg:text-center lg:items-center lg:justify-center">
-            <div>
-              <h1 className="mb-4 font-bold text-2xl justify-center">
-                <div className="flex justify-center py-4">
-                  {shapes.round.svg}
-                </div>
-                Uncompromised Quality
-              </h1>
-              <div className="lg:mx-2">
-                Our ancestry of goldsmiths has inspired us to take our family
-                business digital. Ever since 1949, our mission has been to
-                deliver fine crafted jewelery.
-              </div>
-            </div>
-            <div>
-              <h1 className="mb-4 font-bold text-2xl justify-center">
-                <div className="flex justify-center py-4">
-                  {shapes.oval.svg}
-                </div>
-                Uncompromised Service
-              </h1>
-              <div className="lg:mx-2">
-                Our ancestry of goldsmiths has inspired us to take our family
-                business digital. Ever since 1949, our mission has been to
-                deliver fine crafted jewelery.
-              </div>
-            </div>
-            <div>
-              <h1 className="mb-4 font-bold text-2xl justify-center">
-                <div className="flex justify-center py-4">
-                  {shapes.pear.svg}
-                </div>
-                Uncompromised Journey
-              </h1>
-              <div className="lg:mx-2">
-                Our ancestry of goldsmiths has inspired us to take our family
-                business digital. Ever since 1949, our mission has been to
-                deliver fine crafted jewelery.
-              </div>
-            </div>
-            <div>
-              <h1 className="mb-4 font-bold text-2xl justify-center">
-                <div className="flex justify-center py-4">
-                  {shapes.marquise.svg}
-                </div>
-                Uncompromised Integrity
-              </h1>
-              <div className="lg:mx-2">
-                Our ancestry of goldsmiths has inspired us to take our family
-                business digital. Ever since 1949, our mission has been to
-                deliver fine crafted jewelery.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <OurValues></OurValues>
       <FAQ></FAQ>
       <Footer></Footer>
       {/* Custom Ring Banner Page*/}

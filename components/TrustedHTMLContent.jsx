@@ -11,7 +11,7 @@ const TrustedHtmlContent = ({ url }) => {
     const breakpoints = {
       sm: [320, 320],
       md: [500, 500],
-      lg: [1024, 320],
+      lg: [1024, 500],
     };
 
     let breakpoint = "sm";

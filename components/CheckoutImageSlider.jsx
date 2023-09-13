@@ -160,15 +160,12 @@ const CheckoutImageSlider = () => {
   ]);
 
   useEffect(() => {
-    if (
-      cartInfo[0].description === undefined ||
-      cartInfo[1].description === undefined
-    ) {
-      setUnfinishedCart(true);
-    } else {
+    if (cartContext.diamond) {
       setUnfinishedCart(false);
+    } else {
+      setUnfinishedCart(true);
     }
-  }, [cartInfo]);
+  }, [cartContext.diamond]);
 
   return (
     <>
