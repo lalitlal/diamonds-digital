@@ -182,6 +182,12 @@ export default function Home() {
         </div>
         <div className="p-10 lg:flex">
           {/* P2 1 */}
+          <div className="block lg:hidden">
+            <SanityImages
+              type={"Lifestyle"}
+              className="w-screen md:w-full h-auto md:h-[60vh] lg:h-[60vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+            ></SanityImages>
+          </div>
           <div className="lg:w-3/4">
             <h1 className="mb-4 font-bold text-2xl flex justify-center">
               Integrity
@@ -196,7 +202,7 @@ export default function Home() {
             </div>
             {speakButton}
           </div>
-          <div>
+          <div className="hidden lg:block">
             <SanityImages
               type={"Lifestyle"}
               className="w-screen md:w-full h-auto md:h-[60vh] lg:h-[60vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
