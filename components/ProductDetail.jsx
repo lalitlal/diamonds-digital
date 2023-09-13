@@ -185,8 +185,8 @@ const ProductDetail = ({ shape, data }) => {
                     {toFixedDecimal(data.price * marginMultiplier)})
                   </button>
                 </Link>
-                <Link href={"/checkout"}>
-                  <button
+                <Link href={"/checkout"} scroll={true}>
+                  <div
                     class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg mt-2`}
                     onClick={() => {
                       handleDiamondSelect();
@@ -196,7 +196,7 @@ const ProductDetail = ({ shape, data }) => {
                   >
                     Buy Now (USD${" "}
                     {toFixedDecimal(data.price * marginMultiplier)})
-                  </button>
+                  </div>
                 </Link>
               </div>
             </div>
