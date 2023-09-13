@@ -35,9 +35,9 @@ export default function Home() {
         <div className="p-10">
           <h1 className="mb-4 font-bold text-4xl">Our Story</h1>
           <div>
-            Our ancestry of goldsmiths has inspired us to take our family
+            {`Our ancestry of goldsmiths has inspired us to take our family
             business digital. Ever since 1949, our mission has been to deliver
-            fine crafted jewelery.
+            fine crafted jewelery.`}
           </div>
         </div>
       </div>

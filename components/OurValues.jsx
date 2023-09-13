@@ -17,9 +17,9 @@ const OurValues = () => {
               Uncompromised Quality
             </h1>
             <div className="lg:mx-2">
-              Real diamonds. Real, solid metals. HIRA is a household name
+              {`Real diamonds. Real, solid metals. HIRA is a household name
               because our pieces stand the test of time. Our pieces are built to
-              last.
+              last.`}
             </div>
           </div>
           <div>
@@ -28,10 +28,10 @@ const OurValues = () => {
               Uncompromised Service
             </h1>
             <div className="lg:mx-2">
-              From first contact to delivery, to your anniversary, we take care
+              {`From first contact to delivery, to your anniversary, we take care
               of the HIRA family. Every customer is updated daily on their order
               status and receives communication within 1 hour of inquiry. We are
-              by your side.
+              by your side.`}
             </div>
           </div>
           <div>
@@ -40,10 +40,10 @@ const OurValues = () => {
               Uncompromised Journey
             </h1>
             <div className="lg:mx-2">
-              We bring you along the journey in a way that is fun and easy. This
+              {`We bring you along the journey in a way that is fun and easy. This
               includes design iterations, final render, mould creation, ring
               completion, and real-time delivery tracking - our customers are
-              always in the know.
+              always in the know.`}
             </div>
           </div>
           <div>
@@ -54,9 +54,9 @@ const OurValues = () => {
               Uncompromised Integrity
             </h1>
             <div className="lg:mx-2">
-              This is truly uncompromised. We value your time, your money, and
+              {`This is truly uncompromised. We value your time, your money, and
               your health - we prize ourselves in making your dream ring with
-              premium material but a fraction of the cost!
+              premium material but a fraction of the cost!`}
             </div>
           </div>
         </div>

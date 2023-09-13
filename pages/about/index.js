@@ -65,18 +65,18 @@ export default function Home() {
             </h1>
             <div className="h-full flex flex-col justify-center">
               <div className="text-justify lg:text-xl">
-                We started with a simple mission. Every couple should experience
+                {`We started with a simple mission. Every couple should experience
                 an effortless and enjoyable engagement - with a high quality,
-                expert crafted diamond ring that doesn't break the bank.
+                expert crafted diamond ring that doesn't break the bank.`}
               </div>
               <div className="text-justify lg:text-xl lg:mt-2">
-                We are a multi-generational family of gold smiths and jewellers
+                {`We are a multi-generational family of gold smiths and jewellers
                 who specialize in creating custom diamond engagement rings. All
-                of our rings are proudly designed and made in Canada.
+                of our rings are proudly designed and made in Canada.`}
               </div>
               <div className="text-justify lg:text-xl lg:mt-2">
-                Our name reflects the rich origins of our family trade that has
-                been taught and carried on for over 100 years.
+                {`Our name reflects the rich origins of our family trade that has
+                been taught and carried on for over 100 years. HIRA ([Hee-rah] is an ancient, South Asian term meaning diamond.)`}
               </div>
             </div>
           </div>
@@ -98,9 +98,9 @@ export default function Home() {
                 Our Why
               </h1>
               <div className="lg:mx-2">
-                Couples should start their journey on their best foot forward.
+                {`Couples should start their journey on their best foot forward.
                 That's why we're here to give you your dream ring at a fraction
-                of the cost. Real diamonds, authentic metals. That's HIRA.
+                of the cost. Real diamonds, authentic metals. That's HIRA.`}
               </div>
             </div>
             <div>
@@ -111,11 +111,11 @@ export default function Home() {
                 Our Vision
               </h1>
               <div className="lg:mx-2">
-                Our vision is to create a one stop shop for engagement rings and
+                {`Our vision is to create a one stop shop for engagement rings and
                 completely put you at ease. This is the place where you can ask
                 us to copy that ring on TikTok or Instagram, and you can rest
                 assured that we will deliver in your budget and in your
-                timeline.
+                timeline.`}
               </div>
             </div>
 
@@ -127,10 +127,10 @@ export default function Home() {
                 Our Mission
               </h1>
               <div className="lg:mx-2">
-                We are committed to build you the perfect diamond engagement
+                {`We are committed to build you the perfect diamond engagement
                 ring that is made for one. Using the highest quality materials,
                 expert craftsmanship and a completely personalized shopping
-                experience.
+                experience.`}
               </div>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function Home() {
               Family
             </h1>
             <div className="text-justify lg:text-xl">
-              HIRA is a family owned business. Passed down generation after
+              {`HIRA is a family owned business. Passed down generation after
               generation, the art of creating fine jewelery is in our blood. We
               pride ourselves for being in industry for over 150 years. As a
               family owned business, we value the family unit. We aspire to
@@ -175,7 +175,7 @@ export default function Home() {
               to making you feel like family. Did we mention we're obsessed with
               fine jewelery? Let us be a part of your heirloom journey - let us
               create a timeless piece that you can pass down, generation after
-              generation.
+              generation.`}
             </div>
             {speakButton}
           </div>
@@ -193,12 +193,12 @@ export default function Home() {
               Integrity
             </h1>
             <div className="text-justify lg:text-xl">
-              After being in business for over a century, we've built lifelong
+              {`After being in business for over a century, we've built lifelong
               relationships with our clients. Our clients trust us to give them
               transparency on the origins, quality, and cost of their product,
               and you can too. When you work with HIRA, you work with an
               established business that values your satisfaction and experience
-              far beyond anything else.
+              far beyond anything else.`}
             </div>
             {speakButton}
           </div>
@@ -222,7 +222,7 @@ export default function Home() {
               Affordability
             </h1>
             <div className="text-justify lg:text-xl">
-              If you're on our website and notice that our pricing is
+              {`If you're on our website and notice that our pricing is
               significantly cheaper than anywhere else you've gone - don't be
               shocked! We source real, certified lab-grown diamonds, and our
               metals are authentic. Our pricing is founded on our existing
@@ -231,7 +231,7 @@ export default function Home() {
               starting their lives together, because we value your relationship
               above your dollar. If you have any questions about our pricing or
               materials, our founders would be happy to speak with you in
-              person!
+              person!`}
             </div>
             {speakButton}
           </div>
