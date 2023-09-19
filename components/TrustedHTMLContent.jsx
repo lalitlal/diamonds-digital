@@ -27,14 +27,18 @@ const TrustedHtmlContent = ({ url }) => {
   }, [usedURL, url, usedBP]);
 
   return (
-    <iframe
-      ref={iframeRef}
-      src={usedURL}
-      rel="preconnect"
-      width={`${usedBP}px`}
-      height={`${usedBP}px`}
-      title="External Content"
-    />
+    <div>
+      Tap me for a 360 interactive!
+      <iframe
+        ref={iframeRef}
+        src={usedURL}
+        rel="preconnect"
+        width={`${usedBP}px`}
+        height={`${usedBP}px`}
+        title="Loose Diamond 360 View"
+        allow="autoplay; fullscreen; picture-in-picture; xr-spatial-tracking; clipboard-write"
+      />
+    </div>
   );
 };
 

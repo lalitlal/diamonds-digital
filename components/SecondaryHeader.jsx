@@ -52,7 +52,7 @@ const SecondaryHeader = () => {
       <div
         className={`flex justify-between ${hiraBlackBG} ${hiraWhiteText} py-4 mb-4`}
       >
-        <div className="flex md:hidden items-center w-1/3 ml-4 cursor-pointer">
+        <div className="flex md:hidden items-center w-fit ml-4 cursor-pointer">
           {!cartContext.showMobileMenu ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -128,19 +128,19 @@ const SecondaryHeader = () => {
             Settings
           </Link>
           <Link
-            href="/"
+            href="/about"
             className="block mt-4 text-xl lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
             About
           </Link>
           <Link
             href="/gallery"
-            className="block mt-4 text-xl lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer"
+            className="block mt-4 text-xl lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer mr-2"
           >
             Gallery
           </Link>
         </div>
-        <div className="flex justify-end items-center align-middle w-1/3 mr-4">
+        <div className="flex justify-center items-center align-middle w-fit mr-4">
           <Cart></Cart>
           <div
             onClick={handleOpenBookingModal}
@@ -148,7 +148,7 @@ const SecondaryHeader = () => {
           >
             <div class="justify-center w-full hover:cursor-pointer">
               <button
-                class={`w-full hidden lg:flex justify-center py-2  px-4 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none text-lg`}
+                class={`w-full hidden md:flex justify-center py-2  px-4 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none text-lg`}
                 onClick={() => {
                   // handleOpenBookingModal();
                   cartContext.setShowBookingModal(true);

@@ -18,40 +18,40 @@ const FAQ = () => {
   );
   const faqElements = [
     {
-      q: "How does it work?",
-      a: "Easy as 1 2 3. Pick a diamond, pick a setting, checkout!",
+      q: "I need help buying a ring from your website. What should I do?",
+      a: "Go ahead and give us a call at the number up top, or send us a message in the message icon, or email us at team@hiradiamonds.com. Our staff will reply within 1 hour.",
     },
     {
-      q: "How does billing work?",
-      a: "We charge you a deposit to secure your custom diamond and build the mould, and the rest you pay on pickup!",
+      q: "What kind of warranty do I have?",
+      a: "HIRA Diamonds offers a free Lifetime Warranty from the date of invoice against any manufacturing defects on all gold and platinum jewellery. Read more about our full warranty terms and conditions here.",
+    },
+    {
+      q: "Do you ship worldwide?",
+      a: "Yes! At HIRA Diamonds we offer free international shipping on all orders.",
+    },
+    {
+      q: "How does it work?",
+      a: "Easy as 1 2 3. Pick a diamond, pick a setting, checkout!",
     },
     {
       q: "Can I see the ring in person?",
       a: "Absolutely! Our analytics team has a strong grip on people's favorites, from diamond shape and style, to setting. You can come into one of our stores and we'd be happy to show you an example ring that is nearly identical to the one you want!",
     },
     {
-      q: "How do refunds work?",
-      a: " We offers a 30-day money-back guarantee for most of our purchases. However, since these are custom rings, we charge a USD $300 to pay for the custom ring mold.",
+      q: "How do I find my ring size?",
+      a: "We recommend that you visit a local jeweller to get your ring size measured.",
     },
     {
-      q: "Can I change my diamond?",
-      a: "If you are not satisfied with your purchase, we allow once loose diamond change per customer. After that, any loose diamonds purchased are final sale.",
+      q: "Can you help me keep my purchase a surprise?",
+      a: "Absolutely! All of our products come in subtle packaging to ensure you have full control over your special moment. Please let us know if we can help you in any other way to keep your purchase a surprise!",
     },
     {
-      q: "Can I change my setting?",
-      a: "Settings are custom made, so we will charge you for the mold only.",
+      q: "Can I return a product?",
+      a: "All HIRA Diamonds rings are custom made to order and they cannot be returned. Please choose carefully when purchasing. If you have a question or require assistance, please call or message or email us.",
     },
     {
-      q: "How do I contact support?",
-      a: "If you need help with the platform or have any other questions, you can contact the company's support team by submitting a support request through the website or by emailing support@hira.com.",
-    },
-    {
-      q: "Do you make custom rings?",
-      a: "With over 65 years of experience. We prize ourselves in being able to make the most unique and extravagent diamond engagement rings that your partner will love. Send us a picture of what you want, and we'll get back to you.",
-    },
-    {
-      q: "How do you compare to other services?",
-      a: "This platform is a highly reliable and feature-rich service that offers a wide range of tools and functionality. It is competitively priced and offers a variety of billing options to suit different needs and budgets.",
+      q: "My ring doesn't fit perfectly. Do you resize?",
+      a: "Absolutely! All HIRA Diamonds rings come with one free resizing within the first six months of purchase. *Free resize to maximum of 2 sizes up or down. Read more about resizing.",
     },
   ];
   return (

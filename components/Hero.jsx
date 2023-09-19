@@ -28,14 +28,6 @@ const Hero = () => {
   return (
     <>
       <div className="flex mx-auto relative">
-        {/* <Image
-          priority
-          width={400}
-          height={400}
-          src={heroImages[0]}
-          className=" w-screen pt-3 md:w-full h-auto md:h-[60vh] lg:h-[80vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
-          alt="Diamond Engagement Ring Deals"
-        /> */}
         <SanityImages
           type={"Hero"}
           className=" w-screen pt-3 md:w-full h-auto md:h-[60vh] lg:h-[80vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
@@ -58,7 +50,7 @@ const Hero = () => {
               href="/diamond"
               className="flex absolute justify-center w-48 md:w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white px-3 py-4 hover:bg-black hover:text-white transition duration-300 ease-in-out"
             >
-              Start with a diamond
+              Shop Diamonds
             </Link>
           </div>
           <div
@@ -75,7 +67,7 @@ const Hero = () => {
               href="/ringsettings"
               className="flex absolute justify-center w-48 md:w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white px-3 py-4 hover:bg-black hover:text-white transition duration-300 ease-in-out"
             >
-              Start with a setting
+              Shop Rings
             </Link>
           </div>
         </div>

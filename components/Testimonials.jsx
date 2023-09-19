@@ -1,52 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Testimony from "./Testimony";
 import CarouselTestimonials from "./CarouselTestimonials";
+import { getTestimonials } from "../sanity/sanity-utils";
+import urlBuilder from "@sanity/image-url";
+import { client } from "../sanity/lib/client";
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      name: "Cassandra",
-      purchase: "Oval solitaire hidden halo yellow gold",
-      review:
-        "My fiance got me the exact ring I wanted. It's like he contacted the original photo model and purchased it from them!",
-      img_src: "",
-    },
-    {
-      name: "Rabjot",
-      purchase: "Princess pave bridge white gold",
-      review:
-        "I was able to design the ring of my dreams, and HIRA made it happen! No more waiting for our 10-year anniversary to upgrade, this is my forever!",
-      img_src: "",
-    },
-    {
-      name: "Jasdeep",
-      purchase: "Radiant cathedral bridge yellow gold",
-      review:
-        "HIRA fully involved me in the process as much as I wanted to be, and gave above and beyond my expectations. I'm a happy fiance!",
-      img_src: "",
-    },
-    {
-      name: "Lalit",
-      purchase: "Emerald solitaire halo white gold",
-      review:
-        "HIRA was able to copy the exact ring my fiance wanted, it took all the guesswork out for me!",
-      img_src: "",
-    },
-    {
-      name: "Domara",
-      purchase: "Toi et moi cathedral yellow gold",
-      review:
-        "I've heard that engagement ring shopping can be stressful and quite the gamble - but HIRA was able to make this process so enjoyable and helped me give my fiance the best ring! She was blown away,",
-      img_src: "",
-    },
-    {
-      name: "John",
-      purchase: "Brilliant Round hidden halo white gold",
-      review:
-        "My fiance and I have been dreaming of creating a very particular ring. We shopped around for a while, but only HIRA was able to deliver exactly to spec! I'm actually shocked at their accuracy and timeliness!",
-      img_src: "",
-    },
-  ];
+  const imgUrlBuilder = urlBuilder(client);
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      const res = await getTestimonials();
+      const testis = res.map((testi, index) => {
+        const imageSource = imgUrlBuilder.image(testi.image).url();
+        return { ...testi, img: imageSource };
+      });
+      setTestimonials(testis); // Note that we wrap the imageSource in an array to match your setHeroImages usage
+    };
+    fetchTestimonials();
+    return () => {};
+  }, []);
   return (
     <div class="text-black body-font">
       <div class="container px-5 py-10 mx-auto">
@@ -68,9 +42,9 @@ const Testimonials = () => {
                 <div className="flex relative lg:w-1/3 sm:w-1/2 p-4 justify-center items-stretch">
                   <Testimony
                     name={tmoney.name}
-                    purchase={tmoney.purchase}
+                    purchase={tmoney.order}
                     review={tmoney.review}
-                    source={tmoney.img_src}
+                    source={tmoney.img}
                   ></Testimony>
                 </div>
               </>

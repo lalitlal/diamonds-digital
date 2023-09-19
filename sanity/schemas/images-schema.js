@@ -18,7 +18,7 @@ const imageAssets = {
       title: "Type",
       type: "string",
       options: {
-        list: ["Hero", "Lifestyle"],
+        list: ["Hero", "Lifestyle", "Founders"],
       },
     },
     {

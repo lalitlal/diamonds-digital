@@ -62,7 +62,7 @@ const CarouselTestimonials = ({ data }) => {
               name={tmoney.name}
               purchase={tmoney.purchase}
               review={tmoney.review}
-              source={tmoney.img_src}
+              source={tmoney.img}
             ></Testimony>
           </div>
         ))}

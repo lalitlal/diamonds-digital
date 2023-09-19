@@ -243,3 +243,16 @@ export const getDisplayImages = async (type) => {
   });
   return values;
 };
+
+export const getTestimonials = async () => {
+  const groqQuery = `*[_type == "testimony"] {
+      _id,
+      review,
+      name,
+      order,
+      image,
+    }`;
+
+  const values = await client.fetch(groqQuery, {});
+  return values;
+};

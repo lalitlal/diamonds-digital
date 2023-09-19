@@ -181,7 +181,7 @@ const ProductDetail = ({ shape, data }) => {
                     class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                     onClick={() => handleDiamondSelect()}
                   >
-                    Add to ring (USD${" "}
+                    Add to a ring (USD${" "}
                     {toFixedDecimal(data.price * marginMultiplier)})
                   </button>
                 </Link>
@@ -192,9 +192,13 @@ const ProductDetail = ({ shape, data }) => {
                       handleDiamondSelect();
                       cartContext.setSetting(undefined);
                       cartContext.setSettingPrice(0.0);
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+                      });
                     }}
                   >
-                    Buy Now (USD${" "}
+                    Buy now (USD${" "}
                     {toFixedDecimal(data.price * marginMultiplier)})
                   </div>
                 </Link>
