@@ -31,7 +31,7 @@ export default function Home() {
         <MobileMenu></MobileMenu>
       </div>
       <Hero></Hero>
-      <div
+      {/* <div
         className={`w-screen ${hiraBlackBG} text-white text-center font-Raleway`}
       >
         <div className="p-10">
@@ -51,7 +51,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div>
         <h1 className="mb-4 font-bold text-4xl text-center font-Raleway mt-2">
           Our Promise

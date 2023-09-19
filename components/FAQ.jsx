@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 const FAQ = () => {
+  const [showAns, setShowAns] = useState(undefined);
+  const caretRotation = (index) => {
+    return showAns === index ? "rotate-180" : "";
+  };
   const caret = (
     <svg
       fill="none"
@@ -18,7 +22,7 @@ const FAQ = () => {
   );
   const faqElements = [
     {
-      q: "I need help buying a ring from your website. What should I do?",
+      q: "Can show me how to buy online?",
       a: "Go ahead and give us a call at the number up top, or send us a message in the message icon, or email us at team@hiradiamonds.com. Our staff will reply within 1 hour.",
     },
     {
@@ -42,7 +46,7 @@ const FAQ = () => {
       a: "We recommend that you visit a local jeweller to get your ring size measured.",
     },
     {
-      q: "Can you help me keep my purchase a surprise?",
+      q: "Can you keep my purchase a surprise?",
       a: "Absolutely! All of our products come in subtle packaging to ensure you have full control over your special moment. Please let us know if we can help you in any other way to keep your purchase a surprise!",
     },
     {
@@ -65,16 +69,22 @@ const FAQ = () => {
       <div class="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-8">
         {faqElements.map((el, i) => {
           return (
-            <div class="py-5" key={el + i}>
-              <details class="group">
-                <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
-                  <span> {el.q} </span>
-                  <span class="transition group-open:rotate-180">{caret}</span>
-                </summary>
-                <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
-                  {el.a}
-                </p>
-              </details>
+            <div
+              class="py-5"
+              key={el + i}
+              onClick={() => {
+                showAns === i ? setShowAns(undefined) : setShowAns(i);
+              }}
+            >
+              <div class="flex justify-between font-medium cursor-pointer list-none">
+                <div className="text-left"> {el.q} </div>
+                <div className={`transition transform ${caretRotation(i)}`}>
+                  {caret}
+                </div>
+              </div>
+              <div class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                {showAns === i && el.a}
+              </div>
             </div>
           );
         })}
