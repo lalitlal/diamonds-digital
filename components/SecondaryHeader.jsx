@@ -51,7 +51,7 @@ const SecondaryHeader = ({ initialBG = "black" }) => {
   return (
     <>
       <div
-        className={`flex justify-between ${hiraBlackBG} ${hiraWhiteText} py-4 mb-4`}
+        className={`flex justify-between ${hiraBlackBG} ${hiraWhiteText} py-4`}
       >
         <div className="flex md:hidden items-center w-fit ml-4 cursor-pointer">
           {!cartContext.showMobileMenu ? (
