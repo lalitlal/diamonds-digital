@@ -9,12 +9,13 @@ import CartModal from "./CartModal";
 import {
   borderHiraBlack,
   hiraBlackBG,
+  hiraBlackText,
   hiraWhiteBG,
   hiraWhiteText,
   xIcon,
 } from "./constants";
 
-const SecondaryHeader = () => {
+const SecondaryHeader = ({ initialBG = "black" }) => {
   const cartContext = useContext(CartContext);
 
   const handleOpenBookingModal = () => {

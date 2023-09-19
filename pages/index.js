@@ -12,6 +12,7 @@ import { hiraBlackBG, shapes } from "../components/constants";
 import OurValues from "../components/OurValues";
 import WhatsIncluded from "../components/WhatsIncluded";
 import SanityImages from "../components/SanityImages";
+import SecondaryHeader from "../components/SecondaryHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,7 @@ export default function Home() {
       <LiveExpertBanner></LiveExpertBanner>
       <div className="relative">
         <Navbar></Navbar>
-        <Header></Header>
+        <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
       <Hero></Hero>
