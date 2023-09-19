@@ -1146,7 +1146,7 @@ export const includedFeatures = [
   { name: "Overnight shipping", svg: planeIcon },
   { name: "Elegant packaging", svg: enclosureIcon },
   { name: "Official diamond certificate", svg: certificateIcon },
-  { name: "Free annual polish", svg: yearlyPolishIcon },
+  { name: "Lifetime warranty", svg: yearlyPolishIcon },
   { name: "Conflict-free diamonds", svg: checkBadgeIcon },
 ];
 

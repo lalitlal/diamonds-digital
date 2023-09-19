@@ -61,8 +61,10 @@ const FAQ = () => {
   return (
     <div class="max-w-screen-xl mx-auto px-5 bg-white min-h-sceen">
       <div class="flex flex-col items-center">
-        <h2 class="font-bold text-5xl mt-5 tracking-tight font-Raleway">FAQ</h2>
-        <p class="text-gray-500 text-xl mt-3 font-Raleway">
+        <h1 className="mt-4 font-bold text-4xl flex justify-center font-Raleway">
+          FAQ
+        </h1>
+        <p class="text-gray-500 text-xl mt-2 font-Raleway">
           Frequenty asked questions
         </p>
       </div>

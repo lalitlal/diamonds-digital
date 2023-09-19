@@ -60,7 +60,7 @@ const CarouselTestimonials = ({ data }) => {
           <div key={index} className="w-full flex-shrink-0">
             <Testimony
               name={tmoney.name}
-              purchase={tmoney.purchase}
+              purchase={tmoney.order}
               review={tmoney.review}
               source={tmoney.img}
             ></Testimony>
