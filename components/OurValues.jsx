@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { chevronLeft, chevronRight, hiraBlackBG, shapes } from "./constants";
+import {
+  chevronLeft,
+  chevronRight,
+  hiraBlackBG,
+  shapes,
+  minSwipeDistance,
+} from "./constants";
 
 const OurValues = () => {
   const valueConst = [
