@@ -10,7 +10,7 @@ const TrustedHtmlContent = ({ url }) => {
     const screenWidth = window.innerWidth;
     const breakpoints = {
       sm: [320, 320],
-      md: [500, 500],
+      md: [500, 320],
       lg: [1024, 500],
     };
 
