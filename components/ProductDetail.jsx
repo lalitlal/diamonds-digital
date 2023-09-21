@@ -23,7 +23,7 @@ const ProductDetail = ({ shape, data }) => {
   const [currentDisplay, setCurrentDisplay] = useState(0);
   const [seeFullDetails, setSeeFullDetails] = useState(false);
 
-  const handleDiamondSelect = () => {
+  const handleDiamondSelect = (event_type) => {
     {
       data.diamond.certificate.cut = data.diamond.certificate.cut || "UKN";
       const diamondStatus = `${shape} ${data.diamond.certificate.carats} ${
@@ -41,8 +41,8 @@ const ProductDetail = ({ shape, data }) => {
       diamondContext.setDiamondJustSelected(true);
       diamondContext.setDiamondDetails(data);
       event({
-        action: "Button Click",
-        category: "Diamonds",
+        action: `Diamond ${event_type} Button Click`,
+        category: "Diamonds Page",
         label: "Add to Cart",
         value: data.price * marginMultiplier,
       });
@@ -179,7 +179,7 @@ const ProductDetail = ({ shape, data }) => {
                 <Link href={"/ringsettings"}>
                   <button
                     class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
-                    onClick={() => handleDiamondSelect()}
+                    onClick={() => handleDiamondSelect("Add to ring")}
                   >
                     Add to a ring (USD${" "}
                     {toFixedDecimal(data.price * marginMultiplier)})
@@ -189,7 +189,7 @@ const ProductDetail = ({ shape, data }) => {
                   <div
                     class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg mt-2`}
                     onClick={() => {
-                      handleDiamondSelect();
+                      handleDiamondSelect("Buy Now");
                       cartContext.setSetting(undefined);
                       cartContext.setSettingPrice(0.0);
                       window.scrollTo({

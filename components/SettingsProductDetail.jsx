@@ -189,8 +189,8 @@ const SettingsProductDetail = ({}) => {
                           diamondContext.settingDetails.variantData.price
                         );
                         event({
-                          action: "Button Click",
-                          category: "Settings Product Detail",
+                          action: "Setting Complete Ring Button Click",
+                          category: "Settings Product Detail Page",
                           label: "Add to Cart",
                           value:
                             diamondContext.settingDetails.variantData.price,

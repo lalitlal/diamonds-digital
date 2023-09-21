@@ -58,6 +58,7 @@ export default async function handler(req, res) {
         success_url: `${req.headers.origin}/checkout-success`,
         cancel_url: `${req.headers.origin}`,
         automatic_tax: { enabled: true },
+        invoice_creation: { enabled: true },
       });
       res.status(200).json({ url: session.url, message: "Success" });
     } catch (err) {

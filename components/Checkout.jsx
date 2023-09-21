@@ -83,7 +83,7 @@ const Checkout = () => {
     const redirectURL = await res.json();
     // console.log(redirectURL);
     event({
-      action: "Button Click",
+      action: "Checkout Go to Stripe Button Click",
       category: "Checkout",
       label: "Go to Stripe",
       value: totalPrice,
@@ -148,7 +148,7 @@ const Checkout = () => {
                 onClick={checkoutBtnClick}
               >
                 {cartContext.setting
-                  ? `Complete Ring (USD$ ${totalPrice})`
+                  ? `Checkout (USD$ ${totalPrice})`
                   : `Buy Diamond (USD$ ${totalPrice})`}
               </button>
             </div>

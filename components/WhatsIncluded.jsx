@@ -9,7 +9,7 @@ const WhatsIncluded = () => {
           {includedFeatures.map((feat, i) => {
             return (
               <div key={i} className="w-1/3 mb-2">
-                <div class="flex justify-center p-2">
+                <div class="flex justify-center">
                   <div
                     class={`flex-col flex justify-center text-black w-full text-center p-4 h-full items-center`}
                   >

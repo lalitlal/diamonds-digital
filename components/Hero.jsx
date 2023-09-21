@@ -30,7 +30,7 @@ const Hero = () => {
       <div className="flex mx-auto relative">
         <SanityImages
           type={"Hero"}
-          className=" w-screen md:w-full h-auto md:h-[60vh] lg:h-[80vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+          className=" w-screen md:w-full h-auto md:h-[60vh] lg:h-[80vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] object-cover"
         ></SanityImages>
         <p className="hidden font-Raleway md:flex absolute  text-white w-full text-center justify-center h-auto text-2xl lg:text-4xl mt-5  md:top-[5vh] lg:top-[10vh]">
           Engagement rings, made for one.
@@ -39,9 +39,9 @@ const Hero = () => {
           <div
             onClick={() => {
               event({
-                action: "Button Click",
+                action: "Hero Shop Diamond Button Click",
                 category: "Hero Page",
-                label: "Start with diamond",
+                label: "Shop Diamond",
                 value: 0,
               });
             }}
@@ -56,9 +56,9 @@ const Hero = () => {
           <div
             onClick={() => {
               event({
-                action: "Button Click",
+                action: "Hero Shop Ring Button Click",
                 category: "Hero Page",
-                label: "Start with setting",
+                label: "Shop Ring",
                 value: 0,
               });
             }}

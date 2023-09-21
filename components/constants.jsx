@@ -1099,7 +1099,7 @@ export const planeIcon = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-airplane"
+    class="w-6 h-6"
     viewBox="0 0 16 16"
   >
     <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
@@ -1140,14 +1140,27 @@ export const moreInfoIcon = (
   </svg>
 );
 
+export const diamondIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="w-6 h-6"
+    viewBox="0 0 16 16"
+  >
+    <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z" />
+  </svg>
+);
+
 export const includedFeatures = [
   // { name: "30 days free return", svg: calendarIcon },
-  { name: "Free resizing", svg: enclosureIcon },
+  { name: "Free resizing", svg: checkBadgeIcon },
   { name: "Overnight shipping", svg: planeIcon },
   { name: "Elegant packaging", svg: enclosureIcon },
   { name: "Official diamond certificate", svg: certificateIcon },
   { name: "Lifetime warranty", svg: yearlyPolishIcon },
-  { name: "Conflict-free diamonds", svg: checkBadgeIcon },
+  { name: "Conflict-free diamonds", svg: diamondIcon },
 ];
 
 export const starIcon = (
