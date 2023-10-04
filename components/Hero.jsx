@@ -29,6 +29,7 @@ const Hero = () => {
     <>
       <div className="flex mx-auto relative">
         <SanityImages
+          priority={true}
           type={"Hero"}
           className=" w-screen md:w-full h-auto md:h-[60vh] lg:h-[80vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] object-cover"
         ></SanityImages>

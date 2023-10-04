@@ -4,7 +4,12 @@ import { getDisplayImages } from "../sanity/sanity-utils";
 import Image from "next/image";
 import { client } from "../sanity/lib/client";
 
-const SanityImages = ({ type, className = "", imgIndex = null }) => {
+const SanityImages = ({
+  type,
+  className = "",
+  imgIndex = null,
+  priority = false,
+}) => {
   const imgUrlBuilder = urlBuilder(client);
   const [lifestyleImages, setLifestyleImages] = useState([]);
   const [randomIndex, setRandomIndex] = useState(0);
@@ -34,7 +39,7 @@ const SanityImages = ({ type, className = "", imgIndex = null }) => {
       // w-200 h-200 md:w-400 md:h-400 object-cover object-center
       // className="w-full h-auto object-contain border"
       className={className}
-      priority
+      priority={priority}
     />
   );
 };
