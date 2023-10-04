@@ -13,6 +13,7 @@ import { DiamondContext } from "./context/DiamondContext";
 import {
   borderHiraBlack,
   hiraBlackBG,
+  hiraDarkBrownBG,
   hiraSlate,
   hiraWhiteBG,
 } from "./constants";
@@ -144,7 +145,7 @@ const Checkout = () => {
                 Speak to an expert
               </button>
               <button
-                className={`flex w-full justify-center py-3 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
+                className={`flex w-full justify-center py-3 text-white ${hiraDarkBrownBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                 onClick={checkoutBtnClick}
               >
                 {cartContext.setting

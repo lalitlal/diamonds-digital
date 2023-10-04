@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { hiraDarkBrownText } from "./constants";
 
 const FAQ = () => {
   const [showAns, setShowAns] = useState(undefined);
@@ -61,11 +62,13 @@ const FAQ = () => {
   return (
     <div class="max-w-screen-xl mx-auto px-5 bg-white min-h-sceen">
       <div class="flex flex-col items-center">
-        <h1 className="mt-4 font-bold text-4xl flex justify-center font-Raleway">
+        <h1
+          className={`mt-4 font-bold text-4xl flex justify-center text-emerald-900`}
+        >
           FAQ
         </h1>
-        <p class="text-gray-500 text-xl mt-2 font-Raleway">
-          Frequenty asked questions
+        <p class={`text-xl mt-2 ${hiraDarkBrownText}`}>
+          Frequently asked questions
         </p>
       </div>
       <div class="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-8">

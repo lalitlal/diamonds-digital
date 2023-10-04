@@ -1,6 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DiamondContext } from "./context/DiamondContext";
-import { hiraBlackBG, hiraWhiteText, hiralightGrayText } from "./constants";
+import {
+  hiraBlackBG,
+  hiraDarkBrownBG,
+  hiraEmeraldBG,
+  hiraWhiteText,
+  hiralightGrayText,
+} from "./constants";
 
 const MetalSelector = () => {
   const { bandColor, setBandColor } = useContext(DiamondContext);
@@ -47,7 +53,7 @@ const MetalSelector = () => {
               key={i}
               className={`mb-4 p-2 border border-black hover:text-slate-300 cursor-pointer tracking-tight ${
                 op.opt === bandColor
-                  ? `${hiraBlackBG} ${hiraWhiteText}`
+                  ? `${hiraEmeraldBG} ${hiraWhiteText}`
                   : "text-gray-600"
               }`}
               style={{

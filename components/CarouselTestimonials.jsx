@@ -3,7 +3,7 @@ import Testimony from "./Testimony";
 import {
   chevronLeft,
   chevronRight,
-  hiraBlackBG,
+  hiraDarkBrownText,
   minSwipeDistance,
 } from "./constants";
 const CarouselTestimonials = ({ data }) => {
@@ -68,13 +68,13 @@ const CarouselTestimonials = ({ data }) => {
         ))}
       </div>
       <button
-        className={`absolute top-1/2 transform -translate-y-1/2 left-0  text-white z-10 ${hiraBlackBG}`}
+        className={`absolute top-1/2 transform -translate-y-1/2 left-0 text-white z-10 ${hiraDarkBrownText}`}
         onClick={handlePrev}
       >
         {chevronLeft}
       </button>
       <button
-        className={`absolute top-1/2 transform -translate-y-1/2 right-0 text-white z-10 ${hiraBlackBG}`}
+        className={`absolute top-1/2 transform -translate-y-1/2 right-0 text-white z-10 ${hiraDarkBrownText}`}
         onClick={handleNext}
       >
         {chevronRight}

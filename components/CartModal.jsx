@@ -13,7 +13,14 @@ import { getCheckoutItem } from "../sanity/sanity-utils";
 import Carousel from "./Carousel";
 import Checkout from "./Checkout";
 import CheckoutItems from "./CheckoutItems";
-import { borderHiraBlack, hiraBlackBG, hiraWhiteBG, xIcon } from "./constants";
+import {
+  borderHiraBlack,
+  hiraBlackBG,
+  hiraDarkBrownBG,
+  hiraEmeraldBG,
+  hiraWhiteBG,
+  xIcon,
+} from "./constants";
 import CheckoutImageSlider from "./CheckoutImageSlider";
 
 function CartModal({ onRemoveItem }) {
@@ -237,7 +244,7 @@ function CartModal({ onRemoveItem }) {
               cartContext.setShowCartModal(false);
             }}
             href={"/checkout"}
-            class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
+            class={`flex w-full justify-center py-2 text-white ${hiraEmeraldBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
           >
             Go to checkout (USD$ {totalPrice})
           </Link>

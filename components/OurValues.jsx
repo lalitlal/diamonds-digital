@@ -5,6 +5,8 @@ import {
   hiraBlackBG,
   shapes,
   minSwipeDistance,
+  hiralightGrayBG,
+  hiraDarkBrownText,
 } from "./constants";
 
 const OurValues = () => {
@@ -78,8 +80,8 @@ const OurValues = () => {
 
   return (
     <>
-      <div
-        className={`w-screen ${hiraBlackBG} text-white text-center font-Raleway hidden md:flex`}
+      {/* <div
+        className={`w-screen ${hiralightGrayBG} ${hiraDarkBrownText} text-center hidden md:flex`}
       >
         <div className="p-10">
           <h1 className="mb-4 font-bold text-4xl flex justify-center">
@@ -142,8 +144,10 @@ const OurValues = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="relative overflow-hidden md:hidden font-Raleway">
+      </div> */}
+      <div
+        className={`relative overflow-hidden ${hiralightGrayBG} ${hiraDarkBrownText} py-4 md:py-8`}
+      >
         <h1 className="mb-4 font-bold text-4xl flex justify-center">
           Our Values
         </h1>
@@ -157,24 +161,26 @@ const OurValues = () => {
           {valueConst.map((val, index) => (
             <div
               key={index}
-              className={`w-full flex-shrink-0 justify-center text-center ${hiraBlackBG} text-white z-10`}
+              className={`w-full flex-shrink-0 justify-center text-center ${hiralightGrayBG} ${hiraDarkBrownText} z-10`}
             >
               <h1 className="mb-4 font-bold text-2xl justify-center">
                 <div className="flex justify-center py-4">{val.shape}</div>
-                {val.value}
+                <div className="text-emerald-900">{val.value}</div>
               </h1>
-              <div className="lg:mx-2 mb-2">{val.description}</div>
+              <div className="lg:mx-2 mb-2 md:px-20 px-10 ">
+                {val.description}
+              </div>
             </div>
           ))}
         </div>
         <button
-          className={`absolute top-1/3 transform -translate-y-1/2 left-0  ${hiraBlackBG} text-white z-10`}
+          className={`absolute top-1/3 transform -translate-y-1/2 left-0 border ${hiraDarkBrownText} z-10 mx-5 md:mx-10`}
           onClick={handlePrev}
         >
           {chevronLeft}
         </button>
         <button
-          className={`absolute top-1/3 transform -translate-y-1/2 right-0 ${hiraBlackBG} text-white z-10`}
+          className={`absolute top-1/3 transform -translate-y-1/2 right-0 border ${hiraDarkBrownText} z-10 mx-5 md:mx-10`}
           onClick={handleNext}
         >
           {chevronRight}

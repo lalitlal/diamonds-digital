@@ -6,7 +6,9 @@ import Carousel from "./Carousel";
 import {
   borderHiraBlack,
   hiraBlackBG,
+  hiraDarkBrownBG,
   hiraDarkGrayText,
+  hiraEmeraldBG,
   hiraWhiteBG,
   hiralightGrayBG,
 } from "./constants";
@@ -172,7 +174,7 @@ const SettingsProductDetail = ({}) => {
                   </button>
                   <Link href="/checkout">
                     <button
-                      class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
+                      class={`flex w-full justify-center py-2 text-white ${hiraEmeraldBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                       onClick={() => {
                         const settingStatus = `${diamondContext.settingDetails.variantData.variantDescription}`;
                         const currentDiamond = upperCaseFirstLetter();

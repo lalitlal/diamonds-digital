@@ -11,11 +11,13 @@ import LiveExpertBanner from "../../components/LiveExpertBanner";
 import {
   borderHiraBlack,
   hiraBlackBG,
+  hiraDarkBrownBG,
   hiraWhiteBG,
   shapes,
 } from "../../components/constants";
 import SanityImages from "../../components/SanityImages";
 import OurValues from "../../components/OurValues";
+import SecondaryHeader from "../../components/SecondaryHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 const speakButton = (
@@ -38,11 +40,12 @@ export default function Home() {
       <LiveExpertBanner></LiveExpertBanner>
       <div className="relative">
         <NavBar></NavBar>
-        <Header></Header>
+        {/* <Header></Header> */}
+        <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
       <div
-        className={`w-screen ${hiraBlackBG} text-white text-center font-Raleway`}
+        className={`w-screen ${hiraDarkBrownBG} text-white text-center font-Raleway`}
       >
         <div className="p-10">
           <h1 className="font-bold text-4xl">Our Story</h1>
@@ -57,6 +60,7 @@ export default function Home() {
             <SanityImages
               type={"Lifestyle"}
               className=" w-screen pt-3 md:w-full h-auto md:h-[60vh] lg:h-[60vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+              imgIndex={0}
             ></SanityImages>
           </div>
           <div className="lg:w-3/4">
@@ -138,7 +142,7 @@ export default function Home() {
       </div>
 
       <div
-        className={`w-screen ${hiraBlackBG} text-white text-center font-Raleway`}
+        className={`w-screen bg-emerald-900 text-white text-center font-Raleway`}
       >
         <div className={`w-screen  text-white text-center font-Raleway`}>
           <div className="p-10">
@@ -159,6 +163,7 @@ export default function Home() {
             <SanityImages
               type={"Lifestyle"}
               className="w-screen md:w-full h-auto md:h-[60vh] lg:h-[60vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+              imgIndex={1}
             ></SanityImages>
           </div>
           <div className="lg:w-3/4">
@@ -186,6 +191,7 @@ export default function Home() {
             <SanityImages
               type={"Lifestyle"}
               className="w-screen md:w-full h-auto md:h-[60vh] lg:h-[60vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+              imgIndex={2}
             ></SanityImages>
           </div>
           <div className="lg:w-3/4">
@@ -206,6 +212,7 @@ export default function Home() {
             <SanityImages
               type={"Lifestyle"}
               className="w-screen md:w-full h-auto md:h-[60vh] lg:h-[60vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+              imgIndex={2}
             ></SanityImages>
           </div>
         </div>
@@ -215,6 +222,7 @@ export default function Home() {
             <SanityImages
               type={"Lifestyle"}
               className="w-screen md:w-full h-auto md:h-[60vh] lg:h-[60vh] justify-center items-center transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl -z-[10] md:px-5 object-cover"
+              imgIndex={3}
             ></SanityImages>
           </div>
           <div className="lg:w-3/4">

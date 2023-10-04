@@ -8,11 +8,21 @@ import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import LiveExpertBanner from "../components/LiveExpertBanner";
-import { hiraBlackBG, shapes } from "../components/constants";
+import {
+  borderHiraBlack,
+  hiraBlackBG,
+  hiraDarkBrownText,
+  hiraLightBrownBG,
+  hiraWhite,
+  hiraWhiteBG,
+  hiralightGrayBG,
+  shapes,
+} from "../components/constants";
 import OurValues from "../components/OurValues";
 import WhatsIncluded from "../components/WhatsIncluded";
 import SanityImages from "../components/SanityImages";
 import SecondaryHeader from "../components/SecondaryHeader";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,29 +42,113 @@ export default function Home() {
         <MobileMenu></MobileMenu>
       </div>
       <Hero></Hero>
-      {/* <div
-        className={`w-screen ${hiraBlackBG} text-white text-center font-Raleway`}
+      <div
+        className={`w-screen ${hiralightGrayBG} ${hiraDarkBrownText} text-center`}
       >
-        <div className="p-10">
-          <h1 className="mb-4 font-bold text-4xl">Our Story</h1>
-          <div className="md:flex md:justify-center">
-            <div className="md:w-1/2">
-              <SanityImages
-                type={"Founders"}
-                className="justify-center w-full items-center text-center -z-[10] md:px-5 object-cover"
-              ></SanityImages>
+        {/* CTA 1 */}
+        <div className="px-10 py-20">
+          <h1 className="mb-4 font-bold text-2xl md:text-4xl">{`Buying engagement rings the HIRA way.`}</h1>
+          <div className="justify-center">
+            <div className="md:p-4 md:px-8 text-center md:text-2xl text-emerald-900">
+              {`We make finding your perfect engagement ring effortless and memorable - by making it for you. 
+              Take the stress out of proposing by making a gem as rare as your special person. We are a family in business for over 40 years. Our customers enjoy over 30% in savings when going through us, but have 100% satisfaction guaranteed!`}
             </div>
-            <div className="md:w-1/2 md:text-left">
-              {`At HIRA, we are more than just jewelers — we are a husband-wife duo driven by a shared mission: to ensure every couple embarks on their journey with an effortless and enjoyable engagement, marked by a high-quality, expertly crafted diamond ring that won't break the bank. 
-            With a legacy rooted in a multi-generational family of goldsmiths and jewelers, our craft has been refined and passed down for over a century. 
-            Specializing in custom diamond engagement rings, all proudly designed and made in Canada, 'HIRA' pays homage to our rich family heritage, where expertise has been cultivated through generations. 
-            Our why is simple yet profound: couples should start their journey on the best foot possible. Real diamonds, authentic metals — that's the promise of HIRA. Our vision is to be your one-stop shop for engagement rings, dedicated to putting you at ease, offering a seamless experience where your dream ring becomes a tangible reality within your budget and timeline. Committed to our core values of Family, Integrity, and Affordability, we, as a husband-wife owned business, pour our hearts into crafting the perfect, one-of-a-kind diamond engagement ring for you, upholding the highest standards of quality, craftsmanship, and a personalized touch that only a family business can provide.`}
+            <div className="flex justify-center text-center items-center">
+              <Link
+                href="/how-it-works"
+                class={`flex w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} hover:bg-gradient-to-br text-sm md:text-lg mt-8 md:mt-4 mr-2`}
+              >
+                How it works
+              </Link>
+              <Link
+                href="/contact"
+                class={`flex w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} hover:bg-gradient-to-br text-sm md:text-lg mt-8 md:mt-4`}
+              >
+                Get started
+              </Link>
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
+      <div
+        className={`w-screen ${hiraWhiteBG} ${hiraDarkBrownText} text-center`}
+      >
+        {/* CTA 2 */}
+        <div className="px-10 md:px-20 py-10">
+          <div className="lg:flex">
+            <div className="lg:w-1/2 lg:px-6">
+              <h1
+                className={`mb-4 font-bold text-xl md:text-4xl md:font-bold text-left text-emerald-900`}
+              >{`Building an engagement ring should be just as special as the person you're buying it for.`}</h1>
+              <div className="justify-center">
+                <div className="text-left  md:text-xl">
+                  {`Why buy something off the shelf for an unreasonable markup when you can make a priceless custom piece for your loved one at a fraction of the cost? 
+              Clients can choose to start with one of our inspired rings, or go completely custom!`}
+                </div>
+                <div className="flex md:justify-start justify-center text-center items-center">
+                  <Link
+                    href="/how-it-works"
+                    class={`flex w-screen md:w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} text-sm md:text-lg mt-8 mr-2 md:mt-4 mb-8`}
+                  >
+                    How it works
+                  </Link>
+                  <Link
+                    href="/ringsettings"
+                    class={`flex w-screen md:w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} text-sm md:text-lg mt-8 md:mt-4 mb-8`}
+                  >
+                    Shop rings
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2 flex-shrink">
+              <SanityImages
+                type={"Rings"}
+                className="justify-center w-full items-center text-center -z-[10] md:h-[40vh] lg:px-5 object-cover"
+                imgIndex={1}
+              ></SanityImages>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className={`w-screen ${hiralightGrayBG} ${hiraDarkBrownText} text-center`}
+      >
+        {/* CTA 3 */}
+        <div className="px-10 md:px-20 py-10">
+          <div className="lg:flex">
+            <div className="lg:w-1/2 flex-shrink">
+              <SanityImages
+                type={"Rings"}
+                className="justify-center w-full items-center text-center -z-[10] md:h-[40vh] lg:px-5 object-cover"
+                imgIndex={0}
+              ></SanityImages>
+            </div>
+            <div className="lg:w-1/2 lg:px-6 mt-4">
+              <h1
+                className={`mb-4 font-bold text-xl md:text-4xl md:font-bold text-left text-emerald-900`}
+              >{`We will work well within any budget.`}</h1>
+              <div className="justify-center">
+                <div className="text-left  md:text-xl">
+                  {`The HIRA Advantage: beautiful rings, premium materials, with prices 30% less than anyone else. We are able to charge less because we are a fully online business, which allows us to keep our operating costs low, and keeps more money in your pocket!`}
+                </div>
+                <div className="flex md:justify-start justify-center text-center items-center">
+                  <Link
+                    href="/contact"
+                    class={`flex w-screen md:w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} text-sm md:text-lg mt-8 md:mt-4 mb-8`}
+                  >
+                    Our Pricing
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
-        <h1 className="mb-4 font-bold text-4xl text-center font-Raleway mt-2">
+        <h1
+          className={`mb-4 font-bold text-4xl text-center my-4 md:my-8 text-emerald-900 `}
+        >
           Our Promise
         </h1>
         <WhatsIncluded></WhatsIncluded>

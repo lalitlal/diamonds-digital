@@ -4,7 +4,7 @@ import { getDisplayImages } from "../sanity/sanity-utils";
 import Image from "next/image";
 import { client } from "../sanity/lib/client";
 
-const SanityImages = ({ type, className = "" }) => {
+const SanityImages = ({ type, className = "", imgIndex = null }) => {
   const imgUrlBuilder = urlBuilder(client);
   const [lifestyleImages, setLifestyleImages] = useState([]);
   const [randomIndex, setRandomIndex] = useState(0);
@@ -16,7 +16,11 @@ const SanityImages = ({ type, className = "" }) => {
         return imgUrlBuilder.image(data.image).url();
       });
       setLifestyleImages(resURLs); // Note that we wrap the imageSource in an array to match your setHeroImages usage
-      setRandomIndex(Math.floor(Math.random() * resURLs.length)); // Set a random index
+      if (imgIndex === null) {
+        setRandomIndex(Math.floor(Math.random() * resURLs.length)); // Set a random index
+      } else {
+        setRandomIndex(imgIndex);
+      }
     };
     fetchHeroSanity();
     return () => {};

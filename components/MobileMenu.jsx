@@ -7,6 +7,7 @@ import {
   facebookIcon,
   hiraBlackBG,
   hiraBlackText,
+  hiraDarkBrownBG,
   hiraDarkGrayText,
   hiraWhiteBG,
   hiraWhiteText,
@@ -26,7 +27,7 @@ const MobileMenu = () => {
       >
         <div className="mx-4 h-screen mt-16 justify-start flex flex-col">
           <Link href="/" className={`${standardStyling}`}>
-            Engagement
+            Home
           </Link>
           <Link href="/diamond" className={`${standardStyling}`}>
             Diamonds
@@ -34,11 +35,20 @@ const MobileMenu = () => {
           <Link href="/ringsettings" className={`${standardStyling}`}>
             Settings
           </Link>
+          <Link href="/custom" className={`${standardStyling}`}>
+            Custom Rings
+          </Link>
           <Link href="/about" className={`${standardStyling}`}>
             About
           </Link>
           <Link href="/gallery" className={`${standardStyling}`}>
             Gallery
+          </Link>
+          <Link href="/contact" className={`${standardStyling}`}>
+            Contact
+          </Link>
+          <Link href="/how-it-works" className={`${standardStyling}`}>
+            How It Works
           </Link>
           <div className={` mt-2 ${hiraBlackText} justify-start flex flex-col`}>
             <div className="border-t lg:border-0 mt-4 lg:mt-0 text-center justify-center text-sm">
@@ -77,7 +87,7 @@ const MobileMenu = () => {
           >
             <div class="justify-center w-full hover:cursor-pointer">
               <button
-                class={`flex w-full mt-4 lg:mt-0 justify-center py-2 ${hiraWhiteText} ${hiraBlackBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
+                class={`flex w-full mt-4 lg:mt-0 justify-center py-2 ${hiraWhiteText} ${hiraDarkBrownBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg mb-2`}
                 onClick={() => {
                   cartContext.setShowMobileMenu(false);
                   cartContext.setShowBookingModal(

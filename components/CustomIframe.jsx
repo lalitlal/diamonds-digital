@@ -41,7 +41,7 @@ const CustomIframe = ({ url }) => {
           ></div>
           <div className="modal bg-white p-4 shadow-md w-4/5 h-fit lg:w-1/2 lg:h-3/4 relative overflow-hidden">
             <div
-              className="absolute top-0 right-0 text-gray-600 cursor-pointer"
+              className="absolute top-0 right-0 text-black cursor-pointer"
               onClick={toggleModal}
             >
               {xIcon}

@@ -5,9 +5,11 @@ import {
   callNumber,
   facebookIcon,
   hiraBlackBG,
+  hiraDarkBrownBG,
   hiraDarkGrayText,
   hiraWhiteBG,
   hiraWhiteText,
+  hiralightGrayText,
   instaIcon,
 } from "./constants";
 import { CartContext } from "./context/CartContext";
@@ -18,7 +20,7 @@ const Footer = () => {
 
   return (
     <div
-      class={`p-4 ${hiraBlackBG} ${hiraWhiteText} md:px-6 md:py-0 lg:left-0 lg:bottom-0 lg:w-full z-50 lg:pb-8`}
+      class={`p-4 ${hiraDarkBrownBG} ${hiraWhiteText} md:px-6 md:py-4 lg:left-0 lg:bottom-0 lg:w-full z-50 lg:pb-8`}
     >
       <div class="items-center lg:items-start justify-between lg:justify-around lg:flex">
         <div
@@ -45,7 +47,7 @@ const Footer = () => {
         </div>
         <div className={` mt-2 ${hiraWhiteText} justify-start flex flex-col`}>
           <div className="border-t lg:border-0 mt-4 lg:mt-0 text-center justify-center text-sm">
-            <div className={`py-2 lg:pb-0 ${hiraDarkGrayText} mt-4 lg:mt-0`}>
+            <div className={`py-2 lg:pb-0 ${hiralightGrayText} mt-4 lg:mt-0`}>
               Schedule Meet
             </div>
             <div className={`lg:flex`}>
@@ -53,7 +55,7 @@ const Footer = () => {
               <div className="py-2">{callNumber}</div>
             </div>
             <div class="text-center text-sm text-white sm:text-center hidden lg:block">
-              <div className={`${hiraDarkGrayText}`}>Follow Us</div>
+              <div className={`${hiralightGrayText}`}>Follow Us</div>
               <div className="flex justify-center my-2">
                 <Link
                   href={"https://www.instagram.com/hiradiamonds.co/"}

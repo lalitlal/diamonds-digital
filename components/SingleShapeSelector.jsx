@@ -1,6 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DiamondContext } from "./context/DiamondContext";
-import { hiraBlackBG, hiraGray, hiraGrayBG, hiralightGray } from "./constants";
+import {
+  hiraBlackBG,
+  hiraDarkBrownBG,
+  hiraEmeraldBG,
+  hiraGray,
+  hiraGrayBG,
+  hiralightGray,
+} from "./constants";
 
 const SingleShapeSelector = ({ singular = true }) => {
   const {
@@ -42,7 +49,7 @@ const SingleShapeSelector = ({ singular = true }) => {
                 key={i}
                 className={`p-2 cursor-pointer transform transition-transform ${
                   currentSettingDiamondShape === key
-                    ? `border-black text-white ${hiraBlackBG}`
+                    ? `border-black text-white ${hiraEmeraldBG}`
                     : `text-black ${hiraGrayBG}`
                 }`}
                 onClick={() => handleClick(key)}

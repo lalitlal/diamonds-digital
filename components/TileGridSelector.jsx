@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { hiraBlackBG, hiraSlate } from "./constants";
+import { hiraBlackBG, hiraDarkBrownBG, hiraSlate } from "./constants";
 
 const TileGrid = ({ data, listState, setListState }) => {
   const largeBreakpoint = 1024; // Define your large breakpoint in pixels
@@ -25,7 +25,7 @@ const TileGrid = ({ data, listState, setListState }) => {
             key={index}
             className={`hover:cursor-pointer lg:text-xs ${
               listState.includes(item)
-                ? `text-white ${hiraBlackBG}`
+                ? `text-white ${hiraDarkBrownBG}`
                 : "text-black bg-white"
             } border border-black flex justify-center my-2 w-1/6 mx-1 items-center`}
             style={{

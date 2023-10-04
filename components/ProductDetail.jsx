@@ -8,7 +8,9 @@ import Image from "next/image";
 import {
   borderHiraBlack,
   hiraBlackBG,
+  hiraDarkBrownBG,
   hiraDarkGrayText,
+  hiraEmeraldBG,
   hiraWhiteBG,
   marginMultiplier,
   toFixedDecimal,
@@ -178,7 +180,7 @@ const ProductDetail = ({ shape, data }) => {
                 </button>
                 <Link href={"/ringsettings"}>
                   <button
-                    class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
+                    class={`flex w-full justify-center py-2 text-white ${hiraEmeraldBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                     onClick={() => handleDiamondSelect("Add to ring")}
                   >
                     Add to a ring (USD${" "}
@@ -187,7 +189,7 @@ const ProductDetail = ({ shape, data }) => {
                 </Link>
                 <Link href={"/checkout"} scroll={true}>
                   <div
-                    class={`flex w-full justify-center py-2 text-white ${hiraBlackBG} focus:outline-none active:bg-black focus:bg-black text-lg mt-2`}
+                    class={`flex w-full justify-center py-2 text-white ${hiraEmeraldBG} focus:outline-none active:bg-black focus:bg-black text-lg mt-2`}
                     onClick={() => {
                       handleDiamondSelect("Buy Now");
                       cartContext.setSetting(undefined);

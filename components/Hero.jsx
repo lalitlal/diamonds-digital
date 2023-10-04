@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { hiraBlackBG } from "./constants";
+import { hiraBlackBG, hiraDarkBrownText, hiraWhiteBG } from "./constants";
 import { event } from "../lib/gtag";
 import { getDisplayImages } from "../sanity/sanity-utils";
 import { client } from "../sanity/lib/client";
@@ -48,7 +48,7 @@ const Hero = () => {
           >
             <Link
               href="/diamond"
-              className="flex absolute justify-center w-48 md:w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white px-3 py-4 hover:bg-black hover:text-white transition duration-300 ease-in-out"
+              className={`${hiraWhiteBG} flex absolute justify-center w-48 md:w-full top-1/2 ml-10 leading-tight tracking-tight text-center border-2 border-black ${hiraDarkBrownText} px-3 py-4 hover:bg-black hover:text-white transition duration-300 ease-in-out`}
             >
               Shop Diamonds
             </Link>
@@ -65,7 +65,7 @@ const Hero = () => {
           >
             <Link
               href="/ringsettings"
-              className="flex absolute justify-center w-48 md:w-full top-1/2 mt-20 ml-10 leading-tight tracking-tight text-center border-2 border-white text-white px-3 py-4 hover:bg-black hover:text-white transition duration-300 ease-in-out"
+              className={`${hiraWhiteBG} flex absolute justify-center w-48 md:w-full top-1/2 mt-[65px] ml-10 leading-tight tracking-tight text-center border-2 border-black ${hiraDarkBrownText} px-3 py-4 hover:bg-black hover:text-white transition duration-300 ease-in-out`}
             >
               Shop Rings
             </Link>

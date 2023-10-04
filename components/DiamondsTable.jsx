@@ -118,7 +118,7 @@ const DiamondsTable = ({ data }) => {
     diamondContext.cutValue,
   ]);
 
-  const rowClass = `hover:cursor-pointer border-b whitespace-nowrap text-center px-2 py-4 transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600`;
+  const rowClass = `hover:cursor-pointer border-b whitespace-nowrap text-center px-2 py-4 transition duration-300 ease-in-out hover:bg-neutral-100`;
   const colClass = "px-2 py-4 text-center";
   return (
     <>

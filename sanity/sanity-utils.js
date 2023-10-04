@@ -230,7 +230,7 @@ export const getCurrentDiamondsSanity = async (diamondFilters) => {
 };
 
 export const getDisplayImages = async (type) => {
-  const groqQuery = `*[_type == "image_asset" && type == $typeFilter] {
+  const groqQuery = `*[_type == "image_asset" && type == $typeFilter] | order(_createdAt desc) {
       _id,
       title,
       description,
@@ -245,7 +245,7 @@ export const getDisplayImages = async (type) => {
 };
 
 export const getTestimonials = async () => {
-  const groqQuery = `*[_type == "testimony"] {
+  const groqQuery = `*[_type == "testimony"] | order(_createdAt desc) {
       _id,
       review,
       name,

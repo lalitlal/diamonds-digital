@@ -8,6 +8,7 @@ import {
   colorMapping,
   cutMapping,
   hiraBlackBG,
+  hiraDarkBrownBG,
   hiraSlate,
   hiralightGrayBGMD,
   moreInfoIcon,
@@ -51,7 +52,7 @@ const FullDiamondFilterPage = () => {
 
   return (
     <div className={`mx-4`}>
-      <div className={`w-full`}>
+      <div className={`w-full overyflow-y-auto`}>
         {isLargeScreen && <ShapeSelector></ShapeSelector>}
         {(diamondContext.showAdvancedFilter || isLargeScreen) && (
           <div
@@ -276,7 +277,7 @@ const FullDiamondFilterPage = () => {
                       Clear filters
                     </div>
                     <div
-                      className={`flex transition ease-in-out duration-300 w-full text-center justify-center text-white ${hiraBlackBG} py-2 focus:outline-none hover:bg-gray-600 text-lg hover:cursor-pointer`}
+                      className={`flex transition ease-in-out duration-300 w-full text-center justify-center text-white ${hiraDarkBrownBG} py-2 focus:outline-none hover:bg-gray-600 text-lg hover:cursor-pointer`}
                       onClick={() => {
                         setShowColorInfo(false);
                         setshowClarityInfo(false);

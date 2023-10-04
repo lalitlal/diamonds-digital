@@ -232,7 +232,10 @@ const RingSettings = () => {
                 className={""}
                 priority
               /> */}
-              <SanityImages type="Lifestyle"></SanityImages>
+              <SanityImages
+                type="Lifestyle"
+                className="w-full h-auto object-contain border"
+              ></SanityImages>
             </div>
             {products.slice(2).map((prod, i) => {
               const { _id, title, description, type } = prod;

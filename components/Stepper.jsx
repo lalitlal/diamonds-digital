@@ -5,7 +5,9 @@ import {
   circledNumberIcon,
   hiraBlack,
   hiraBlackBG,
+  hiraDarkBrownBG,
   hiraDarkGrayBG,
+  hiraEmeraldBG,
   hiraGrayBG,
   hiraWhiteBG,
   hiralightGrayBG,
@@ -100,7 +102,7 @@ const Stepper = ({ stage }) => {
                     // px-6?
                     className={`${commonStyling} ${
                       i === stage
-                        ? `${hiraBlackBG} text-white`
+                        ? `${hiraEmeraldBG} text-white`
                         : iconObj.doneCondition
                         ? `${hiraGrayBG} text-black`
                         : ` hover:bg-[#848484] text-black`

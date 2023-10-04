@@ -722,26 +722,35 @@ export const navigationBreadCrums = {
 export const hiraBlackBG = `bg-[#050505]`;
 export const hiraDarkGrayBG = `bg-[#848484]`;
 export const hiraGrayBG = `bg-[#D9D9D9]`;
-export const hiralightGrayBG = `bg-[#F6F6F6]`;
+export const hiralightGrayBG = `bg-[#FAF8F7]`;
 export const hiraWhiteBG = `bg-[#FFFFFF]`;
+export const hiraLightBrownBG = `bg-[#DDD2C8]`;
+export const hiraDarkBrownBG = `bg-[#2e1b21]`;
+export const hiraEmeraldBG = `bg-emerald-900`;
 
 export const hiraBlackBGMD = `md:bg-[#050505]`;
 export const hiraDarkGrayBGMD = `md:bg-[#848484]`;
 export const hiraGrayBGMD = `md:bg-[#D9D9D9]`;
-export const hiralightGrayBGMD = `md:bg-[#F6F6F6]`;
+export const hiralightGrayBGMD = `md:bg-[#FAF8F7]`;
 export const hiraWhiteBGMD = `md:bg-[#FFFFFF]`;
+export const hiraLightBrownBGMD = `md:bg-[#DDD2C8]`;
+export const hiraDarkBrownBGMD = `md:bg-[#736357]`;
 
 export const hiraBlackText = `text-[#050505]`;
 export const hiraDarkGrayText = `text-[#848484]`;
 export const hiraGrayText = `text-[#D9D9D9]`;
-export const hiralightGrayText = `text-[#F6F6F6]`;
+export const hiralightGrayText = `text-[#FAF8F7]`;
 export const hiraWhiteText = `text-[#FFFFFF]`;
+export const hiraLightBrownText = `text-[#DDD2C8]`;
+export const hiraDarkBrownText = `text-[#736357]`;
 
 export const hiraBlack = `#050505`;
 export const hiraDarkGray = `#848484`;
 export const hiraGray = `#D9D9D9`;
-export const hiralightGray = `#F6F6F6`;
+export const hiralightGray = `#FAF8F7`;
 export const hiraWhite = `#FFFFFF`;
+export const hiraLightBrown = `#DDD2C8`;
+export const hiraDarkBrown = `#736357`;
 
 export const borderHiraBlack = `border-[#050505]`;
 
@@ -1150,6 +1159,74 @@ export const diamondIcon = (
     viewBox="0 0 16 16"
   >
     <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z" />
+  </svg>
+);
+export const diamondIconLarger = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="w-12 h-12"
+    viewBox="0 0 16 16"
+  >
+    <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z" />
+  </svg>
+);
+
+export const sparkleIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-12 h-12"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
+    />
+  </svg>
+);
+
+export const fireIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-12 h-12"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"
+    />
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"
+    />
+  </svg>
+);
+
+export const lightbulbIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-12 h-12"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+    />
   </svg>
 );
 

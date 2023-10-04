@@ -10,6 +10,7 @@ import {
   borderHiraBlack,
   hiraBlackBG,
   hiraBlackText,
+  hiraDarkBrownBG,
   hiraWhiteBG,
   hiraWhiteText,
   xIcon,
@@ -51,9 +52,9 @@ const SecondaryHeader = ({ initialBG = "black" }) => {
   return (
     <>
       <div
-        className={`flex justify-between ${hiraBlackBG} ${hiraWhiteText} py-4`}
+        className={`flex justify-around ${hiraDarkBrownBG} ${hiraWhiteText} py-4`}
       >
-        <div className="flex md:hidden items-center w-fit ml-4 cursor-pointer">
+        <div className="flex lg:hidden items-center w-fit ml-4 cursor-pointer">
           {!cartContext.showMobileMenu ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +62,7 @@ const SecondaryHeader = ({ initialBG = "black" }) => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 align-middle md:hidden"
+              className="w-6 h-6 align-middle lg:hidden"
               onClick={() => {
                 cartContext.setShowMobileMenu(true);
                 window.scrollTo({
@@ -104,17 +105,17 @@ const SecondaryHeader = ({ initialBG = "black" }) => {
         <div>
           <Link
             href="/"
-            className="text-center items-center md:text-start mx-10 font-Raleway text-4xl font-bold w-1/3 cursor-pointer"
+            className="text-center h-full items-center lg:text-start mx-10 font-Raleway text-4xl font-bold w-1/3 cursor-pointer"
           >
             HIRA
           </Link>
         </div>
-        <div className="hidden md:flex justify-center items-center text-base w-1/3 align-middle">
+        <div className="hidden lg:flex justify-center items-center text-base w-full align-middle">
           <Link
             href="/"
             className="block mt-4 text-xl lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
-            Engagement
+            Home
           </Link>
           <Link
             href="/diamond"
@@ -129,6 +130,12 @@ const SecondaryHeader = ({ initialBG = "black" }) => {
             Settings
           </Link>
           <Link
+            href="/custom"
+            className="block mt-4 text-xl lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 cursor-pointer"
+          >
+            Custom Rings
+          </Link>
+          <Link
             href="/about"
             className="block mt-4 text-xl lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 cursor-pointer"
           >
@@ -136,9 +143,21 @@ const SecondaryHeader = ({ initialBG = "black" }) => {
           </Link>
           <Link
             href="/gallery"
-            className="block mt-4 text-xl lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer mr-2"
+            className="block mt-4 text-xl lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline  mr-4 cursor-pointer"
           >
             Gallery
+          </Link>
+          <Link
+            href="/contact"
+            className="block mt-4 text-xl lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline  mr-4 cursor-pointer"
+          >
+            Contact
+          </Link>
+          <Link
+            href="/how-it-works"
+            className="block mt-4 text-xl lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline cursor-pointer mr-2"
+          >
+            How It Works
           </Link>
         </div>
         <div className="flex justify-center items-center align-middle w-fit mr-4">
@@ -148,8 +167,8 @@ const SecondaryHeader = ({ initialBG = "black" }) => {
             className="flex hover:text-gray-500 ml-4"
           >
             <div class="justify-center w-full hover:cursor-pointer">
-              <button
-                class={`w-full hidden md:flex justify-center py-2  px-4 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none text-lg`}
+              <div
+                class={`md:w-[150px] text-center hidden lg:flex justify-center py-2  px-4 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none text-lg`}
                 onClick={() => {
                   // handleOpenBookingModal();
                   cartContext.setShowBookingModal(true);
@@ -160,7 +179,7 @@ const SecondaryHeader = ({ initialBG = "black" }) => {
                 }}
               >
                 Book Meet
-              </button>
+              </div>
             </div>
           </div>
         </div>
