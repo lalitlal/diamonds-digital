@@ -45,7 +45,7 @@ const Contact = () => {
         !firstName ||
         !lastName ||
         !email ||
-        // !phone ||
+        !phone ||
         !message ||
         !validEmail(email)
       ) {
@@ -167,7 +167,7 @@ const Contact = () => {
                   <input
                     required
                     type="text"
-                    placeholder="First Name"
+                    placeholder="First Name*"
                     className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none focus:border focus:border-emerald-900"
                     onChange={(e) => {
                       setFirstName(e.target.value);
@@ -176,7 +176,7 @@ const Contact = () => {
                   />
                   <input
                     type="text"
-                    placeholder="Last Name"
+                    placeholder="Last Name*"
                     className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none focus:border focus:border-emerald-900"
                     onChange={(e) => {
                       setLastName(e.target.value);
@@ -187,7 +187,7 @@ const Contact = () => {
                 <div className="mb-6">
                   <input
                     type="email"
-                    placeholder="Your Email"
+                    placeholder="Your Email*"
                     className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none focus:border focus:border-emerald-900"
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -198,7 +198,7 @@ const Contact = () => {
                 <div className="mb-6">
                   <input
                     type="number"
-                    placeholder="Your Phone"
+                    placeholder="Your Phone*"
                     className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none focus:border focus:border-emerald-900"
                     onChange={(e) => {
                       setPhone(e.target.value);
@@ -209,7 +209,7 @@ const Contact = () => {
                 <div className="mb-6">
                   <textarea
                     rows="6"
-                    placeholder="Your Message"
+                    placeholder="Your Message*"
                     className="text-body-color border-[f0f0f0] focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none focus:border focus:border-emerald-900"
                     onChange={(e) => {
                       setMessage(e.target.value);
