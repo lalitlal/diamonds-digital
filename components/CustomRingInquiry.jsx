@@ -200,7 +200,7 @@ const CustomRingInquiry = () => {
                   <input
                     required
                     type="text"
-                    placeholder="First Name"
+                    placeholder="First Name*"
                     className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none focus:border focus:border-emerald-900"
                     onChange={(e) => {
                       setFirstName(e.target.value);
@@ -209,7 +209,7 @@ const CustomRingInquiry = () => {
                   />
                   <input
                     type="text"
-                    placeholder="Last Name"
+                    placeholder="Last Name*"
                     className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none focus:border focus:border-emerald-900"
                     onChange={(e) => {
                       setLastName(e.target.value);
@@ -220,7 +220,7 @@ const CustomRingInquiry = () => {
                 <div className="mb-6">
                   <input
                     type="email"
-                    placeholder="Your Email"
+                    placeholder="Your Email*"
                     className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none focus:border focus:border-emerald-900"
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -231,7 +231,7 @@ const CustomRingInquiry = () => {
                 <div className="mb-6">
                   <input
                     type="number"
-                    placeholder="Phone"
+                    placeholder="Phone*"
                     className="text-body-color border-[f0f0f0] focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none focus-visible:shadow-none focus:border focus:border-emerald-900"
                     onChange={(e) => {
                       setPhone(e.target.value);
@@ -244,8 +244,8 @@ const CustomRingInquiry = () => {
                     options={optionBudget}
                     value={prefBudget}
                     setValue={setPrefBudget}
-                    title={"Budget (USD):"}
-                    placeholderText={"Choose Budget"}
+                    title={"Budget (USD)*:"}
+                    placeholderText={"Choose budget"}
                   ></CustomOptionPicker>
                 </div>
                 <div className="mb-6">
@@ -253,7 +253,7 @@ const CustomRingInquiry = () => {
                     options={optionPreferredContact}
                     value={prefContact}
                     setValue={setPrefContact}
-                    title={"Preferred method of contact:"}
+                    title={"Preferred method of contact*:"}
                     placeholderText={"Choose preferred contact"}
                   ></CustomOptionPicker>
                 </div>
@@ -262,7 +262,7 @@ const CustomRingInquiry = () => {
                     options={optionPreferedRingType}
                     value={prefRingType}
                     setValue={setPrefRingType}
-                    title={"The ring I want:"}
+                    title={"The ring I want*:"}
                     placeholderText={"Choose ring type"}
                   ></CustomOptionPicker>
                 </div>
@@ -271,7 +271,7 @@ const CustomRingInquiry = () => {
                     options={optionPreferedStone}
                     value={prefStoneType}
                     setValue={setPrefStoneType}
-                    title={"Stone type:"}
+                    title={"Stone type*:"}
                     placeholderText={"Choose stone type"}
                   ></CustomOptionPicker>
                 </div>
