@@ -47,7 +47,7 @@ const OurPricing = () => {
             <tbody>
               <tr>
                 <td class="px-4 py-3">Consult</td>
-                <td class="px-4 py-3">1-2 Weeks</td>
+                <td class="px-4 py-3">1 Hour</td>
                 <td class="px-4 py-3">{infinityIcon}</td>
                 <td class="px-4 py-3 ">Free</td>
               </tr>
