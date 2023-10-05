@@ -23,6 +23,7 @@ import WhatsIncluded from "../components/WhatsIncluded";
 import SanityImages from "../components/SanityImages";
 import SecondaryHeader from "../components/SecondaryHeader";
 import Link from "next/link";
+import OurPricing from "../components/OurPricing";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -132,22 +133,23 @@ export default function Home() {
                 <div className="text-left  md:text-xl">
                   {`The HIRA Advantage: beautiful rings, premium materials, with prices 30% less than anyone else. We are able to charge less because we are a fully online business, which allows us to keep our operating costs low, and keeps more money in your pocket!`}
                 </div>
-                <div className="flex md:justify-start justify-center text-center items-center">
+                {/* <div className="flex md:justify-start justify-center text-center items-center">
                   <Link
                     href="/contact"
                     class={`flex w-screen md:w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} text-sm md:text-lg mt-8 md:mt-4 mb-8`}
                   >
                     Our Pricing
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div>
+      <OurPricing></OurPricing>
+      <div className={`${hiralightGrayBG} py-24`}>
         <h1
-          className={`mb-4 font-bold text-4xl text-center my-4 md:my-8 text-emerald-900 `}
+          className={`mb-4 font-bold text-4xl text-center my-4 md:my-8 text-emerald-900`}
         >
           Our Promise
         </h1>

@@ -14,6 +14,7 @@ import MobileMenu from "../../components/MobileMenu";
 import SecondaryHeader from "../../components/SecondaryHeader";
 import LiveExpertBanner from "../../components/LiveExpertBanner";
 import HowItWorks from "../../components/HowItWorks";
+import HowItWorks2 from "../../components/HowItWorks2";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,7 +33,7 @@ export default function Home() {
         <SecondaryHeader></SecondaryHeader>
         <MobileMenu></MobileMenu>
       </div>
-      <HowItWorks></HowItWorks>
+      <HowItWorks2></HowItWorks2>
       <Footer></Footer>
     </>
   );
