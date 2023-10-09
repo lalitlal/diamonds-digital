@@ -30,23 +30,23 @@ const Footer = () => {
         </div>
         <div className={` mt-6 ${hiraWhiteText} justify-start flex flex-col`}>
           <Link href="/" className={`${standardStyling}`}>
-            Engagement
+            Home
           </Link>
           <Link href="/diamond" className={`${standardStyling}`}>
-            Diamonds
+            Shop Rings
           </Link>
-          <Link href="/ringsettings" className={`${standardStyling}`}>
-            Settings
-          </Link>
-          <Link href="/" className={`${standardStyling}`}>
+          <Link href="/about" className={`${standardStyling}`}>
             About
+          </Link>
+          <Link href="/contact" className={`${standardStyling}`}>
+            Contact
           </Link>
           <Link href="/gallery" className={`${standardStyling}`}>
             Gallery
           </Link>
         </div>
         <div className={` mt-2 ${hiraWhiteText} justify-start flex flex-col`}>
-          <div className="border-t lg:border-0 mt-4 lg:mt-0 text-center justify-center text-sm">
+          <div className="border-t lg:border-0 mt-4 lg:mt-0 text-center justify-center text-lg">
             <div className={`py-2 lg:pb-0 ${hiralightGrayText} mt-4 lg:mt-0`}>
               Schedule Meet
             </div>
@@ -54,7 +54,7 @@ const Footer = () => {
               <div className="py-2 lg:mr-2">team@hiradiamonds.com</div>
               <div className="py-2">{callNumber}</div>
             </div>
-            <div class="text-center text-sm text-white sm:text-center hidden lg:block">
+            <div class="text-center text-lg text-white sm:text-center hidden lg:block">
               <div className={`${hiralightGrayText}`}>Follow Us</div>
               <div className="flex justify-center my-2">
                 <Link
@@ -92,13 +92,13 @@ const Footer = () => {
               Book Meet
             </button>
           </div>
-          <div class="my-8 lg:my-0 text-center text-sm text-white sm:text-center">
+          <div class="my-8 lg:my-0 text-center text-lg text-white sm:text-center">
             <Link href="" class="hover:underline">
               HIRA
             </Link>
             . All Rights Reserved.
           </div>
-          <div class="my-8 text-center text-sm text-white sm:text-center lg:hidden">
+          <div class="my-8 text-center text-lg text-white sm:text-center lg:hidden">
             <div className={`${hiraDarkGrayText}`}>Follow Us</div>
             <div className="flex justify-center my-2">
               <Link
