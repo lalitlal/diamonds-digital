@@ -34,9 +34,11 @@ const MobileMenu = () => {
         }}
       >
         <div className="mx-4 h-screen justify-start flex flex-col">
-          <Link href="/" className={`${standardStyling}`}>
-            Home
-          </Link>
+          <div onClick={() => onLinkClick()}>
+            <Link href="/" className={`${standardStyling}`}>
+              Home
+            </Link>
+          </div>
           <div className="relative">
             <div
               class={`${standardStyling}`}
@@ -143,9 +145,11 @@ const MobileMenu = () => {
               </div>
             )}
           </div>
-          <Link href="/contact" className={`${standardStyling}`}>
-            Contact
-          </Link>
+          <div onClick={() => onLinkClick()}>
+            <Link href="/contact" className={`${standardStyling}`}>
+              Contact
+            </Link>
+          </div>
           <div className={` mt-2 ${hiraBlackText} justify-start flex flex-col`}>
             <div className="border-t lg:border-0 mt-4 lg:mt-0 text-center justify-center text-lg">
               <div className={`py-2 lg:pb-0 ${hiraDarkGrayText} mt-4 lg:mt-0`}>
