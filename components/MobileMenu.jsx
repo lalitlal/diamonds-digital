@@ -4,6 +4,7 @@ import { CartContext } from "./context/CartContext";
 import {
   borderHiraBlack,
   callNumber,
+  caretIcon,
   facebookIcon,
   hiraBlackBG,
   hiraBlackText,
@@ -16,42 +17,137 @@ import {
 
 const MobileMenu = () => {
   const cartContext = useContext(CartContext);
-  const standardStyling = `block mt-4 text-3xl lg:inline-block lg:mt-0  text-center hover:text-gray-500 hover:underline hover:cursor-pointer`;
+  const [showShopDropDown, setShowShopDropDown] = useState(false);
+  const [showAboutDropDown, setShowAboutDropDown] = useState(false);
+  const standardStyling = `block mt-4 text-3xl lg:inline-block lg:mt-0  text-left hover:text-gray-500 hover:underline hover:cursor-pointer`;
+  const onLinkClick = () => {
+    cartContext.setShowMobileMenu(false);
+    setShowShopDropDown(false);
+    setShowAboutDropDown(false);
+  };
   return (
     cartContext.showMobileMenu && (
       <div
-        className="absolute bg-white z-[100] left-0 top-18 w-full h-fit"
+        className="absolute bg-white z-[100] left-0 top-18 w-full h-fit overflow-y-hidden"
         onClick={() => {
-          cartContext.setShowMobileMenu(false);
+          // cartContext.setShowMobileMenu(false);
         }}
       >
-        <div className="mx-4 h-screen mt-16 justify-start flex flex-col">
+        <div className="mx-4 h-screen justify-start flex flex-col">
           <Link href="/" className={`${standardStyling}`}>
             Home
           </Link>
-          <Link href="/diamond" className={`${standardStyling}`}>
-            Diamonds
-          </Link>
-          <Link href="/ringsettings" className={`${standardStyling}`}>
-            Settings
-          </Link>
-          <Link href="/custom" className={`${standardStyling}`}>
-            Custom Rings
-          </Link>
-          <Link href="/about" className={`${standardStyling}`}>
-            About
-          </Link>
-          <Link href="/gallery" className={`${standardStyling}`}>
-            Gallery
-          </Link>
+          <div className="relative">
+            <div
+              class={`${standardStyling}`}
+              onClick={() => {
+                setShowShopDropDown(!showShopDropDown);
+                setShowAboutDropDown(false);
+              }}
+            >
+              <div class="flex justify-between items-center">
+                <div class="text-center">Shop</div>
+                <div class="mr-2">{caretIcon}</div>
+              </div>
+            </div>
+            {showShopDropDown && (
+              <div
+                class={`absolute top-15 left-[50px] flex justify-center z-10 text-white ${hiraDarkBrownBG} divide-y divide-white border border-white shadow w-72`}
+              >
+                <ul class="py-2 text-3xl" aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <Link
+                      href="/diamond"
+                      class="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => onLinkClick()}
+                    >
+                      Shop Diamonds
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/ringsettings"
+                      class="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => onLinkClick()}
+                    >
+                      Shop Rings
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/custom"
+                      class="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => onLinkClick()}
+                    >
+                      Custom Inquiry
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <div
+              class={`${standardStyling}`}
+              onClick={() => {
+                setShowShopDropDown(false);
+                setShowAboutDropDown(!showAboutDropDown);
+              }}
+            >
+              <div class="flex justify-between items-center">
+                <div class="text-center">About</div>
+                <div class="mr-2">{caretIcon}</div>
+              </div>
+            </div>
+            {showAboutDropDown && (
+              <div
+                class={`absolute top-15 left-[50px] flex justify-center z-10 text-white ${hiraDarkBrownBG} divide-y divide-white border border-white shadow w-72`}
+              >
+                <ul class="py-2 text-3xl" aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <Link
+                      href="/about"
+                      class="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => onLinkClick()}
+                    >
+                      Our Story
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/how-it-works"
+                      class="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => onLinkClick()}
+                    >
+                      How It Works
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contact"
+                      class="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => onLinkClick()}
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/gallery"
+                      class="block px-4 py-2 hover:bg-gray-100"
+                    >
+                      Gallery
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
           <Link href="/contact" className={`${standardStyling}`}>
             Contact
           </Link>
-          <Link href="/how-it-works" className={`${standardStyling}`}>
-            How It Works
-          </Link>
           <div className={` mt-2 ${hiraBlackText} justify-start flex flex-col`}>
-            <div className="border-t lg:border-0 mt-4 lg:mt-0 text-center justify-center text-sm">
+            <div className="border-t lg:border-0 mt-4 lg:mt-0 text-center justify-center text-lg">
               <div className={`py-2 lg:pb-0 ${hiraDarkGrayText} mt-4 lg:mt-0`}>
                 Schedule Meet
               </div>
@@ -59,7 +155,7 @@ const MobileMenu = () => {
                 <div className="py-2 lg:mr-2">team@hiradiamonds.com</div>
                 <div className="py-2">{callNumber}</div>
               </div>
-              <div class="text-center text-sm text-white sm:text-center hidden lg:block">
+              <div class="text-center text-lg text-white sm:text-center hidden lg:block">
                 <div className={`${hiraDarkGrayText}`}>Follow Us</div>
                 <div className="flex justify-center my-2">
                   <Link
@@ -103,7 +199,7 @@ const MobileMenu = () => {
               </button>
             </div>
             <div
-              class={`my-8 lg:my-0 text-center text-sm ${hiraBlackText} sm:text-center`}
+              class={`my-8 lg:my-0 text-center text-lg ${hiraBlackText} sm:text-center`}
             >
               <Link href="" class="hover:underline">
                 HIRA
@@ -111,7 +207,7 @@ const MobileMenu = () => {
               . All Rights Reserved.
             </div>
             <div
-              class={`my-8 text-center text-sm ${hiraBlackText} sm:text-center lg:hidden`}
+              class={`my-8 text-center text-lg ${hiraBlackText} sm:text-center lg:hidden`}
             >
               <div className={`${hiraDarkGrayText}`}>Follow Us</div>
               <div className="flex justify-center my-2">

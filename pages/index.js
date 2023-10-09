@@ -38,8 +38,9 @@ export default function Home() {
       </Head>
       <LiveExpertBanner></LiveExpertBanner>
       <div className="relative">
-        <Navbar></Navbar>
-        <SecondaryHeader></SecondaryHeader>
+        {/* <Navbar></Navbar> */}
+        {/* <SecondaryHeader></SecondaryHeader> */}
+        <Header></Header>
         <MobileMenu></MobileMenu>
       </div>
       <Hero></Hero>

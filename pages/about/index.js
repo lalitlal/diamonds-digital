@@ -39,9 +39,9 @@ export default function Home() {
       </Head>
       <LiveExpertBanner></LiveExpertBanner>
       <div className="relative">
-        <NavBar></NavBar>
-        {/* <Header></Header> */}
-        <SecondaryHeader></SecondaryHeader>
+        {/* <NavBar></NavBar> */}
+        <Header></Header>
+        {/* <SecondaryHeader></SecondaryHeader> */}
         <MobileMenu></MobileMenu>
       </div>
       <div

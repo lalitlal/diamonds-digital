@@ -4,7 +4,7 @@ import { callNumber, hiraBlackText, hiralightGrayBG } from "./constants";
 const LiveExpertBanner = () => {
   return (
     <div
-      className={`w-full text-center justify-center p-2 text-lg ${hiralightGrayBG} ${hiraBlackText}`}
+      className={`w-full text-center justify-center p-2 text-2xl ${hiraBlackText}`}
     >
       Speak to a live expert: {callNumber}
     </div>

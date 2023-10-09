@@ -1,15 +1,28 @@
 import Link from "next/link";
-import React, { useContext, useState } from "react";
-import CalendlyBooking from "./CalendlyBooking";
+import React, { useContext, useEffect, useState } from "react";
+import { hiraDarkBrown, hiraDarkBrownBG, xIcon } from "./constants";
 import Cart from "./Cart";
-import Modal from "../components/Modal";
-import { CartContext } from "./context/CartContext";
 import NewModal from "./NewModal";
+import CalendlyBooking from "./CalendlyBooking";
 import CartModal from "./CartModal";
-import { xIcon } from "./constants";
+import { CartContext } from "./context/CartContext";
 
 const Header = () => {
+  const [showShopDropDown, setShowShopDropDown] = useState(false);
+  const [showAboutDropDown, setShowAboutDropDown] = useState(false);
   const cartContext = useContext(CartContext);
+  const [showNavBar, setShowNavBar] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    const onScroll = (e) => {
+      setShowNavBar(e.target.documentElement.scrollTop >= 150);
+      setScrollTop(e.target.documentElement.scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [showNavBar, scrollTop]);
 
   const handleOpenBookingModal = () => {
     cartContext.setShowMobileMenu(false);
@@ -40,157 +53,204 @@ const Header = () => {
       cartContext.setSettingPrice(0);
     }
   };
-
   return (
-    <div className="flex-col items-center object-center mb-4">
-      <div className="flex justify-around mt-6">
-        <div className="hidden lg:flex items-center w-1/3 ml-6">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 inline-block md:hidden hover:text-gray-500 hover:cursor-pointer"
-            onClick={() => {
-              cartContext.setShowMobileMenu(!cartContext.showMobileMenu);
-            }}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 9h16.5m-16.5 6.75h16.5"
-            />
-          </svg>
-
-          <div
-            onClick={handleOpenBookingModal}
-            className="flex hover:text-gray-500"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 ml-2  hover:cursor-pointer"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-              />
-            </svg>
-            <a className="hidden lg:inline-flex hover:cursor-pointer">
-              Book an appointment
-            </a>
-          </div>
-        </div>
-        <div className="flex md:hidden items-center w-1/3 ml-4 cursor-pointer transition ease-in-out duration-300">
-          {!cartContext.showMobileMenu ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 align-middle md:hidden"
-              onClick={() => {
-                cartContext.setShowMobileMenu(true);
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
-                });
-              }}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 9h16.5m-16.5 6.75h16.5"
-              />
-            </svg>
-          ) : (
-            <div onClick={() => cartContext.setShowMobileMenu(false)}>
-              {xIcon}
+    <>
+      <div
+        className={`transition-all duration-400 ease-in ${
+          showNavBar ? "fixed top-0 left-0 right-0 z-50" : ""
+        }`}
+      >
+        <nav class={` ${hiraDarkBrownBG} border-gray-200 px-4 lg:px-6 py-2.5 `}>
+          <div class="flex text-white flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <div className="flex lg:hidden items-center w-fit cursor-pointer">
+              {!cartContext.showMobileMenu ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 align-middle lg:hidden"
+                  onClick={() => {
+                    cartContext.setShowMobileMenu(true);
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+                    });
+                  }}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 9h16.5m-16.5 6.75h16.5"
+                  />
+                </svg>
+              ) : (
+                <div onClick={() => cartContext.setShowMobileMenu(false)}>
+                  {xIcon}
+                </div>
+              )}
+              <div
+                onClick={handleOpenBookingModal}
+                className="flex hover:text-gray-500"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 ml-2 hover:cursor-pointer"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+                  />
+                </svg>
+              </div>
             </div>
-          )}
-          <div
-            onClick={handleOpenBookingModal}
-            className="flex hover:text-gray-500"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 ml-2 hover:cursor-pointer"
+            <Link href="/" class="flex items-center">
+              <span class="self-center text-4xl whitespace-nowrap">HIRA</span>
+            </Link>
+            <div class="flex items-center lg:order-2">
+              <a
+                class="hidden lg:block bg-white text-black hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium text-2xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2  focus:outline-none hover:cursor-pointer"
+                onClick={() => {
+                  // handleOpenBookingModal();
+                  cartContext.setShowBookingModal(true);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth", // You can use 'auto' or 'smooth' for scrolling behavior
+                  });
+                }}
+              >
+                Book Meet
+              </a>
+              <Cart></Cart>
+            </div>
+            <div
+              class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+              id="mobile-menu-2"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-              />
-            </svg>
+              <div class="flex flex-col mt-4 text-2xl lg:flex-row lg:space-x-8 lg:mt-0">
+                <Link
+                  href="/"
+                  class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 "
+                  aria-current="page"
+                >
+                  Home
+                </Link>
+                <div className="relative">
+                  <div
+                    class="block hover:cursor-pointer py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
+                    onClick={() => {
+                      setShowShopDropDown(!showShopDropDown);
+                      setShowAboutDropDown(false);
+                    }}
+                  >
+                    Shop
+                  </div>
+                  {showShopDropDown && (
+                    <div
+                      class={`absolute top-10 z-10 font-normal ${hiraDarkBrownBG} divide-y divide-gray-100 border border-white shadow w-72`}
+                    >
+                      <ul
+                        class="py-2 text-2xl text-white"
+                        aria-labelledby="dropdownLargeButton"
+                      >
+                        <li>
+                          <Link
+                            href="/diamond"
+                            class="block px-4 py-2 hover:bg-gray-100"
+                          >
+                            Shop Diamonds
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/ringsettings"
+                            class="block px-4 py-2 hover:bg-gray-100"
+                          >
+                            Shop Rings
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/custom"
+                            class="block px-4 py-2 hover:bg-gray-100"
+                          >
+                            Custom Inquiry
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+                <div className="relative">
+                  <div
+                    class="block hover:cursor-pointer py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
+                    onClick={() => {
+                      setShowAboutDropDown(!showAboutDropDown);
+                      setShowShopDropDown(false);
+                    }}
+                  >
+                    About
+                  </div>
+                  {showAboutDropDown && (
+                    <div
+                      class={`absolute top-10 z-10 font-normal ${hiraDarkBrownBG} divide-y divide-gray-100 border border-white shadow w-72`}
+                    >
+                      <ul
+                        class="py-2 text-2xl text-white"
+                        aria-labelledby="dropdownLargeButton"
+                      >
+                        <li>
+                          <Link
+                            href="/about"
+                            class="block px-4 py-2 hover:bg-gray-100"
+                          >
+                            Our Story
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/how-it-works"
+                            class="block px-4 py-2 hover:bg-gray-100"
+                          >
+                            How It Works
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/contact"
+                            class="block px-4 py-2 hover:bg-gray-100"
+                          >
+                            Contact
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/gallery"
+                            class="block px-4 py-2 hover:bg-gray-100"
+                          >
+                            Gallery
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+                <Link
+                  href="/contact"
+                  class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
-        <div>
-          <Link
-            href="/"
-            className="text-center font-Raleway text-4xl font-bold w-1/3 hover:cursor-pointer"
-          >
-            HIRA
-          </Link>
-        </div>
-        <div className="flex items-center justify-end w-1/3 mr-6">
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 hover:text-gray-500 hover:cursor-pointer"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-            />
-          </svg> */}
-          <Cart onClick={handleOpenCartModal}></Cart>
-        </div>
-      </div>
-      <div className="hidden md:flex justify-center w-full items-center mt-6 objects-center text-sm lg:flex-grow">
-        <Link
-          href="/"
-          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 hover:cursor-pointer"
-        >
-          Engagement
-        </Link>
-        <Link
-          href="/diamond"
-          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 hover:cursor-pointer"
-        >
-          Diamonds
-        </Link>
-        <Link
-          href="/ringsettings"
-          className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-500 hover:underline mr-4 hover:cursor-pointer"
-        >
-          Settings
-        </Link>
-        <Link
-          href="/about"
-          className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline mr-4 hover:cursor-pointer"
-        >
-          About
-        </Link>
-        <Link
-          href="/gallery"
-          className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-500 hover:underline hover:cursor-pointer"
-        >
-          Gallery
-        </Link>
+        </nav>
       </div>
       <NewModal
         isOpen={cartContext.showBookingModal}
@@ -213,7 +273,7 @@ const Header = () => {
           }}
         ></CartModal>
       </NewModal>
-    </div>
+    </>
   );
 };
 
