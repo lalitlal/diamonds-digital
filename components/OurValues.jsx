@@ -14,27 +14,22 @@ const OurValues = () => {
     {
       shape: shapes.round.svg,
       value: "Quality",
-      description: `Real diamonds. Real, solid metals. HIRA is a household name because our pieces stand the test of time. Our pieces are built to last.`,
+      description: `Real diamonds. Real, solid metals. All HIRA products have lifetime warranty on manufactured defects.`,
     },
     {
       shape: shapes.pear.svg,
       value: "Service",
-      description: `From first contact to delivery, to your anniversary, we take care of the HIRA family. Every customer is updated daily on their order status and receives communication within 1 hour of inquiry. We are by your side.`,
+      description: `100% satisfaction guaranteed or your money back`,
     },
     {
       shape: shapes.oval.svg,
       value: "Journey",
-      description: `We bring you along the journey in a way that is fun and easy. This
-      includes design iterations, final render, mould creation, ring
-      completion, and real-time delivery tracking - our customers are
-      always in the know.`,
+      description: `You are involved each step of the way. In the design, diamond, render, and forge steps, you have full control.`,
     },
     {
       shape: shapes.princess.svg,
       value: "Integrity",
-      description: `This is truly uncompromised. We value your time, your money, and
-      your health - we prize ourselves in making your dream ring with
-      premium material but a fraction of the cost!`,
+      description: `Transparent pricing, timely responses, and direct answers.`,
     },
   ];
 
@@ -165,9 +160,9 @@ const OurValues = () => {
             >
               <h1 className="mb-4 font-bold text-2xl justify-center">
                 <div className="flex justify-center py-4">{val.shape}</div>
-                <div className="text-emerald-900">{val.value}</div>
+                <div className="text-emerald-900 text-3xl">{val.value}</div>
               </h1>
-              <div className="lg:mx-2 mb-2 md:px-20 px-10 ">
+              <div className="lg:mx-2 mb-2 md:px-20 px-10 text-2xl ">
                 {val.description}
               </div>
             </div>

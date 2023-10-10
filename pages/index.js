@@ -49,22 +49,21 @@ export default function Home() {
       >
         {/* CTA 1 */}
         <div className="px-10 py-20">
-          <h1 className="mb-4 font-bold text-2xl md:text-4xl">{`Buying engagement rings the HIRA way.`}</h1>
+          <h1 className="mb-4 font-bold text-center text-4xl">{`The HIRA way.`}</h1>
           <div className="justify-center">
-            <div className="md:p-4 md:px-8 text-center md:text-2xl text-emerald-900">
-              {`We make finding your perfect engagement ring effortless and memorable - by making it for you. 
-              Take the stress out of proposing by making a gem as rare as your special person. We are a family in business for over 40 years. Our customers enjoy over 30% in savings when going through us, but have 100% satisfaction guaranteed!`}
+            <div className="md:p-4 md:px-8 text-center text-2xl text-emerald-900">
+              {`In business for over 40 years. We provide lifestime warranty, free shipping, free returns, and 100% satisfaction guarantee.`}
             </div>
             <div className="flex justify-center text-center items-center">
               <Link
-                href="/how-it-works"
-                class={`flex w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} hover:bg-gradient-to-br text-sm md:text-lg mt-8 md:mt-4 mr-2`}
+                href="/about"
+                class={`flex w-fit justify-center py-2 px-4 text-white bg-emerald-900 border ${borderHiraBlack} hover:bg-gradient-to-br text-lg md:text-lg mt-8 md:mt-4 mr-2`}
               >
-                How it works
+                About Us
               </Link>
               <Link
-                href="/contact"
-                class={`flex w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} hover:bg-gradient-to-br text-sm md:text-lg mt-8 md:mt-4`}
+                href="/custom"
+                class={`flex w-fit justify-center py-2 px-4 text-white bg-emerald-900 border ${borderHiraBlack} hover:bg-gradient-to-br text-lg md:text-lg mt-8 md:mt-4`}
               >
                 Get started
               </Link>
@@ -80,25 +79,24 @@ export default function Home() {
           <div className="lg:flex">
             <div className="lg:w-1/2 lg:px-6">
               <h1
-                className={`mb-4 font-bold text-xl md:text-4xl md:font-bold text-left text-emerald-900`}
-              >{`Building an engagement ring should be just as special as the person you're buying it for.`}</h1>
+                className={`mb-4 font-bold text-4xl md:text-4xl md:font-bold text-left text-emerald-900`}
+              >{`Authentic materials only.`}</h1>
               <div className="justify-center">
-                <div className="text-left  md:text-xl">
-                  {`Why buy something off the shelf for an unreasonable markup when you can make a priceless custom piece for your loved one at a fraction of the cost? 
-              Clients can choose to start with one of our inspired rings, or go completely custom!`}
+                <div className="text-left text-2xl">
+                  {`Solid gold. Certified (IGI, GIA) diamonds only. Choose one our rings, or make a custom for no extra cost.`}
                 </div>
                 <div className="flex md:justify-start justify-center text-center items-center">
                   <Link
                     href="/how-it-works"
-                    class={`flex w-screen md:w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} text-sm md:text-lg mt-8 mr-2 md:mt-4 mb-8`}
+                    class={`flex w-screen md:w-fit justify-center py-2 px-4 text-white bg-emerald-900 border ${borderHiraBlack} text-lg md:text-lg mt-8 mr-2 md:mt-4 mb-8`}
                   >
-                    How it works
+                    More Details
                   </Link>
                   <Link
                     href="/ringsettings"
-                    class={`flex w-screen md:w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} text-sm md:text-lg mt-8 md:mt-4 mb-8`}
+                    class={`flex w-screen md:w-fit justify-center py-2 px-4 text-white bg-emerald-900 border ${borderHiraBlack} text-lg md:text-lg mt-8 md:mt-4 mb-8`}
                   >
-                    Shop rings
+                    Shop Rings
                   </Link>
                 </div>
               </div>
@@ -128,16 +126,16 @@ export default function Home() {
             </div>
             <div className="lg:w-1/2 lg:px-6 mt-4">
               <h1
-                className={`mb-4 font-bold text-xl md:text-4xl md:font-bold text-left text-emerald-900`}
-              >{`We will work well within any budget.`}</h1>
+                className={`mb-4 font-bold text-4xl md:text-4xl md:font-bold text-left text-emerald-900`}
+              >{`Pick a style, pick a diamond, checkout.`}</h1>
               <div className="justify-center">
-                <div className="text-left  md:text-xl">
-                  {`The HIRA Advantage: beautiful rings, premium materials, with prices 30% less than anyone else. We are able to charge less because we are a fully online business, which allows us to keep our operating costs low, and keeps more money in your pocket!`}
+                <div className="text-left text-2xl">
+                  {`No hidden pricing, build your ring online and have it shipped in 2-3 weeks.`}
                 </div>
                 {/* <div className="flex md:justify-start justify-center text-center items-center">
                   <Link
                     href="/contact"
-                    class={`flex w-screen md:w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} text-sm md:text-lg mt-8 md:mt-4 mb-8`}
+                    class={`flex w-screen md:w-fit justify-center py-2 px-8 text-white bg-emerald-900 border ${borderHiraBlack} text-lg md:text-lg mt-8 md:mt-4 mb-8`}
                   >
                     Our Pricing
                   </Link>

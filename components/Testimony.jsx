@@ -35,16 +35,16 @@ const Testimony = ({ name, purchase, review, source }) => {
         </div>
         <div class="w-full mb-10">
           <div class="h-3 text-3xl leading-tight text-left text-white">“</div>
-          <p class="px-5 text-sm text-center text-white ">{review}</p>
+          <p class="px-5 text-center text-white text-lg ">{review}</p>
           <div class="h-3 -mt-3 text-3xl leading-tight text-right text-white">
             ”
           </div>
         </div>
         <div class="w-full">
-          <p class={`font-bold text-center ${hiralightGrayText} text-md`}>
+          <p class={`font-bold text-center ${hiralightGrayText} text-lg`}>
             {name}
           </p>
-          <p class="text-xs text-center text-white">{purchase}</p>
+          <p class="text-base text-center text-white">{purchase}</p>
         </div>
       </div>
     </div>

@@ -18,14 +18,16 @@ import {
 import SanityImages from "../../components/SanityImages";
 import OurValues from "../../components/OurValues";
 import SecondaryHeader from "../../components/SecondaryHeader";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 const speakButton = (
-  <div
-    className={`flex w-full justify-center py-2 text-black ${hiraWhiteBG} border ${borderHiraBlack} focus:outline-none active:bg-black focus:bg-black text-lg my-2 hover:cursor-pointer`}
+  <Link
+    className={`flex w-full justify-center py-2 text-white ${hiraDarkBrownBG}  focus:outline-none active:bg-black focus:bg-black text-lg my-2 hover:cursor-pointer`}
+    href="/contact"
   >
     Speak to an expert
-  </div>
+  </Link>
 );
 
 export default function Home() {
@@ -44,17 +46,13 @@ export default function Home() {
         {/* <SecondaryHeader></SecondaryHeader> */}
         <MobileMenu></MobileMenu>
       </div>
-      <div
-        className={`w-screen ${hiraDarkBrownBG} text-white text-center font-Raleway`}
-      >
+      <div className={`w-screen bg-emerald-900 text-white text-center `}>
         <div className="p-10">
           <h1 className="font-bold text-4xl">Our Story</h1>
         </div>
       </div>
 
-      <div
-        className={`w-screen ${hiraWhiteBG} text-black text-center font-Raleway`}
-      >
+      <div className={`w-screen ${hiraWhiteBG} text-black text-center `}>
         <div className="p-10 lg:flex">
           <div>
             <SanityImages
@@ -68,53 +66,51 @@ export default function Home() {
               About Us
             </h1>
             <div className="h-full flex flex-col justify-center">
-              <div className="text-justify lg:text-xl">
+              <div className="text-justify text-2xl">
                 {`We started with a simple mission. Every couple should experience
                 an effortless and enjoyable engagement - with a high quality,
                 expert crafted diamond ring that doesn't break the bank.`}
               </div>
-              <div className="text-justify lg:text-xl lg:mt-2">
+              <div className="text-justify text-2xl mt-2">
                 {`We are a multi-generational family of gold smiths and jewellers
                 who specialize in creating custom diamond engagement rings. All
                 of our rings are proudly designed and made in Canada.`}
               </div>
-              <div className="text-justify lg:text-xl lg:mt-2">
+              <div className="text-justify text-2xl mt-2">
                 {`Our name reflects the rich origins of our family trade that has
-                been taught and carried on for over 100 years. HIRA ([Hee-rah] is an ancient, South Asian term meaning diamond.)`}
+                been taught and carried on for over 40 years. HIRA ([Hee-rah]) is an ancient, South Asian term meaning diamond.`}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        className={`w-screen ${hiraWhiteBG} text-black text-center font-Raleway`}
-      >
+      <div className={`w-screen ${hiraWhiteBG} text-black text-center `}>
         <div className="p-10">
           {/* <h1 className="mb-4 font-bold text-4xl flex justify-center">
             Our Values
           </h1> */}
           <div className="lg:flex lg:text-center lg:items-center lg:justify-center">
             <div>
-              <h1 className="mb-4 font-bold text-2xl justify-center">
+              <h1 className="mb-4 font-bold text-4xl justify-center">
                 <div className="flex justify-center py-4">
                   {shapes.round.svg}
                 </div>
                 Our Why
               </h1>
-              <div className="lg:mx-2">
+              <div className="lg:mx-2 text-2xl">
                 {`Couples should start their journey on their best foot forward.
                 That's why we're here to give you your dream ring at a fraction
                 of the cost. Real diamonds, authentic metals. That's HIRA.`}
               </div>
             </div>
             <div>
-              <h1 className="mb-4 font-bold text-2xl justify-center">
+              <h1 className="mb-4 font-bold text-4xl justify-center">
                 <div className="flex justify-center py-4">
                   {shapes.round.svg}
                 </div>
                 Our Vision
               </h1>
-              <div className="lg:mx-2">
+              <div className="lg:mx-2 text-2xl">
                 {`Our vision is to create a one stop shop for engagement rings and
                 completely put you at ease. This is the place where you can ask
                 us to copy that ring on TikTok or Instagram, and you can rest
@@ -124,13 +120,13 @@ export default function Home() {
             </div>
 
             <div>
-              <h1 className="mb-4 font-bold text-2xl justify-center">
+              <h1 className="mb-4 font-bold text-4xl justify-center">
                 <div className="flex justify-center py-4">
                   {shapes.round.svg}
                 </div>
                 Our Mission
               </h1>
-              <div className="lg:mx-2">
+              <div className="lg:mx-2 text-2xl">
                 {`We are committed to build you the perfect diamond engagement
                 ring that is made for one. Using the highest quality materials,
                 expert craftsmanship and a completely personalized shopping
@@ -141,22 +137,18 @@ export default function Home() {
         </div>
       </div>
 
-      <div
-        className={`w-screen bg-emerald-900 text-white text-center font-Raleway`}
-      >
-        <div className={`w-screen  text-white text-center font-Raleway`}>
+      <div className={`w-screen bg-emerald-900 text-white text-center `}>
+        <div className={`w-screen  text-white text-center `}>
           <div className="p-10">
             <h1 className="mb-4 font-bold text-4xl">Our Pillars</h1>
-            <div className="lg:text-xl">
+            <div className="lg:text-2xl">
               This is what we stand for, and what we stand on.
             </div>
           </div>
         </div>
       </div>
 
-      <div
-        className={`w-screen ${hiraWhiteBG} text-black text-center font-Raleway`}
-      >
+      <div className={`w-screen ${hiraWhiteBG} text-black text-center `}>
         <div className="p-10 lg:flex">
           {/* PT 1 */}
           <div>
@@ -167,13 +159,13 @@ export default function Home() {
             ></SanityImages>
           </div>
           <div className="lg:w-3/4">
-            <h1 className="mb-4 font-bold text-2xl flex justify-center text-justify">
+            <h1 className="mb-4 font-bold text-4xl flex justify-center text-justify my-4">
               Family
             </h1>
-            <div className="text-justify lg:text-xl">
+            <div className="text-justify lg:text-2xl">
               {`HIRA is a family owned business. Passed down generation after
               generation, the art of creating fine jewelery is in our blood. We
-              pride ourselves for being in industry for over 150 years. As a
+              pride ourselves for being in industry for over 40 years. As a
               family owned business, we value the family unit. We aspire to
               continue to build HIRA into a household name that we can pass down
               to our kids. For this very reason our family business is committed
@@ -195,10 +187,10 @@ export default function Home() {
             ></SanityImages>
           </div>
           <div className="lg:w-3/4">
-            <h1 className="mb-4 font-bold text-2xl flex justify-center">
+            <h1 className="mb-4 font-bold text-4xl flex justify-center my-4">
               Integrity
             </h1>
-            <div className="text-justify lg:text-xl">
+            <div className="text-justify lg:text-2xl">
               {`After being in business for over a century, we've built lifelong
               relationships with our clients. Our clients trust us to give them
               transparency on the origins, quality, and cost of their product,
@@ -226,10 +218,10 @@ export default function Home() {
             ></SanityImages>
           </div>
           <div className="lg:w-3/4">
-            <h1 className="mb-4 font-bold text-2xl flex justify-center text-justify">
+            <h1 className="mb-4 font-bold text-4xl flex justify-center text-justify my-4">
               Affordability
             </h1>
-            <div className="text-justify lg:text-xl">
+            <div className="text-justify lg:text-2xl">
               {`If you're on our website and notice that our pricing is
               significantly cheaper than anywhere else you've gone - don't be
               shocked! We source real, certified lab-grown diamonds, and our

@@ -34,7 +34,7 @@ const Testimonials = () => {
           >
             Testimonials
           </h1>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-emerald-900">
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-2xl text-emerald-900">
             Hear from real customers that chose HIRA.
           </p>
         </div>

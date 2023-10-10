@@ -16,7 +16,7 @@ import { CartContext } from "./context/CartContext";
 
 const Footer = () => {
   const { setShowBookingModal, showBookingModal } = useContext(CartContext);
-  const standardStyling = `text-center lg:text-left hover:underline hover:cursor-pointer`;
+  const standardStyling = `text-center text-xl lg:text-left hover:underline hover:cursor-pointer`;
 
   return (
     <div

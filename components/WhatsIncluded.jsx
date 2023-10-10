@@ -23,7 +23,7 @@ const WhatsIncluded = () => {
                     {feat.svg}
                   </div>
                 </div>
-                <div class="flex justify-center items-center text-center mx-1 ">
+                <div class="flex justify-center items-center text-xl text-center mx-1 ">
                   {feat.name}
                 </div>
               </div>
