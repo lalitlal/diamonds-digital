@@ -205,7 +205,7 @@ const RingSettings = () => {
                         >
                           {title}
                         </h2>
-                        <p className="mx-1">USD$ {prod.variants[0].price}</p>
+                        <p className="mx-1">CAD$ {prod.variants[0].price}</p>
                         <Link
                           onClick={() => {
                             handleRingClick(prod, imageAlts);
@@ -278,7 +278,7 @@ const RingSettings = () => {
                         >
                           {title}
                         </h2>
-                        <p className="mx-1">USD$ {prod.variants[0].price}</p>
+                        <p className="mx-1">CAD$ {prod.variants[0].price}</p>
                         <Link
                           onClick={() => {
                             handleRingClick(prod, imageAlts);

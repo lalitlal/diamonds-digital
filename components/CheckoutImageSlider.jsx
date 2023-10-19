@@ -137,7 +137,7 @@ const CheckoutImageSlider = () => {
             ? undefined
             : ` ${cartContext.diamond} `,
         name: `${cartContext.diamond}`,
-        price: ` USD$ `.concat(cartContext.diamondPrice),
+        price: ` CAD$ `.concat(cartContext.diamondPrice),
         editLink: "/diamond",
         missingText: "Select Diamond",
       },
@@ -147,7 +147,7 @@ const CheckoutImageSlider = () => {
             ? undefined
             : ` ${cartContext.setting} `,
         name: diamondContext.settingDetails.name,
-        price: ` USD$ `.concat(cartContext.settingPrice),
+        price: ` CAD$ `.concat(cartContext.settingPrice),
         editLink: "/ringsettings",
         missingText: "Select Ring",
       },

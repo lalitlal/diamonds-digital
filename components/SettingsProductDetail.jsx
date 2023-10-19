@@ -199,7 +199,7 @@ const SettingsProductDetail = ({}) => {
                         });
                       }}
                     >
-                      Complete Ring (USD${" "}
+                      Complete Ring (CAD${" "}
                       {diamondContext.settingDetails.variantData.price})
                     </button>
                   </Link>

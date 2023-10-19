@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         line_items: [
           {
             price_data: {
-              currency: "usd",
+              currency: "cad",
               product_data: {
                 name: checkoutData.diamondData, //"Random Custom Line Item",
                 description: "Loose Diamond",
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
           },
           checkoutData.settingData && {
             price_data: {
-              currency: "usd",
+              currency: "cad",
               product_data: {
                 name: checkoutData.settingData, //"Random Custom Line Item",
                 description: `Setting Size: ${checkoutData.ringSize}`,

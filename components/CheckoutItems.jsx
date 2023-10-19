@@ -97,7 +97,7 @@ function CheckoutItems({ onRemoveItem }) {
             ? undefined
             : ` ${cartContext.diamond} `,
         name: `${cartContext.diamond}`,
-        price: ` USD$ `.concat(cartContext.diamondPrice),
+        price: ` CAD$ `.concat(cartContext.diamondPrice),
         detailDiv: (
           <FullDiamondDetails
             data={diamondContext.diamondDetails}
@@ -112,7 +112,7 @@ function CheckoutItems({ onRemoveItem }) {
             ? undefined
             : ` ${cartContext.setting} `,
         name: cartContext.setting,
-        price: ` USD$ `.concat(cartContext.settingPrice),
+        price: ` CAD$ `.concat(cartContext.settingPrice),
         detailDiv: (
           <>
             <RingSizePicker></RingSizePicker>

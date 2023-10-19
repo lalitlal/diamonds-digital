@@ -244,7 +244,7 @@ const CustomRingInquiry = () => {
                     options={optionBudget}
                     value={prefBudget}
                     setValue={setPrefBudget}
-                    title={"Budget (USD)*:"}
+                    title={"Budget (CAD)*:"}
                     placeholderText={"Choose budget"}
                   ></CustomOptionPicker>
                 </div>
