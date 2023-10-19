@@ -183,7 +183,7 @@ const ProductDetail = ({ shape, data }) => {
                     class={`flex w-full justify-center py-2 text-white ${hiraEmeraldBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
                     onClick={() => handleDiamondSelect("Add to ring")}
                   >
-                    Add to a ring (CAD${" "}
+                    Add to a ring (USD${" "}
                     {toFixedDecimal(data.price * marginMultiplier)})
                   </button>
                 </Link>
@@ -200,7 +200,7 @@ const ProductDetail = ({ shape, data }) => {
                       });
                     }}
                   >
-                    Buy now (CAD${" "}
+                    Buy now (USD${" "}
                     {toFixedDecimal(data.price * marginMultiplier)})
                   </div>
                 </Link>

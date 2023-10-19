@@ -159,7 +159,7 @@ function CartModal({ onRemoveItem }) {
             ? undefined
             : ` ${cartContext.diamond} `,
         name: "Loose Diamond",
-        price: ` CAD$ `.concat(cartContext.diamondPrice),
+        price: ` USD$ `.concat(cartContext.diamondPrice),
       },
       {
         description:
@@ -167,7 +167,7 @@ function CartModal({ onRemoveItem }) {
             ? undefined
             : ` ${cartContext.setting} `,
         name: "Setting",
-        price: ` CAD$ `.concat(cartContext.settingPrice),
+        price: ` USD$ `.concat(cartContext.settingPrice),
       },
     ];
   }, [
@@ -246,7 +246,7 @@ function CartModal({ onRemoveItem }) {
             href={"/checkout"}
             class={`flex w-full justify-center py-2 text-white ${hiraEmeraldBG} focus:outline-none active:bg-black focus:bg-black text-lg`}
           >
-            Go to checkout (CAD$ {totalPrice})
+            Go to checkout (USD$ {totalPrice})
           </Link>
         </div>
       </div>

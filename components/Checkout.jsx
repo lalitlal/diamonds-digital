@@ -149,8 +149,8 @@ const Checkout = () => {
                 onClick={checkoutBtnClick}
               >
                 {cartContext.setting
-                  ? `Checkout (CAD$ ${totalPrice})`
-                  : `Buy Diamond (CAD$ ${totalPrice})`}
+                  ? `Checkout (USD$ ${totalPrice})`
+                  : `Buy Diamond (USD$ ${totalPrice})`}
               </button>
             </div>
 

@@ -53,7 +53,7 @@ const CTASetting = () => {
                 );
               }}
             >
-              Complete Ring (CAD${" "}
+              Complete Ring (USD${" "}
               {diamondContext.settingDetails.variantData.price})
             </button>
           </Link>
